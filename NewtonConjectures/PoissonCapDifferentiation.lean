@@ -38,8 +38,8 @@ theorem parameter_integral_derivative_cap
       (4 / 3 : ℝ) * w x *
         (-1 + (3 * (n : ℝ) / 4) *
         ((t x - 1 / 2) / (5 / 4 - t x))))
-    (hs : s ∈ 𝓝 (1 / 2 : ℝ))
-    (hF_meas : ∀ᶠ r in 𝓝 (1 / 2 : ℝ), AEStronglyMeasurable (F r) μ)
+    (hs : s ∈ nhds (1 / 2 : ℝ))
+    (hF_meas : ∀ᶠ r in nhds (1 / 2 : ℝ), AEStronglyMeasurable (F r) μ)
     (hF_int : Integrable (F (1 / 2)) μ)
     (hG_meas : AEStronglyMeasurable (G (1 / 2)) μ)
     (h_bound : ∀ᵐ x ∂μ, ∀ r ∈ s, ‖G r x‖ ≤ bound x)
