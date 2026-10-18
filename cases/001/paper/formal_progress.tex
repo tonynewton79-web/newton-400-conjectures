@@ -1,4 +1,4 @@
-\section{Formal certification: progressive eight-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive nine-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -107,6 +107,25 @@ not yet been compiled as its own Lean theorem.
 passed 7,362 build jobs; 142 declarations survived the axiom
 audit with only the standard foundational allowlist.
 
+
+\paragraph{Stage 9: parity-uniform rational comparisons.}
+In \texttt{HarmonicComparison.lean}, Lean certifies exact
+harmonic-number recurrences and proves both rational spectral-spread
+upper bounds decrease strictly with the cycle half-length.
+Writing $q_o(m)=(4H_m+3)/m$ and
+$q_e(m)=4(2H_{m-1}+1/m+3/2)/(2m-1)$, the kernel proves
+\begin{align}\label{eq:lean-parity-bounds}
+q_o(m)&<2-(22/105)^2 &&(m\ge7),\notag\\
+q_e(m)&<2-(11/28)^2 &&(m\ge8).
+\end{align}
+The boundary evaluations $q_o(7)=468/245$ and
+$q_e(8)=1907/1050$ are exact and are joined to the
+universal monotonicity results, not inferred from finite samples.
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39140710038}{Stage~9 kernel run}
+passed 7,363 build jobs and audited 180 declarations.
+The precise trigonometric/adjacency eigenvalue comparison and finite
+$n=3,\ldots,14$ complementary cases still require Lean treatment.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -129,12 +148,12 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-The exact Gram identity \eqref{eq:lean-fullgram}, real
-positive semidefiniteness and spectral positivity
-\eqref{eq:lean-spectrum} are kernel-certified.
-The complete Graffiti inequality has \emph{not} been
-compiled in Lean: the ordering of cycle adjacency eigenvalues,
-both uniform harmonic comparisons, and the exact finite
-converse $C_3,\ldots,C_{14}$ remain. The analytic proof and
-finite certificate stand as separately checkable mathematics.
-Novelty and specialist review are also outstanding.
+The exact Gram identity, real shifted-matrix spectral positivity,
+and both parity-uniform rational bounds
+\eqref{eq:lean-parity-bounds} are kernel-certified.
+The complete Graffiti inequality remains a candidate theorem, since
+the cycle adjacency second-smallest eigenvalue ordering,
+the trigonometric comparison, and the exact finite complement
+$C_3,\ldots,C_{14}$ are not yet compiled end-to-end in Lean.
+Independent novelty/priority and specialist proof review are
+also outstanding.
