@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.CyclicIntersection
 import NewtonConjectures.CycleKernel
 
 /-!
