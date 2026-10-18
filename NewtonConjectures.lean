@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.DirectScalarLoewner
 import NewtonConjectures.DistanceShellScalarDegree
 import NewtonConjectures.DistanceShellDegreeRotation
 import NewtonConjectures.DistanceShellDegreeBridge
