@@ -1,0 +1,102 @@
+{
+  "case": "001",
+  "exact_gram_entry_checks": 870,
+  "finite_nonviolation_n_3_to_14": [
+    {
+      "exact_fraction_sha256": "b3f52a93b751a006cb73045015d165e7357f721ab31c69596845ce59cdcb9597",
+      "fourier_mode": 1,
+      "margin_upper_decimal_display_only": -4.999999999998951,
+      "n": 3,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "2bb8eb4e3263fb62e3970901337eafb6da5db6038ab6698a4399d1baaf437582",
+      "fourier_mode": 2,
+      "margin_upper_decimal_display_only": -5.333333333332463,
+      "n": 4,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "85530b139b60952f1549ae12298996259adea9eff94337cc84f4a4488edd6171",
+      "fourier_mode": 2,
+      "margin_upper_decimal_display_only": -2.6909830056241786,
+      "n": 5,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "eb27a4073c4fb5e7b17a03779b9148fcb275f7e9d3d8e0ffa3d7a97b166a9754",
+      "fourier_mode": 3,
+      "margin_upper_decimal_display_only": -2.7333333333325314,
+      "n": 6,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "2ededfe5a056d891da1ff7e9d0ba025140d83cda992d9fc01ebcb6e1d008f129",
+      "fourier_mode": 3,
+      "margin_upper_decimal_display_only": -1.5270368574723718,
+      "n": 7,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "3825360be413004413b220e861a537d67ef7ad23e1fa5e2717a3b1c8c8e702d7",
+      "fourier_mode": 4,
+      "margin_upper_decimal_display_only": -1.6334054852452053,
+      "n": 8,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "947a78d1e50dcd9c093c04fbf38b6109c39c53084e257f94335238fcb8ede6ad",
+      "fourier_mode": 4,
+      "margin_upper_decimal_display_only": -0.8838731132371553,
+      "n": 9,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "fbc0f16b63c0b0b5b1d274f3a9b56dfb772f319b304766aaca1b0e8ce27eac4b",
+      "fourier_mode": 5,
+      "margin_upper_decimal_display_only": -0.9301141593975556,
+      "n": 10,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "e96fabd46bf71e66f86be5e728c5b7b30d02b1f517f2cc0b956510e6959d7337",
+      "fourier_mode": 5,
+      "margin_upper_decimal_display_only": -0.4530905857715515,
+      "n": 11,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "cc08f98b50269fd9ba298bd8a6273cd1bc62132a03692beb2ef68eec83026dd0",
+      "fourier_mode": 6,
+      "margin_upper_decimal_display_only": -0.49825222273349024,
+      "n": 12,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "3bdc2b7a48967358418a772b1cb72a7ee2b382c21ff5c238a113446359c3ea2e",
+      "fourier_mode": 6,
+      "margin_upper_decimal_display_only": -0.14913818604035595,
+      "n": 13,
+      "strict_negative_upper_bound": true
+    },
+    {
+      "exact_fraction_sha256": "2d6173baf87fab9ff4ec77ab4a7a12846a037c13be320e315409200c5413bf68",
+      "fourier_mode": 7,
+      "margin_upper_decimal_display_only": -0.1731538392861043,
+      "n": 14,
+      "strict_negative_upper_bound": true
+    }
+  ],
+  "parity_starting_bounds": {
+    "H7": "363/140",
+    "even_boundary_lower": "1733/58800",
+    "odd_boundary_lower": "506/11025"
+  },
+  "source": "Roucairol and Cazenave, Graffiti 197",
+  "status": "PASS_EXACT_FINITE_GATES__CANDIDATE_UNIVERSAL_THEOREM",
+  "supplemental_floating_point_NOT_A_PROOF": {
+    "largest_negative_margin": -0.14913818604099216,
+    "least_positive_margin": 0.059822557086065764,
+    "through_n": 160
+  }
+}
