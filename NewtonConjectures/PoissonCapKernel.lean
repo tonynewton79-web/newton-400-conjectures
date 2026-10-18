@@ -31,7 +31,7 @@ theorem axial_denominator_hasDerivAt (t : ℝ) :
     HasDerivAt (fun r : ℝ => 1 + r ^ 2 - 2 * r * t) (1 - 2 * t) (1 / 2) := by
   convert ((hasDerivAt_const (1 / 2 : ℝ) (1 : ℝ)).add
     ((hasDerivAt_id (1 / 2 : ℝ)).pow 2)).sub
-    (((hasDerivAt_id (1 / 2 : ℝ)).const_mul 2).mul_const t) using 1 <;> ring
+    (((hasDerivAt_id (1 / 2 : ℝ)).const_mul 2).mul_const t) using 1 <;> norm_num [id] <;> ring
 
 /-- The exact axial Poisson derivative follows from the power rule.
     This is the actual parameter derivative, not an abstract hypothesis. -/
@@ -45,7 +45,7 @@ theorem axial_kernel_hasDerivAt (n : ℕ) (t : ℝ) (ht : t ≤ 1) :
       2 * (1 / 2 : ℝ) * t = 5 / 4 - t := by ring
   have hnum : HasDerivAt (fun r : ℝ => 1 - r ^ 2) (-1) (1 / 2) := by
     convert (hasDerivAt_const (1 / 2 : ℝ) (1 : ℝ)).sub
-      ((hasDerivAt_id (1 / 2 : ℝ)).pow 2) using 1 <;> ring
+      ((hasDerivAt_id (1 / 2 : ℝ)).pow 2) using 1 <;> norm_num [id] <;> ring
   have hbase := axial_denominator_hasDerivAt t
   have hpow := hbase.rpow_const
     (p := -(n : ℝ) / 2) (Or.inl (by rw [hb]; exact ne_of_gt hden))
