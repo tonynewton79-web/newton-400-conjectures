@@ -1,4 +1,4 @@
-\section{Formal certification: progressive ten-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive eleven-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -149,6 +149,37 @@ This formally closes the \emph{analytical} comparison, but it
 does not identify the right-hand cosine with the \emph{ordered}
 second-smallest adjacency eigenvalue inside Lean.
 
+
+\paragraph{Stage 11: final graph statement and exact bridge.}
+The module \texttt{FinalTheoremProbe.lean} now defines the
+\emph{actual} cycle gravity matrix by the published
+$4/((n-1)d(u,v))$ entries and its numerical range as the
+supremum minus infimum of the real spectrum. It also uses
+mathlib's \emph{ordered} eigenvalues (including multiplicity)
+of the actual cycle adjacency matrix, selecting the
+second-smallest at index $n-2$. The companion module
+\texttt{ActualGravityBridge.lean} kernel-proves
+\begin{equation}\label{eq:actual-shift}
+R_n+\tfrac32 I=\texttt{realShiftedReciprocalCycle}(n),
+\end{equation}
+with $R_n$ now defined by its zero-diagonal graph entries,
+and certifies the positive semidefiniteness of this
+\emph{actual} shifted graph matrix. It also verifies the
+gravity scale factor $4/(n-1)$.
+
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39151152516}{Stage~11 Lean run}
+passed 7,368 build jobs with 223 declarations admitted by the
+standard foundational axiom audit. The end-to-end numerical
+Graffiti inequality is accepted by the kernel \emph{only
+conditionally}, assuming (i) identification of the actual
+second-smallest cycle adjacency eigenvalue with
+\eqref{eq:adj}, and (ii) the actual gravity spectral-span
+bound \eqref{eq:spread}. The theorem's statement therefore
+exposes rather than closes both missing spectral bridges.
+The finite converse $C_3,\ldots,C_{14}$ is also pending
+kernel certification. There is no claim of a complete
+unconditional Lean proof.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -171,15 +202,15 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-The exact Gram identity, real shifted-matrix spectral positivity,
-uniform rational harmonic bounds and the actual cosine inequalities
-\eqref{eq:lean-cos-comparison} are now kernel-certified.
-However, the complete original Graffiti~197 inequality has
-\emph{not} been compiled end-to-end in Lean. In particular,
-the cyclic adjacency matrix's ordered second-smallest eigenvalue
-and its multiplicities must be identified formally, the gravity
-spectral-span upper bound must be assembled for the actual matrices,
-and the exact finite converse $C_3,\ldots,C_{14}$ must be kernel
-checked. The analytic manuscript and independent rational finite
-certificates remain open to external mathematical review. The
-novelty/priority judgment is separate and remains pending.
+The exact Gram decomposition, actual real shifted Harary-matrix
+positivity, parity-uniform harmonic and trigonometric bounds,
+and the final strict graph inequality \emph{under explicitly
+identified spectral premises} have been kernel-certified.
+The premises themselves, namely the ordered adjacency-spectrum
+identification and the actual gravity spectral-span cap,
+are still missing, as is the exact finite complement
+$C_3,\ldots,C_{14}$. Thus the complete original Graffiti~197
+cycle classification has \emph{not} passed an end-to-end
+unconditional Lean compilation. The analytic manuscript,
+independent exact verifier, external novelty audit and
+specialist assessment remain separate release gates.

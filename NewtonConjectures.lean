@@ -1,4 +1,6 @@
 import Mathlib
+import NewtonConjectures.ActualGravityBridge
+import NewtonConjectures.FinalTheoremProbe
 import NewtonConjectures.AdjacencyDefinition
 import NewtonConjectures.AllCycleAnalytic
 import NewtonConjectures.TrigonometricEndgame
