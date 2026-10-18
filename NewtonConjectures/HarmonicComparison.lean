@@ -158,14 +158,16 @@ theorem oddCycleUpper_lt_boundary (m : ℕ) (hm : 7 ≤ m) :
     oddCycleUpper m < (2 : ℚ) - ((22 : ℚ) / 105)^2 := by
   have hle := oddCycleUpper_le_base m hm
   rw [oddCycleUpper_base_exact] at hle
-  have hmargin := odd_boundary_positive
-  linarith
+  have hmargin : (468 : ℚ) / 245 <
+      (2 : ℚ) - ((22 : ℚ) / 105)^2 := by norm_num
+  exact lt_of_le_of_lt hle hmargin
 
 theorem evenCycleUpper_lt_boundary (m : ℕ) (hm : 8 ≤ m) :
     evenCycleUpper m < (2 : ℚ) - ((11 : ℚ) / 28)^2 := by
   have hle := evenCycleUpper_le_base m hm
   rw [evenCycleUpper_base_exact] at hle
-  have hmargin := even_boundary_positive
-  linarith
+  have hmargin : (1907 : ℚ) / 1050 <
+      (2 : ℚ) - ((11 : ℚ) / 28)^2 := by norm_num
+  exact lt_of_le_of_lt hle hmargin
 
 end Newton400.Case001
