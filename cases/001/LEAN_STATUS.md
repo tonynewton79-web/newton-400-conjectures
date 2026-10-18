@@ -57,3 +57,31 @@ The proof has three intermediate kernels:
 
 **Status:** CANDIDATE — PARTIAL_FORMAL_CERTIFICATION.
 This file does **not** claim that the complete Graffiti 197 family theorem has been kernel-certified or externally accepted.
+
+
+## Stage 4: all-cycle weighted Gram diagonal — KERNEL VERIFIED
+
+[Passing GitHub Actions run](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39130358760), using Lean 4.24.0/mathlib.
+
+- Full project build: **PASS** (7,357 jobs)
+- `axiom-audit`: **PASS** (91 declarations, only `propext`, `Classical.choice`, `Quot.sound`)
+- Explicit proof-placeholder scan: **PASS** (no `sorry` or `admit`)
+- Source: [`NewtonConjectures/GramDiagonal.lean`](../../NewtonConjectures/GramDiagonal.lean)
+
+For every integer `m ≥ 2`, the kernel proves the exact rational identity
+
+```
+1/m + ∑_{j=2}^{m-1} 2/((j−1)(j+1)) + 1/(m−1) = 3/2.
+```
+
+The kernel additionally proves that the **actual matrix expressions**
+formed with cyclic incidence matrices and the paper's piecewise weights
+obey the corresponding diagonal value for every `n ≥ 4` and
+every vertex `u : ZMod n`.
+
+This advances the matrix-identity programme but does not prove the full
+all-entry weighted identity for `u ≠ v`: the certified reciprocal tent
+kernel must still be explicitly assembled into the weighted sum over
+all `j = 2, …, ⌊n/2⌋`, including the truncated natural subtraction
+and antipodal case. The spectral bound, final graph-theoretic cycle
+inequality and finite converse are not yet fully formalized.
