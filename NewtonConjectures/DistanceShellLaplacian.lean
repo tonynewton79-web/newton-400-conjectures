@@ -86,7 +86,7 @@ def cycleDistanceShell (n d : ℕ) [NeZero n] :
 noncomputable def cycleWeightedDistanceLaplacian (n : ℕ)
     [NeZero n] : Matrix (ZMod n) (ZMod n) ℝ :=
   weightedGraphLaplacian (Finset.Icc 1 (n/2))
-    (cycleDistanceShell n) (fun d => 1 / (d : ℝ))
+    (fun d => cycleDistanceShell n d) (fun d => 1 / (d : ℝ))
 
 theorem cycle_weighted_distance_laplacian_psd (n : ℕ)
     [NeZero n] :
