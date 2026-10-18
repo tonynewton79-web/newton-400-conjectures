@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.CyclicGram
 
 /-!
 # Case 001: diagonal normalization for the cyclic Gram decomposition
@@ -47,5 +48,92 @@ theorem diagonal_normalization (m : ℕ) (hm : 2 ≤ m) :
                   field_simp [hm0, hm1, hmp]
                   ring
         _ = (3 : ℚ) / 2 := ih
+
+/-- Exactly the piecewise weights used in the cyclic Gram certificate. -/
+def cyclicGramWeight (m j : ℕ) : ℚ :=
+  if j = m then
+    (1 : ℚ) / ((m : ℚ) * ((m : ℚ) - 1))
+  else
+    (2 : ℚ) / (((j : ℚ) - 1) * (j : ℚ) * ((j : ℚ) + 1))
+
+/-- The actual piecewise Gram coefficients have the correct weighted
+diagonal sum, for every m ≥ 2. -/
+theorem gram_weight_diagonal_sum (m : ℕ) (hm : 2 ≤ m) :
+    (1 : ℚ) / (m : ℚ) +
+        (∑ j ∈ Finset.Ico 2 (m + 1), (j : ℚ) * cyclicGramWeight m j) =
+      (3 : ℚ) / 2 := by
+  have hint :
+      (∑ j ∈ Finset.Ico 2 m, (j : ℚ) * cyclicGramWeight m j) =
+        diagonalInteriorSum m := by
+    unfold diagonalInteriorSum
+    apply Finset.sum_congr rfl
+    intro j hj
+    have hj2 : 2 ≤ j := (Finset.mem_Ico.mp hj).1
+    have hjlt : j < m := (Finset.mem_Ico.mp hj).2
+    have hjne : j ≠ m := by omega
+    simp only [cyclicGramWeight, if_neg hjne]
+    have hzero : (j : ℚ) ≠ 0 := by
+      exact_mod_cast (show j ≠ 0 by omega)
+    have hminus : (j : ℚ) - 1 ≠ 0 := by
+      have hgt : (1 : ℚ) < (j : ℚ) := by
+        exact_mod_cast (show 1 < j by omega)
+      linarith
+    have hplus : (j : ℚ) + 1 ≠ 0 := by positivity
+    field_simp [hzero, hminus, hplus]
+    ring
+  have hterm :
+      (m : ℚ) * cyclicGramWeight m m =
+        (1 : ℚ) / ((m : ℚ) - 1) := by
+    simp only [cyclicGramWeight, if_pos rfl]
+    have hzero : (m : ℚ) ≠ 0 := by
+      exact_mod_cast (show m ≠ 0 by omega)
+    have hminus : (m : ℚ) - 1 ≠ 0 := by
+      have hgt : (1 : ℚ) < (m : ℚ) := by
+        exact_mod_cast (show 1 < m by omega)
+      linarith
+    field_simp [hzero, hminus]
+    ring
+  calc
+    (1 : ℚ) / (m : ℚ) +
+        (∑ j ∈ Finset.Ico 2 (m + 1), (j : ℚ) * cyclicGramWeight m j) =
+      (1 : ℚ) / (m : ℚ) + diagonalInteriorSum m +
+        (1 : ℚ) / ((m : ℚ) - 1) := by
+          rw [Finset.sum_Ico_succ_top (by omega), hint, hterm]
+          ring
+    _ = (3 : ℚ) / 2 := diagonal_normalization m hm
+
+/-- The weighted *actual matrix entries* have diagonal 3/2. -/
+theorem actual_cyclic_gram_diagonal (n : ℕ) [NeZero n]
+    (hn : 4 ≤ n) (u : ZMod n) :
+    (1 : ℚ) / ((n / 2 : ℕ) : ℚ) +
+      (∑ j ∈ Finset.Ico 2 (n / 2 + 1),
+        cyclicGramWeight (n / 2) j *
+          (cyclicIncidence n j *
+            Matrix.transpose (cyclicIncidence n j)) u u) =
+      (3 : ℚ) / 2 := by
+  have hm : 2 ≤ n / 2 := by omega
+  have hsingle (j : ℕ) (hj : j ∈ Finset.Ico 2 (n / 2 + 1)) :
+      (cyclicIncidence n j * Matrix.transpose (cyclicIncidence n j)) u u =
+        (j : ℚ) := by
+    have hjle : 2 * j ≤ n := by
+      have hjlt := (Finset.mem_Ico.mp hj).2
+      omega
+    rw [cyclic_incidence_gram_entry n j u u hjle]
+    simp [cyclicDistance]
+  calc
+    (1 : ℚ) / ((n / 2 : ℕ) : ℚ) +
+      (∑ j ∈ Finset.Ico 2 (n / 2 + 1),
+        cyclicGramWeight (n / 2) j *
+          (cyclicIncidence n j *
+            Matrix.transpose (cyclicIncidence n j)) u u) =
+      (1 : ℚ) / ((n / 2 : ℕ) : ℚ) +
+      (∑ j ∈ Finset.Ico 2 (n / 2 + 1),
+        (j : ℚ) * cyclicGramWeight (n / 2) j) := by
+          congr 1
+          apply Finset.sum_congr rfl
+          intro j hj
+          rw [hsingle j hj]
+          ring
+    _ = (3 : ℚ) / 2 := gram_weight_diagonal_sum (n / 2) hm
 
 end Newton400.Case001
