@@ -1,91 +1,67 @@
-\section{Formal certification: progressive proof record}\label{sec:formal}
-A reproducible Lean~4/mathlib~v4.24.0 implementation now certifies
-several of the exact algebraic and combinatorial identities needed for
-Lemma~\ref{lem:gram}. The formal sources and the resolved dependency
-manifest are retained at
-\href{https://github.com/tonynewton79-web/newton-400-conjectures}{the
-public Newton Astro Labs research repository}. We distinguish each
-kernel-checked lemma from the \emph{not yet kernel-certified} complete
-spectral graph theorem.
+\section{Formal certification: five-stage proof ledger}\label{sec:formal}
+A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
+identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
+\href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
+Newton Astro Labs repository}. The full graph-spectral theorem is
+\emph{not yet kernel-certified}.
 
-\paragraph{Stage 1: positive Gram mechanism.}
-The module \texttt{NewtonConjectures.lean} certifies the two strict
-rational comparison margins $506/11025$ and $1733/58800$, the
-reciprocal second-difference identity, the positivity of the interior
-weights, and nonnegativity of abstract weighted Gram quadratic forms.
-These are algebraic and rational statements; they do not alone
-certify the cyclic spectral conclusion.
+\paragraph{Stage 1: rational margins and Gram positivity.}
+\texttt{NewtonConjectures.lean} certifies the strict base-case margins
+$506/11025$ and $1733/58800$, rational reciprocal second differences,
+positive weights, and nonnegative weighted Gram quadratic forms.
 
-\paragraph{Stage 2: universal reciprocal-distance coefficients.}
-The module \texttt{CycleKernel.lean} proves the finite telescoping identity
-for every function $f:\mathbb N\to\mathbb Q$ and specializes it to
-$f(j)=1/j$. For $1\le d<m$ its exact certificate is
+\paragraph{Stage 2: universal reciprocal-distance kernel.}
+\texttt{CycleKernel.lean} proves telescoping for all
+$f:\mathbb N\to\mathbb Q$. For $1\le d<m$, the reciprocal
+specialization is
 \begin{align}\label{eq:lean-kernel}
 \frac1d={}&\frac1m+
-\sum_{j=d+1}^{m-1}
-(j-d)\frac{2}{(j-1)j(j+1)}\notag\\
+\sum_{j=d+1}^{m-1}(j-d)\frac{2}{(j-1)j(j+1)}\notag\\
 &+\frac{m-d}{m(m-1)}.
 \end{align}
 
-\paragraph{Stage 3: genuine cyclic matrix products.}
-The modules \texttt{CyclicIntersection.lean},
-\texttt{CyclicZMod.lean}, and \texttt{CyclicGram.lean}
-define the cyclic incidence matrix over $\mathbb Z/n\mathbb Z$,
-using $B_j(u,k)=1$ exactly when the residue $k-u$ lies in
-$\{0,\ldots,j-1\}$. For \emph{all} vertices $u,v$
-and $2j\le n$, the Lean kernel proves
+\paragraph{Stage 3: exact cyclic Gram entries.}
+\texttt{CyclicIntersection.lean}, \texttt{CyclicZMod.lean}
+and \texttt{CyclicGram.lean} formalize genuine cyclic incidence
+matrices over $\mathbb Z/n\mathbb Z$ and their \texttt{Matrix.mul}.
+For all vertices $u,v$ and $2j\le n$, including wraparound,
+disjoint arcs, and antipodes, the kernel proves
 \begin{equation}\label{eq:lean-overlap}
-(B_jB_j^{\mathsf T})_{uv}
-=\max\{j-d(u,v),0\}.
+(B_jB_j^{\mathsf T})_{uv}=\max\{j-d(u,v),0\}.
 \end{equation}
-The formal proof handles cyclic wraparound, disjoint intervals,
-and even-order antipodes, and evaluates an actual \texttt{Matrix.mul},
-rather than merely asserting a counting analogy.
 
-\paragraph{Stage 4: diagonal normalization.}
-The module \texttt{GramDiagonal.lean} proves for every $m\ge2$ that
+\paragraph{Stage 4: actual weighted Gram diagonal.}
+For every $m\ge2$, \texttt{GramDiagonal.lean} certifies
 \begin{equation}\label{eq:lean-diag}
 \frac1m+\sum_{j=2}^{m-1}\frac{2}{(j-1)(j+1)}
 +\frac1{m-1}=\frac32.
 \end{equation}
-It additionally certifies the corresponding diagonal \emph{of the
-actual weighted incidence Gram matrices} for every $n\ge4$
-and every vertex, with $m=\lfloor n/2\rfloor$.
+It also proves the identical diagonal for the \emph{actual weighted
+incidence matrices} of every $C_n$, $n\ge4$.
 
-\paragraph{Stage 5: universal off-diagonal sum.}
-The new module \texttt{OffDiagonal.lean} proves for every $m\ge2$
-and every $1\le d\le m$ that
+\paragraph{Stage 5: all off-diagonal distances.}
+For every $m\ge2$ and $1\le d\le m$,
+\texttt{OffDiagonal.lean} proves
 \begin{equation}\label{eq:lean-offdiag}
-\frac1m+\sum_{j=2}^{m}w_j(j-d)_+=\frac1d,
+\frac1m+\sum_{j=2}^{m}w_j\max\{j-d,0\}=\frac1d.
 \end{equation}
-where $(x)_+=\max(x,0)$ and the $w_j$ are precisely those of
-\eqref{eq:weights}. Importantly, the formal statement uses natural
-truncated subtraction, so the $d=m$ endpoint is included and
-no sign convention is silently assumed.
+These are exactly the weights of \eqref{eq:weights}, with the
+terminal case $d=m$ included using natural truncated subtraction.
 
-\paragraph{Independent replay and kernel gate.}
-The Stage~5 GitHub Actions run
-\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230}{39131413230}
-completed all 7,358 Lean build jobs. An independent axiom audit
-accepted 100 declarations using only the foundational allowlist
-\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound};
-the proof-placeholder check passed. In a separate exact
-\texttt{fractions.Fraction} replay, all 7,259 pairs $(m,d)$
-with $2\le m\le120$ and $1\le d\le m$ passed
-\eqref{eq:lean-offdiag}. No floating-point acceptance criterion
-was used for these claims. The complete
-\href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{Lean proof ledger}
-separates verified and outstanding obligations.
+\paragraph{Independent verification.}
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230}{GitHub Actions run 39131413230} passed 7,358 Lean build jobs.
+Its axiom audit accepted 100 declarations with only
+\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound};
+the proof-placeholder check passed. Exact
+\texttt{fractions.Fraction} arithmetic independently confirmed
+all 7,259 cases $2\le m\le120$, $1\le d\le m$.
+See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
-\paragraph{Precise boundary of formal certification.}
-Equations \eqref{eq:lean-overlap}, \eqref{eq:lean-diag},
-and \eqref{eq:lean-offdiag}, taken together, supply
-entrywise components of \eqref{eq:gram}. However, the single
-all-entry matrix theorem and the subsequent cycle-specific
-spectral bound must still be assembled and checked \emph{inside
-Lean}. In particular, the ordering of the cycle adjacency
-eigenvalues, the two uniform harmonic comparisons, and
-the exact finite converse $C_3,\ldots,C_{14}$ have not
-all been promoted to a complete Lean proof.
-The analytical theorem and the finite exact certificates are
-presented independently of this partial formalization.
+\paragraph{Claim boundary.}
+These certificates supply the entries of
+\eqref{eq:gram} but do not yet include a \emph{single}
+kernel-certified all-entry matrix theorem, the complete cycle-specific
+spectral bound, adjacency eigenvalue ordering, two harmonic comparisons,
+or the formal finite converse $C_3,\ldots,C_{14}$. The paper's analytic
+argument and exact finite certificate remain separately stated;
+priority and specialist review remain open.
