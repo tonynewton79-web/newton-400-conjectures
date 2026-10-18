@@ -56,7 +56,8 @@ theorem cycle_shell_neighbor_count_translate (n d : ℕ) [NeZero n]
       simpa only [sub_add_cancel] using hw
     exact (distance_shell_adj_add_right n d u (w-a) a).mp hw'
   · intro w hw z hz heq
-    exact sub_right_cancel heq
+    have h := congrArg (fun x => x + a) heq
+    simpa only [sub_add_cancel] using h
   · intro z hz
     refine ⟨z + a, ?_, ?_⟩
     · simp only [Finset.mem_filter, Finset.mem_univ, true_and] at hz ⊢
