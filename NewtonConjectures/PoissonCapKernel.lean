@@ -52,4 +52,30 @@ theorem axial_kernel_hasDerivAt (n : ℕ) (t : ℝ) (ht : t ≤ 1) :
   have hprod := hnum.mul hpow
   convert hprod using 1 <;> simp [axialPoissonKernel, hb] <;> ring
 
+/-- The exact identity linking the derivative of the true axial kernel
+    to the strictly positive cap-score multiplier, for every n. -/
+theorem axial_kernel_score_identity (n : ℕ) (t : ℝ) (ht : t ≤ 1) :
+    (3 / 4 : ℝ) * deriv (fun r : ℝ => axialPoissonKernel n r t) (1 / 2) =
+      axialPoissonKernel n (1 / 2) t *
+        (-1 + (3 * (n : ℝ) / 4) *
+          ((t - 1 / 2) / (5 / 4 - t))) := by
+  have hBpos : (0 : ℝ) < 5 / 4 - t := by linarith
+  have hBne : (5 / 4 : ℝ) - t ≠ 0 := ne_of_gt hBpos
+  have hpoint : axialPoissonKernel n (1 / 2) t =
+      (3 / 4 : ℝ) * (5 / 4 - t) ^ (-(n : ℝ) / 2) := by
+    unfold axialPoissonKernel
+    have hb : (1 : ℝ) + (1 / 2 : ℝ) ^ 2 -
+        2 * (1 / 2 : ℝ) * t = 5 / 4 - t := by ring
+    rw [hb]
+    norm_num
+  have hpow :
+      (5 / 4 - t) ^ (-(n : ℝ) / 2 - 1) =
+        (5 / 4 - t) ^ (-(n : ℝ) / 2) / (5 / 4 - t) := by
+    rw [Real.rpow_sub hBpos]
+    simp
+  rw [(axial_kernel_hasDerivAt n t ht).deriv, hpoint, hpow]
+  field_simp
+  ring
+
+
 end Newton400.PoissonCap
