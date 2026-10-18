@@ -84,8 +84,10 @@ theorem gram_weight_diagonal_sum (m : ℕ) (hm : 2 ≤ m) :
   have hterm :
       (m : ℚ) * cyclicGramWeight m m =
         (1 : ℚ) / ((m : ℚ) - 1) := by
-    change (m : ℚ) * ((1 : ℚ) / ((m : ℚ) * ((m : ℚ) - 1))) =
-      (1 : ℚ) / ((m : ℚ) - 1)
+    have hw : cyclicGramWeight m m =
+        (1 : ℚ) / ((m : ℚ) * ((m : ℚ) - 1)) := by
+      simp [cyclicGramWeight]
+    rw [hw]
     have hzero : (m : ℚ) ≠ 0 := by
       exact_mod_cast (show m ≠ 0 by omega)
     have hminus : (m : ℚ) - 1 ≠ 0 := by
