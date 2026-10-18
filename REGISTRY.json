@@ -18,7 +18,7 @@
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
       "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39126628151",
-      "lean_axiom_audit": "PASS: 31 declarations under standard axiom allowlist",
+      "lean_axiom_audit": "PASS: 74 declarations, only propext, Classical.choice, Quot.sound",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean"
@@ -27,8 +27,14 @@
         "Base-case rational margins and abstract Gram positivity",
         "Universal finite-difference telescoping formula",
         "Universal terminal-boundary tent formula",
-        "Universal reciprocal-distance tent identity for 1<=d<m"
-      ]
+        "Universal reciprocal-distance tent identity for 1<=d<m",
+        "Canonical cyclic interval overlap count",
+        "All-vertex undirected cyclic interval overlap in ZMod",
+        "Full cyclic incidence Gram matrix entry equality for any vertices"
+      ],
+      "lean_gram_entry_verified": true,
+      "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
+      "lean_gram_entry_audit_url": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39128814226"
     }
   ]
 }
