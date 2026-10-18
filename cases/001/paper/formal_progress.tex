@@ -1,4 +1,4 @@
-\section{Formal certification: progressive nine-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive ten-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -126,6 +126,24 @@ passed 7,363 build jobs and audited 180 declarations.
 The precise trigonometric/adjacency eigenvalue comparison and finite
 $n=3,\ldots,14$ complementary cases still require Lean treatment.
 
+
+\paragraph{Stage 10: trigonometric and all-cycle closure.}
+The modules \texttt{TrigonometricEndgame.lean} and
+\texttt{AllCycleAnalytic.lean} use the mathlib inequality
+$\cos x\ge1-x^2/2$ and $\pi<22/7$ to verify, without numerical
+approximation,
+\begin{align}\label{eq:lean-cos-comparison}
+q_o(m)&<2\cos\!\frac{\pi}{2m+1} &&(m\ge7),\notag\\
+q_e(m)&<2\cos\!\frac{\pi}{m} &&(m\ge8).
+\end{align}
+A further single Lean theorem selects the appropriate parity
+and proves the closed-form strict comparison for every $n\ge15$.
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146022640}{The accepted Stage~10 run}
+completed 7,365 build jobs and audited 197 declarations.
+This formally closes the \emph{analytical} comparison, but it
+does not identify the right-hand cosine with the \emph{ordered}
+second-smallest adjacency eigenvalue inside Lean.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -149,11 +167,14 @@ See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectur
 
 \paragraph{Claim boundary.}
 The exact Gram identity, real shifted-matrix spectral positivity,
-and both parity-uniform rational bounds
-\eqref{eq:lean-parity-bounds} are kernel-certified.
-The complete Graffiti inequality remains a candidate theorem, since
-the cycle adjacency second-smallest eigenvalue ordering,
-the trigonometric comparison, and the exact finite complement
-$C_3,\ldots,C_{14}$ are not yet compiled end-to-end in Lean.
-Independent novelty/priority and specialist proof review are
-also outstanding.
+uniform rational harmonic bounds and the actual cosine inequalities
+\eqref{eq:lean-cos-comparison} are now kernel-certified.
+However, the complete original Graffiti~197 inequality has
+\emph{not} been compiled end-to-end in Lean. In particular,
+the cyclic adjacency matrix's ordered second-smallest eigenvalue
+and its multiplicities must be identified formally, the gravity
+spectral-span upper bound must be assembled for the actual matrices,
+and the exact finite converse $C_3,\ldots,C_{14}$ must be kernel
+checked. The analytic manuscript and independent rational finite
+certificates remain open to external mathematical review. The
+novelty/priority judgment is separate and remains pending.
