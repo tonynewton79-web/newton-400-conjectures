@@ -1,4 +1,6 @@
 import Mathlib
+import NewtonConjectures.PoissonCapIntegral
+import NewtonConjectures.PoissonCapGate
 import NewtonConjectures.ActualGravityBridge
 import NewtonConjectures.FinalTheoremProbe
 import NewtonConjectures.AdjacencyDefinition
