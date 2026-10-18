@@ -1,3 +1,13 @@
+## 19 October 2026 — Attack 003: four-cut ten-orbit theorem and oddness-four pilot
+
+- **Exact elementary theorem:** among the 15^4=50,625 four-boundary pair-label assignments, exactly **1,725** satisfy four-cut matching parity and form **10 distinct S6 orbits**: 6 of type n4=0, 3 of type n4=1 and 1 of type n4=2. An exact four-pole gluing criterion reduces to overlap of extendible labelled boundary-state sets.
+- **Hard snark pilot:** 9 distinct 44-vertex, 66-edge, oddness-four, cyclically four-edge-connected snarks were independently sourced from the [BA-Graph nine-sparse6-input sample](attack003/source.s6). The published complete order-44 classification contains **31** graphs, and this sample is explicitly **9/31, not 31/31**.
+- **Two algorithmically distinct positive solvers:** all-perfect-matching integer-optimisation and a direct 15-pair-label CSP each found a cover for **all 9 graphs**. A standard-library integer verifier replayed all **18** covers and refused a deliberately corrupted certificate. Every graph has 540–591 perfect matchings and oddness exactly 4.
+- **Four-edge cut audit:** exhaustive enumeration found 80 cycle-separating 4-edge cuts, no smaller cyclic cuts, and all 10 parity orbits occurred among the 80 cuts under the first solver's covers. The two-four-crossings orbit occurs on four explicit cuts (graphs 1,4,6,9), falsifying a proposed but unsupported at-most-two-crossings restriction.
+- [Reproducibility instructions and exact fingerprints](attack003/README.md), [source sparse6 inputs](attack003/source.s6), and [standalone positive-CSP/orbit verifier](attack003/verify_attack003.py). A dedicated GitHub Actions workflow was added. The scholarly PDF, LaTeX and complete full dual-solver JSON/verification package are separate in-chat artifacts; they have **not** been committed as binary files to GitHub.
+- **Claim boundaries:** No general Berge–Fulkerson theorem, no full 31-graph census, no proof of a new infinite family, no established novelty. Next target: derive extendible four-pole state spectra for the six published construction classes and test sound transfer/replacement rules.
+
+
 ## 18 October 2026 — Attack 002 checkpoint
 
 - Complete published nontrivial small-snark catalogue through 22 vertices: **29/29 exact Fulkerson covers**, all found with **two independent solvers** (perfect-matching MILP and pure 15-pair-label CSP).
