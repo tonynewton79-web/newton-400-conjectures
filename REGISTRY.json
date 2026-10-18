@@ -8,12 +8,17 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE",
+      "status": "CANDIDATE — PARTIAL_FORMAL_CERTIFICATION",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "incomplete",
       "specialist_review": false,
-      "lean_kernel_verified": false
+      "lean_kernel_verified": false,
+      "lean_kernel_verified_fragment": true,
+      "lean_full_theorem_verified": false,
+      "lean_fragment_source": "NewtonConjectures.lean",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39125495963",
+      "lean_axiom_audit": "PASS: nine declarations; propext, Classical.choice, Quot.sound"
     }
   ]
 }
