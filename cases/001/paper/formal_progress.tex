@@ -1,4 +1,4 @@
-\section{Formal certification: progressive seven-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive eight-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -87,6 +87,26 @@ a real-matrix/eigenvalue statement is a separate formal gate;
 the analytic consequence for real symmetric matrices remains
 available by the usual density and spectral arguments.
 
+
+\paragraph{Stage 8: real Gram identity and spectral positivity.}
+Two additional formal modules, \texttt{RealGram.lean} and
+\texttt{RealSpectral.lean}, transport the actual weighted
+cyclic-incidence Gram construction from $\mathbb Q$ to
+$\mathbb R$. The kernel verifies both the equality with the
+real shifted reciprocal-distance matrix and real positive
+semidefiniteness. It then proves
+\begin{equation}\label{eq:lean-spectrum}
+\operatorname{spec}_{\mathbb R}(R_n+\tfrac32 I)
+\subseteq[0,\infty)\qquad(n\ge4).
+\end{equation}
+Consequently the familiar lower bound
+$\lambda_{\min}(R_n)\ge-3/2$ follows via the standard scalar
+spectral shift; that last unshifted-eigenvalue formulation has
+not yet been compiled as its own Lean theorem.
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900}{Stage~8 GitHub Actions}
+passed 7,362 build jobs; 142 declarations survived the axiom
+audit with only the standard foundational allowlist.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -109,9 +129,12 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-The complete matrix identity \eqref{eq:lean-fullgram} and rational
-positive semidefiniteness \eqref{eq:lean-psd} are kernel-certified,
-but the real eigenvalue bound, adjacency eigenvalue ordering, two harmonic comparisons,
-or the formal finite converse $C_3,\ldots,C_{14}$. The paper's analytic
-argument and exact finite certificate remain separately stated;
-priority and specialist review remain open.
+The exact Gram identity \eqref{eq:lean-fullgram}, real
+positive semidefiniteness and spectral positivity
+\eqref{eq:lean-spectrum} are kernel-certified.
+The complete Graffiti inequality has \emph{not} been
+compiled in Lean: the ordering of cycle adjacency eigenvalues,
+both uniform harmonic comparisons, and the exact finite
+converse $C_3,\ldots,C_{14}$ remain. The analytic proof and
+finite certificate stand as separately checkable mathematics.
+Novelty and specialist review are also outstanding.

@@ -146,3 +146,25 @@ Separate lemma `cyclic_distance_positive_of_ne` proves denominator positivity of
 Lean theorem `shifted_reciprocal_cycle_psd` states for every n≥4 that the **actual rational matrix** `shiftedReciprocalCycle n` is `Matrix.PosSemidef`, using the theorem-level equality from Stage 6, positive piecewise coefficients and positive-semidefiniteness of rank-one / incidence Gram matrices. Also certified: `cyclic_gram_weight_nonneg`, `constant_cycle_matrix_psd`, `cyclic_incidence_psd`, and `weighted_cycle_gram_psd`.
 
 This establishes xᵀ(R_n+(3/2)I)x≥0 for all rational vectors x in the appropriate finite dimension. Its extension to the corresponding real symmetric matrix, and the explicit Lean eigenvalue lower bound, require a real-matrix bridge. The ordering/multiplicity of adjacency cycle eigenvalues and uniform analytic comparisons remain to be kernel formalized. **The full Graffiti 197 theorem is NOT yet Lean-certified.**
+
+
+## Stage 8 — real-matrix identity, PSD and nonnegative spectrum — LEAN KERNEL VERIFIED
+
+**Run:** https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900
+
+- Lean 4.24.0 + pinned mathlib: **PASS**, 7,362 jobs.
+- Axiom audit: **PASS**, 142 declarations. Only the foundational allowlist `propext`, `Classical.choice`, `Quot.sound`.
+- Proof-placeholder scan: **PASS** (no `sorry`/`admit`).
+- Modules: `NewtonConjectures/RealGram.lean` and `NewtonConjectures/RealSpectral.lean`.
+
+Fully quantified theorems for every cycle size n≥4:
+
+1. `real_weighted_cycle_gram_psd`: the actual **real-valued** positive weighted cyclic Gram matrix is PSD.
+2. `real_gram_eq_cast_rational_gram`: exact equality with the entrywise rational-to-real cast of the certified Gram matrix.
+3. `real_shifted_reciprocal_eq_gram`: this is the real-valued shifted reciprocal-distance cycle matrix.
+4. `real_shifted_reciprocal_psd`: the actual shifted matrix is PSD over ℝ.
+5. `real_shifted_reciprocal_spectrum_nonneg`: every spectral value of that real shifted matrix is nonnegative. In standard matrix notation, **spec_ℝ(R_n+(3/2)I) ⊆ [0,∞)**.
+
+The spectral statement is kernel-verified; the familiar equivalent bound `λ_min(R_n) ≥ -3/2` follows by an elementary scalar-matrix spectral shift, but its explicit Lean theorem about the *unshifted* eigenvalues has not yet been added.
+
+**Remaining final Lean proof goals:** cycle adjacency eigenvalue ordering and multiplicities, formal odd/even harmonic comparison from n≥15, exact finite converse C3..C14, and end-to-end formulation of the Graffiti violation inequality. The underlying Graffiti 197 conjecture was already refuted by Roucairol and Cazenave. Historical novelty is not independently approved; specialist review pending.

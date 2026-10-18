@@ -8,7 +8,7 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — LEAN FULL MATRIX AND RATIONAL PSD VERIFIED; SPECTRAL ENDGAME PENDING",
+      "status": "CANDIDATE — LEAN REAL SHIFTED MATRIX SPECTRUM CERTIFIED; FINAL GRAFFITI INEQUALITY PENDING",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39134282319",
-      "lean_axiom_audit": "PASS: 125 declarations within foundational allowlist",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
+      "lean_axiom_audit": "PASS: 142 declarations, no axioms outside standard foundational allowlist",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -28,7 +28,9 @@
         "NewtonConjectures/GramDiagonal.lean",
         "NewtonConjectures/OffDiagonal.lean",
         "NewtonConjectures/FullGram.lean",
-        "NewtonConjectures/SpectralPSD.lean"
+        "NewtonConjectures/SpectralPSD.lean",
+        "NewtonConjectures/RealGram.lean",
+        "NewtonConjectures/RealSpectral.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -41,7 +43,10 @@
         "Exact rational diagonal normalization for every m >= 2",
         "Actual weighted incidence Gram diagonal for all cycles n >= 4",
         "Single full rational all-entry cyclic Gram matrix equality",
-        "Rational positive-semidefinite shifted reciprocal-distance matrix for all n >= 4"
+        "Rational positive-semidefinite shifted reciprocal-distance matrix for all n >= 4",
+        "Real-valued weighted Gram positive semidefinite matrix",
+        "Exact identity with real shifted reciprocal-distance matrix",
+        "Nonnegative real spectrum of shifted reciprocal-distance matrix for all n>=4"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
@@ -61,7 +66,12 @@
       "lean_full_matrix_verified": true,
       "lean_full_matrix_source": "NewtonConjectures/FullGram.lean",
       "lean_full_matrix_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39133219628",
-      "independently_accepted_original_result": false
+      "independently_accepted_original_result": false,
+      "lean_real_gram_psd_verified": true,
+      "lean_real_shifted_reciprocal_psd_verified": true,
+      "lean_real_shifted_spectrum_nonnegative_verified": true,
+      "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
+      "last_mathematical_gate": "Nonnegative shifted spectrum kernel-certified; unshifted eigenvalue formulation and full Graffiti criterion remain"
     }
   ]
 }
