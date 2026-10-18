@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.AdjacencyDefinition
 import NewtonConjectures.AllCycleAnalytic
 import NewtonConjectures.TrigonometricEndgame
 import NewtonConjectures.HarmonicComparison
