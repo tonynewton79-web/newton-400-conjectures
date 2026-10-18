@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.SpectralPSD
 import NewtonConjectures.FullGram
 import NewtonConjectures.OffDiagonal
 import NewtonConjectures.GramDiagonal
