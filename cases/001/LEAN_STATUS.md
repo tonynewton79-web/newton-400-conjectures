@@ -202,3 +202,13 @@ The global analytical comparison no longer depends on floating-point numerical e
 
 **Status: STAGE10_GLOBAL_ANALYTICAL_THEOREM_CERTIFIED / FULL_GRAFFITI_THEOREM_HOLD.**
 Do not claim full formal acceptance or external novelty certification. The initial Graffiti 197 refutation belongs to Roucairol and Cazenave; specialist proof and priority review are still pending.
+
+
+### Stage 10b — actual cycle adjacency matrix entry/symmetry model — KERNEL VERIFIED
+
+- [GitHub Actions run 39146480928](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146480928): **PASS**, 7,366 compiled jobs; 204 declarations audited using the usual trusted foundational allowlist.
+- Lean module: `NewtonConjectures/AdjacencyDefinition.lean`.
+- `cycleAdjacencyMatrix` explicitly defines the real graph adjacency matrix on `ZMod n`, with an entry 1 precisely when two vertices differ by one cyclic step, zero otherwise.
+- `cycleAdjacencyMatrix_transpose` and `cycleAdjacencyMatrix_entry_symmetric` formally certify symmetry, and entries are proven nonnegative.
+
+**Important:** This constructs the mathematical *object* for the missing spectral proof. It does not prove its spectrum, sort its eigenvalues, or establish their multiplicities. Thus the single end-to-end graph-theoretic theorem is still HOLD, despite all 204 checked declarations.
