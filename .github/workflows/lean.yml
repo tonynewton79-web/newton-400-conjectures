@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "NewtonConjectures.lean"
+      - "NewtonConjectures/**"
       - "lakefile.toml"
       - "lean-toolchain"
       - ".github/workflows/lean.yml"
@@ -33,7 +34,7 @@ jobs:
       - name: Fail on proof placeholders
         shell: bash
         run: |
-          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures.lean; then
+          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures.lean NewtonConjectures/; then
             echo "Unexpected proof placeholder"
             exit 1
           fi

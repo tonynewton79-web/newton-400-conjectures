@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.CycleKernel
 
 /-!
 # Newton 400+ / Case 001 — partial formal proof
