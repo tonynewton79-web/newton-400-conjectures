@@ -8,7 +8,7 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — STAGE14 TWO-SIDED ACTUAL GRAPH PSD LEAN VERIFIED; FULL THEOREM HOLD",
+      "status": "CANDIDATE — STAGE15 EXACT ALL-CYCLE HARMONIC ROW-SUM LEAN CERTIFIED; SPECTRAL ENDGAME HOLD",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39158362887",
-      "lean_axiom_audit": "PASS: 271 declarations, only foundational allowlist",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39160177061",
+      "lean_axiom_audit": "PASS: 301 declarations, foundational allowlist only",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -42,7 +42,9 @@
         "NewtonConjectures/DistanceShellDegreeBridge.lean",
         "NewtonConjectures/DistanceShellDegreeRotation.lean",
         "NewtonConjectures/DistanceShellScalarDegree.lean",
-        "NewtonConjectures/ScalarGravityUpper.lean"
+        "NewtonConjectures/ScalarGravityUpper.lean",
+        "NewtonConjectures/ShellCardinality.lean",
+        "NewtonConjectures/ShellHarmonic.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -97,7 +99,7 @@
       "lean_real_shifted_reciprocal_psd_verified": true,
       "lean_real_shifted_spectrum_nonnegative_verified": true,
       "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
-      "last_mathematical_gate": "Actual gravity scalar Loewner upper and reciprocal two-sided bound certified; harmonic scalar, real spectrum span and adjacency ordering still open",
+      "last_mathematical_gate": "Exact odd/even harmonic shell scalar proven uniformly in Lean, gravity real-spectrum extraction and adjacency ordering still pending",
       "lean_harmonic_parity_uniform_verified": true,
       "lean_odd_monotonic_verified": true,
       "lean_even_monotonic_verified": true,
@@ -106,10 +108,10 @@
       "lean_trigonometric_comparison_verified": true,
       "lean_all_n_analytic_strict_verified": true,
       "lean_final_graph_theorem_issues": [
-        "Weighted distance-shell degree matrix must equal explicit scalar harmonic row sum times I",
-        "Actual numerical gravity spectral span needs extraction from upper Loewner matrix bound plus lower Gram certificate",
-        "Ordered second-smallest cycle adjacency eigenvalue must equal parity-dependent cosine candidate with multiplicities",
-        "Finite C3..C14 complement kernel certification outstanding"
+        "UNPROVED: actual real gravity spectrum span bound from certified two-sided PSD/row sums",
+        "UNPROVED: ordered cycle adjacency second-smallest eigenvalue with multiplicities",
+        "UNPROVED: exact finite converse C3-C14",
+        "UNPROVED: single unconditional graph cycle classification"
       ],
       "lean_adjacency_matrix_defined_verified": true,
       "lean_adjacency_matrix_symmetry_verified": true,
@@ -131,7 +133,10 @@
       "row_sum_exact_4_to_160_certificate": "cases/001/certificates/ROW_SUM_EXACT_4_TO_160.json",
       "lean_actual_gravity_scalar_upper_psd_verified": true,
       "lean_actual_reciprocal_two_sided_psd_verified": true,
-      "lean_stage14_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39158362887"
+      "lean_stage14_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39158362887",
+      "lean_shell_cardinalities_verified": true,
+      "lean_harmonic_row_sum_odd_even_verified": true,
+      "lean_stage15_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39160177061"
     },
     {
       "id": "002",
