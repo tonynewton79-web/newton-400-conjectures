@@ -54,3 +54,14 @@ The full graph-theoretic cycle theorem has **not** been formalized. Do not count
 - **[Remaining full-theorem Lean gates](https://github.com/tonynewton79-web/newton-400-conjectures/issues/12)** and **[external specialist/priority review](https://github.com/tonynewton79-web/newton-400-conjectures/issues/10)**.
 
 **Scientific count:** exact real shifted reciprocal-distance spectrum positivity is now kernel-verified for all n≥4. The *full* sharp Graffiti 197 cycle theorem is not yet formalized end to end in Lean, nor externally accepted as original. The original Graffiti 197 was already refuted by Roucairol and Cazenave.
+
+
+### Case 002 — 2026 three-connected graph cycle counts
+
+**[Paper 002: Wheel–Chord Constructions and Cycle Counts (PDF)](cases/002/paper/main.pdf)** · [full LaTeX source](cases/002/paper/main.tex) · [exact independent verifier](cases/002/verify.py) · [certificate](cases/002/certificates/construction.json) · [research status](cases/002/STATUS.md) · [research issue](https://github.com/tonynewton79-web/newton-400-conjectures/issues/14).
+
+The working paper proves the elementary construction formula
+`c(W(m;k)) = (3m² - 5m + 8 + 2k(m−k))/2`
+for a wheel with one added rim chord; 406 exact finite graph checks and 406 two-vertex-deletion connectivity checks pass. [Independent GitHub publication build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39143932131) succeeded and archived the two-page paper. This is **not** a resolution of the original 2026 McCulloch–McKay–Salahshoori–Zaslavsky conjecture, nor is novelty of the elementary formula asserted.
+
+**Case 001 remains a separate candidate theorem**: [living PDF](cases/001/paper/main.pdf) and [remaining Lean formalization gates](https://github.com/tonynewton79-web/newton-400-conjectures/issues/12). The project registry continues to count **zero externally accepted original conjecture resolutions**.
