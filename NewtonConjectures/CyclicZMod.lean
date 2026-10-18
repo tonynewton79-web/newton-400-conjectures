@@ -9,12 +9,13 @@ theorem zmod_val_sub_natCast (n d : ℕ) [NeZero n]
   have hdval : (d : ZMod n).val = d := ZMod.val_natCast_of_lt hd
   by_cases h : d ≤ t.val
   · have hsub : (t - (d : ZMod n)).val = t.val - d := by
-      apply ZMod.val_sub
-      simpa [hdval] using h
+      simpa [hdval] using
+        (ZMod.val_sub (a := t) (b := (d : ZMod n))
+          (by simpa [hdval] using h))
     rw [hsub]
     have ht : t.val + n - d = n + (t.val - d) := by omega
     rw [ht]
-    simp [Nat.mod_eq_of_lt (ZMod.val_lt t)]
+    exact (Nat.mod_eq_of_lt (by omega : t.val - d < n)).symm
   · have hdpos : 0 < d := by omega
     have hneg : (-(d : ZMod n)).val = n - d := by
       rw [ZMod.neg_val', hdval]
@@ -27,6 +28,8 @@ theorem canonical_zmod_overlap (n j d : ℕ) [NeZero n]
     (hj : 2*j ≤ n) (hd : 2*d ≤ n) :
     (Finset.univ.filter (fun t : ZMod n =>
       t.val < j ∧ (t - (d : ZMod n)).val < j)).card = j - d := by
+  letI : Fintype (ZMod n) := Fintype.ofEquiv (Fin n) (ZMod.finEquiv n)
+  have hn : 0 < n := NeZero.pos n
   have hdlt : d < n := by omega
   have hcount :
       (Finset.univ.filter (fun t : ZMod n =>
@@ -48,7 +51,7 @@ theorem canonical_zmod_overlap (n j d : ℕ) [NeZero n]
         rw [ZMod.val_natCast_of_lt hkn]
         refine ⟨hk.1, ?_⟩
         rw [zmod_val_sub_natCast n d (k : ZMod n) hdlt]
-        rwa [ZMod.val_natCast_of_lt hkn]
+        simpa [ZMod.val_natCast_of_lt hkn] using hk.2
       · exact ZMod.val_natCast_of_lt hkn
   rw [hcount]
   exact canonical_cyclic_overlap_eq n j d (NeZero.pos n) hj hd
@@ -61,6 +64,7 @@ theorem cyclic_arc_overlap_oriented (n j : ℕ) [NeZero n]
     (u v : ZMod n) (hj : 2*j ≤ n)
     (hd : 2*(v-u).val ≤ n) :
     cyclicArcOverlap n j u v = j-(v-u).val := by
+  letI : Fintype (ZMod n) := Fintype.ofEquiv (Fin n) (ZMod.finEquiv n)
   unfold cyclicArcOverlap
   have hr :
       (Finset.univ.filter (fun t : ZMod n =>
@@ -73,7 +77,10 @@ theorem cyclic_arc_overlap_oriented (n j : ℕ) [NeZero n]
       have hsub : (t-u)-(v-u) = t-v := by abel
       simpa [hsub] using ht
     · intro t _ s _ h
-      exact sub_right_cancel h
+      calc
+        t = (t-u)+u := by abel
+        _ = (s-u)+u := congrArg (fun z => z+u) h
+        _ = s := by abel
     · intro t ht
       refine ⟨t+u, ?_, ?_⟩
       · simp only [Finset.mem_filter, Finset.mem_univ, true_and] at ht ⊢
