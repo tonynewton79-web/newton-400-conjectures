@@ -13,5 +13,7 @@ jobs:
           python-version: '3.11'
       - name: Exact rational certificate
         run: python cases/001/verify.py --output /tmp/case001.json --max-n 160
+      - name: All-vertex exact shell-cardinality and row-sum audit
+        run: python cases/001/verify_row_sum.py
       - name: Independent unit tests
         run: python -m unittest discover -s cases/001/tests -v
