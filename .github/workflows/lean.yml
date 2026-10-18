@@ -1,0 +1,52 @@
+name: Lean 4 / mathlib formal verification
+on:
+  push:
+    paths:
+      - "NewtonConjectures.lean"
+      - "lakefile.toml"
+      - "lean-toolchain"
+      - ".github/workflows/lean.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+jobs:
+  kernel-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan and generate missing Lake manifest
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          export PATH="$HOME/.elan/bin:$PATH"
+          if [ ! -s lake-manifest.json ]; then lake update; fi
+          test -s lake-manifest.json
+      - uses: leanprover/lean-action@v1
+        env:
+          LEAN_NUM_THREADS: "1"
+        with:
+          build: true
+          use-mathlib-cache: true
+          axiom-audit: true
+      - name: Fail on proof placeholders
+        shell: bash
+        run: |
+          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures.lean; then
+            echo "Unexpected proof placeholder"
+            exit 1
+          fi
+      - name: Record resolved dependency lockfile
+        if: github.ref == 'refs/heads/formal/001-lean-mathlib' && github.event_name == 'push'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lake-manifest.json
+          if git diff --cached --quiet; then
+            echo "Lean dependencies already locked."
+          else
+            git commit -m "Lock Lean mathlib dependency revisions [skip ci]"
+            git push origin HEAD:formal/001-lean-mathlib
+          fi
