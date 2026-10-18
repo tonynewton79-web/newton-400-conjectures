@@ -1,3 +1,11 @@
+## 18 October 2026 — Attack 003 (new verified checkpoint)
+
+- **Now exact-certified:** triple-crossing chord wheel quadratic cycle formula, anchored by six small exact graph counts; 924 independent DFS tests.
+- **Finite computer-assisted interval:** every integer from **1,897 through 418,785** attained, **416,889 consecutive counts**, maximum rim vertices 260; reproducible C++ scan over 2,705,284,800 inputs (triple family itself 10,120 through 418,785).
+- **Verification digest:** `f2bc5910569d1ac26958c2a7a201d1d4c0828b808ca341088a0a0984bc31b6c8`.
+- [Full Attack 003 mathematical certificate](ATTACK003_THREE_CHORD_2026-10-18.md) and [standalone C++ sweep](rebuild_attack003.cpp).
+- **Research status:** EXACT_TRIPLE_FORMULA_FINITE_COVERAGE_PASS; UNIFORM_COFINITE_OPEN. Novelty/priority unestablished.
+
 ## 18 October 2026 — two-chord extension checkpoint
 
 - **Proved combinatorially:** explicit quadratic crossing/noncrossing two-chord wheel cycle-count formulas. See [theorem and proof summary](TWO_CHORD_EXTENSION_2026-10-18.md).
