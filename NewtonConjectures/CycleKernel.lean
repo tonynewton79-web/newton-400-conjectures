@@ -24,7 +24,6 @@ theorem discrete_tent_telescope (f : ℕ → ℚ) (d k : ℕ) (hdk : d ≤ k) :
   induction k, hdk using Nat.le_induction with
   | base =>
       simp
-      ring
   | succ k hk ih =>
       rw [Finset.sum_Ico_succ_top (by omega)]
       rw [ih]
