@@ -1,0 +1,60 @@
+name: Case 002 exact verification and PDF
+on:
+  push:
+    paths:
+      - 'cases/002/**'
+      - '.github/workflows/case002-paper.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run exact cycle-count and 3-connectivity certificates
+        run: python cases/002/verify.py --max-m 30 --output cases/002/certificates/construction.json
+      - name: Install PDF compilation dependencies
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra lmodern
+      - name: Build cumulative scientific paper
+        working-directory: cases/002/paper
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+      - name: Upload full PDF and exact certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: case002-paper-and-exact-certificate
+          path: |
+            cases/002/paper/main.pdf
+            cases/002/certificates/construction.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Archive main-branch PDF release
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cases/002/paper/main.pdf cases/002/certificates/construction.json
+          if git diff --cached --quiet; then
+            echo "No PDF/certificate changes to commit."
+          else
+            git commit -m "Release Paper 002 PDF and exact proof certificate [skip ci]"
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                echo "Paper 002 archived."
+                break
+              fi
+              if [ "$attempt" = 3 ]; then
+                echo "Publication push failed after 3 retries."
+                exit 1
+              fi
+            done
+          fi
