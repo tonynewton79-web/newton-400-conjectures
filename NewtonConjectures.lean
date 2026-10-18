@@ -43,7 +43,7 @@ theorem reciprocal_second_difference (x : ℚ) (hx : 1 < x) :
   have hzero : x ≠ 0 := by linarith
   have hplus : x + 1 ≠ 0 := by linarith
   field_simp
-  <;> ring
+  ring
 
 /-- Each interior cyclic-interval Gram coefficient is strictly positive. -/
 theorem interval_weight_positive (j : ℕ) (hj : 2 ≤ j) :

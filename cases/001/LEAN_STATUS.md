@@ -1,24 +1,32 @@
-# Lean 4 / mathlib verification status
+# Case 001 — Lean 4/mathlib status
 
-A real Lean 4/mathlib project is provided at repository root,
-with a GitHub Actions kernel-compilation workflow.
+## Kernel-certified fragment — PASS
 
-File: `NewtonConjectures.lean`.
+GitHub Actions run: https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39125127439
 
-The intended formal statements are:
+Lean **v4.24.0**; mathlib dependency **v4.24.0**; actual `lake build` **PASS**;
+independent `axiom-audit` **PASS** with 9 project declarations examined
+and axioms confined to the standard allowlist `propext, Classical.choice, Quot.sound`.
+No `sorry` or `admit` proof placeholders were accepted.
 
-- Exact rational positivity margins at cycle sizes 15 and 16.
-- The rational reciprocal second-difference identity.
-- Positivity of the nonterminal interval Gram coefficients.
-- Abstract positive-semidefiniteness of nonnegative weighted Gram sums.
-- Stability of that positivity when adding a nonnegative rank-one term.
+The file `NewtonConjectures.lean` has verified the following:
 
-**The full infinite-family cycle theorem is not formalized here.**
-The combinatorial matrix-identity proof, actual cycle adjacency eigenvalue
-order and multiplicities, harmonic monotonicity, and finite rational
-converse C3..C14 remain to be transported into the Lean kernel.
+1. Rational odd initial margin, exactly `506/11025`.
+2. Rational even initial margin, exactly `1733/58800`.
+3. Positivity of both initial margins.
+4. Reciprocal-distance rational second-difference identity.
+5. Positivity of interior cyclic-interval Gram weights.
+6. Abstract nonnegativity of a nonnegative weighted Gram quadratic form.
+7. Abstract nonnegativity after adding a nonnegative rank-one quadratic term.
 
-A successfully compiled fragment is therefore **PARTIAL_FORMAL_CERTIFICATION**,
-not `FULL_LEAN_CERTIFIED`. No proof status should change until a
-GitHub Actions run succeeds. Do not treat text containing Lean syntax as
-a compiled proof.
+## NOT proved by Lean
+
+- The **actual cycle-specific** matrix identity `R_n + (3/2)I = (1/m)J + Σ w_j B_j B_jᵀ`.
+- The full graph adjacency spectrum and its second-smallest eigenvalue ordering.
+- The two harmonic-number monotonicity arguments for all sufficiently large m.
+- A full formal finite complement for all cycle sizes 3..14.
+- Consequently the final all-n theorem **is not** formally certified.
+
+The proof-critical fragment is **PARTIAL_FORMAL_CERTIFICATION**.
+Python rational verification and a LaTeX analytic argument remain separate
+layers of evidence. Historical priority and specialist review remain open.
