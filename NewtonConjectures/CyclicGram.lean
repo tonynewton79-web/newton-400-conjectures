@@ -13,7 +13,7 @@ noncomputable def cyclicIncidence (n j : ℕ) [NeZero n] :
 Nat subtraction implements max(j - cyclicDistance, 0). -/
 theorem cyclic_incidence_gram_entry (n j : ℕ) [NeZero n]
     (u v : ZMod n) (hj : 2*j ≤ n) :
-    (cyclicIncidence n j * (cyclicIncidence n j)ᵀ) u v =
+    (cyclicIncidence n j * (Matrix.transpose (cyclicIncidence n j))) u v =
       ((j - cyclicDistance n u v : ℕ) : ℚ) := by
   classical
   have hpoint (t : ZMod n) :
@@ -26,7 +26,7 @@ theorem cyclic_incidence_gram_entry (n j : ℕ) [NeZero n]
       · simp [hu, hv]
     · simp [hu]
   calc
-    (cyclicIncidence n j * (cyclicIncidence n j)ᵀ) u v =
+    (cyclicIncidence n j * (Matrix.transpose (cyclicIncidence n j))) u v =
         ∑ t : ZMod n,
           (if (t-u).val < j then (1:ℚ) else 0) *
           (if (t-v).val < j then (1:ℚ) else 0) := by
