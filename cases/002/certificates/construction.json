@@ -1,0 +1,10 @@
+{
+  "exact_cycle_count_checks": 406,
+  "max_rim_length": 30,
+  "one_chord_formula": "(3*m*m-5*m+8+2*k*(m-k))//2",
+  "ordered_certificate_rows_sha256": "ca0b40e16a4d191b82b34e4b4e2f397c7684fe8fe0efcb83a8ffa262cf227676",
+  "status": "PASS_CONSTRUCTION_BASELINE_NOT_CONJECTURE",
+  "target_conjecture_solved": false,
+  "vertex_connectivity_deletion_checks": 406,
+  "wheel_formula": "m*(m-1)+1"
+}
