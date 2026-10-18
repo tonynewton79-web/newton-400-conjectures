@@ -24,7 +24,7 @@ theorem parameter_integral_derivative_cap
     {α : Type*} [MeasurableSpace α]
     (μ : Measure α) (n : ℕ) (hn : 3 ≤ n)
     (w t : α → ℝ) (F G : ℝ → α → ℝ)
-    (s : Set ℝ) (bound : α → ℝ)
+    (ε : ℝ) (bound : α → ℝ)
     (hμ : 0 < μ Set.univ)
     (hw : ∀ x, 0 < w x)
     (ht : ∀ x, (49 / 50 : ℝ) < t x)
@@ -38,19 +38,19 @@ theorem parameter_integral_derivative_cap
       (4 / 3 : ℝ) * w x *
         (-1 + (3 * (n : ℝ) / 4) *
         ((t x - 1 / 2) / (5 / 4 - t x))))
-    (hs : s ∈ nhds (1 / 2 : ℝ))
+    (hε : 0 < ε)
     (hF_meas : ∀ᶠ r in nhds (1 / 2 : ℝ), AEStronglyMeasurable (F r) μ)
     (hF_int : Integrable (F (1 / 2)) μ)
     (hG_meas : AEStronglyMeasurable (G (1 / 2)) μ)
-    (h_bound : ∀ᵐ x ∂μ, ∀ r ∈ s, ‖G r x‖ ≤ bound x)
+    (h_bound : ∀ᵐ x ∂μ, ∀ r ∈ Metric.ball (1 / 2 : ℝ) ε, ‖G r x‖ ≤ bound x)
     (h_bound_int : Integrable bound μ)
-    (h_diff : ∀ᵐ x ∂μ, ∀ r ∈ s,
+    (h_diff : ∀ᵐ x ∂μ, ∀ r ∈ Metric.ball (1 / 2 : ℝ) ε,
       HasDerivAt (fun v => F v x) (G r x) r) :
     (n : ℝ) * (∫ x, F (1 / 2) x ∂μ) <
       (3 / 4 : ℝ) *
         deriv (fun v => ∫ x, F v x ∂μ) (1 / 2) := by
   have hmain := hasDerivAt_integral_of_dominated_loc_of_deriv_le
-    (F := F) (F' := G) (bound := bound) hs
+    (F := F) (F' := G) (bound := bound) hε
     hF_meas hF_int hG_meas h_bound h_bound_int h_diff
   have hderiv :
       deriv (fun v => ∫ x, F v x ∂μ) (1 / 2) =
