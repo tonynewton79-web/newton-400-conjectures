@@ -20,20 +20,30 @@ jobs:
       - name: Install LaTeX compiler
         run: |
           sudo apt-get -qq update
-          sudo apt-get -qq install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra lmodern
+          sudo apt-get -qq install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra lmodern poppler-utils
       - name: Produce independent exact certificate
         run: python cases/001/verify.py --output cases/001/certificates/verification.json --max-n 160
+      - name: Produce exact cycle/convex-kernel certificate
+        run: python cases/001/paper/exact_certificate.py cases/001/paper/exact_certificate.json
       - name: Compile scientific manuscript
         working-directory: cases/001/paper
         run: |
           pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
           pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error verification_supplement.tex
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error verification_supplement.tex
+          cp main.pdf Paper001_Cycle_Gravity_Sharp_Classification_2026-10-18.pdf
+          cp verification_supplement.pdf Paper001_Exact_Certification_Supplement_2026-10-18.pdf
+          pdfunite main.pdf verification_supplement.pdf Paper001_Complete_Research_Packet_2026-10-18.pdf
       - name: Upload PDF and certificate artifact
         uses: actions/upload-artifact@v4
         with:
           name: case001-paper-and-certificates
           path: |
             cases/001/paper/main.pdf
+            cases/001/paper/verification_supplement.pdf
+            cases/001/paper/Paper001_*_2026-10-18.pdf
+            cases/001/paper/exact_certificate.json
             cases/001/certificates/verification.json
           if-no-files-found: error
           retention-days: 90
@@ -42,7 +52,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cases/001/paper/main.pdf cases/001/certificates/verification.json
+          git add cases/001/paper/main.pdf cases/001/paper/verification_supplement.pdf cases/001/paper/Paper001_*_2026-10-18.pdf cases/001/paper/exact_certificate.json cases/001/certificates/verification.json
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
           else

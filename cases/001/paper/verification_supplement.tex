@@ -1,0 +1,74 @@
+\documentclass[10pt]{article}
+\usepackage[a4paper,margin=21mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,booktabs,array}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black]{hyperref}
+\newcommand{\Gr}{\mathsf{Gr}}
+\newcommand{\spr}{\operatorname{spr}}
+\title{Paper 001 --- Exact Certificates and Formal-Proof Status}
+\author{Tony Newton\\Newton Astro Labs\\London, UK\\\texttt{tony.newton79@gmail.com}}
+\date{18 October 2026 --- supplemental verification record}
+\begin{document}\maketitle\vspace{-5mm}
+\begin{abstract}
+This document accompanies \emph{Cycle Gravity Spectra and the Sharp Cycle Classification for Graffiti 197}. It records the entire $C_3$--$C_{14}$ exact-rational finite certificate, independently reproducible cyclic Gram tests, the public Lean 4 progress and its outstanding interfaces, and the relation between the earlier two-page note and the submission manuscript. It is an audit record, not a statement that the end-to-end theorem is already certified inside Lean.
+\end{abstract}
+\section{Finite case certificates: all twelve cycles}
+For $n\in\{3,\ldots,14\}$ set $m=\lfloor n/2\rfloor$, $k=m$, and
+\[
+s_n=\begin{cases}2H_m,&n=2m+1,\\2H_{m-1}+1/m,&n=2m,\end{cases}\quad
+\eta_{n,k}=\sum_{d=1}^{n-1}\frac{\cos(2\pi kd/n)}{\min(d,n-d)}.
+\]
+The two spectral facts needed for these small cases are elementary: $\lambda_{\max}(R_n)=s_n$ by a constant nonnegative row sum, and $\lambda_{\min}(R_n)\le\eta_{n,k}$ because $\eta_{n,k}$ is an explicitly exhibited Fourier eigenvalue. Consequently
+\[
+\spr(\Gr_n)\ge\frac4{n-1}(s_n-\eta_{n,k}),\qquad
+-\lambda_{n-1}(A_n)=\begin{cases}2\cos(\pi/n),&n\text{ odd},\\2\cos(2\pi/n),&n\text{ even}.\end{cases}
+\]
+The script \texttt{exact\_certificate.py} uses exact fractions throughout. Each table entry below is an \emph{outward-rounded rational bound} to six places; the script additionally tests the exact, unrounded strict inequality. The cases are arranged by cycle order so the smallest margins near the threshold are apparent, rather than to suggest an artificial symmetry classification.
+\begin{center}\small\begin{tabular}{@{}r r r r@{}}\toprule
+$C_n$ & spread $\boldsymbol{>}$ & adjacency $\boldsymbol{<}$ & certified gap $\boldsymbol{\ge}$\\\midrule
+$C_3$ & 5.999999 & 1.000001 & 4.999998\\
+$C_4$ & 5.333333 & 0.000001 & 5.333332\\
+$C_5$ & 4.309016 & 1.618034 & 2.690982\\
+$C_6$ & 3.733333 & 1.000001 & 2.733332\\
+$C_7$ & 3.328974 & 1.801938 & 1.527036\\
+$C_8$ & 3.047619 & 1.414214 & 1.633405\\
+$C_9$ & 2.763258 & 1.879386 & 0.883872\\
+$C_{10}$ & 2.548148 & 1.618034 & 0.930114\\
+$C_{11}$ & 2.372076 & 1.918986 & 0.453090\\
+$C_{12}$ & 2.230303 & 1.732051 & 0.498252\\
+$C_{13}$ & 2.091021 & 1.941884 & 0.149137\\
+$C_{14}$ & 1.975091 & 1.801938 & 0.173153\\\bottomrule
+\end{tabular}\end{center}
+Here the final gap column is the difference of the two displayed outward bounds, not a new floating-point result. The positive signs of these twelve gaps show $-\lambda_{n-1}(A_n)<\spr(\Gr_n)$ for every $3\le n\le14$. The stronger boundary fact
+\[
+\spr(\Gr_{14})\ge\frac{2696}{1365}>\frac{15}{8}>2\cos(\pi/7)=-\lambda_{13}(A_{14})
+\]
+is an independent, hand-checkable argument originating in the earlier two-page note.
+\section{Rational cosine construction}
+Write $\arctan(1/q)$ as its alternating power series. For positive $q$ the consecutive partial sums with $22$ and $23$ terms bracket its true value. Machin's identity
+\[
+\pi=16\arctan(1/5)-4\arctan(1/239)
+\]
+therefore supplies fractions $\pi_-<\pi<\pi_+$ with $3<\pi_-<\pi_+<22/7$. For the finite nonendpoint angles $0<t<1/2$ occurring here, set $x_-=2\pi_-t$ and $x_+=2\pi_+t$. The endpoint values $\cos0=1$ and $\cos\pi=-1$ are handled exactly. Since cosine decreases on $[0,\pi]$, and Taylor's theorem bounds the remainder after degree $20$ by $x^{21}/21!$, the rational interval
+\[
+P_{20}(x_+)-\frac{x_+^{21}}{21!}\ \le\ \cos(2\pi t)\ \le\
+P_{20}(x_-)+\frac{x_+^{21}}{21!},
+\quad P_{20}(x)=\sum_{j=0}^{10}\frac{(-1)^j x^{2j}}{(2j)!}
+\]
+is rigorous. Every resulting sum, spectral-spread bound, acceptance comparison, and outward decimal rounding is executed as a \texttt{fractions.Fraction} operation. The decimals in the table are not used as input to the proof.
+\section{Generalized Gram cross-check and portability}
+For $n=4,\ldots,34$ and powers $p\in\{1,2,3\}$, the script checks the exact entrywise identity
+\[
+K_{n,p}+(2-2^{-p})I=f_mJ+\sum_{j=2}^{m-1}\delta_j B_jB_j^\mathsf{T}
++(f_{m-1}-f_m)B_mB_m^\mathsf{T},
+\quad f_j=j^{-p},\quad\delta_j=f_{j-1}-2f_j+f_{j+1}.
+\]
+The resulting $\sum_{n=4}^{34}3n^2=41{,}013$ rational entries passed. This computational audit is independent of the analytic telescoping proof in the main paper and is not a priority claim.
+\section{Lean 4 and status accounting}
+The public \href{https://github.com/tonynewton79-web/newton-400-conjectures/issues/12}{Issue \#12} and the pinned mathlib Lean project document a fifteen-stage programme. The Stage 15 \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39160177061}{GitHub Actions run 39160177061} reports success: 7,376 build jobs and 301 declarations audited under the stated foundational-axiom allowlist. The following results are recorded as compiled within Lean: the rational and real shifted Gram identities; positivity of the actual reciprocal-distance shift; the shell Laplacian and the two-sided Loewner inequalities for the actual gravity matrices; exact cyclic shell cardinalities; and, in Stage 15, $s_{2m+1}=2H_m$ and $s_{2m}=2H_{m-1}+1/m$ for all $m\ge2$.
+
+The following are \emph{not} thereby claimed as formally proved: an unconditional Lean extraction of the actual real gravity spectral spread from its Loewner bounds; identification, with ordering/multiplicities, of the second-smallest eigenvalue of the actual cycle adjacency matrix; the twelve complementary finite cycle cases; and a single compiled, unconditional sharp-cycle theorem. Independent literature review and mathematical assessment remain separate.
+\section{Relation to the two previously circulated editions}
+The author's two-page note \emph{A Positive-Semidefinite Certificate for the Gravity Spectrum of Cycles: An Infinite-Family Resolution of a Graffiti 197 Conjecture} (18 October 2026) establishes the full $n\ge15$ analytic statement and separately shows $C_{14}$ is not a counterexample. It does not claim an exhaustive $C_3$--$C_{14}$ finite classification. The later five-page Stage 15 research edition records the broader finite classification and progressive formalization. The present manuscript consolidates these arguments, corrects the Stage 15 status duplication, moves detailed formal provenance into this supplement, and adds a discrete-convex kernel theorem. Nothing in the newer manuscript requires retracting the earlier two-page argument. The original Graffiti refutation is attributed throughout to Roucairol and Cazenave; originality of the strengthening and of the convex-kernel formulation remains under review.
+\end{document}
