@@ -1,3 +1,15 @@
+## 18 October 2026 — Attack 004: candidate unconditional cofinite theorem
+
+- **Main claim:** For some non-explicit integer N_*, each N>=N_* is the cycle count of a three-connected simple wheel with three pairwise-crossing rim chords. This is a **candidate mathematical proof for external review**, not a claim that the complete published missing-count conjecture has been established.
+- **Key reduction:** On six rim gaps g_i=t+x_i, sum_i x_i=0, the exact three-chord cycle count is C(t)-Q(x), with C(t)=231t^2-117t+36 and Q(x)=[5 sum x_i^2 + 2 sum x_i*x_(i+1)]/2.
+- Q is positive definite, integer-valued on its five-variable zero-sum lattice, has Gram determinant 324, and satisfies Q(x)>=(3/2)sum x_i^2.
+- **Local universality is exact-checked:** Hessian determinant 10,368=2^7*3^4. For p>=5, nondegenerate rank-five finite-field form gives nonsingular local values; p=2 is solved by standard-basis representatives, and p=3 by a three-dimensional divided auxiliary form of Gram matrix [[27,10,19],[10,5,7],[19,7,15]].
+- Apply the **classical Tartakowsky five-variable local-to-global theorem** to obtain D_0. For all large t, every integer in [C(t)-floor(3(t-1)^2/2), C(t)-D_0] is attained; these intervals eventually overlap because C(t+1)-C(t)=462t+114.
+- **Scope:** non-effective eventual coverage only. The precise exception list and explicit N_* remain unknown, priority/novelty have not been established, and independent referee audit is required.
+- [Full proof checkpoint](ATTACK004_EVENTUAL_COVERAGE_2026-10-18.md), [executable exact audit](verify_attack004.py). The complete updated four-page PDF/LaTeX paper and audit packet are conversation artifacts. CI runs the audit independently.
+- **Status:** CANDIDATE_COFINITE_PROOF_LOCAL_GATES_PASS_REFEREE_REVIEW_PENDING.
+
+
 ## 18 October 2026 — Attack 003 (new verified checkpoint)
 
 - **Now exact-certified:** triple-crossing chord wheel quadratic cycle formula, anchored by six small exact graph counts; 924 independent DFS tests.
