@@ -130,4 +130,42 @@ theorem evenCycleUpper_step (m : ℕ) (hm : 8 ≤ m) :
     simp [evenCycleUpper, evenCycleS_succ m (by omega),
       Nat.cast_add, Nat.cast_one] <;> ring
 
+/-- Global odd upper bound, certified from the first odd case m=7. -/
+theorem oddCycleUpper_le_base (m : ℕ) (hm : 7 ≤ m) :
+    oddCycleUpper m ≤ oddCycleUpper 7 := by
+  induction m, hm using Nat.le_induction with
+  | base => exact le_rfl
+  | succ m hm ih =>
+      exact (le_of_lt (oddCycleUpper_step m hm)).trans ih
+
+/-- Global even upper bound, certified from the first even case m=8. -/
+theorem evenCycleUpper_le_base (m : ℕ) (hm : 8 ≤ m) :
+    evenCycleUpper m ≤ evenCycleUpper 8 := by
+  induction m, hm using Nat.le_induction with
+  | base => exact le_rfl
+  | succ m hm ih =>
+      exact (le_of_lt (evenCycleUpper_step m hm)).trans ih
+
+theorem oddCycleUpper_base_exact :
+    oddCycleUpper 7 = (468 : ℚ) / 245 := by
+  norm_num [oddCycleUpper, cycleHarmonic, Finset.sum_range_succ]
+
+theorem evenCycleUpper_base_exact :
+    evenCycleUpper 8 = (1907 : ℚ) / 1050 := by
+  norm_num [evenCycleUpper, evenCycleS, cycleHarmonic, Finset.sum_range_succ]
+
+theorem oddCycleUpper_lt_boundary (m : ℕ) (hm : 7 ≤ m) :
+    oddCycleUpper m < (2 : ℚ) - ((22 : ℚ) / 105)^2 := by
+  have hle := oddCycleUpper_le_base m hm
+  rw [oddCycleUpper_base_exact] at hle
+  have hmargin := odd_boundary_positive
+  linarith
+
+theorem evenCycleUpper_lt_boundary (m : ℕ) (hm : 8 ≤ m) :
+    evenCycleUpper m < (2 : ℚ) - ((11 : ℚ) / 28)^2 := by
+  have hle := evenCycleUpper_le_base m hm
+  rw [evenCycleUpper_base_exact] at hle
+  have hmargin := even_boundary_positive
+  linarith
+
 end Newton400.Case001
