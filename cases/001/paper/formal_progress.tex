@@ -1,4 +1,4 @@
-\section{Formal certification: progressive six-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive seven-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -67,6 +67,38 @@ The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/run
 completed 7,359 jobs, with 113 declarations passing the
 trusted-foundation axiom audit.
 
+
+\paragraph{Stage 7: kernel-certified matrix positivity.}
+The module \texttt{SpectralPSD.lean} uses the exact Stage~6
+matrix theorem and proves, for every $n\ge4$, that the
+\emph{rational} matrix $R_n+\tfrac32I$ is positive semidefinite
+in the formal \texttt{Matrix.PosSemidef} sense. The kernel
+checks nonnegative piecewise weights, the constant rank-one
+component, each actual incidence Gram product, and their
+finite weighted sum. Thus
+\begin{equation}\label{eq:lean-psd}
+x^{\mathsf T}(R_n+\tfrac32I)x\ge0
+\qquad(x\in\mathbb Q^n).
+\end{equation}
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39134282319}{Stage~7 build}
+passed 7,360 Lean jobs and audited 125 declarations within
+the standard foundational axiom allowlist. The conversion to
+a real-matrix/eigenvalue statement is a separate formal gate;
+the analytic consequence for real symmetric matrices remains
+available by the usual density and spectral arguments.
+
+\paragraph{Originality screen and claim calibration.}
+The primary Roucairol--Cazenave source already refutes Graffiti~197
+using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
+the present claimed advance is the stronger sharp classification
+and constructive matrix certificate, not the first refutation.
+Earlier work also studies reciprocal-distance (Harary) spectra
+and their spreads. The focused source screen found no identical
+all-$n$ threshold proof, but no search result establishes priority
+or substitutes for external specialist review.
+See the repository's
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/PRIOR_ART_AUDIT.md}{prior-art audit}.
+
 \paragraph{Independent verification.}
 \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230}{GitHub Actions run 39131413230} passed 7,358 Lean build jobs.
 Its axiom audit accepted 100 declarations with only
@@ -77,8 +109,9 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-The complete matrix identity \eqref{eq:lean-fullgram} is now
-kernel-certified, but the real positive-semidefinite spectral bound, adjacency eigenvalue ordering, two harmonic comparisons,
+The complete matrix identity \eqref{eq:lean-fullgram} and rational
+positive semidefiniteness \eqref{eq:lean-psd} are kernel-certified,
+but the real eigenvalue bound, adjacency eigenvalue ordering, two harmonic comparisons,
 or the formal finite converse $C_3,\ldots,C_{14}$. The paper's analytic
 argument and exact finite certificate remain separately stated;
 priority and specialist review remain open.
