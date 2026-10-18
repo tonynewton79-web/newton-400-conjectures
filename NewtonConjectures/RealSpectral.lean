@@ -34,4 +34,14 @@ theorem real_shifted_reciprocal_psd (n : ℕ)
   rw [real_shifted_reciprocal_eq_gram n hn]
   exact real_weighted_cycle_gram_psd n hn
 
+/-- A direct real spectral consequence. Every real spectral value of
+the shifted reciprocal-distance cycle matrix is nonnegative. -/
+theorem real_shifted_reciprocal_spectrum_nonneg (n : ℕ)
+    [NeZero n] (hn : 4 ≤ n) :
+    spectrum ℝ (realShiftedReciprocalCycle n) ⊆
+      {e : ℝ | 0 ≤ e} := by
+  exact (Matrix.posSemidef_iff_isHermitian_and_spectrum_nonneg.mp
+    (real_shifted_reciprocal_psd n hn)).2
+
+
 end Newton400.Case001
