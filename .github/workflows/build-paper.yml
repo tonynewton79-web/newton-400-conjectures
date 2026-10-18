@@ -1,0 +1,36 @@
+name: Build publication PDF
+on:
+  push:
+    paths:
+      - 'cases/001/paper/**'
+      - 'cases/001/verify.py'
+      - '.github/workflows/build-paper.yml'
+  workflow_dispatch:
+jobs:
+  build-paper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install LaTeX compiler
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra lmodern
+      - name: Produce independent exact certificate
+        run: python cases/001/verify.py --output cases/001/certificates/verification.json --max-n 160
+      - name: Compile scientific manuscript
+        working-directory: cases/001/paper
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
+      - name: Publish compiled PDF and certificate
+        uses: actions/upload-artifact@v4
+        with:
+          name: case001-paper-and-certificates
+          path: |
+            cases/001/paper/main.pdf
+            cases/001/certificates/verification.json
+          if-no-files-found: error
+          retention-days: 90
