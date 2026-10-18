@@ -64,4 +64,39 @@ theorem cycle_shell_neighbor_count_translate (n d : ℕ) [NeZero n]
       exact (distance_shell_adj_add_right n d u z a).mpr hz
     · simp
 
+/-- The weighted row-sum candidate computed from actual distance-shell
+cardinalities; this is not yet expressed as a matrix spectrum bound. -/
+noncomputable def cycleWeightedShellCount (n : ℕ) [NeZero n]
+    (u : ZMod n) : ℝ :=
+  ∑ d ∈ Finset.Icc 1 (n / 2),
+    (1 / (d : ℝ)) * (cycleShellNeighborCount n d u : ℝ)
+
+/-- All weighted shell row sums are invariant under arbitrary rotation. -/
+theorem cycle_weighted_shell_count_translate (n : ℕ) [NeZero n]
+    (u a : ZMod n) :
+    cycleWeightedShellCount n (u+a) = cycleWeightedShellCount n u := by
+  unfold cycleWeightedShellCount
+  simp_rw [cycle_shell_neighbor_count_translate n]
+
+/-- The common weighted shell row sum can be evaluated at the zero vertex,
+without needing a global eigenbasis. -/
+theorem cycle_weighted_shell_count_constant (n : ℕ) [NeZero n]
+    (u : ZMod n) :
+    cycleWeightedShellCount n u = cycleWeightedShellCount n 0 := by
+  have h := cycle_weighted_shell_count_translate n (0 : ZMod n) u
+  simpa using h
+
+/-- A finite graph degree equals the cardinality of its adjacency filter. -/
+noncomputable def cycleShellFiniteDegree (n d : ℕ) [NeZero n]
+    (u : ZMod n) : ℕ := by
+  classical
+  exact (cycleDistanceShell n d).degree u
+
+theorem cycle_shell_finite_degree_eq_count (n d : ℕ) [NeZero n]
+    (u : ZMod n) :
+    cycleShellFiniteDegree n d u = cycleShellNeighborCount n d u := by
+  classical
+  simp [cycleShellFiniteDegree, cycleShellNeighborCount,
+    SimpleGraph.degree, SimpleGraph.neighborFinset_eq_filter]
+
 end Newton400.Case001
