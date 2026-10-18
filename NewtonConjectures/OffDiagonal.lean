@@ -32,8 +32,10 @@ theorem weighted_offdiagonal_identity (d m : ℕ)
           cyclicGramWeight m j * (((j - d : ℕ) : ℚ))) +
         (∑ j ∈ Finset.Ico (d + 1) (m + 1),
           cyclicGramWeight m j * (((j - d : ℕ) : ℚ))) := by
-      rw [Finset.sum_Ico_add (by omega : 2 ≤ d + 1)
-        (by omega : d + 1 ≤ m + 1)]
+      exact (Finset.sum_Ico_consecutive
+        (fun j => cyclicGramWeight m j * (((j - d : ℕ) : ℚ)))
+        (by omega : 2 ≤ d + 1)
+        (by omega : d + 1 ≤ m + 1)).symm
     have hfirst :
         (∑ j ∈ Finset.Ico 2 (d + 1),
           cyclicGramWeight m j * (((j - d : ℕ) : ℚ))) = 0 := by
