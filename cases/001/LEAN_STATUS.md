@@ -85,3 +85,28 @@ kernel must still be explicitly assembled into the weighted sum over
 all `j = 2, …, ⌊n/2⌋`, including the truncated natural subtraction
 and antipodal case. The spectral bound, final graph-theoretic cycle
 inequality and finite converse are not yet fully formalized.
+
+
+## Stage 5: universal off-diagonal weighted sum — KERNEL VERIFIED
+
+[Actual Lean 4/mathlib kernel build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230): **PASS** (7,358 build jobs). The independent axiom audit accepted **100 declarations**, using only `propext`, `Classical.choice`, and `Quot.sound`. The workflow rejected proof placeholders.
+
+Source: [`NewtonConjectures/OffDiagonal.lean`](../../NewtonConjectures/OffDiagonal.lean).
+
+For **all** `m ≥ 2` and `1 ≤ d ≤ m`, the kernel proves
+```
+1/m + ∑_{j=2}^{m} cyclicGramWeight(m,j) * max(j-d,0) = 1/d.
+```
+The proof separates the `d=m` endpoint, the zero lower-range terms,
+the interior weighted terms, and the terminal coefficient, then invokes
+the previously certified `reciprocal_tent_identity`. Natural subtraction
+formalizes `max(j-d,0)` exactly.
+
+Independent Python Fraction replay: **7,259 cases**, all distances for
+`m=2..120`, passing without floating-point arithmetic.
+
+This completes the exact off-diagonal scalar-coefficient gate.
+**The single all-entry matrix equality is still to be assembled and
+kernel-verified as a distinct theorem**. The cycle-specific spectral
+lower bound, adjacency eigenvalue ordering, and final counterexample
+inequality are not yet formally certified.

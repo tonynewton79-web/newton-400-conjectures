@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.OffDiagonal
 import NewtonConjectures.GramDiagonal
 import NewtonConjectures.CyclicGram
 import NewtonConjectures.CyclicZMod
