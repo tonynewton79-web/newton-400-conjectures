@@ -110,3 +110,25 @@ This completes the exact off-diagonal scalar-coefficient gate.
 kernel-verified as a distinct theorem**. The cycle-specific spectral
 lower bound, adjacency eigenvalue ordering, and final counterexample
 inequality are not yet formally certified.
+
+
+## Stage 6: complete all-entry cyclic Gram matrix equality — KERNEL VERIFIED
+
+**Certified GitHub run:** https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39133219628
+
+- Lean 4.24.0 / mathlib: **PASS**, 7,359 build jobs.
+- Trusted axiom audit: **PASS**, 113 declarations (only `propext`, `Classical.choice`, `Quot.sound`).
+- Proof placeholder test: **PASS**, no `sorry` / `admit`.
+- New file: `NewtonConjectures/FullGram.lean`.
+
+The exact kernel-certified theorem `cyclic_shifted_reciprocal_eq_gram` states that for **all** `n≥4`, the rational matrices over `ZMod n` satisfy
+
+```
+shiftedReciprocalCycle n = weightedCycleGram n
+```
+
+where `shiftedReciprocalCycle` has diagonal 3/2 and off-diagonal reciprocal cycle distance, and `weightedCycleGram` equals the constant 1/m matrix plus the sum of the actual weighted incidence Gram matrices, m=n/2. The proof is one true equality between `Matrix (ZMod n) (ZMod n) ℚ` values, not just separate scalar analogies.
+
+Separate lemma `cyclic_distance_positive_of_ne` proves denominator positivity off-diagonal; `cyclic_distance_le_half` bounds cycle distances by `n/2`. Both parity classes, wraparound and the even antipodal case are included.
+
+**Still pending in Lean:** a real positive-semidefinite operator/spectral corollary and eigenvalue λ_min≥−3/2; the adjacency eigenvalue ordering; both infinite-family harmonic comparisons; and the exact finite converse for C3..C14. External priority and specialist review remain pending. This is not yet a full Lean kernel proof of Graffiti 197's sharp cycle theorem.
