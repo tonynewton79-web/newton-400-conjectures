@@ -3,6 +3,9 @@ import NewtonConjectures.CyclicIntersection
 
 namespace Newton400.Case001
 
+noncomputable instance (n : ℕ) [NeZero n] : Fintype (ZMod n) :=
+  Fintype.ofEquiv (Fin n) (ZMod.finEquiv n)
+
 theorem zmod_val_sub_natCast (n d : ℕ) [NeZero n]
     (t : ZMod n) (hd : d < n) :
     (t - (d : ZMod n)).val = (t.val + n - d) % n := by
