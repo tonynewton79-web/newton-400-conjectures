@@ -1,3 +1,12 @@
+## 18 October 2026 — Attack 002 checkpoint
+
+- Complete published nontrivial small-snark catalogue through 22 vertices: **29/29 exact Fulkerson covers**, all found with **two independent solvers** (perfect-matching MILP and pure 15-pair-label CSP).
+- Independent integer replay confirms every vertex and edge incidence, and checks non-3-edge-colourability, girth at least 5, cyclic edge connectivity at least 4 and nonisomorphism within orders.
+- Three-edge-cut gluing equivalence proved and five joined-graph covers (34, 36, 38, 40, 42 vertices) verified.
+- Negative tests: bridged cubic graph refused, deliberately altered matching witness refused.
+- All 29 small-snark positive cases lie in documented prior-art territory; the **Berge–Fulkerson conjecture remains open**.
+- [Complete Attack 002 results and SHA-256 certificate manifest](ATTACK002_COMPLETE_SMALL_SNARK_CENSUS.md). Updated three-page PDF and full 17-file source/certificate packet remain downloadable conversation artifacts; they are not yet uploaded as repo source files.
+
 # Case 003 — Berge–Fulkerson conjecture: exact matching-cover search
 
 **Project opened:** 18 October 2026. **Status:** OPEN_GENERAL_CONJECTURE; EXACT_INITIAL_POSITIVE_CASES; NO_NOVELTY_CLAIM.
