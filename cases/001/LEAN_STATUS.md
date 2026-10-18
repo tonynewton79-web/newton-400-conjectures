@@ -237,3 +237,29 @@ Successful [Lean build 39151152516](https://github.com/tonynewton79-web/newton-4
 - **One unconditional graph-theoretic biconditional** combining the above.
 
 **Status: FINAL_STATEMENT_TYPECHECKED_CONDITIONALLY; ENTIRE_GRAFFITI_THEOREM_NOT_KERNEL_PROVED.** No acceptance/novelty verdict is implied. Paper 002 remains unchanged.
+
+
+## Stage 12 — true graph-distance shells and gravity upper Loewner bound — KERNEL VERIFIED
+
+- [Successful pinned Lean 4/mathlib run](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39153984478): **7,371 build jobs**, **250 audited project declarations**, only `propext`, `Classical.choice`, `Quot.sound`; no proof placeholders.
+- New modules:
+  - `NewtonConjectures/DistanceShellLaplacian.lean`
+  - `NewtonConjectures/DistanceShellAdjacency.lean`
+  - `NewtonConjectures/DistanceShellDegreeBridge.lean`
+
+### Formally established for every cycle n≥4
+1. `weighted_graph_laplacian_psd`: all finite positive weighted graph-Laplacian sums are positive semidefinite. This is a general mathlib-based lemma, not a newly invented graph-theoretic result.
+2. `cyclicDistance_symm` and `cycleDistanceShell`: the actual cycle distance shells form undirected graphs.
+3. `cycle_weighted_distance_laplacian_psd`: their inverse-distance weighted Laplacian `L_n` is positive semidefinite.
+4. `cycle_weighted_shell_adjacency_eq_reciprocal`: the exact weighted distance-shell adjacency matrix equals the actual zero-diagonal reciprocal-distance matrix `R_n`.
+5. `cycle_weighted_lap_eq_degree_sub_reciprocal`: the exact real matrix identity `L_n = D_n-R_n`, where `D_n` is the weighted diagonal degree matrix of the shell graphs.
+6. `actual_reciprocal_upper_degree_psd`: `D_n-R_n` is positive semidefinite.
+7. `actual_gravity_upper_degree_psd`: `(4/(n−1))*D_n−G_n` is positive semidefinite for the original Graffiti gravity matrix `G_n`.
+
+### What this does NOT yet establish
+- Formally demonstrate that the weighted degree matrix is a **scalar multiple of I**, with scalar `2*H_m` for odd n and `2*H_(m-1)+1/m` for even n.
+- Kernel-certify the precise upper bound on the full real gravity numerical spectrum from the above Loewner inequality, including the final spread formula.
+- Prove the ordered second-smallest actual cycle adjacency eigenvalue equals the stated cosine candidate, with multiplicities.
+- Certify the finite converse for C3..C14.
+
+**STAGE12_MATRIX_UPPER_BOUND_KERNEL_VERIFIED; FINAL_GRAFFITI_THEOREM_STILL_HOLD.** As before, the proposed sharp all-cycle classification and originality require independent expert review; Graffiti 197's original first counterexample was already found by Roucairol and Cazenave.
