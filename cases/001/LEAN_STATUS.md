@@ -132,3 +132,17 @@ where `shiftedReciprocalCycle` has diagonal 3/2 and off-diagonal reciprocal cycl
 Separate lemma `cyclic_distance_positive_of_ne` proves denominator positivity off-diagonal; `cyclic_distance_le_half` bounds cycle distances by `n/2`. Both parity classes, wraparound and the even antipodal case are included.
 
 **Still pending in Lean:** a real positive-semidefinite operator/spectral corollary and eigenvalue λ_min≥−3/2; the adjacency eigenvalue ordering; both infinite-family harmonic comparisons; and the exact finite converse for C3..C14. External priority and specialist review remain pending. This is not yet a full Lean kernel proof of Graffiti 197's sharp cycle theorem.
+
+
+## Stage 7 — rational positive semidefinite shifted reciprocal-distance matrix — KERNEL VERIFIED
+
+**Run:** https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39134282319
+
+- `lake build`: **PASS** (7,360 build jobs).
+- `axiom-audit`: **PASS** (125 declarations; only `propext`, `Classical.choice`, `Quot.sound`).
+- No `sorry` or `admit` proof placeholders accepted.
+- Formal module: `NewtonConjectures/SpectralPSD.lean`.
+
+Lean theorem `shifted_reciprocal_cycle_psd` states for every n≥4 that the **actual rational matrix** `shiftedReciprocalCycle n` is `Matrix.PosSemidef`, using the theorem-level equality from Stage 6, positive piecewise coefficients and positive-semidefiniteness of rank-one / incidence Gram matrices. Also certified: `cyclic_gram_weight_nonneg`, `constant_cycle_matrix_psd`, `cyclic_incidence_psd`, and `weighted_cycle_gram_psd`.
+
+This establishes xᵀ(R_n+(3/2)I)x≥0 for all rational vectors x in the appropriate finite dimension. Its extension to the corresponding real symmetric matrix, and the explicit Lean eigenvalue lower bound, require a real-matrix bridge. The ordering/multiplicity of adjacency cycle eigenvalues and uniform analytic comparisons remain to be kernel formalized. **The full Graffiti 197 theorem is NOT yet Lean-certified.**
