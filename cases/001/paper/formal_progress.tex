@@ -1,4 +1,4 @@
-\section{Formal certification: five-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive six-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -48,6 +48,25 @@ For every $m\ge2$ and $1\le d\le m$,
 These are exactly the weights of \eqref{eq:weights}, with the
 terminal case $d=m$ included using natural truncated subtraction.
 
+
+\paragraph{Stage 6: the complete rational matrix equality.}
+The new kernel-checked module \texttt{FullGram.lean} formally defines
+the shifted reciprocal-distance matrix over $\mathbb Z/n\mathbb Z$,
+with diagonal $3/2$ and off-diagonal entries $1/d(u,v)$.
+For every integer $n\ge4$, the theorem
+\texttt{cyclic\_shifted\_reciprocal\_eq\_gram} establishes
+the \emph{actual equality of rational matrices}
+\begin{equation}\label{eq:lean-fullgram}
+R_n+\tfrac32I=\tfrac1mJ+\sum_{j=2}^m w_jB_jB_j^{\mathsf T},
+\quad m=\lfloor n/2\rfloor.
+\end{equation}
+This result incorporates both parity branches, wraparound, all
+off-diagonal distances and the diagonal normalization.
+A separate Lean proof shows $1\le d(u,v)\le m$ whenever $u\ne v$.
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39133219628}{Stage~6 build}
+completed 7,359 jobs, with 113 declarations passing the
+trusted-foundation axiom audit.
+
 \paragraph{Independent verification.}
 \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230}{GitHub Actions run 39131413230} passed 7,358 Lean build jobs.
 Its axiom audit accepted 100 declarations with only
@@ -58,10 +77,8 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-These certificates supply the entries of
-\eqref{eq:gram} but do not yet include a \emph{single}
-kernel-certified all-entry matrix theorem, the complete cycle-specific
-spectral bound, adjacency eigenvalue ordering, two harmonic comparisons,
+The complete matrix identity \eqref{eq:lean-fullgram} is now
+kernel-certified, but the real positive-semidefinite spectral bound, adjacency eigenvalue ordering, two harmonic comparisons,
 or the formal finite converse $C_3,\ldots,C_{14}$. The paper's analytic
 argument and exact finite certificate remain separately stated;
 priority and specialist review remain open.
