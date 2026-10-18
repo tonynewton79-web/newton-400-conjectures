@@ -48,12 +48,9 @@ theorem distance_shell_degree_translate (n d : ℕ) [NeZero n]
   apply Finset.card_bij (fun w _ => w - a)
   · intro w hw
     simp only [SimpleGraph.mem_neighborFinset] at hw ⊢
-    have h := (distance_shell_adj_add_right n d u (w-a) a).mpr
     have hw' : (cycleDistanceShell n d).Adj (u + a) ((w - a) + a) := by
-      apply h
       simpa only [sub_add_cancel] using hw
-    simpa only [sub_add_cancel] using
-      (distance_shell_adj_add_right n d u (w-a) a).mp hw'
+    exact (distance_shell_adj_add_right n d u (w-a) a).mp hw'
   · intro w hw z hz heq
     exact sub_right_cancel heq
   · intro z hz
