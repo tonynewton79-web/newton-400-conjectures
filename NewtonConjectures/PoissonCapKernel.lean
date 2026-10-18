@@ -78,4 +78,19 @@ theorem axial_kernel_score_identity (n : ℕ) (t : ℝ) (ht : t ≤ 1) :
   ring
 
 
+/-- The genuine axial Poisson derivative strictly dominates n times the
+    actual kernel throughout the chosen cap, uniformly in all n >= 3. -/
+theorem axial_poisson_strict_derivative
+    (n : ℕ) (hn : 3 ≤ n) (t : ℝ)
+    (ht : (49 / 50 : ℝ) < t) (ht1 : t ≤ 1) :
+    (n : ℝ) * axialPoissonKernel n (1 / 2) t <
+      (3 / 4 : ℝ) *
+        deriv (fun r : ℝ => axialPoissonKernel n r t) (1 / 2) := by
+  rw [axial_kernel_score_identity n t ht1]
+  have hscore := all_dimensions_cap_score n hn t ht ht1
+  have hkernel := axial_kernel_half_positive n t ht1
+  have hstrict := mul_lt_mul_of_pos_left hscore hkernel
+  simpa only [mul_comm] using hstrict
+
+
 end Newton400.PoissonCap
