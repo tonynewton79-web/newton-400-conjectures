@@ -65,3 +65,12 @@ The working paper proves the elementary construction formula
 for a wheel with one added rim chord; 406 exact finite graph checks and 406 two-vertex-deletion connectivity checks pass. [Independent GitHub publication build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39143932131) succeeded and archived the two-page paper. This is **not** a resolution of the original 2026 McCulloch–McKay–Salahshoori–Zaslavsky conjecture, nor is novelty of the elementary formula asserted.
 
 **Case 001 remains a separate candidate theorem**: [living PDF](cases/001/paper/main.pdf) and [remaining Lean formalization gates](https://github.com/tonynewton79-web/newton-400-conjectures/issues/12). The project registry continues to count **zero externally accepted original conjecture resolutions**.
+
+
+### Case 001 Stage 12 — dual PSD matrix certificates (18 October 2026)
+
+[Living Paper 001, Stage 12 PDF](cases/001/paper/main.pdf) · [Stage 12 formal audit](cases/001/certificates/LEAN_STAGE12_DISTANCE_LAPLACIAN.md) · [Main-branch Lean build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39154280699) · [Stage 12 development build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39153984478) · [Unfinished full-theorem gates](https://github.com/tonynewton79-web/newton-400-conjectures/issues/12).
+
+Beyond the previously verified shifted-Gram **lower** spectral matrix certificate, Lean now checks the actual inverse-distance graph's **upper** matrix order certificate: for weighted shell-degree diagonal `D_n`, `D_n - R_n ⪰ 0`, and for the original Graffiti gravity matrix `G_n = 4 R_n/(n−1)`, `4 D_n/(n−1) - G_n ⪰ 0`. The proof uses actual cyclic distance-shell adjacency graphs and positive weighted graph Laplacians, and passes the pinned Lean kernel and 250-declaration axiom audit. These do **not** yet imply the original numerical-span inequality in Lean without scalar row-sum regularity and spectral extraction, or identify the ordered second-smallest cycle adjacency eigenvalue. The sharp full-cycle classification and finite C3–C14 converse remain candidate/outstanding for complete Lean and specialist acceptance.
+
+Paper 002 stays a separate ongoing project, not affected by the Stage 12 update.
