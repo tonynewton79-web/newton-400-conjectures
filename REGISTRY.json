@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146022640",
-      "lean_axiom_audit": "PASS: 197 declarations, foundational allowlist only",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146480928",
+      "lean_axiom_audit": "PASS: 204 project declarations; only standard foundational axioms",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -33,7 +33,8 @@
         "NewtonConjectures/RealSpectral.lean",
         "NewtonConjectures/HarmonicComparison.lean",
         "NewtonConjectures/TrigonometricEndgame.lean",
-        "NewtonConjectures/AllCycleAnalytic.lean"
+        "NewtonConjectures/AllCycleAnalytic.lean",
+        "NewtonConjectures/AdjacencyDefinition.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -79,7 +80,7 @@
       "lean_real_shifted_reciprocal_psd_verified": true,
       "lean_real_shifted_spectrum_nonnegative_verified": true,
       "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
-      "last_mathematical_gate": "Universal n>=15 harmonic-vs-cosine inequality kernel-certified; original graph spectrum interfaces unresolved",
+      "last_mathematical_gate": "Actual cycle adjacency matrix and symmetry kernel-certified; second-smallest eigenvalue and finite complement still unproved in Lean",
       "lean_harmonic_parity_uniform_verified": true,
       "lean_odd_monotonic_verified": true,
       "lean_even_monotonic_verified": true,
@@ -92,7 +93,10 @@
         "Actual gravity spectral span bound from eigenvalues",
         "Finite C3..C14 interval certificates in Lean",
         "Assembled original graph inequality"
-      ]
+      ],
+      "lean_adjacency_matrix_defined_verified": true,
+      "lean_adjacency_matrix_symmetry_verified": true,
+      "lean_adjacency_spectrum_ordering_verified": false
     },
     {
       "id": "002",
