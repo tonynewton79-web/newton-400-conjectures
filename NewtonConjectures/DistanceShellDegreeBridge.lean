@@ -14,6 +14,11 @@ the constant common row sum needed in the upper spectrum bound.
 -/
 namespace Newton400.Case001
 
+noncomputable def cycleDistanceShellAdjMatrix (n d : ℕ) [NeZero n] :
+    Matrix (ZMod n) (ZMod n) ℝ := by
+  classical
+  exact (cycleDistanceShell n d).adjMatrix ℝ
+
 noncomputable def cycleWeightedDegreeMatrix (n : ℕ) [NeZero n] :
     Matrix (ZMod n) (ZMod n) ℝ := by
   classical
@@ -25,11 +30,12 @@ theorem cycle_weighted_shell_matrix_eq_adjacency_sum (n : ℕ)
     cycleWeightedShellAdjacency n =
       ∑ d ∈ Finset.Icc 1 (n/2),
         (1 / (d : ℝ)) •
-          SimpleGraph.adjMatrix ℝ (cycleDistanceShell n d) := by
+          cycleDistanceShellAdjMatrix n d := by
   classical
   ext u v
   simp [cycleWeightedShellAdjacency, Matrix.sum_apply,
-    Matrix.smul_apply, SimpleGraph.adjMatrix_apply, smul_eq_mul]
+    Matrix.smul_apply, cycleDistanceShellAdjMatrix,
+    SimpleGraph.adjMatrix_apply, smul_eq_mul]
 
 theorem cycle_weighted_lap_eq_degree_sub_reciprocal (n : ℕ)
     [NeZero n] (hn : 4 ≤ n) :
@@ -42,5 +48,6 @@ theorem cycle_weighted_lap_eq_degree_sub_reciprocal (n : ℕ)
   unfold cycleWeightedDegreeMatrix
   simp_rw [SimpleGraph.lapMatrix, smul_sub]
   rw [Finset.sum_sub_distrib]
+  simp [cycleDistanceShellAdjMatrix]
 
 end Newton400.Case001
