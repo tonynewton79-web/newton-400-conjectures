@@ -1,0 +1,19 @@
+{
+  "project": "Newton Astro Labs — 400+ Conjectures",
+  "target_externally_validated_original_results": 401,
+  "cases_documented": 1,
+  "candidate_analytic_proofs": 1,
+  "independently_accepted_original_results": 0,
+  "cases": [
+    {
+      "id": "001",
+      "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
+      "status": "CANDIDATE",
+      "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
+      "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
+      "prior_art_audit": "incomplete",
+      "specialist_review": false,
+      "lean_kernel_verified": false
+    }
+  ]
+}
