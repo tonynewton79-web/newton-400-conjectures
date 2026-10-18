@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39126628151",
-      "lean_axiom_audit": "PASS: 74 declarations, only propext, Classical.choice, Quot.sound",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39130358760",
+      "lean_axiom_audit": "PASS: 91 declarations; standard foundational allowlist",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean"
@@ -30,11 +30,16 @@
         "Universal reciprocal-distance tent identity for 1<=d<m",
         "Canonical cyclic interval overlap count",
         "All-vertex undirected cyclic interval overlap in ZMod",
-        "Full cyclic incidence Gram matrix entry equality for any vertices"
+        "Full cyclic incidence Gram matrix entry equality for any vertices",
+        "Exact rational diagonal normalization for every m >= 2",
+        "Actual weighted incidence Gram diagonal for all cycles n >= 4"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
-      "lean_gram_entry_audit_url": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39128814226"
+      "lean_gram_entry_audit_url": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39128814226",
+      "lean_gram_diagonal_verified": true,
+      "lean_gram_diagonal_source": "NewtonConjectures/GramDiagonal.lean",
+      "lean_gram_diagonal_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39130358760"
     }
   ]
 }
