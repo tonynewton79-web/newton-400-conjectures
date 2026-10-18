@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.RealSpectral
 import NewtonConjectures.RealGram
 import NewtonConjectures.SpectralPSD
 import NewtonConjectures.FullGram
