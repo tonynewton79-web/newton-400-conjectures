@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.ScalarGravityUpper
 import NewtonConjectures.DistanceShellScalarDegree
 import NewtonConjectures.DistanceShellDegreeRotation
 import NewtonConjectures.DistanceShellDegreeBridge
