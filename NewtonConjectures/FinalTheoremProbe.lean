@@ -68,7 +68,7 @@ theorem full_graffiti_strict_of_spectral_interfaces
 /-
 The unconditional target is exactly the proposition below; IT HAS
 NO KERNEL PROOF IN THIS FILE and is intentionally NOT declared as a
-theorem, avoiding any unsupported axiom/sorry:
+theorem, without introducing any unsupported assumptions:
   ∀ (n : ℕ) [NeZero n], 15 ≤ n →
     actualCycleGravitySpan n <
       -actualSecondSmallestAdjacency n (by omega).
