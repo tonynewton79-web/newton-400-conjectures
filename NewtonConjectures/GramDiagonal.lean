@@ -42,7 +42,7 @@ theorem diagonal_normalization (m : ℕ) (hm : 2 ≤ m) :
                 (1 : ℚ) / ((m : ℚ) - 1) := by
                   rw [hrec]
                   push_cast
-                  field_simp
+                  field_simp [hm0, hm1, hmp]
                   ring
         _ = (3 : ℚ) / 2 := ih
 
