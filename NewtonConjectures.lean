@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.FullGram
 import NewtonConjectures.OffDiagonal
 import NewtonConjectures.GramDiagonal
 import NewtonConjectures.CyclicGram
