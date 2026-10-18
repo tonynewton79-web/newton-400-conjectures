@@ -1,4 +1,4 @@
-\section{Formal certification: progressive fourteen-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive fifteen-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -275,6 +275,36 @@ and evaluating $s_n$ as the relevant harmonic sum, are separate
 formal goals. Therefore \eqref{eq:lean-both} is not yet the
 kernel-certified full numerical gravity spectral-span bound.
 
+
+\paragraph{Stage 15: all-cycle harmonic row-sum evaluation.}
+The modules \texttt{ShellCardinality.lean} and
+\texttt{ShellHarmonic.lean} close the previously conditional
+shell-count step with genuine finite combinatorics in
+$\mathbb Z/n\mathbb Z$. For every $n\ge4$ and
+$1\le d\le\lfloor n/2\rfloor$, the kernel proves
+that the distance-$d$ shell of zero consists exactly of
+the two residues $d$ and $n-d$, giving
+\begin{equation}\label{eq:lean-shell-count}
+N_d(0)=\begin{cases}1,&2d=n,\\2,&2d\ne n.\end{cases}
+\end{equation}
+The proof then evaluates the actual constant weighted
+shell sum, for all integers $m\ge2$:
+\begin{equation}\label{eq:lean-harmonic-scalar}
+s_{2m+1}=2H_m,\qquad
+s_{2m}=2H_{m-1}+\frac1m.
+\end{equation}
+Crucially, both formulas are established in Lean
+over the real field, including the rational-to-real
+harmonic conversion and the even antipodal correction.
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39160177061}{passing Stage~15 build}
+completed 7,376 Lean jobs and audited 301 declarations,
+with only the standard foundational axioms.
+Together with the actual two-sided Loewner bounds of
+Stage~14, this certifies all the matrix and scalar input
+for the gravity spectral-span estimate. The last step
+of extracting its \emph{actual real spectrum} as an
+ordered interval is still pending in Lean.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -297,7 +327,7 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-Stages 1--14 now kernel-certify the exact shifted reciprocal
+Stages 1--15 now kernel-certify the exact shifted reciprocal
 Gram decomposition and its real spectral positivity, the
 odd/even harmonic and trigonometric analytic comparisons,
 and the actual gravity upper Loewner bound
