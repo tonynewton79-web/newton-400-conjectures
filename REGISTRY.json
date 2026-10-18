@@ -8,17 +8,17 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — LEAN-CERTIFIED MATRIX INGREDIENTS; FULL THEOREM PENDING",
+      "status": "CANDIDATE — LEAN FULL MATRIX AND RATIONAL PSD VERIFIED; SPECTRAL ENDGAME PENDING",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
-      "prior_art_audit": "incomplete",
+      "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
       "specialist_review": false,
       "lean_kernel_verified": false,
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230",
-      "lean_axiom_audit": "PASS: 100 declarations, only propext, Classical.choice, Quot.sound",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39134282319",
+      "lean_axiom_audit": "PASS: 125 declarations within foundational allowlist",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -26,7 +26,9 @@
         "NewtonConjectures/CyclicZMod.lean",
         "NewtonConjectures/CyclicGram.lean",
         "NewtonConjectures/GramDiagonal.lean",
-        "NewtonConjectures/OffDiagonal.lean"
+        "NewtonConjectures/OffDiagonal.lean",
+        "NewtonConjectures/FullGram.lean",
+        "NewtonConjectures/SpectralPSD.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -37,7 +39,9 @@
         "All-vertex undirected cyclic interval overlap in ZMod",
         "Full cyclic incidence Gram matrix entry equality for any vertices",
         "Exact rational diagonal normalization for every m >= 2",
-        "Actual weighted incidence Gram diagonal for all cycles n >= 4"
+        "Actual weighted incidence Gram diagonal for all cycles n >= 4",
+        "Single full rational all-entry cyclic Gram matrix equality",
+        "Rational positive-semidefinite shifted reciprocal-distance matrix for all n >= 4"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
@@ -50,7 +54,14 @@
       "lean_exact_fraction_cases": 7259,
       "live_paper": "cases/001/paper/main.pdf",
       "last_pdf_release_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39132470911",
-      "last_pdf_verified_pages": 3
+      "last_pdf_verified_pages": 3,
+      "lean_psd_verified": true,
+      "lean_psd_base_field": "rational",
+      "lean_psd_source": "NewtonConjectures/SpectralPSD.lean",
+      "lean_full_matrix_verified": true,
+      "lean_full_matrix_source": "NewtonConjectures/FullGram.lean",
+      "lean_full_matrix_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39133219628",
+      "independently_accepted_original_result": false
     }
   ]
 }
