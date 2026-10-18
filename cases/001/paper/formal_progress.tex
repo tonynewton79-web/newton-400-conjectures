@@ -140,6 +140,11 @@ A further single Lean theorem selects the appropriate parity
 and proves the closed-form strict comparison for every $n\ge15$.
 \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146022640}{The accepted Stage~10 run}
 completed 7,365 build jobs and audited 197 declarations.
+The actual cycle adjacency matrix over $\mathbb Z/n\mathbb Z$
+is now defined in \texttt{AdjacencyDefinition.lean}, with its
+symmetry and entry nonnegativity certified in the
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146480928}{204-declaration kernel audit}.
+This isolates the remaining ordered-eigenvalue theorem.
 This formally closes the \emph{analytical} comparison, but it
 does not identify the right-hand cosine with the \emph{ordered}
 second-smallest adjacency eigenvalue inside Lean.
