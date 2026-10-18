@@ -1,0 +1,74 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[a4paper,margin=17mm,columnsep=7mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+\setlength{\parskip}{2pt}\setlength{\parindent}{1em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}{Remark}
+\title{Wheel--Chord Constructions and Cycle Counts in Three-Connected Graphs:\\An Exact Starting Certificate}
+\author{Tony Newton\\[2pt]\small Newton Astro Labs\textsuperscript{*}\\\small London, UK\\\small \texttt{tony.newton79@gmail.com}}
+\date{Working research manuscript, 18 October 2026}
+\begin{document}
+\twocolumn[{\maketitle\vspace{-8mm}\begin{center}\begin{minipage}{0.91\textwidth}\small
+\noindent\textbf{Abstract.}
+The 2026 paper \emph{The Cycle Counts of Graphs} conjectures the exact exceptional counts of simple cycles in finite three-connected simple graphs. We start a separate constructive programme with wheel graphs and wheels carrying one added rim chord. An elementary path classification gives an exact two-parameter cycle-count formula, valid for all admissible parameters. An independently implemented exact cycle enumerator verifies 406 graph instances with rim lengths through 30, including the graph-theoretic three-connectivity condition after every two-vertex deletion. This constitutes an exact restricted-family certificate, \emph{not} a solution of the open 2026 conjecture, and no historical originality claim for the elementary construction is made.
+\end{minipage}\end{center}\vspace{2mm}}]
+\begingroup\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnotetext[1]{Newton Astro Labs is the trading name under which Tony Newton conducts independent computational research in the United Kingdom; it is not a limited company.}\endgroup
+\section{The open 2026 cycle-count question}
+Write $c(G)$ for the number of unoriented simple cycles in a finite graph. McCulloch, McKay, Salahshoori, and Zaslavsky \cite{CC2026}, \S6(a), conjecture that the positive integers unattainable as $c(G)$ for finite simple 3-connected graphs are precisely
+\begin{equation}\label{eq:exceptions}
+1\text{--}6,\quad8\text{--}12,\quad16\text{--}20,\quad27,\ 30,\ 32\text{--}34.
+\end{equation}
+They report attainment of every other count through 3000. This is a finite computational range and does not prove eventual coverage. A family of certified constructive cycle counts is therefore a useful, but preliminary, attack on the conjecture.
+\section{Wheel and one-chord constructions}
+Let $W(m)$ ($m\ge3$) be the wheel with hub $h$ and rim $v_0v_1\cdots v_{m-1}v_0$. For $m\ge4$ and $2\le k\le m-2$, let $W(m;k)$ add the nonexisting rim chord $v_0v_k$.
+\begin{theorem}[Exact two-parameter construction]\label{thm:wheel}
+Every $W(m)$ and $W(m;k)$ is a three-connected simple graph. Their numbers of simple cycles are
+\begin{align}
+c(W(m))&=m(m-1)+1,\label{eq:wheel}\\
+c(W(m;k))&=\frac{3m^2-5m+8+2k(m-k)}2.\label{eq:chord}
+\end{align}
+\end{theorem}
+\begin{proof}
+After deleting at most two vertices of $W(m)$, a surviving hub connects every remaining rim vertex; if the hub is deleted, at most one rim vertex is deleted, leaving a connected rim path. Hence the wheel is three-connected. Adding an edge cannot destroy this property.
+
+A wheel cycle is either the rim cycle, or contains the hub and is determined by an unordered pair of distinct rim vertices together with a choice of either of the two rim arcs between them. Thus $c(W(m))=1+2\binom m2$.
+
+Every new cycle formed by adding chord $v_0v_k$ corresponds bijectively to a pre-existing simple $v_0$--$v_k$ path. Put $\ell=m-k$. There are two paths avoiding $h$: the two rim arcs. Paths containing $h$ are split by their two spokes into disjoint rim subpaths. If the first spoke is used immediately at $v_0$, there are $m-1$ choices for the remaining subpath. If only the final spoke is used immediately at $v_k$, there are $m-2$ further choices. When both spokes meet internal rim vertices, the subpaths can lie on opposite rim arcs in $2(k-1)(\ell-1)$ ways, or on the same arc in $\binom{k-1}{2}+\binom{\ell-1}{2}$ ways. These cases are disjoint and exhaustive. Consequently the number of new cycles is
+\begin{align*}
+\Delta_{m,k}={}&2+(m-1)+(m-2)+2(k-1)(\ell-1)\\
+&+\binom{k-1}{2}+\binom{\ell-1}{2}\\
+={}&\frac{m^2+2k(m-k)-3m+6}{2}.
+\end{align*}
+Adding this to $m(m-1)+1$ yields \eqref{eq:chord}.
+\end{proof}
+\begin{remark}[Symmetry and counting scope]
+The identity is unchanged by $k\leftrightarrow m-k$, the natural wheel-reflection symmetry. Even the collection of all $W(m;k)$ has a sparse set of cycle counts; we do not infer all-integer coverage from \eqref{eq:chord}. Nor do we claim that the elementary formula has no prior occurrence in the graph-enumeration literature.
+\end{remark}
+\begin{table}[t]
+\centering\small
+\caption{Cycle counts distinguished by the one-chord construction. Values are organized by rim length, emphasizing the arithmetic sparsity of the family.}
+\begin{tabular}{@{}rll@{}}\toprule
+$m$ & $c(W(m))$ & Distinct $c(W(m;k))$ \\ \midrule
+4 & 13 & 22\\
+5 & 21 & 35\\
+6 & 31 & 51, 52\\
+7 & 43 & 70, 72\\
+8 & 57 & 92, 95, 96\\
+9 & 73 & 117, 121, 123\\
+\bottomrule
+\end{tabular}
+\end{table}
+\section{Exact reproducibility and independent replay}
+The standalone Python source \texttt{cases/002/verify.py} constructs every graph directly from its adjacency sets. It enumerates simple cycles with the minimum-labelled cycle vertex fixed, then divides the oriented count by two; this prevents rotational and reversal overcounting without importing a graph-library cycle routine. It independently verifies each instance's cycle count against \eqref{eq:wheel} or \eqref{eq:chord}. For connectivity, every pair of vertices is removed and the surviving graph is checked by graph traversal.
+
+For $m=3,\dots,30$, the tests cover 28 wheels and 378 wheels with one admissible chord, yielding \textbf{406 exact cycle-count checks} and \textbf{406 complete two-vertex-deletion connectivity checks}; all pass. The certificate is an exhaustive check over this specified finite test family, not an all-parameter computation. The all-parameter assertion is proved above by combinatorial counting.
+\section{The next research and falsification gate}
+The constructive search should next add two or three rim chords and quotient placements by the dihedral group, derive their simple-path contribution polynomials, and test whether finitely many parameterized count families jointly cover complete integer intervals. A candidate interval-coverage theorem needs an exact integer proof, independent graph generation, and separate Lean or comparable formalization before being counted as a new conjecture resolution. A counterexample to the 2026 conjecture would instead require an unattainable count not listed in \eqref{eq:exceptions}, with an exhaustive obstruction certificate over \emph{all} 3-connected simple graphs, not merely an unsuccessful search.
+\section*{Scientific status and authorship boundary}
+This is a \emph{working} research manuscript with one elementary exact construction theorem and independently reproduced finite tests. The conjecture in \cite{CC2026} remains open in this manuscript; novelty and historical priority of the construction are not established. The 2026 problem formulation and its computational evidence are attributed to the original four authors. No claim is made about external acceptance.
+\begin{thebibliography}{9}\small
+\bibitem{CC2026} R. McCulloch, B. D. McKay, A. Salahshoori, and T. Zaslavsky, \emph{The Cycle Counts of Graphs}, \emph{Graphs and Combinatorics} \textbf{42}, article 53 (2026). \href{https://doi.org/10.1007/s00373-026-03047-3}{doi:10.1007/s00373-026-03047-3}.
+\end{thebibliography}
+\end{document}
