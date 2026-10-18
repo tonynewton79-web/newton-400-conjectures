@@ -43,3 +43,14 @@ See [CLAIM_POLICY.md](CLAIM_POLICY.md), [REGISTRY.json](REGISTRY.json), and the 
 The full graph-theoretic cycle theorem has **not** been formalized. Do not count Case 001 as a fully Lean-certified theorem or an externally accepted original mathematical result.
 
 **Latest cumulative paper release — Stages 1–5 (18 October 2026):** [Read or download the updated three-page PDF](cases/001/paper/main.pdf). The proof-source, exact tests and Lean status have been integrated into the same living paper. [PDF build passed](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39132470911); [Stage 5 Lean kernel and 100-declaration audit passed](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39131413230). See the [mandatory paper-update protocol](cases/001/PUBLICATION_POLICY.md). Full graph theorem Lean certification and originality audit remain pending.
+
+
+### Latest Case 001 proof release — Stage 8 (18 October 2026)
+
+- **[Living full research paper — PDF](cases/001/paper/main.pdf)**: four-page revised manuscript containing Stages 1–8, all formally checked identities, exact arithmetic and claim boundaries.
+- **[Stage 8 real spectral Lean source](NewtonConjectures/RealSpectral.lean)** and [real Gram PSD source](NewtonConjectures/RealGram.lean).
+- **[Lean Stage 8 audit](cases/001/certificates/LEAN_STAGE8_AUDIT.md)**: successful [GitHub Actions kernel and 142-declaration axiom audit](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900).
+- **[Updated PDF build](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139406455)**: four pages, generated and committed to `main`.
+- **[Remaining full-theorem Lean gates](https://github.com/tonynewton79-web/newton-400-conjectures/issues/12)** and **[external specialist/priority review](https://github.com/tonynewton79-web/newton-400-conjectures/issues/10)**.
+
+**Scientific count:** exact real shifted reciprocal-distance spectrum positivity is now kernel-verified for all n≥4. The *full* sharp Graffiti 197 cycle theorem is not yet formalized end to end in Lean, nor externally accepted as original. The original Graffiti 197 was already refuted by Roucairol and Cazenave.
