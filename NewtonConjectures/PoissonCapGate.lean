@@ -92,6 +92,33 @@ theorem finite_positive_cap_average (n m : ℕ) (hn : 3 ≤ n)
       rw [Finset.mul_sum]
     _ < _ := hsum
 
+
+/-- On the axial interval 2/5 ≤ r ≤ 3/5 and for any sphere coordinate
+    t ≤ 1, the squared distance denominator is uniformly bounded below.
+    This is the key elementary bound behind dominated differentiation
+    of the *actual* Poisson kernel on the cap. -/
+theorem axial_denominator_lower_bound (r t : ℝ)
+    (hr0 : (2 / 5 : ℝ) ≤ r) (hr1 : r ≤ (3 / 5 : ℝ))
+    (ht : t ≤ 1) :
+    (4 / 25 : ℝ) ≤ 1 + r ^ 2 - 2 * r * t := by
+  have hrpos : (0 : ℝ) ≤ r := by linarith
+  have hgap : (0 : ℝ) ≤ 1 - r - 2 / 5 := by linarith
+  have hsum : (0 : ℝ) ≤ 1 - r + 2 / 5 := by linarith
+  have hsq : (4 / 25 : ℝ) ≤ (1 - r) ^ 2 := by
+    nlinarith [mul_nonneg hgap hsum]
+  have hkernel : (1 - r) ^ 2 ≤ 1 + r ^ 2 - 2 * r * t := by
+    nlinarith [mul_nonneg hrpos (sub_nonneg.mpr ht)]
+  linarith
+
+/-- A dimension-free bound on the derivative of the axial squared
+    distance argument, valid for every spherical coordinate -1 ≤ t ≤ 1. -/
+theorem axial_denominator_derivative_bound (r t : ℝ)
+    (hr0 : (2 / 5 : ℝ) ≤ r) (hr1 : r ≤ (3 / 5 : ℝ))
+    (ht0 : -1 ≤ t) (ht1 : t ≤ 1) :
+    |2 * r - 2 * t| ≤ (16 / 5 : ℝ) := by
+  apply abs_le.mpr
+  constructor <;> linarith
+
 /-- Strict violation follows from an integrated derivative estimate
     D * dp > N * p with 0 < p < 1, D > 0, N > 0.
 
