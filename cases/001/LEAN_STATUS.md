@@ -212,3 +212,28 @@ Do not claim full formal acceptance or external novelty certification. The initi
 - `cycleAdjacencyMatrix_transpose` and `cycleAdjacencyMatrix_entry_symmetric` formally certify symmetry, and entries are proven nonnegative.
 
 **Important:** This constructs the mathematical *object* for the missing spectral proof. It does not prove its spectrum, sort its eigenvalues, or establish their multiplicities. Thus the single end-to-end graph-theoretic theorem is still HOLD, despite all 204 checked declarations.
+
+
+## Stage 11 — the *actual* graph-spectral final theorem interface — CONDITIONAL KERNEL PASS
+
+Successful [Lean build 39151152516](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39151152516):
+- Pinned Lean/mathlib: **PASS**, 7,368 build jobs.
+- Axiom audit: **PASS**, 223 project declarations, only `propext`, `Classical.choice`, `Quot.sound`.
+- Proof-placeholder scan: **PASS** after removing a false-positive placeholder word in a comment. No new axioms or admitted statements were used.
+
+### What is now verified
+1. `FinalTheoremProbe.lean` defines the **actual** zero-diagonal graph reciprocal-distance matrix and 4/(n−1)-scaled gravity matrix on `ZMod n`; the span is `sSup(spectrum ℝ gravity) - sInf(spectrum ℝ gravity)`, i.e., a numerical spectral span, not a count of distinct values.
+2. The actual second-smallest adjacency eigenvalue is defined from mathlib's **descending ordered** `Matrix.IsHermitian.eigenvalues₀` at index n−2 (with multiplicities). Hermitian symmetry of the cycle adjacency matrix is kernel-proved.
+3. Lean proves the **conditional** theorem `full_graffiti_strict_of_spectral_interfaces` for every n≥15, given exactly these two outstanding hypotheses:
+   - `-actualSecondSmallestAdjacency n = adjacencyCosineCandidate n`;
+   - `actualCycleGravitySpan n ≤ gravityParityCap n`.
+   Under these assumptions the graph-theoretic strict inequality follows from the unconditional Stage 10 all-size analytic theorem.
+4. `ActualGravityBridge.lean` proves the *actual* zero-diagonal reciprocal-distance matrix shifted by (3/2)I equals the Stage 8 certified shifted reciprocal-distance matrix; hence that genuine graph matrix shift is positive semidefinite. The actual gravity matrix equals exactly (4/(n−1)) times the reciprocal-distance matrix.
+
+### What remains explicitly UNPROVED in Lean
+- **Ordered adjacency spectrum identification**: prove the actual n-cycle second-smallest eigenvalue equals the correct parity-dependent negative cosine.
+- **Gravity spectral-span upper bound**: prove the actual gravity span ≤ certified `gravityParityCap n`, using row sums and the shifted PSD certificate.
+- **Finite converse**: formally check nonviolation for C3–C14 from exact rational interval certificates.
+- **One unconditional graph-theoretic biconditional** combining the above.
+
+**Status: FINAL_STATEMENT_TYPECHECKED_CONDITIONALLY; ENTIRE_GRAFFITI_THEOREM_NOT_KERNEL_PROVED.** No acceptance/novelty verdict is implied. Paper 002 remains unchanged.
