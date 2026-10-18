@@ -1,0 +1,21 @@
+{
+  "auxiliary_det": 57,
+  "conclusion": "cofinite, non-effective, conditional only on classical Tartakowsky theorem",
+  "gram_det": 324,
+  "hessian_det": 10368,
+  "integer_vector_tests": 3125,
+  "p2_residues": [
+    0,
+    1
+  ],
+  "p3_divided_form_residues": [
+    0,
+    1,
+    2
+  ],
+  "p3_unit_residues": [
+    1,
+    2
+  ],
+  "status": "PASS_LOCAL_ARITHMETIC_NOT_EXTERNAL_THEOREM"
+}
