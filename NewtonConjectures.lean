@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.DistanceShellLaplacian
 import NewtonConjectures.ActualGravityBridge
 import NewtonConjectures.FinalTheoremProbe
 import NewtonConjectures.AdjacencyDefinition
