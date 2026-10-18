@@ -58,8 +58,6 @@ theorem cyclic_incidence_psd (n j : ℕ) [NeZero n] :
   classical
   have h := Matrix.posSemidef_self_mul_conjTranspose (cyclicIncidence n j)
   convert h using 1
-  ext u v
-  simp [Matrix.mul_apply, Matrix.conjTranspose_apply, Matrix.transpose_apply]
 
 /-- The exact positive-semidefinite matrix that appears on the right side
 of the fully certified reciprocal-cycle matrix identity. -/
@@ -106,9 +104,8 @@ theorem weighted_cycle_gram_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
   have hfull := hconst.add hsum
   convert hfull using 1
   ext u v
-  simp [weightedCycleGram, Matrix.add_apply,
-    Matrix.smul_apply, Finset.sum_apply, smul_eq_mul]
-  ring
+  simp only [weightedCycleGram, Matrix.add_apply, Matrix.sum_apply,
+    Matrix.smul_apply, smul_eq_mul]
 
 /-- Positive semidefiniteness of the shifted reciprocal-distance matrix,
 an immediate theorem-level consequence of the fully formal matrix equality. -/
