@@ -8,7 +8,7 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — STAGE11 ACTUAL GRAPH THEOREM CONDITIONAL LEAN PASS; UNCONDITIONAL HOLD",
+      "status": "CANDIDATE — STAGE12 ACTUAL GRAVITY MATRIX UPPER LOEWNER LEAN VERIFIED; FULL THEOREM HOLD",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39151152516",
-      "lean_axiom_audit": "PASS: 223 declarations, propext/Classical.choice/Quot.sound only",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39153984478",
+      "lean_axiom_audit": "PASS: 250 declarations, foundational allowlist only",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -36,7 +36,10 @@
         "NewtonConjectures/AllCycleAnalytic.lean",
         "NewtonConjectures/AdjacencyDefinition.lean",
         "NewtonConjectures/FinalTheoremProbe.lean",
-        "NewtonConjectures/ActualGravityBridge.lean"
+        "NewtonConjectures/ActualGravityBridge.lean",
+        "NewtonConjectures/DistanceShellLaplacian.lean",
+        "NewtonConjectures/DistanceShellAdjacency.lean",
+        "NewtonConjectures/DistanceShellDegreeBridge.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -60,7 +63,10 @@
         "Parity-unified unconditional all-n>=15 analytic strict inequality",
         "Conditional full graph inequality stated with actual ordered Hermitian eigenvalues",
         "Exact real gravity scaling to actual reciprocal-distance matrix",
-        "Actual shifted reciprocal-distance matrix equals PSD certified Gram shift"
+        "Actual shifted reciprocal-distance matrix equals PSD certified Gram shift",
+        "Real weighted shell Laplacian PSD for all n>=4",
+        "Exact real weighted shell adjacency reconstruction of actual reciprocal-distance matrix",
+        "Actual gravity matrix Loewner upper bound by weighted shell degree matrix"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
@@ -85,7 +91,7 @@
       "lean_real_shifted_reciprocal_psd_verified": true,
       "lean_real_shifted_spectrum_nonnegative_verified": true,
       "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
-      "last_mathematical_gate": "Conditional actual-graph final theorem compiles; two spectral interface premises and finite converse still lack Lean proofs",
+      "last_mathematical_gate": "Stage12 upper Loewner matrix PSD verified; scalar row-sum, ordered adjacency eigenvalue and finite converse pending",
       "lean_harmonic_parity_uniform_verified": true,
       "lean_odd_monotonic_verified": true,
       "lean_even_monotonic_verified": true,
@@ -94,10 +100,10 @@
       "lean_trigonometric_comparison_verified": true,
       "lean_all_n_analytic_strict_verified": true,
       "lean_final_graph_theorem_issues": [
-        "UNPROVED: second-smallest cycle adjacency eigenvalue equals cosine candidate",
-        "UNPROVED: actual gravity numerical spectral span ≤ rational harmonic cap",
-        "UNPROVED IN LEAN: exact finite converse C3-C14",
-        "UNPROVED: unconditional graph theorem/biconditional"
+        "Weighted distance-shell degree matrix must equal explicit scalar harmonic row sum times I",
+        "Actual numerical gravity spectral span needs extraction from upper Loewner matrix bound plus lower Gram certificate",
+        "Ordered second-smallest cycle adjacency eigenvalue must equal parity-dependent cosine candidate with multiplicities",
+        "Finite C3..C14 complement kernel certification outstanding"
       ],
       "lean_adjacency_matrix_defined_verified": true,
       "lean_adjacency_matrix_symmetry_verified": true,
@@ -106,7 +112,11 @@
       "lean_gravity_scale_verified": true,
       "lean_actual_reciprocal_shift_psd_verified": true,
       "lean_conditional_graffiti_theorem_verified": true,
-      "lean_final_statement_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39151152516"
+      "lean_final_statement_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39151152516",
+      "lean_distance_shell_adjacency_verified": true,
+      "lean_weighted_graph_laplacian_psd_verified": true,
+      "lean_distance_shell_degree_bridge_verified": true,
+      "lean_actual_gravity_upper_loewner_verified": true
     },
     {
       "id": "002",

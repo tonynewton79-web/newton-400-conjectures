@@ -1,4 +1,4 @@
-\section{Formal certification: progressive eleven-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive twelve-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -180,6 +180,39 @@ The finite converse $C_3,\ldots,C_{14}$ is also pending
 kernel certification. There is no claim of a complete
 unconditional Lean proof.
 
+
+\paragraph{Stage 12: distance-shell upper matrix certificate.}
+The modules \texttt{DistanceShellLaplacian.lean},
+\texttt{DistanceShellAdjacency.lean}, and
+\texttt{DistanceShellDegreeBridge.lean} construct an
+independent positive-semidefinite \emph{upper} matrix
+certificate, complementary to the shifted-Gram lower
+certificate. For each distance $1\le d\le m$, let
+$E_d$ be the undirected distance-$d$ shell graph of $C_n$.
+Writing $L(E_d)$ for its ordinary graph Laplacian and
+$D_n$ for the weighted diagonal shell-degree matrix,
+the kernel proves the exact identities
+\begin{align}\label{eq:lean-laplacian}
+R_n&=\sum_{d=1}^m\frac1d\,A(E_d),\notag\\
+L_n&=\sum_{d=1}^m\frac1d\,L(E_d)=D_n-R_n.
+\end{align}
+Each graph Laplacian is positive semidefinite, so
+\begin{equation}\label{eq:lean-gravity-upper}
+D_n-R_n\succeq0,\qquad
+\frac4{n-1}D_n-\Gr_n\succeq0\quad(n\ge4).
+\end{equation}
+These are \emph{actual} cycle-distance matrices and
+the original gravity scaling, with no spectral target
+substituted into the definition.
+\href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39153984478}{The Stage~12 kernel audit}
+accepted 250 project declarations after 7,371 successful
+build jobs. The remaining graph-specific step is to
+prove inside Lean that $D_n=s_n I$, with
+$s_n=2H_m$ for odd $n$ and
+$s_n=2H_{m-1}+1/m$ for even $n$. Until that identity
+and the spectral extraction compile, \eqref{eq:lean-gravity-upper}
+is not by itself the full numerical-span inequality.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -202,15 +235,16 @@ all 7,259 cases $2\le m\le120$, $1\le d\le m$.
 See the versioned \href{https://github.com/tonynewton79-web/newton-400-conjectures/blob/main/cases/001/LEAN_STATUS.md}{proof ledger}.
 
 \paragraph{Claim boundary.}
-The exact Gram decomposition, actual real shifted Harary-matrix
-positivity, parity-uniform harmonic and trigonometric bounds,
-and the final strict graph inequality \emph{under explicitly
-identified spectral premises} have been kernel-certified.
-The premises themselves, namely the ordered adjacency-spectrum
-identification and the actual gravity spectral-span cap,
-are still missing, as is the exact finite complement
-$C_3,\ldots,C_{14}$. Thus the complete original Graffiti~197
-cycle classification has \emph{not} passed an end-to-end
-unconditional Lean compilation. The analytic manuscript,
-independent exact verifier, external novelty audit and
-specialist assessment remain separate release gates.
+Stages 1--12 now kernel-certify the exact shifted reciprocal
+Gram decomposition and its real spectral positivity, the
+odd/even harmonic and trigonometric analytic comparisons,
+and the actual gravity upper Loewner bound
+\eqref{eq:lean-gravity-upper}. The strict Graffiti
+inequality has been compiled only \emph{conditionally}
+upon its actual spectral interfaces. The outstanding Lean
+proofs are: scalar shell-degree/row-sum normalization,
+gravity spectral-span extraction, the adjacency matrix's
+ordered second-smallest eigenvalue and multiplicities, and
+the finite nonviolating cases $C_3,\ldots,C_{14}$.
+The full sharp-cycle theorem therefore remains a candidate
+for end-to-end kernel certification and independent expert review.
