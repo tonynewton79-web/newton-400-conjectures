@@ -263,3 +263,31 @@ Successful [Lean build 39151152516](https://github.com/tonynewton79-web/newton-4
 - Certify the finite converse for C3..C14.
 
 **STAGE12_MATRIX_UPPER_BOUND_KERNEL_VERIFIED; FINAL_GRAFFITI_THEOREM_STILL_HOLD.** As before, the proposed sharp all-cycle classification and originality require independent expert review; Graffiti 197's original first counterexample was already found by Roucairol and Cazenave.
+
+
+## Stage 13 — rotation invariance and scalar weighted degree matrix — KERNEL VERIFIED
+
+**Most recent passing run:** https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39157366365
+
+- Pinned Lean/mathlib: **PASS**, 7,373 build jobs.
+- Axiom audit: **PASS**, 268 project declarations; only `propext`, `Classical.choice`, `Quot.sound`.
+- Source modules: `NewtonConjectures/DistanceShellDegreeRotation.lean` and `NewtonConjectures/DistanceShellScalarDegree.lean`.
+- `cycle_distance_add_right`: cyclic distance preserved by simultaneous translation.
+- `distance_shell_adj_add_right`: graph-shell adjacency preserved by translation.
+- `cycle_shell_neighbor_count_translate`: complete finite bijection of shell neighbors.
+- `cycle_weighted_shell_count_constant`: inverse-distance-weighted shell count independent of vertex.
+- `cycle_shell_finite_degree_eq_count`: graph-degree equals exact finite cardinality.
+- `cycle_weighted_degree_matrix_scalar`: the actual weighted shell-degree matrix satisfies **D_n = s_n I**, with `s_n := cycleWeightedShellCount n 0`. Combining this with certified Stage 12 gives **s_n I − R_n positive semidefinite for every n≥4**. The two separate certified identities are in the kernel, even though the combined one-line restatement has not been added as a separate declaration.
+
+### Independent exact row-count replay (separate from Lean)
+
+`cases/001/verify_row_sum.py` passes for all 4≤n≤160: 685,875 distance-shell cardinalities and 12,874 full reciprocal-distance row sums. All agree exactly with `s_(2m+1)=2H_m` and `s_(2m)=2H_(m−1)+1/m`. The integer/rational certificate is in `cases/001/certificates/ROW_SUM_EXACT_4_TO_160.json` with source-row digest `dfb385c5e1a5eb5a5762c11e239e8da8ab6951711d2f407912fd76224f5ce47a`. This script is now required by `.github/workflows/verify.yml`.
+
+### Remaining explicit HOLD gates
+
+1. All-n Lean derivation of each shell size (2 except the even antipodal shell of size 1), hence the explicit harmonic formula for s_n.
+2. Mathematically standard, but yet uncompiled, numerical real-spectrum extraction that turns the PSD bounds into the actual gravity `sSup-sInf` spectral span upper bound.
+3. Ordered second-smallest adjacency eigenvalue of the actual cycle adjacency matrix, with both parity branches and multiplicity.
+4. Full Lean finite no-violation converse C3–C14 and the final graph biconditional.
+
+**Status:** STAGE13_SCALAR_DEGREE_CERTIFIED; COMPLETE_SHARP_GRAFFITI_THEOREM_HOLD; EXTERNAL_ORIGINALITY_REVIEW_PENDING.

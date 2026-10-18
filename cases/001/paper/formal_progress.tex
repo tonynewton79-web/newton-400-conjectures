@@ -1,4 +1,4 @@
-\section{Formal certification: progressive twelve-stage proof ledger}\label{sec:formal}
+\section{Formal certification: progressive thirteen-stage proof ledger}\label{sec:formal}
 A pinned Lean~4/mathlib~v4.24.0 project certifies proof-critical
 identities of Lemma~\ref{lem:gram}; sources and lockfile reside in the
 \href{https://github.com/tonynewton79-web/newton-400-conjectures}{public
@@ -213,6 +213,46 @@ $s_n=2H_{m-1}+1/m$ for even $n$. Until that identity
 and the spectral extraction compile, \eqref{eq:lean-gravity-upper}
 is not by itself the full numerical-span inequality.
 
+
+\paragraph{Stage 13: rotation-invariant shell counts and scalar degree.}
+The new modules \texttt{DistanceShellDegreeRotation.lean} and
+\texttt{DistanceShellScalarDegree.lean} give a graph-native
+proof that distance-shell adjacency is preserved by simultaneous
+cyclic translation of both endpoints. A finite bijection then
+proves that each shell has a vertex-independent neighbor count.
+The inverse-distance-weighted count $s_n$, evaluated at
+the zero vertex, is therefore constant over the cycle, and
+the kernel establishes the exact scalar-matrix identity
+\begin{equation}\label{eq:lean-scalar-degree}
+D_n=s_nI,\qquad
+s_n:=\sum_{d=1}^{\lfloor n/2\rfloor}
+\frac{N_d(0)}d.
+\end{equation}
+Together with the Stage~12 weighted Laplacian theorem,
+this gives the \emph{actual} graph matrix inequality
+\begin{equation}\label{eq:lean-scalar-upper}
+s_nI-R_n\succeq0 \qquad(n\ge4).
+\end{equation}
+The \href{https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39157366365}{successful Stage~13 Lean run}
+compiled 7,373 build jobs and audited 268 project
+declarations within the foundational axiom allowlist.
+No numerical fitting or unproved regularity assumption enters
+this scalar identity.
+
+For odd $n=2m+1$, each nonzero distance $1\le d\le m$
+has the two endpoints $u\pm d$, giving $s_n=2H_m$.
+For even $n=2m$, the antipodal shell $d=m$ has one
+endpoint while every smaller positive shell has two, giving
+$s_n=2H_{m-1}+1/m$. These elementary arithmetic
+identities were independently replayed with exact rational
+arithmetic for all $4\le n\le160$ (685,875 shell-cardinality
+checks and 12,874 vertex row-sum checks), and
+\emph{have not yet been kernel-certified uniformly in $n$}.
+Nor has the resulting full gravity numerical spectral-span
+bound been extracted in Lean. The graph-theoretic
+eigenvalue ordering and the $C_3,\ldots,C_{14}$ converse
+also remain formal obligations.
+
 \paragraph{Originality screen and claim calibration.}
 The primary Roucairol--Cazenave source already refutes Graffiti~197
 using $C_{17}$ and conjectures only the $C_{4r+1}$ family;
@@ -239,10 +279,11 @@ Stages 1--12 now kernel-certify the exact shifted reciprocal
 Gram decomposition and its real spectral positivity, the
 odd/even harmonic and trigonometric analytic comparisons,
 and the actual gravity upper Loewner bound
-\eqref{eq:lean-gravity-upper}. The strict Graffiti
+\eqref{eq:lean-gravity-upper}, and the scalar degree identity
+\eqref{eq:lean-scalar-degree}. The strict Graffiti
 inequality has been compiled only \emph{conditionally}
 upon its actual spectral interfaces. The outstanding Lean
-proofs are: scalar shell-degree/row-sum normalization,
+proofs are: the explicit parity-dependent harmonic evaluation of $s_n$,
 gravity spectral-span extraction, the adjacency matrix's
 ordered second-smallest eigenvalue and multiplicities, and
 the finite nonviolating cases $C_3,\ldots,C_{14}$.

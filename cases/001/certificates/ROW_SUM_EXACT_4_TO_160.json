@@ -1,0 +1,12 @@
+{
+  "status": "PASS_EXACT_FINITE_AUDIT_NOT_UNIVERSAL_LEAN_PROOF",
+  "n_range": [
+    4,
+    160
+  ],
+  "shell_cardinality_checks": 685875,
+  "row_sum_checks": 12874,
+  "distinct_cycle_orders": 157,
+  "rows_sha256": "dfb385c5e1a5eb5a5762c11e239e8da8ab6951711d2f407912fd76224f5ce47a",
+  "pending_lean": "universal shell-cardinality formula and adjacency eigenvalue ordering"
+}
