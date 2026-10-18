@@ -2,6 +2,10 @@
 
 Research release dated 19 October 2026. Author: Tony Newton, Newton Astro Labs.
 
+## GitHub subset versus full packet
+
+This GitHub folder contains the upstream graph inputs, a standalone exact nine-case positive-CSP/ten-orbit replay and CI setup. The full independent MILP construction, 18 JSON witnesses, C++ cut scanner, paper PDF, editable TeX, and their exact SHA manifest are distributed in the separate downloadable conversation packet; they are not present in this GitHub folder. Accordingly, passing the lightweight GitHub workflow does not imply the full dual-solver audit was rerun in GitHub Actions.
+
 ## Evidential status
 
 - **Exact elementary theorem:** 1,725 parity-compatible four-edge-cut 6-matching label assignments, forming exactly 10 orbits under relabelling of the six matchings. Class counts 1+3+3+3. The graph-specific *extendible* cut-state sets are not proved nonempty by parity alone.
