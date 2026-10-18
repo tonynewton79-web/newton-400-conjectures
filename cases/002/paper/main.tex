@@ -1,74 +1,272 @@
-\documentclass[10pt,twocolumn]{article}
-\usepackage[a4paper,margin=17mm,columnsep=7mm]{geometry}
+\documentclass[9pt,a4paper,twocolumn]{extarticle}
+\usepackage[margin=16mm,columnsep=7mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,hyperref}
-\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
-\setlength{\parskip}{2pt}\setlength{\parindent}{1em}
+\usepackage{lmodern}
+\usepackage{seqsplit}
+\usepackage{float}
 \newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
 \newtheorem{remark}{Remark}
-\title{Wheel--Chord Constructions and Cycle Counts in Three-Connected Graphs:\\An Exact Starting Certificate}
-\author{Tony Newton\\[2pt]\small Newton Astro Labs\textsuperscript{*}\\\small London, UK\\\small \texttt{tony.newton79@gmail.com}}
-\date{Working research manuscript, 18 October 2026}
+\newcommand{\cyc}{\operatorname{cyc}}
+\title{An Eventual-Coverage Theorem for Cycle Counts\\ of Three-Connected Simple Graphs\\\large Newton Conjecture Project --- Paper 002, final audited research edition}
+\author{Tony Newton\\\small Newton Astro Labs\thanks{Newton Astro Labs is the trading name under which Tony Newton conducts independent computational research in the United Kingdom; it is not a limited company.}\\\small London, UK\\\small \texttt{tony.newton79@gmail.com}}
+\date{18 October 2026}
 \begin{document}
-\twocolumn[{\maketitle\vspace{-8mm}\begin{center}\begin{minipage}{0.91\textwidth}\small
-\noindent\textbf{Abstract.}
-The 2026 paper \emph{The Cycle Counts of Graphs} conjectures the exact exceptional counts of simple cycles in finite three-connected simple graphs. We start a separate constructive programme with wheel graphs and wheels carrying one added rim chord. An elementary path classification gives an exact two-parameter cycle-count formula, valid for all admissible parameters. An independently implemented exact cycle enumerator verifies 406 graph instances with rim lengths through 30, including the graph-theoretic three-connectivity condition after every two-vertex deletion. This constitutes an exact restricted-family certificate, \emph{not} a solution of the open 2026 conjecture, and no historical originality claim for the elementary construction is made.
-\end{minipage}\end{center}\vspace{2mm}}]
-\begingroup\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnotetext[1]{Newton Astro Labs is the trading name under which Tony Newton conducts independent computational research in the United Kingdom; it is not a limited company.}\endgroup
-\section{The open 2026 cycle-count question}
-Write $c(G)$ for the number of unoriented simple cycles in a finite graph. McCulloch, McKay, Salahshoori, and Zaslavsky \cite{CC2026}, \S6(a), conjecture that the positive integers unattainable as $c(G)$ for finite simple 3-connected graphs are precisely
-\begin{equation}\label{eq:exceptions}
-1\text{--}6,\quad8\text{--}12,\quad16\text{--}20,\quad27,\ 30,\ 32\text{--}34.
+\maketitle
+\begin{abstract}
+We establish that every sufficiently large positive integer is the number of unoriented simple cycles of some three-connected simple graph. A wheel augmented by three pairwise-crossing rim chords has an exact six-gap quadratic cycle-count polynomial, proved through a finite structural reconstruction and checked by independent exhaustive enumeration. Restricting its rim length to multiples of six yields the count $231t^2-117t+36-Q(x)$ for an integer-valued positive-definite rank-five quadratic form $Q$. We verify that $Q$ represents every $p$-adic integer for every prime $p$: the only potentially singular primes are $2$ and $3$, and explicit integral vectors and a three-dimensional auxiliary form settle both. Tartakowsky's classical local-to-global theorem therefore implies that $Q$ represents every sufficiently large positive integer. A uniform Euclidean norm bound then supplies overlapping, unbounded intervals of attainable graph cycle counts. Separately, an exact finite witness ledger certifies all $416{,}889$ counts in $[1897,418785]$. The existence theorem is non-effective; it does not determine the threshold or settle the conjectured exact exceptional set of McCulloch, McKay, Salahshoori, and Zaslavsky. Novelty of the particular construction awaits specialist assessment.
+\end{abstract}
+\section{Problem and established context}
+Let $\cyc(G)$ denote the number of unoriented simple cycles of a finite simple graph $G$. The 2026 paper of McCulloch, McKay, Salahshoori, and Zaslavsky proves the classification for inseparable graphs and lists conjectural exceptional cycle counts for more restricted classes, including three-connected simple graphs~\cite{MMSZ}. Its reported computational coverage in the latter class extends through $3000$. We investigate explicit constructions, not all possible graphs.
+
+Write $W_m$ for the wheel with $m\geq4$ rim vertices and one hub, with its $m$ spokes and rim edges. The wheel is three-connected. Since adjoining edges cannot destroy vertex connectivity, every wheel plus added nonedges is also three-connected. The baseline count is
+\begin{equation}\label{eq:wheel}
+\cyc(W_m)=m(m-1)+1.
 \end{equation}
-They report attainment of every other count through 3000. This is a finite computational range and does not prove eventual coverage. A family of certified constructive cycle counts is therefore a useful, but preliminary, attack on the conjecture.
-\section{Wheel and one-chord constructions}
-Let $W(m)$ ($m\ge3$) be the wheel with hub $h$ and rim $v_0v_1\cdots v_{m-1}v_0$. For $m\ge4$ and $2\le k\le m-2$, let $W(m;k)$ add the nonexisting rim chord $v_0v_k$.
-\begin{theorem}[Exact two-parameter construction]\label{thm:wheel}
-Every $W(m)$ and $W(m;k)$ is a three-connected simple graph. Their numbers of simple cycles are
-\begin{align}
-c(W(m))&=m(m-1)+1,\label{eq:wheel}\\
-c(W(m;k))&=\frac{3m^2-5m+8+2k(m-k)}2.\label{eq:chord}
+Indeed, the rim supplies one cycle, and each pair of distinct rim vertices determines two rim paths, hence two hub cycles.
+
+\begin{lemma}[One-chord formula]\label{lem:one}
+For a new rim chord whose endpoints cut the rim into arcs of lengths $k$ and $m-k$, where $2\leq k\leq m-2$,
+\begin{equation}\label{eq:one}
+\cyc(W_m+e)=\frac{3m^2-5m+8+2k(m-k)}{2}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+A cycle newly created by $e$ uses it. Exactly two such cycles avoid the hub. A new hub cycle corresponds to a simple path in the original rim cycle augmented by $e$ that contains $e$, with arbitrary distinct endpoints. The two nonoverlapping rim tails can be both empty (one choice), exactly one nonempty ($2(m-2)$ choices), on different arcs ($2(k-1)(m-k-1)$ choices), or both nonempty in a common arc ($\binom{k-1}{2}+\binom{m-k-1}{2}$ choices). Their sum is $\tfrac12(m^2-3m+2)+k(m-k)$. Add the two no-hub cycles and Eq.~\eqref{eq:wheel}.
+\end{proof}
+
+\section{Path-pair counting on the rim}
+Fix four distinct rim vertices $A,B,C,D$ in cyclic order, separated by positive arc lengths $a,b,c,d$ respectively, so $m=a+b+c+d$. We use the integer-valued function
+\begin{equation}\label{eq:F}
+F(x,y,z)=(x+y-1)(y+z-1)-\binom{y}{2}.
+\end{equation}
+
+\begin{lemma}[Disjoint rim tails]\label{lem:F}
+Suppose a selected middle rim arc connects one endpoint of each of two new chords, and the other two chord endpoints lie on the complementary rim path, separated by $y$ edges. If the rim portions exterior to the two outer endpoints have lengths $x$ and $z$ (up to the removed middle-arc endpoints), the number of pairs of disjoint rim tails attached to those outer endpoints is $F(x,y,z)$.
+\end{lemma}
+\begin{proof}
+Orient the complementary rim path from left to right. The two exterior stretches have respectively $x-1$ and $z-1$ available internal vertices, and the two outer endpoints enclose $y$ edges. If the left tail ends strictly left of its attachment point ($x-1$ possibilities), the right-tail endpoint can be at any of $y+z-1$ subsequent vertices. If the left tail ends $r$ edges to the right of its attachment point, $0\leq r<y$, there are $y+z-1-r$ right-tail endpoint choices. Their sum is
+\[
+(x-1)(y+z-1)+\sum_{r=0}^{y-1}(y+z-1-r)=F(x,y,z).
+\]
+This enumerates each disjoint ordered pair once, including empty tails.
+\end{proof}
+
+\section{Both-chord theorem}
+Let $B(e,f)$ be the number of cycles in $W_m+e+f$ that traverse \emph{both} new chords. Those cycles may or may not pass through the hub.
+
+\begin{theorem}[Two disjoint chords]\label{thm:main}
+Under the assumptions above, the following formulas hold.
+\begin{enumerate}
+\item For crossing chords $e=AC$, $f=BD$, put $(g_1,g_2,g_3,g_4)=(a,b,c,d)$ with indices modulo four. Then
+\begin{align}\label{eq:cross}
+B_{\times}&=2+\sum_{i=1}^{4}F(g_{i+1},g_{i+2},g_{i+3})\\
+&=\frac{2m^2-(a^2+b^2+c^2+d^2)-7m+12}{2}.\notag
 \end{align}
+\item For noncrossing chords $e=AB$, $f=CD$ (assuming $a,c\geq2$ so both are new edges),
+\begin{equation}\label{eq:parallel}
+B_{\parallel}=1+F(a,b,c)+F(a,d,c).
+\end{equation}
+\end{enumerate}
+In either case,
+\begin{equation}\label{eq:full}
+\begin{split}
+\cyc(W_m+e+f)={}&\cyc(W_m+e)+\cyc(W_m+f)\\
+&-\cyc(W_m)+B(e,f).
+\end{split}
+\end{equation}
+For the crossing case the individual chord distances may be taken as $a+b$ and $b+c$; for the noncrossing case they are $a$ and $c$.
+\end{theorem}
+
+\begin{proof}
+Inclusion--exclusion on cycles according to whether they contain $e$ or $f$ proves Eq.~\eqref{eq:full}. To count cycles using both, first delete the hub. Each such rim-only cycle consists of both chords and two disjoint rim arcs connecting their endpoints. A direct inspection of the four terminals gives two such cycles for alternating endpoints ($AC,BD$), and one for nonalternating endpoints ($AB,CD$).
+
+For a cycle through the hub, remove its two incident spokes and the hub. What remains is a simple rim-plus-chords path containing both chords. Orient the path so that $e$ occurs before $f$. Its unique middle subpath between $e$ and $f$ is a chord-free rim arc. None of its interior vertices may be one of the other chord endpoints, so this middle arc must connect two consecutive terminals belonging to different chords. Once the middle arc is chosen, the remaining graph path consists of the two new chords and disjoint rim tails from their other endpoints. Lemma~\ref{lem:F} counts those tails.
+
+For $AC,BD$ all four consecutive-terminal gaps can serve as the middle arc. Deleting gap $g_i$ gives tail count $F(g_{i+1},g_{i+2},g_{i+3})$; add the two hub-free cycles and expand the sum to obtain Eq.~\eqref{eq:cross}. For $AB,CD$, only gaps $BC$ and $DA$ connect terminals of different chords. They contribute $F(a,d,c)$ and $F(a,b,c)$ respectively; add the one hub-free cycle to obtain Eq.~\eqref{eq:parallel}. Each cycle has one middle arc and is therefore counted exactly once.
+\end{proof}
+
+\section{Quadraticity of fixed chord diagrams}
+Consider a fixed cyclically ordered set of $r$ distinct rim terminals and a fixed collection of chords between them, none of which coincides with a rim edge. Let the $r$ consecutive rim segments have positive integer lengths $g_1,\ldots,g_r$. Their subdivisions are joined to a common wheel hub, including spokes at all internal rim vertices. The chord endpoints remain at the terminals.
+
+\begin{theorem}[Fixed-diagram quadraticity]\label{thm:quadratic}
+For a fixed chord diagram as above, the number of unoriented simple cycles is a polynomial of total degree at most two in the nonnegative integers $n_i=g_i-1$. More precisely, it has the form
+\begin{equation}\label{eq:binbasis}
+C_0+\sum_i A_i n_i +\sum_i B_i\binom{n_i}{2}+\sum_{i<j}D_{ij}n_i n_j,
+\end{equation}
+with integer coefficients depending only on the chord diagram.
 \end{theorem}
 \begin{proof}
-After deleting at most two vertices of $W(m)$, a surviving hub connects every remaining rim vertex; if the hub is deleted, at most one rim vertex is deleted, leaving a connected rim path. Hence the wheel is three-connected. Adding an edge cannot destroy this property.
+Delete the hub from a cycle that contains it. The remaining edges form a simple path in the subdivided rim/chord graph, between two distinct rim vertices. Conversely, every such unoriented path gives one hub cycle. A cycle avoiding the hub traverses each subdivided rim segment either entirely or not at all, since its internal vertices have degree two; such cycles are therefore counted by the fixed terminal/chord skeleton and do not depend on the subdivision lengths.
 
-A wheel cycle is either the rim cycle, or contains the hub and is determined by an unordered pair of distinct rim vertices together with a choice of either of the two rim arcs between them. Thus $c(W(m))=1+2\binom m2$.
+For the hub cycles, classify the two path endpoints as terminals or internal subdivision vertices. With both endpoints terminals, the number of paths depends only on the skeleton, giving a constant. With one internal endpoint in segment $i$, the path may leave that segment in one of two directions and is otherwise described by a path in the fixed skeleton. The number is independent of which of the $n_i$ internal vertices is selected, giving a term linear in $n_i$. With two internal endpoints in distinct segments $i,j$, the possible terminal-to-terminal skeleton paths and their endpoint directions are independent of the selected internal positions, giving a multiple of $n_i n_j$. Finally, if both endpoints lie in the same segment $i$, they have a unique direct subsegment path, and any other simple path must pass through its two distinct terminal endpoints and use a skeleton path avoiding that segment. The number per unordered pair of internal positions is constant, giving a multiple of $\binom{n_i}{2}$. These cases are disjoint and exhaustive.\end{proof}
 
-Every new cycle formed by adding chord $v_0v_k$ corresponds bijectively to a pre-existing simple $v_0$--$v_k$ path. Put $\ell=m-k$. There are two paths avoiding $h$: the two rim arcs. Paths containing $h$ are split by their two spokes into disjoint rim subpaths. If the first spoke is used immediately at $v_0$, there are $m-1$ choices for the remaining subpath. If only the final spoke is used immediately at $v_k$, there are $m-2$ further choices. When both spokes meet internal rim vertices, the subpaths can lie on opposite rim arcs in $2(k-1)(\ell-1)$ ways, or on the same arc in $\binom{k-1}{2}+\binom{\ell-1}{2}$ ways. These cases are disjoint and exhaustive. Consequently the number of new cycles is
-\begin{align*}
-\Delta_{m,k}={}&2+(m-1)+(m-2)+2(k-1)(\ell-1)\\
-&+\binom{k-1}{2}+\binom{\ell-1}{2}\\
-={}&\frac{m^2+2k(m-k)-3m+6}{2}.
-\end{align*}
-Adding this to $m(m-1)+1$ yields \eqref{eq:chord}.
-\end{proof}
-\begin{remark}[Symmetry and counting scope]
-The identity is unchanged by $k\leftrightarrow m-k$, the natural wheel-reflection symmetry. Even the collection of all $W(m;k)$ has a sparse set of cycle counts; we do not infer all-integer coverage from \eqref{eq:chord}. Nor do we claim that the elementary formula has no prior occurrence in the graph-enumeration literature.
-\end{remark}
+The theorem yields an exact finite-difference reconstruction principle: $C_0$ and the coefficients are determined by evaluating at $\mathbf n=0$, $\mathbf e_i$, $2\mathbf e_i$, and $\mathbf e_i+\mathbf e_j$. There are $1+2r+\binom r2$ such values. They can be obtained through exact small-graph path counting, without numerical fitting or asymptotic assumptions.
+
+\section{Three pairwise-crossing chords}
+Let six distinct rim terminals $A,B,C,D,E,F$ occur in cyclic order with successive arc lengths $g=(a,b,c,d,e,f)$, all at least one. Set $m=a+b+c+d+e+f$ and add the three pairwise-crossing chords $AD$, $BE$, and $CF$. Write $T(g)$ for the resulting wheel cycle count and adopt the cyclic convention $g_7=g_1$.
+
+\begin{theorem}[Three-crossing-chord formula]\label{thm:triple}
+For every $g\in\mathbb Z_{\ge1}^{6}$,
+\begin{equation}\label{eq:triple}
+\boxed{T(g)=\frac{14m^2-5\sum_{i=1}^{6}g_i^2-2\sum_{i=1}^{6}g_ig_{i+1}-39m+72}{2}.}
+\end{equation}
+Each such graph is simple and three-connected.
+\end{theorem}
+\begin{proof}
+The chord diagram is invariant under rotation and reversal of the six gaps. By Theorem~\ref{thm:quadratic}, its count has the form~\eqref{eq:binbasis}. Thus it suffices to evaluate the six distinct symmetry classes of anchor assignments in Table~\ref{tab:anchors}: the zero increment, a single increment by one or two, and pairs of unit increments at cyclic distances one, two, and three.
+
+A finite exact adjacency recurrence supplies the tabulated values. For a graph $G$ with vertices $\{0,\dots,N-1\}$, fix the least vertex $s$ of an oriented cycle. Let $P_s(S,v)$ count paths starting at $s$, ending at $v$, visiting exactly $S$, and using only vertices at least $s$. The initialization $P_s(\{s\},s)=1$ and recurrence
+\begin{equation}\label{eq:DP}
+P_s(S,v)=\sum_{u\in S\setminus\{v\}}P_s(S\setminus\{v\},u)\,\mathbf 1_{uv\in E(G)}
+\end{equation}
+(for $v\ne s$ and $S\subseteq\{s,s+1,\dots,N-1\}$) evaluate each finite anchor exactly. Summing $P_s(S,v)\mathbf1_{vs\in E(G)}$ over $|S|\ge3$, all endpoints $v\ne s$, and all $s$, then dividing by two for the two orientations, gives $T(g)$. This is also implemented independently in the accompanying Python checker.
+
+The table yields $C_0=150$, every $A_i=212-150=62$, and every $B_i=283-2(212)+150=9$. For adjacent $i,j$, $D_{ij}=287-150-2(62)=13$, whereas at cyclic distance two or three it is $288-150-2(62)=14$. Consequently, with $n_i=g_i-1$,
+\begin{equation}\label{eq:interpol}
+\begin{aligned}
+T(g)={}&150+62\sum_i n_i
+             +9\sum_i\binom{n_i}{2}\\
+       &+13\sum_i n_i n_{i+1}\\
+       &+14\!\!\sum_{\substack{i<j\\j\not\equiv i\pm1\ (6)}}n_i n_j.
+\end{aligned}
+\end{equation}
+Expanding and using $\sum_i g_i=m$ gives~\eqref{eq:triple}. The three chords span three nonempty rim gaps, so they are new nonedges of the wheel. Edge additions preserve three-connectivity.\end{proof}
+
 \begin{table}[t]
 \centering\small
-\caption{Cycle counts distinguished by the one-chord construction. Values are organized by rim length, emphasizing the arithmetic sparsity of the family.}
-\begin{tabular}{@{}rll@{}}\toprule
-$m$ & $c(W(m))$ & Distinct $c(W(m;k))$ \\ \midrule
-4 & 13 & 22\\
-5 & 21 & 35\\
-6 & 31 & 51, 52\\
-7 & 43 & 70, 72\\
-8 & 57 & 92, 95, 96\\
-9 & 73 & 117, 121, 123\\
+\caption{Six symmetry-distinct anchor values that fix all coefficients of the three-chord quadratic. Each count is reproduced by the independent exact path recurrence~\eqref{eq:DP}; together they are a finite proof certificate, rather than a regression fit.}\label{tab:anchors}
+\begin{tabular}{@{}lc@{}}
+\toprule
+Gap lengths $(a,b,c,d,e,f)$ & Exact cycle count\\
+\midrule
+$(1,1,1,1,1,1)$ & $150$\\
+$(2,1,1,1,1,1)$ & $212$\\
+$(3,1,1,1,1,1)$ & $283$\\
+$(2,2,1,1,1,1)$ & $287$\\
+$(2,1,2,1,1,1)$ & $288$\\
+$(2,1,1,2,1,1)$ & $288$\\
 \bottomrule
 \end{tabular}
 \end{table}
-\section{Exact reproducibility and independent replay}
-The standalone Python source \texttt{cases/002/verify.py} constructs every graph directly from its adjacency sets. It enumerates simple cycles with the minimum-labelled cycle vertex fixed, then divides the oriented count by two; this prevents rotational and reversal overcounting without importing a graph-library cycle routine. It independently verifies each instance's cycle count against \eqref{eq:wheel} or \eqref{eq:chord}. For connectivity, every pair of vertices is removed and the surviving graph is checked by graph traversal.
 
-For $m=3,\dots,30$, the tests cover 28 wheels and 378 wheels with one admissible chord, yielding \textbf{406 exact cycle-count checks} and \textbf{406 complete two-vertex-deletion connectivity checks}; all pass. The certificate is an exhaustive check over this specified finite test family, not an all-parameter computation. The all-parameter assertion is proved above by combinatorial counting.
-\section{The next research and falsification gate}
-The constructive search should next add two or three rim chords and quotient placements by the dihedral group, derive their simple-path contribution polynomials, and test whether finitely many parameterized count families jointly cover complete integer intervals. A candidate interval-coverage theorem needs an exact integer proof, independent graph generation, and separate Lean or comparable formalization before being counted as a new conjecture resolution. A counterexample to the 2026 conjecture would instead require an unattainable count not listed in \eqref{eq:exceptions}, with an exhaustive obstruction certificate over \emph{all} 3-connected simple graphs, not merely an unsuccessful search.
-\section*{Scientific status and authorship boundary}
-This is a \emph{working} research manuscript with one elementary exact construction theorem and independently reproduced finite tests. The conjecture in \cite{CC2026} remains open in this manuscript; novelty and historical priority of the construction are not established. The 2026 problem formulation and its computational evidence are attributed to the original four authors. No claim is made about external acceptance.
-\begin{thebibliography}{9}\small
-\bibitem{CC2026} R. McCulloch, B. D. McKay, A. Salahshoori, and T. Zaslavsky, \emph{The Cycle Counts of Graphs}, \emph{Graphs and Combinatorics} \textbf{42}, article 53 (2026). \href{https://doi.org/10.1007/s00373-026-03047-3}{doi:10.1007/s00373-026-03047-3}.
+\section{Certified finite interval and reproducing the search}
+\begin{theorem}[Large finite interval]\label{thm:interval}
+For every integer $N$ in the inclusive interval
+\begin{equation}\label{eq:interval}
+\boxed{1897\le N\le 418785}
+\end{equation}
+there is a three-connected simple wheel with at most three additional rim chords and exactly $N$ unoriented simple cycles. Such a wheel has at most $261$ vertices.\end{theorem}
+\begin{proof}
+The two-chord certificate from the previous version supplies each integer in $[1897,26222]$, by Theorem~\ref{thm:main}. Independently, the four-variable exhaustive search accompanying this paper enumerates $6\le m\le260$, chooses the four distinct gap indices permitted to vary, sets the remaining two gaps equal to one, and enumerates the ordered positive four-part compositions of $m-2$. For each choice it evaluates the exact integer formula~\eqref{eq:triple}. The standalone standard-C++17 program verifies that every integer of $[10120,418785]$ occurs and provides its six-gap witness; it checks every recorded witness again and makes no use of the two-chord ledger or an earlier search cache. It explicitly evaluates $2{,}705{,}284{,}800$ parameter combinations. Since the two intervals overlap, their union is~\eqref{eq:interval}, comprising $416{,}889$ consecutive integer counts. A separate independent Python program checks the resulting $416{,}889$-row CSV for consecutive labels, graph parameters, exact formulas, the maximum rim length, and its published SHA-256 digest. Three-connectivity holds for every witness because each graph contains the corresponding wheel as a spanning subgraph.\end{proof}
+
+The six anchors of Table~\ref{tab:anchors} pass independent subset-path dynamic programming. In a separate direct graph audit, all $924$ positive six-gap choices with $6\le m\le12$ pass exhaustive simple-cycle enumeration. The earlier two-chord $161$ small-graph checks are preserved. The combined finite witness digest is:
+\begin{quote}\ttfamily\footnotesize\raggedright
+\seqsplit{f2bc5910569d1ac26958c2a7a201d1d4c0828b808ca341088a0a0984bc31b6c8}
+\end{quote}
+
+
+
+
+\section{Arithmetic of the six-gap construction}
+We now prove an infinite existence theorem rather than extrapolate from the finite coverage certificate. In this section all quadratic forms are evaluated on integer vectors unless a local coefficient ring is explicitly specified.
+
+For $t\geq1$ put $g_i=t+x_i$, where $x\in\mathbb Z^6$ and $\sum_{i=1}^6x_i=0$. Define
+\begin{equation}\label{eq:defQ}
+Q(x)=\frac{5\sum_{i=1}^6x_i^2+2\sum_{i=1}^6x_ix_{i+1}}{2},\quad x_7=x_1.
+\end{equation}
+On the zero-sum lattice this is integer-valued, since $\sum x_i^2\equiv\sum x_i\equiv0\pmod2$. Direct expansion of Theorem~\ref{thm:triple} gives
+\begin{equation}\label{eq:center}
+T(t+x_1,\ldots,t+x_6)=C(t)-Q(x),\quad C(t)=231t^2-117t+36.
+\end{equation}
+Completing squares gives the elementary identity $Q(x)=\tfrac32\sum_i x_i^2+\tfrac12\sum_i(x_i+x_{i+1})^2$, and therefore
+\begin{equation}\label{eq:norm}
+Q(x)\geq\tfrac32\sum_{i=1}^6x_i^2.
+\end{equation}
+
+Eliminate $x_6=-\sum_{j=1}^{5}y_j$ and write $q(y)=Q(y_1,\ldots,y_5,-\sum y_j)$, a positive-definite integral (integer-valued) quadratic polynomial in five variables. Its integral Hessian $A=\nabla^2q$ is
+\begin{equation}\label{eq:A}
+\scriptsize
+A=\begin{pmatrix}
+8&5&4&4&3\\
+5&10&6&5&4\\
+4&6&10&6&4\\
+4&5&6&10&5\\
+3&4&4&5&8
+\end{pmatrix},\qquad \det A=10368=2^7 3^4.
+\end{equation}
+\normalsize
+Consequently, the Gram matrix $A/2$ has determinant $324$; over odd prime residue fields with $p\geq5$, $q$ is nondegenerate.
+
+\begin{lemma}[Local universality]\label{lem:local}
+For every prime $p$ and every $n\in\mathbb Z_p$, there exists $y\in\mathbb Z_p^5$ with $q(y)=n$.
+\end{lemma}
+\begin{proof}
+For $p\geq5$, the reduction of $q$ is a nondegenerate quadratic form of dimension five over $\mathbb F_p$. Every nondegenerate quadratic form of dimension at least three over a finite field of odd cardinality is isotropic, and its hyperbolic plane represents each residue. For each residue we may choose a nonzero vector, at which the gradient is nonzero. Multivariate Hensel lifting gives every element of $\mathbb Z_p$.
+
+For $p=2$, let $e_j$ be the $j$th standard basis vector in $\mathbb Z^5$. We have $q(e_4)=5\equiv1\pmod2$ and $q(e_5)=4\equiv0\pmod2$, while $\nabla q(e_j)=Ae_j$ has an odd coordinate for each of $j=4,5$. Thus both residue classes lift by the simple-root form of Hensel's lemma, covering $\mathbb Z_2$.
+
+For $p=3$, the residue classes $1$ and $2$ are represented nonsingularly by $e_1$ and $e_2$, since $q(e_1)=4$ and $q(e_2)=5$, and $Ae_1,Ae_2$ do not vanish modulo three. To treat every $n\in3\mathbb Z_3$, consider the integer matrix
+\begin{equation}\label{eq:K}
+K=\begin{pmatrix}
+2&0&2\\2&1&1\\1&0&0\\0&1&0\\0&0&1
+\end{pmatrix}.
+\end{equation}
+The identity $AK\equiv0\pmod3$ and direct integer multiplication give
+\begin{equation}\label{eq:P}
+q(Kz)=3q_3(z),\qquad
+q_3(z)=z^T\!Pz,\quad
+P=\begin{pmatrix}27&10&19\\10&5&7\\19&7&15\end{pmatrix}.
+\end{equation}
+The vectors $z=(1,0,0)$, $(1,1,0)$, and $(0,1,0)$ have $q_3$-residues $0$, $1$, and $2$ modulo three, respectively. For each, $\nabla q_3(z)=2Pz$ has at least one coordinate nonzero modulo three. Hence Hensel's lemma gives $q_3(\mathbb Z_3^3)=\mathbb Z_3$, so $q(K\mathbb Z_3^3)=3\mathbb Z_3$. This completes all three-adic residue classes.
+\end{proof}
+
+\begin{theorem}[Eventual coverage of cycle counts]\label{thm:cofinite}
+There exists an integer $N_*$ such that every integer $N\geq N_*$ is the number of unoriented simple cycles of a finite three-connected simple graph. In fact the graph may always be chosen to be a wheel with three pairwise-crossing chords.
+\end{theorem}
+\begin{proof}
+By Lemma~\ref{lem:local}, every positive integer is locally represented by the positive-definite rank-five integral form $q$. Tartakowsky's local-to-global theorem in rank at least five~\cite{Tartakowsky,Hanke,HSKK} therefore gives a fixed integer $D_0$ such that every $D\geq D_0$ is represented by $q$. Lift such a representation to $x\in\mathbb Z^6$ with $\sum x_i=0$ and $Q(x)=D$.
+
+Let $M_t=\lfloor\tfrac32(t-1)^2\rfloor$. For every $D_0\leq D\leq M_t$, inequality~\eqref{eq:norm} shows that $|x_i|\leq\sqrt{2D/3}\leq t-1$. Thus all six gaps $g_i=t+x_i$ are positive integers. The graph construction and~\eqref{eq:center} realize \emph{every} integer in the interval
+\begin{equation}\label{eq:intervalt}
+I_t=[C(t)-M_t,\,C(t)-D_0]\cap\mathbb Z
+\end{equation}
+for all sufficiently large $t$. These intervals are nonempty and eventually overlap: indeed
+\begin{equation}\label{eq:overlap}
+C(t+1)-C(t)=462t+114
+\end{equation}
+and $M_{t+1}=\lfloor\tfrac32t^2\rfloor$ eventually exceeds $462t+113+D_0$. Therefore the lower endpoint of $I_{t+1}$ is no larger than one plus the upper endpoint of $I_t$. The upper endpoints $C(t)-D_0$ tend to infinity. Their union contains a final interval $[N_*,\infty)\cap\mathbb Z$, and every associated graph contains a wheel as a spanning subgraph; hence it is simple and three-connected.
+\end{proof}
+
+\begin{remark}[Scope and effectivity]
+The statement is unconditional, but our use of the classical asymptotic quadratic-form theorem supplies no explicit numerical $D_0$ or $N_*$. Therefore the finite coverage interval~\eqref{eq:interval} and the eventual-coverage theorem do not combine into a complete proof of the precise conjectured exceptional list. The new part here is the explicit graph-to-quadratic-form reduction and the local verification, not Tartakowsky's classical theorem itself.
+\end{remark}
+
+\section{Final independent release audit}
+For the 18 October 2026 release, we reran the three-chord witness-ledger checker against the complete $416{,}889$-row CSV. Every target label, parameter tuple, and formula evaluation passed; the ledger SHA-256 is
+\begin{quote}\ttfamily\footnotesize\raggedright
+\seqsplit{f2bc5910569d1ac26958c2a7a201d1d4c0828b808ca341088a0a0984bc31b6c8}.
+\end{quote}
+The local arithmetic verifier was separately rerun, reproducing $\det A=10{,}368$, $\det(A/2)=324$, $\det P=57$, the nonsingular residue gates at $2$ and $3$, and $34{,}375$ six-gap substitution identities. The graph census and finite arithmetic tests are \emph{independent checks of the exact ingredients}, not a machine-formal proof of Tartakowsky's theorem. We verified the precise rank-$\geq5$ hypothesis of that established theorem against the cited mathematical literature. The overall proof still requires specialist scrutiny and a priority audit before claims of originality or journal acceptance.
+
+\section{Consequences and outstanding finite classification}
+Theorem~\ref{thm:cofinite} establishes eventual coverage for the $2026$ conjectural class of three-connected simple graphs. The proof is not a full classification: it establishes that only finitely many counts are missing, but does not identify all of them or provide an effective starting point for coverage. The independently computed interval $[1897,418785]$ is an explicit finite checkpoint, logically separate from the non-effective infinite theorem. The candidate originality of the particular reduction and the possibility of sharpening Tartakowsky's bound require specialist review.
+
+The next meaningful tasks are (i) to bound $D_0$ explicitly or to prove a small-exception representation theorem for the displayed rank-five form, and (ii) to address the exceptional counts with independent graph-theoretic lower bounds. Neither task is claimed completed here.
+
+\begin{thebibliography}{9}
+\bibitem{MMSZ}
+R. McCulloch, B. D. McKay, A. Salahshoori, and T. Zaslavsky,
+\emph{The Cycle Counts of Graphs}, Graphs and Combinatorics \textbf{42}, 53 (2026), \url{https://doi.org/10.1007/s00373-026-03047-3}; \url{https://arxiv.org/abs/2507.02260}.
+\bibitem{Tartakowsky}
+W. Tartakowsky, \emph{Die Gesamtheit der Zahlen, die durch eine positive quadratische Form darstellbar sind}, Izv. Akad. Nauk SSSR \textbf{2} (1929), 111--122, 165--196.
+\bibitem{Hanke}
+J. Hanke, \emph{Some recent results about (ternary) quadratic forms}, in Number Theory, CRM Proceedings and Lecture Notes \textbf{36} (2004), \url{https://web.math.princeton.edu/~jonhanke/Web-02/Ternary-QF-Survey/Ternary-QF-Survey.pdf}.
+\bibitem{HSKK}
+J. S. Hsia, Y. Kitaoka, and M. Kneser, \emph{Representations of positive definite quadratic forms}, J. Reine Angew. Math. \textbf{301} (1978), 132--141, \url{https://doi.org/10.1515/crll.1978.301.132}.
 \end{thebibliography}
 \end{document}
