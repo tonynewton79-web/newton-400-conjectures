@@ -93,7 +93,7 @@ theorem real_weighted_cycle_gram_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
   have htotal := hconst.add hsum
   convert htotal using 1
   ext u v
-  simp only [realWeightedCycleGram, Matrix.add_apply, Matrix.sum_apply,
+  simp [realWeightedCycleGram, term, Matrix.add_apply, Matrix.sum_apply,
     Matrix.smul_apply, smul_eq_mul]
 
 end Newton400.Case001
