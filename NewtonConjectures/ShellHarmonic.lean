@@ -26,6 +26,8 @@ theorem cycle_harmonic_Icc_rational (m : ℕ) :
 theorem cycle_harmonic_Icc_real (m : ℕ) :
     (∑ d ∈ Finset.Icc 1 m, (1 : ℝ) / (d : ℝ)) =
       (cycleHarmonic m : ℝ) := by
-  exact_mod_cast cycle_harmonic_Icc_rational m
+  have h := congrArg (fun q : ℚ => (q : ℝ))
+    (cycle_harmonic_Icc_rational m)
+  simpa only [Rat.cast_sum, Rat.cast_div, Rat.cast_one, Rat.cast_natCast] using h
 
 end Newton400.Case001
