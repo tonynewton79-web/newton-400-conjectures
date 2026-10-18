@@ -291,3 +291,10 @@ Successful [Lean build 39151152516](https://github.com/tonynewton79-web/newton-4
 4. Full Lean finite no-violation converse C3–C14 and the final graph biconditional.
 
 **Status:** STAGE13_SCALAR_DEGREE_CERTIFIED; COMPLETE_SHARP_GRAFFITI_THEOREM_HOLD; EXTERNAL_ORIGINALITY_REVIEW_PENDING.
+
+
+## Stage 14 — scalar gravity and simultaneous matrix bounds — LEAN KERNEL VERIFIED
+
+[Run 39158362887](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39158362887) successfully compiled 7,374 jobs and axiom-audited 271 declarations. `ScalarGravityUpper.lean` kernel-proves for every n≥4 both `R_n+3/2 I ⪰ 0` and `s_n I−R_n ⪰ 0` simultaneously, along with `(4s_n/(n−1)) I−G_n ⪰ 0` for the original gravity matrix. The scalar `s_n` is the actual distance-shell weighted row sum, not an assumed harmonic number.
+
+**Not yet done:** all-n harmonic evaluation of s_n, real spectrum-span extraction, ordered adjacency eigenvalue, and finite C3..14 proof.
