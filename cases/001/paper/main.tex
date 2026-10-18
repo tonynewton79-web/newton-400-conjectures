@@ -1,0 +1,174 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage[a4paper,margin=18mm,columnsep=7mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+\setlength{\parskip}{2pt}
+\setlength{\parindent}{1em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\spr}{\operatorname{spr}}
+\newcommand{\dist}{\operatorname{dist}}
+\title{Cycle Gravity Spectra and a Uniform Counterexample Family for Graffiti 197}
+\author{Tony Newton\\[2pt]
+  \small Newton Astro Labs\textsuperscript{*}\\
+  \small London, UK\\
+  \small \texttt{tony.newton79@gmail.com}}
+\date{}
+\begin{document}
+\twocolumn[{\maketitle
+\vspace{-7mm}
+\begin{center}\begin{minipage}{0.9\textwidth}\small
+\noindent\textbf{Abstract.} Roucairol and Cazenave exhibited the cycle on 17 vertices as a counterexample to Graffiti Conjecture 197 and conjectured that every cycle of order $4r+1\ge17$ is likewise a counterexample, under the usual spectral-range convention. We establish a stronger uniform conclusion: every cycle $C_n$ with $n\ge15$ violates the proposed inequality. The proof decomposes a shifted reciprocal-distance matrix into an explicit positive-semidefinite sum of cyclic interval Gram matrices, yielding the uniform bound $\lambda_{\min}(R_n)\ge-3/2$. A harmonic-number comparison completes both parity cases without asymptotics. Exact rational interval certificates verify that the threshold is sharp within the class of cycles: $C_3,\dots,C_{14}$ do not violate the inequality. We supply an independently executable verifier, including exact finite checks and independent Fourier spectral tests. Attribution and historical priority are separated from mathematical correctness pending independent review.
+\end{minipage}\end{center}
+\vspace{3mm}}]
+\begingroup\renewcommand{\thefootnote}{\fnsymbol{footnote}}\footnotetext[1]{Newton Astro Labs is the trading name under which Tony Newton conducts independent computational research in the United Kingdom; it is not a limited company.}\endgroup
+\noindent\textit{Keywords.} spectral graph theory; Graffiti conjectures; reciprocal-distance matrix; circulant matrix; positive semidefinite decomposition; certified computation.
+
+\section{The problem and its conventions}
+The Graffiti programme proposed many inequalities connecting graph invariants; their formulation and automated falsification have a long history \cite{Fajtlowicz1988,Brewster1995,Aouchiche2010}. Roucairol and Cazenave \cite[\S5.1]{Roucairol2025} reported $C_{17}$ as a counterexample to Graffiti 197, and also checked $C_{21}$ and $C_{25}$. They conjectured that every $C_{4r+1}$ of order at least 17 is a counterexample. Their discussion emphasizes a genuine terminological ambiguity: \emph{range} can mean a numerical span or the number of distinct values. Our claims use \emph{only} the numerical span, as in their counterexample.
+
+Let $C_n$ ($n\ge3$) have vertex set $\mathbb Z/n\mathbb Z$, ordinary graph distance $d(u,v)=\min(|u-v|,n-|u-v|)$, and adjacency matrix $A_n$. If $\lambda_1(A_n)\ge\cdots\ge\lambda_n(A_n)$, write $\lambda_{n-1}(A_n)$ for its second-smallest eigenvalue. Following the gravity convention reproduced in \cite[\S5.2]{Roucairol2025}, every cycle vertex has degree two and hence
+\begin{equation}\label{eq:gravity}
+(\Gr_n)_{uv}=\begin{cases}0&u=v,\\\displaystyle\frac{4}{(n-1)d(u,v)}&u\ne v.\end{cases}
+\end{equation}
+Let $R_n$ denote the reciprocal-distance matrix, so $\Gr_n=4R_n/(n-1)$. Define $\spr(M)=\lambda_{\max}(M)-\lambda_{\min}(M)$ for symmetric $M$. In this convention Graffiti 197 asks for
+\begin{equation}\label{eq:graffiti}
+-\lambda_{n-1}(A_n)\le\spr(\Gr_n).
+\end{equation}
+We show that its strict reverse holds on every sufficiently large cycle, with an exact threshold.
+
+\begin{theorem}[Infinite counterexample family]\label{thm:main}
+For every integer $n\ge15$,
+\begin{equation}\label{eq:main}
+-\lambda_{n-1}(A_n)>\spr(\Gr_n).
+\end{equation}
+Thus the Roucairol--Cazenave conjecture holds, with a stronger conclusion covering all residue classes of $n$.
+\end{theorem}
+
+The spectral estimate driving the proof concerns the Harary or reciprocal-distance matrix, an established graph invariant \cite{Tian2022}.
+
+\section{A positive-semidefinite identity}
+Let $m=\lfloor n/2\rfloor$, let $J$ be the all-ones matrix, and, for $2\le j\le m$, let $B_j$ be the $n\times n$ binary circulant matrix whose $v$th column is the indicator of the cyclic interval $\{v,v+1,\dots,v+j-1\}$. Set
+\begin{equation}\label{eq:weights}
+w_j=\begin{cases}\displaystyle\frac{2}{(j-1)j(j+1)}&2\le j<m,\\[4pt]
+\displaystyle\frac{1}{m(m-1)}&j=m.\end{cases}
+\end{equation}
+All these coefficients are strictly positive.
+
+\begin{lemma}[Exact Gram decomposition]\label{lem:gram}
+For every $n\ge4$,
+\begin{equation}\label{eq:gram}
+R_n+\frac32I=\frac1mJ+\sum_{j=2}^{m}w_jB_jB_j^{\mathsf T}.
+\end{equation}
+In particular $\lambda_{\min}(R_n)\ge-3/2$.
+\end{lemma}
+\begin{proof}
+Two cyclic intervals of length $j\le m$ at distance $d\le m$ share precisely $(j-d)_+=\max(j-d,0)$ vertices. Hence the $(u,v)$ entry of $B_jB_j^{\mathsf T}$ equals $(j-d(u,v))_+$. For $1\le d\le m$, the discrete convex interpolation of $f_d=1/d-1/m$ satisfies
+\[
+\frac1d-\frac1m=\sum_{j=d+1}^{m}w_j(j-d),
+\]
+with the coefficients in \eqref{eq:weights}: for $j<m$ they are $1/(j-1)-2/j+1/(j+1)$, and the terminal coefficient is $1/(m-1)-1/m$. Thus the off-diagonal entries in \eqref{eq:gram} equal $1/d$. On the diagonal,
+\begin{align*}
+\frac1m+\sum_{j=2}^{m}j w_j
+&=\frac1m+\sum_{j=2}^{m-1}\left(\frac1{j-1}-\frac1{j+1}\right)
++\frac1{m-1}\\
+&=\frac32,
+\end{align*}
+including the case $m=2$ (empty middle sum). This proves the matrix identity. Both $J$ and each $B_jB_j^{\mathsf T}$ are positive semidefinite, giving the eigenvalue bound.
+\end{proof}
+
+The identity is finite-dimensional and exact; its verification requires no numerical eigensolver. Let $H_m=\sum_{j=1}^m j^{-1}$. As $R_n$ is nonnegative with constant row sums, its largest eigenvalue is that row sum. In particular,
+\begin{equation}\label{eq:rho}
+\lambda_{\max}(R_n)=\begin{cases}2H_m &n=2m+1,\\2H_{m-1}+1/m&n=2m.\end{cases}
+\end{equation}
+Combining \eqref{eq:gravity}, Lemma~\ref{lem:gram} and \eqref{eq:rho} yields
+\begin{equation}\label{eq:spread}
+\spr(\Gr_n)\le\frac4{n-1}\left(\lambda_{\max}(R_n)+\frac32\right).
+\end{equation}
+
+\section{Proof of the universal statement}
+For cycles the adjacency spectrum is exactly
+\[
+\left\{2\cos(2\pi k/n):k=0,1,\dots,n-1\right\}.
+\]
+Ordering these eigenvalues, with multiplicity, gives
+\begin{equation}\label{eq:adj}
+-\lambda_{n-1}(A_n)=\begin{cases}
+2\cos(\pi/(2m+1))&n=2m+1,\\
+2\cos(\pi/m)&n=2m.
+\end{cases}
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+For odd $n=2m+1$ ($m\ge7$), \eqref{eq:spread} bounds the gravity spread by
+\[
+q_o(m)=\frac{4H_m+3}{m}.
+\]
+This is strictly decreasing: $q_o(m)>q_o(m+1)$ follows from $4H_m+3>4m/(m+1)$. Meanwhile $2\cos(\pi/(2m+1))$ is increasing in $m$. It therefore suffices to check $m=7$. Using $H_7=363/140$, $\cos x\ge1-x^2/2$, and the rational inequality $\pi<22/7$, we get
+\begin{align*}
+2\cos(\pi/15)-q_o(7)
+&>\left[2-\left(\frac{22}{105}\right)^2\right]-\frac{468}{245}\\
+&=\frac{506}{11025}>0.
+\end{align*}
+This proves the odd case.
+
+For even $n=2m$ ($m\ge8$), define
+\[
+S_m=2H_{m-1}+\frac1m+\frac32,
+\qquad q_e(m)=\frac{4S_m}{2m-1}.
+\]
+Now $S_{m+1}-S_m=1/m+1/(m+1)$; thus $(2m-1)(S_{m+1}-S_m)<4<2S_m$ for $m\ge2$, proving $q_e(m)>q_e(m+1)$. The quantity $2\cos(\pi/m)$ increases. At $m=8$,
+\begin{align*}
+2\cos(\pi/8)-q_e(8)
+&>\left[2-\left(\frac{11}{28}\right)^2\right]-\frac{1907}{1050}\\
+&=\frac{1733}{58800}>0.
+\end{align*}
+Both estimates compare the left-hand side of \eqref{eq:main} to an \emph{upper bound} on its right-hand side. The strict inequality follows for all $n\ge15$.
+\end{proof}
+
+\begin{corollary}\label{cor:rc}
+For every $r\ge4$, the cycle $C_{4r+1}$ refutes Graffiti 197 in the numerical-span convention, as conjectured in \cite{Roucairol2025}.
+\end{corollary}
+
+\section{Sharpness and certificate design}
+To check the finite complement without trusting floating-point eigenvalues, use a Fourier eigenvalue of $R_n$ at frequency $k=\lfloor n/2\rfloor$:
+\begin{equation}\label{eq:fourier}
+\eta_k=2\sum_{d=1}^{\lfloor(n-1)/2\rfloor}\frac{\cos(2\pi kd/n)}{d}
++\mathbf1_{2\mid n}\frac{(-1)^k}{n/2}.
+\end{equation}
+We have $\lambda_{\min}(R_n)\le\eta_k$, regardless of whether this mode is globally minimal. It follows that
+\begin{equation}\label{eq:smallcert}
+-\lambda_{n-1}(A_n)-\spr(\Gr_n)
+\le 2\cos\theta_n-\frac4{n-1}(s_n-\eta_k),
+\end{equation}
+where $s_n=\lambda_{\max}(R_n)$ and $\theta_n=\pi/n$ for odd $n$, $2\pi/n$ for even $n$.
+
+\noindent The accompanying Python verifier encloses $\pi$ by exact rational alternating-series estimates from Machin's identity $\pi=16\arctan(1/5)-4\arctan(1/239)$. Every cosine is enclosed by exact rational evaluations of its Taylor polynomial of degree 24, with the explicit remainder bound $(22/7)^{25}/25!$. It then checks that the \emph{upper} bound on the right-hand side of \eqref{eq:smallcert} is strictly negative for each $n=3,\ldots,14$. All acceptance-path comparisons are between exact Python rational numbers. Thus none of these twelve smaller cycles refutes \eqref{eq:graffiti}.
+
+\begin{theorem}[Sharp cycle threshold, computer-assisted finite part]
+Among simple cycle graphs $C_n$ ($n\ge3$), violation of \eqref{eq:graffiti} occurs if and only if $n\ge15$. The positive direction has the analytic proof above; the finite converse is certified by the rational interval algorithm just described.
+\end{theorem}
+
+
+
+\section{Reproducibility and claim boundaries}
+The paper's proof is self-contained apart from classical elementary facts ($\pi<22/7$, $\cos x\ge1-x^2/2$, and the cycle adjacency spectrum). The accompanying \texttt{verify.py} provides four checks: rational matrix-identity entries for orders $4$ to $40$, rational bounds for all small orders $3$ to $14$, rational evaluation of both boundary inequalities, and an independent floating-point Fourier cross-check through order $160$. The numerical cross-check is deliberately \emph{not} an ingredient of the theorem. A machine-verifiable Lean kernel formalization is not claimed here.
+
+Graffiti 197 itself was already refuted by Roucairol and Cazenave \cite{Roucairol2025}; its resolution is not claimed as a new discovery. The contribution under review is the uniform analytic infinite-family theorem, the extended threshold, and the exact Gram decomposition. The targeted literature audit did not identify an earlier proof of this specific strengthening, but that negative search result is not a priority certificate. Mathematical validity, originality, and suitability for publication remain open to independent assessment.
+
+
+\begin{thebibliography}{9}\small
+\bibitem{Fajtlowicz1988} S. Fajtlowicz, ``On conjectures of Graffiti,'' \emph{Annals of Discrete Mathematics} \textbf{38} (1988), 113--118. \href{https://doi.org/10.1016/S0167-5060(08)70776-3}{doi:10.1016/S0167-5060(08)70776-3}.
+\bibitem{Brewster1995} T. L. Brewster, M. J. Dinneen and V. Faber, ``A computational attack on the conjectures of Graffiti: New counterexamples and proofs,'' \emph{Discrete Mathematics} \textbf{147} (1995), 35--55. \href{https://doi.org/10.1016/0012-365X(94)00227-A}{doi:10.1016/0012-365X(94)00227-A}.
+\bibitem{Aouchiche2010} M. Aouchiche and P. Hansen, ``A survey of automated conjectures in spectral graph theory,'' \emph{Linear Algebra Appl.} \textbf{432} (2010), 2293--2322. \href{https://doi.org/10.1016/j.laa.2009.06.015}{doi:10.1016/j.laa.2009.06.015}.
+\bibitem{Tian2022} G.-X. Tian, M.-J. Cheng and S.-Y. Cui, ``The generalized reciprocal distance matrix of graphs,'' \href{https://arxiv.org/abs/2204.03787}{arXiv:2204.03787} (2022).
+\bibitem{Roucairol2025} M. Roucairol and T. Cazenave, ``Refutation of Spectral Graph Theory Conjectures with Search Algorithms,'' \emph{IASE 2025}, \href{https://arxiv.org/abs/2409.18626}{arXiv:2409.18626}, \href{https://www.lamsade.dauphine.fr/~cazenave/papers/ConjectureRefutationECAI2025.pdf}{author's PDF}.
+\end{thebibliography}
+\end{document}
