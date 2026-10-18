@@ -2,8 +2,9 @@ name: Build and archive publication PDF
 on:
   push:
     paths:
-      - 'cases/001/paper/main.tex'
+      - 'cases/001/paper/**'
       - 'cases/001/verify.py'
+      - 'cases/001/LEAN_STATUS.md'
       - '.github/workflows/build-paper.yml'
   workflow_dispatch:
 permissions:
