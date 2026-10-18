@@ -80,11 +80,12 @@ theorem gram_weight_diagonal_sum (m : ℕ) (hm : 2 ≤ m) :
       linarith
     have hplus : (j : ℚ) + 1 ≠ 0 := by positivity
     field_simp [hzero, hminus, hplus]
-    ring
+    all_goals ring
   have hterm :
       (m : ℚ) * cyclicGramWeight m m =
         (1 : ℚ) / ((m : ℚ) - 1) := by
-    simp only [cyclicGramWeight, if_pos rfl]
+    change (m : ℚ) * ((1 : ℚ) / ((m : ℚ) * ((m : ℚ) - 1))) =
+      (1 : ℚ) / ((m : ℚ) - 1)
     have hzero : (m : ℚ) ≠ 0 := by
       exact_mod_cast (show m ≠ 0 by omega)
     have hminus : (m : ℚ) - 1 ≠ 0 := by
@@ -92,7 +93,7 @@ theorem gram_weight_diagonal_sum (m : ℕ) (hm : 2 ≤ m) :
         exact_mod_cast (show 1 < m by omega)
       linarith
     field_simp [hzero, hminus]
-    ring
+    all_goals ring
   calc
     (1 : ℚ) / (m : ℚ) +
         (∑ j ∈ Finset.Ico 2 (m + 1), (j : ℚ) * cyclicGramWeight m j) =
