@@ -31,7 +31,8 @@ private theorem cosine_lower_at_most
     (x a : ℝ) (hx : 0 ≤ x) (hxa : x ≤ a) (ha : 0 ≤ a) :
     (2 : ℝ) - a^2 ≤ 2 * Real.cos x := by
   have hsq : x^2 ≤ a^2 := by nlinarith [sq_nonneg (a-x)]
-  have hcos := Real.one_sub_sq_div_two_le_cos x
+  have hcos : (1 : ℝ) - x^2 / 2 ≤ Real.cos x :=
+    Real.one_sub_sq_div_two_le_cos
   nlinarith
 
 theorem oddCycleUpper_lt_actual_cosine (m : ℕ) (hm : 7 ≤ m) :
@@ -47,8 +48,11 @@ theorem oddCycleUpper_lt_actual_cosine (m : ℕ) (hm : 7 ≤ m) :
   have hcos := cosine_lower_at_most _ _
     hpos (le_trans hang (le_of_lt hb)) (by norm_num : (0:ℝ) ≤ 22/105)
   have hrat := oddCycleUpper_lt_boundary m hm
+  have hcast0 : ((oddCycleUpper m : ℚ) : ℝ) <
+      (((2 : ℚ) - ((22 : ℚ)/105)^2) : ℝ) := by exact_mod_cast hrat
   have hcast : (oddCycleUpper m : ℝ) <
-      (2:ℝ) - ((22:ℝ)/105)^2 := by exact_mod_cast hrat
+      (2:ℝ) - ((22:ℝ)/105)^2 := by
+    convert hcast0 using 1 <;> push_cast <;> ring
   exact lt_of_lt_of_le hcast hcos
 
 theorem evenCycleUpper_lt_actual_cosine (m : ℕ) (hm : 8 ≤ m) :
@@ -63,8 +67,11 @@ theorem evenCycleUpper_lt_actual_cosine (m : ℕ) (hm : 8 ≤ m) :
   have hcos := cosine_lower_at_most _ _
     hpos (le_trans hang (le_of_lt hb)) (by norm_num : (0:ℝ) ≤ 11/28)
   have hrat := evenCycleUpper_lt_boundary m hm
+  have hcast0 : ((evenCycleUpper m : ℚ) : ℝ) <
+      (((2 : ℚ) - ((11 : ℚ)/28)^2) : ℝ) := by exact_mod_cast hrat
   have hcast : (evenCycleUpper m : ℝ) <
-      (2:ℝ) - ((11:ℝ)/28)^2 := by exact_mod_cast hrat
+      (2:ℝ) - ((11:ℝ)/28)^2 := by
+    convert hcast0 using 1 <;> push_cast <;> ring
   exact lt_of_lt_of_le hcast hcos
 
 end Newton400.Case001
