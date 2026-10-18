@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.DistanceShellDegreeRotation
 import NewtonConjectures.DistanceShellDegreeBridge
 import NewtonConjectures.DistanceShellAdjacency
 import NewtonConjectures.DistanceShellLaplacian
