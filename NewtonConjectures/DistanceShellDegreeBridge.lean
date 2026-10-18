@@ -50,4 +50,28 @@ theorem cycle_weighted_lap_eq_degree_sub_reciprocal (n : ℕ)
   rw [Finset.sum_sub_distrib]
   simp [cycleDistanceShellAdjMatrix]
 
+/-- Direct Loewner upper bound for the actual zero-diagonal Harary matrix.
+Unlike a numerical eigenvalue bound, this is an all-cycle matrix
+positive-semidefiniteness certificate. -/
+theorem actual_reciprocal_upper_degree_psd (n : ℕ)
+    [NeZero n] (hn : 4 ≤ n) :
+    (cycleWeightedDegreeMatrix n - actualCycleReciprocal n).PosSemidef := by
+  rw [← cycle_weighted_lap_eq_degree_sub_reciprocal n hn]
+  exact cycle_weighted_distance_laplacian_psd n
+
+/-- The exact original Graffiti gravity normalization inherits the
+same matrix upper order bound by a nonnegative scalar multiple. -/
+theorem actual_gravity_upper_degree_psd (n : ℕ)
+    [NeZero n] (hn : 4 ≤ n) :
+    ((4 / ((n - 1 : ℕ) : ℝ)) • cycleWeightedDegreeMatrix n -
+      actualCycleGravity n).PosSemidef := by
+  have h := actual_reciprocal_upper_degree_psd n hn
+  have hfactor : (0 : ℝ) ≤ 4 / ((n - 1 : ℕ) : ℝ) := by positivity
+  have hs := h.smul hfactor
+  convert hs using 1
+  ext u v
+  simp [actualCycleGravity, Matrix.sub_apply,
+    Matrix.smul_apply, smul_eq_mul]
+  ring
+
 end Newton400.Case001
