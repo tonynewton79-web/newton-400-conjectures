@@ -16,15 +16,41 @@ between this sum and rowSum * I - the reciprocal-distance matrix.
 -/
 namespace Newton400.Case001
 
+noncomputable def weightedGraphLaplacian
+    {V ι : Type*} [Fintype V] [DecidableEq V]
+    (s : Finset ι) (G : ι → SimpleGraph V) (w : ι → ℝ) :
+    Matrix V V ℝ := by
+  classical
+  exact ∑ i ∈ s, w i • SimpleGraph.lapMatrix ℝ (G i)
+
 theorem weighted_graph_laplacian_psd
     {V ι : Type*} [Fintype V] [DecidableEq V]
     (s : Finset ι) (G : ι → SimpleGraph V)
     (w : ι → ℝ) (hw : ∀ i ∈ s, 0 ≤ w i) :
-    (∑ i ∈ s, w i • SimpleGraph.lapMatrix ℝ (G i)).PosSemidef := by
+    (weightedGraphLaplacian s G w).PosSemidef := by
   classical
-  apply Matrix.posSemidef_sum
-  intro i hi
-  exact (SimpleGraph.posSemidef_lapMatrix ℝ (G i)).smul (hw i hi)
+  unfold weightedGraphLaplacian
+  have hterm (i : ι) (hi : i ∈ s) :
+      (w i • SimpleGraph.lapMatrix ℝ (G i)).PosSemidef :=
+    (SimpleGraph.posSemidef_lapMatrix ℝ (G i)).smul (hw i hi)
+  have hsum :
+      ∀ t : Finset ι, t ⊆ s →
+        (∑ i ∈ t, w i • SimpleGraph.lapMatrix ℝ (G i)).PosSemidef := by
+    intro t
+    induction t using Finset.induction_on with
+    | empty =>
+        intro _
+        simpa using (Matrix.PosSemidef.zero :
+          (0 : Matrix V V ℝ).PosSemidef)
+    | @insert i t hi ih =>
+        intro ht
+        rw [Finset.sum_insert hi]
+        have his : i ∈ s := ht (by simp)
+        have hts : t ⊆ s := by
+          intro k hk
+          exact ht (by simp [hk])
+        exact (hterm i his).add (ih hts)
+  exact hsum s (Finset.Subset.rfl)
 
 theorem cyclicDistance_symm (n : ℕ) [NeZero n]
     (u v : ZMod n) :
@@ -42,7 +68,9 @@ theorem cyclicDistance_symm (n : ℕ) [NeZero n]
     have hv : (v - u).val < n := ZMod.val_lt (v - u)
     have hd : n - (u - v).val = (v - u).val := by omega
     unfold cyclicDistance
-    rw [hr, hd]
+    rw [hr]
+    have hfix : n - (n - (v - u).val) = (v - u).val := by omega
+    rw [hfix]
     exact Nat.min_comm _ _
 
 def cycleDistanceShell (n d : ℕ) [NeZero n] :
@@ -57,8 +85,8 @@ def cycleDistanceShell (n d : ℕ) [NeZero n] :
 
 noncomputable def cycleWeightedDistanceLaplacian (n : ℕ)
     [NeZero n] : Matrix (ZMod n) (ZMod n) ℝ :=
-  ∑ d ∈ Finset.Icc 1 (n/2),
-    (1 / (d : ℝ)) • SimpleGraph.lapMatrix ℝ (cycleDistanceShell n d)
+  weightedGraphLaplacian (Finset.Icc 1 (n/2))
+    (cycleDistanceShell n) (fun d => 1 / (d : ℝ))
 
 theorem cycle_weighted_distance_laplacian_psd (n : ℕ)
     [NeZero n] :
