@@ -8,7 +8,7 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — STAGE12 ACTUAL GRAVITY MATRIX UPPER LOEWNER LEAN VERIFIED; FULL THEOREM HOLD",
+      "status": "CANDIDATE — STAGE13 SCALAR DISTANCE-SHELL DEGREE IDENTITY LEAN VERIFIED; FULL GRAFFITI THEOREM HOLD",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39153984478",
-      "lean_axiom_audit": "PASS: 250 declarations, foundational allowlist only",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39157366365",
+      "lean_axiom_audit": "PASS: 268 declarations; only foundational axioms propext/Classical.choice/Quot.sound",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -39,7 +39,9 @@
         "NewtonConjectures/ActualGravityBridge.lean",
         "NewtonConjectures/DistanceShellLaplacian.lean",
         "NewtonConjectures/DistanceShellAdjacency.lean",
-        "NewtonConjectures/DistanceShellDegreeBridge.lean"
+        "NewtonConjectures/DistanceShellDegreeBridge.lean",
+        "NewtonConjectures/DistanceShellDegreeRotation.lean",
+        "NewtonConjectures/DistanceShellScalarDegree.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -66,7 +68,10 @@
         "Actual shifted reciprocal-distance matrix equals PSD certified Gram shift",
         "Real weighted shell Laplacian PSD for all n>=4",
         "Exact real weighted shell adjacency reconstruction of actual reciprocal-distance matrix",
-        "Actual gravity matrix Loewner upper bound by weighted shell degree matrix"
+        "Actual gravity matrix Loewner upper bound by weighted shell degree matrix",
+        "Translation-invariant actual cyclic distance shell neighbor cardinalities",
+        "Every inverse-distance weighted shell count independent of cycle vertex",
+        "Actual weighted distance-shell degree matrix D_n = s_n I for all n >= 4"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
@@ -91,7 +96,7 @@
       "lean_real_shifted_reciprocal_psd_verified": true,
       "lean_real_shifted_spectrum_nonnegative_verified": true,
       "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
-      "last_mathematical_gate": "Stage12 upper Loewner matrix PSD verified; scalar row-sum, ordered adjacency eigenvalue and finite converse pending",
+      "last_mathematical_gate": "Verified scalar D_n=s_n I. Missing uniform harmonic evaluation, gravity numerical span extraction, adjacency eigenvalue ordering, and finite C3-C14 converse",
       "lean_harmonic_parity_uniform_verified": true,
       "lean_odd_monotonic_verified": true,
       "lean_even_monotonic_verified": true,
@@ -116,7 +121,13 @@
       "lean_distance_shell_adjacency_verified": true,
       "lean_weighted_graph_laplacian_psd_verified": true,
       "lean_distance_shell_degree_bridge_verified": true,
-      "lean_actual_gravity_upper_loewner_verified": true
+      "lean_actual_gravity_upper_loewner_verified": true,
+      "lean_scalar_degree_matrix_verified": true,
+      "lean_weighted_shell_row_sum_constant_verified": true,
+      "lean_stage13_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39157366365",
+      "exact_row_sum_checks": 12874,
+      "exact_shell_cardinality_checks": 685875,
+      "row_sum_exact_4_to_160_certificate": "cases/001/certificates/ROW_SUM_EXACT_4_TO_160.json"
     },
     {
       "id": "002",
