@@ -23,3 +23,15 @@ Each case has a source statement, mathematical proof, exact reproducibility code
 Tony Newton — Newton Astro Labs, independent computational research, UK.
 
 See [CLAIM_POLICY.md](CLAIM_POLICY.md), [REGISTRY.json](REGISTRY.json), and the individual case directories.
+
+## Case 001 — full research release
+
+- [Read or download the compiled three-page PDF](cases/001/paper/main.pdf)
+- [Inspect the complete LaTeX manuscript](cases/001/paper/main.tex)
+- [Run the exact rational verifier](cases/001/verify.py)
+- [Inspect the nine unit tests](cases/001/tests/test_case001.py)
+- [Inspect the generated verification certificate](cases/001/certificates/verification.json)
+- [View the independent-review checklist](https://github.com/tonynewton79-web/newton-400-conjectures/issues/1)
+- [Review GitHub Actions test and PDF build results](https://github.com/tonynewton79-web/newton-400-conjectures/actions)
+
+**Review state:** Candidate mathematical strengthening only. Machine test success is documented separately from expert acceptance and originality.
