@@ -1,8 +1,8 @@
 {
   "project": "Newton Astro Labs — 400+ Conjectures",
   "target_externally_validated_original_results": 401,
-  "cases_documented": 2,
-  "candidate_analytic_proofs": 1,
+  "cases_documented": 3,
+  "candidate_analytic_proofs": 2,
   "independently_accepted_original_results": 0,
   "cases": [
     {
@@ -142,19 +142,39 @@
       "id": "002",
       "target": "2026 McCulloch–McKay–Salahshoori–Zaslavsky 3-connected graph simple-cycle-count conjecture",
       "source": "https://doi.org/10.1007/s00373-026-03047-3",
-      "status": "WORKING — CONSTRUCTION BASELINE ONLY; OPEN CONJECTURE",
+      "status": "CANDIDATE PROOF — NON-EFFECTIVE COFINITE COVERAGE BY THREE-CHORD WHEELS; PRECISE EXCEPTION LIST OPEN",
       "candidate_open_problem_resolution": false,
       "lean_full_theorem_verified": false,
       "independently_accepted_original_result": false,
-      "verified_construction": "wheel and one-chord wheel integer cycle-count formulas",
-      "construction_scope": "All m>=3 for wheels and m>=4, 2<=k<=m-2 for one-chord wheels",
-      "exact_cycle_count_tests": 406,
-      "exact_three_connectivity_tests": 406,
-      "finite_max_rim": 30,
+      "verified_construction": "Wheel with one, two or three chords; explicit three-crossing chord polynomial; rank-five positive-definite quadratic form of Gram determinant 324.",
+      "construction_scope": "Unbounded three-chord wheel family; non-effective eventual interval coverage.",
+      "exact_cycle_count_tests": 416889,
+      "exact_three_connectivity_tests": 161,
+      "finite_max_rim": 260,
       "working_paper": "cases/002/paper/main.pdf",
-      "independent_certificate_sha256": "ca0b40e16a4d191b82b34e4b4e2f397c7684fe8fe0efcb83a8ffa262cf227676",
-      "novelty_review": "pending; elementary formula not claimed original",
-      "specialist_review": false
+      "independent_certificate_sha256": "f2bc5910569d1ac26958c2a7a201d1d4c0828b808ca341088a0a0984bc31b6c8",
+      "novelty_review": "pending; classical Tartakowsky theorem duly cited, new reduction originality not established",
+      "specialist_review": false,
+      "candidate_partial_theorem": true,
+      "candidate_partial_theorem_claim": "For all sufficiently large N, some 3-connected simple graph has exactly N unoriented simple cycles (Tartakowsky-based proof).",
+      "finite_certified_interval": [
+        1897,
+        418785
+      ],
+      "latex_source": "cases/002/paper/main.tex",
+      "exact_local_arithmetic_checks": 34375,
+      "proof_dependency": "Tartakowsky five-variable locally represented sufficiently-large integer theorem"
+    },
+    {
+      "id": "003",
+      "target": "Berge–Fulkerson conjecture (six perfect matchings, every edge twice, bridgeless cubic graphs)",
+      "source": "https://doi.org/10.1002/jgt.70097",
+      "status": "LIVE HUNT — EXACT PETERSEN AND FIVE FLOWER-SNARK POSITIVE BASELINES; GENERAL CONJECTURE OPEN",
+      "candidate_open_problem_resolution": false,
+      "specialist_review": false,
+      "independently_accepted_original_result": false,
+      "initial_certificates": "cases/003/STATUS.md",
+      "novelty_review": "all current positive subcases established prior art"
     }
   ]
 }
