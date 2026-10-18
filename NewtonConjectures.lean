@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.TrigonometricEndgame
 import NewtonConjectures.HarmonicComparison
 import NewtonConjectures.RealSpectral
 import NewtonConjectures.RealGram
