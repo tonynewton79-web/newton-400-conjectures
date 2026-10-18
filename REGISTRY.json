@@ -17,8 +17,18 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39125495963",
-      "lean_axiom_audit": "PASS: nine declarations; propext, Classical.choice, Quot.sound"
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39126628151",
+      "lean_axiom_audit": "PASS: 31 declarations under standard axiom allowlist",
+      "lean_fragment_sources": [
+        "NewtonConjectures.lean",
+        "NewtonConjectures/CycleKernel.lean"
+      ],
+      "lean_verified_components": [
+        "Base-case rational margins and abstract Gram positivity",
+        "Universal finite-difference telescoping formula",
+        "Universal terminal-boundary tent formula",
+        "Universal reciprocal-distance tent identity for 1<=d<m"
+      ]
     }
   ]
 }
