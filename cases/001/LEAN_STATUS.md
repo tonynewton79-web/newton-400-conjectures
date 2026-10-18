@@ -298,3 +298,25 @@ Successful [Lean build 39151152516](https://github.com/tonynewton79-web/newton-4
 [Run 39158362887](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39158362887) successfully compiled 7,374 jobs and axiom-audited 271 declarations. `ScalarGravityUpper.lean` kernel-proves for every n≥4 both `R_n+3/2 I ⪰ 0` and `s_n I−R_n ⪰ 0` simultaneously, along with `(4s_n/(n−1)) I−G_n ⪰ 0` for the original gravity matrix. The scalar `s_n` is the actual distance-shell weighted row sum, not an assumed harmonic number.
 
 **Not yet done:** all-n harmonic evaluation of s_n, real spectrum-span extraction, ordered adjacency eigenvalue, and finite C3..14 proof.
+
+
+## Stage 15 — exact shell cardinalities and ALL odd/even harmonic row sums — KERNEL VERIFIED
+
+**Latest successful run:** https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39160177061
+
+- Pinned Lean 4/mathlib: **PASS**, 7,376 jobs.
+- Axiom audit: **PASS**, 301 project declarations; only `propext`, `Classical.choice`, `Quot.sound`.
+- Proof-placeholder scan: PASS, no unapproved axioms.
+- Sources: `NewtonConjectures/ShellCardinality.lean`, `NewtonConjectures/ShellHarmonic.lean`.
+
+The Lean kernel certifies:
+1. For every n≥4 and 1≤d≤⌊n/2⌋: `cyclicDistance n 0 v = d` iff `v.val=d ∨ v.val=n-d`.
+2. The actual shell count `cycleShellNeighborCount n d 0 = if 2*d=n then 1 else 2`, with a real finite-set bijection/proof, not an assumed cardinality.
+3. Exact weighted shell-sum formulas for odd/even cycles, including the unique even antipodal shell.
+4. The rational/real Icc harmonic sum equals the previously certified `cycleHarmonic m`.
+5. `odd_cycle_shell_scalar_harmonic`: `s_(2m+1)=2H_m` for all m≥2.
+6. `even_cycle_shell_scalar_harmonic`: `s_(2m)=2H_(m-1)+1/m` for all m≥2.
+
+Together with Stage 14 these are the full **actual scalar row-sum and matrix Loewner** certificates required for the gravity upper-spectrum inequality. **Not yet verified in Lean:** extracting the actual real spectrum span `sSup spectrum - sInf spectrum` from both matrix inequalities, the exact ordered cycle adjacency second-smallest eigenvalue/cosine multiplicities, the finite converse C3..C14, and the final unconditional graph inequality.
+
+**Status: STAGE15_PARITY_HARMONIC_ROW_SUM_KERNEL_PASS / FULL_SHARP_GRAFFITI_THEOREM_HOLD.**
