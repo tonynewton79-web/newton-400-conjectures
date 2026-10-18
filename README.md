@@ -35,3 +35,9 @@ See [CLAIM_POLICY.md](CLAIM_POLICY.md), [REGISTRY.json](REGISTRY.json), and the 
 - [Review GitHub Actions test and PDF build results](https://github.com/tonynewton79-web/newton-400-conjectures/actions)
 
 **Review state:** Candidate mathematical strengthening only. Machine test success is documented separately from expert acceptance and originality.
+
+### Verified formal-proof infrastructure
+
+**Real Lean 4/mathlib kernel compilation: PASS for a proof-critical fragment (not the full theorem).** The [Lean source](NewtonConjectures.lean), [resolved dependency lockfile](lake-manifest.json), [formal status ledger](cases/001/LEAN_STATUS.md), and [independent axiom audit report](cases/001/certificates/LEAN_AUDIT.md) are version-controlled. GitHub Actions [completed kernel check and audit](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39125495963).
+
+The full graph-theoretic cycle theorem has **not** been formalized. Do not count Case 001 as a fully Lean-certified theorem or an externally accepted original mathematical result.
