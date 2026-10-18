@@ -99,4 +99,47 @@ theorem cyclic_arc_overlap_oriented (n j : ℕ) [NeZero n]
   simpa only [ZMod.natCast_zmod_val] using
     (canonical_zmod_overlap n j (v-u).val hj hd)
 
+
+theorem cyclicArcOverlap_symm (n j : ℕ) [NeZero n] (u v : ZMod n) :
+    cyclicArcOverlap n j u v = cyclicArcOverlap n j v u := by
+  unfold cyclicArcOverlap
+  congr 1
+  ext t
+  simp [and_comm]
+
+/-- The undirected cycle distance, using the two oriented residues. -/
+def cyclicDistance (n : ℕ) [NeZero n] (u v : ZMod n) : ℕ :=
+  min (v-u).val (n-(v-u).val)
+
+/-- Every pair of vertices, not only those in the preferred orientation:
+the intersection size is max(j - cyclic distance, 0). -/
+theorem cyclic_arc_overlap_distance (n j : ℕ) [NeZero n]
+    (u v : ZMod n) (hj : 2*j ≤ n) :
+    cyclicArcOverlap n j u v = j - cyclicDistance n u v := by
+  unfold cyclicDistance
+  by_cases hd : 2 * (v-u).val ≤ n
+  · have hmin : min (v-u).val (n-(v-u).val) = (v-u).val :=
+      Nat.min_eq_left (by omega)
+    rw [hmin]
+    exact cyclic_arc_overlap_oriented n j u v hj hd
+  · have hne : v-u ≠ 0 := by
+      intro hv
+      have hzero : (v-u).val = 0 := by simp [hv]
+      omega
+    have hrev : (u-v).val = n-(v-u).val := by
+      have h : u-v = -(v-u) := by abel
+      rw [h, ZMod.neg_val]
+      simp [hne]
+    have hbound : (v-u).val < n := ZMod.val_lt (v-u)
+    have hdrev : 2 * (u-v).val ≤ n := by
+      rw [hrev]
+      omega
+    have hmin : min (v-u).val (n-(v-u).val) = n-(v-u).val :=
+      Nat.min_eq_right (by omega)
+    calc
+      cyclicArcOverlap n j u v = cyclicArcOverlap n j v u :=
+        cyclicArcOverlap_symm n j u v
+      _ = j - (u-v).val := cyclic_arc_overlap_oriented n j v u hj hdrev
+      _ = j - min (v-u).val (n-(v-u).val) := by rw [hmin, hrev]
+
 end Newton400.Case001
