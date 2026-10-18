@@ -8,7 +8,7 @@
     {
       "id": "001",
       "target": "Roucairol–Cazenave cycle conjecture associated with Graffiti 197",
-      "status": "CANDIDATE — LEAN REAL SHIFTED MATRIX SPECTRUM CERTIFIED; FINAL GRAFFITI INEQUALITY PENDING",
+      "status": "CANDIDATE — STAGE10 FULL n>=15 ANALYTIC LEAN PASS; END-TO-END GRAPH THEOREM HOLD",
       "claim": "Every cycle C_n for n >= 15 violates the numerical-span form of Graffiti 197, and this threshold is sharp among cycles",
       "graffiti_197_first_refuted_by": "Roucairol and Cazenave",
       "prior_art_audit": "provisional targeted source audit; no identical theorem found, no priority certificate",
@@ -17,8 +17,8 @@
       "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures.lean",
-      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39140710038",
-      "lean_axiom_audit": "PASS: 180 project declarations, allowed foundations only",
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146480928",
+      "lean_axiom_audit": "PASS: 204 project declarations; only standard foundational axioms",
       "lean_fragment_sources": [
         "NewtonConjectures.lean",
         "NewtonConjectures/CycleKernel.lean",
@@ -31,7 +31,10 @@
         "NewtonConjectures/SpectralPSD.lean",
         "NewtonConjectures/RealGram.lean",
         "NewtonConjectures/RealSpectral.lean",
-        "NewtonConjectures/HarmonicComparison.lean"
+        "NewtonConjectures/HarmonicComparison.lean",
+        "NewtonConjectures/TrigonometricEndgame.lean",
+        "NewtonConjectures/AllCycleAnalytic.lean",
+        "NewtonConjectures/AdjacencyDefinition.lean"
       ],
       "lean_verified_components": [
         "Base-case rational margins and abstract Gram positivity",
@@ -50,7 +53,9 @@
         "Nonnegative real spectrum of shifted reciprocal-distance matrix for all n>=4",
         "Universal decreasing odd/even gravity spectral-spread upper bounds",
         "Sharp exact q_odd(7) and q_even(8) rational base values",
-        "Uniform rational comparisons to elementary cosine lower candidates"
+        "Uniform rational comparisons to elementary cosine lower candidates",
+        "Actual cosine lower comparisons for odd n>=15 and even n>=16",
+        "Parity-unified unconditional all-n>=15 analytic strict inequality"
       ],
       "lean_gram_entry_verified": true,
       "lean_gram_entry_source": "NewtonConjectures/CyclicGram.lean",
@@ -75,12 +80,23 @@
       "lean_real_shifted_reciprocal_psd_verified": true,
       "lean_real_shifted_spectrum_nonnegative_verified": true,
       "lean_real_spectral_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39139083900",
-      "last_mathematical_gate": "Odd/even global rational harmonic comparison verified; cosine/adjacency ordering and finite converse pending",
+      "last_mathematical_gate": "Actual cycle adjacency matrix and symmetry kernel-certified; second-smallest eigenvalue and finite complement still unproved in Lean",
       "lean_harmonic_parity_uniform_verified": true,
       "lean_odd_monotonic_verified": true,
       "lean_even_monotonic_verified": true,
       "lean_uniform_rational_boundary_verified": true,
-      "lean_harmonic_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39140710038"
+      "lean_harmonic_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39140710038",
+      "lean_trigonometric_comparison_verified": true,
+      "lean_all_n_analytic_strict_verified": true,
+      "lean_final_graph_theorem_issues": [
+        "Adjacency second-smallest eigenvalue and multiplicities",
+        "Actual gravity spectral span bound from eigenvalues",
+        "Finite C3..C14 interval certificates in Lean",
+        "Assembled original graph inequality"
+      ],
+      "lean_adjacency_matrix_defined_verified": true,
+      "lean_adjacency_matrix_symmetry_verified": true,
+      "lean_adjacency_spectrum_ordering_verified": false
     },
     {
       "id": "002",

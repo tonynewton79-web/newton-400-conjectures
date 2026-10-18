@@ -181,3 +181,34 @@ The spectral statement is kernel-verified; the familiar equivalent bound `λ_min
 - All above are fully universal exact rational theorems, not finite sample tests.
 
 **Remaining end-to-end Lean work:** formal adjacency matrix cycle eigenvalues and second-smallest order/multiplicity; rigorous cosine lower bound with π interval and monotonicity; direct spectral-span combination; formal exact n=3..14 exclusion. The rational finite verifier and the analytic manuscript are independent evidence but do not replace these formal obligations. Specialist and priority review remain outstanding.
+
+
+## Stage 10 — trigonometric inequalities and parity-unified all-size theorem — KERNEL VERIFIED
+
+Successful pinned Lean run [39146022640](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146022640): **7,365 completed build jobs**, **197 audited project declarations**, only the foundational axiom allowlist `propext`, `Classical.choice`, `Quot.sound`; no `sorry` or `admit` placeholders. The preceding cosine-only [run 39145776112](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39145776112) also passed with 7,364 jobs and 189 audited declarations.
+
+Formal modules:
+- `NewtonConjectures/TrigonometricEndgame.lean`: proves both **actual cosine** comparisons from the all-m harmonic inequalities, using `Real.one_sub_sq_div_two_le_cos` and the verified upper bound on π.
+- `NewtonConjectures/AllCycleAnalytic.lean`: proves `cycle_all_sizes_analytic_strict`, a **single** theorem `∀ n : ℕ, 15 ≤ n → gravityParityCap n < adjacencyCosineCandidate n`, automatically selecting odd and even branches.
+
+The global analytical comparison no longer depends on floating-point numerical evidence or an unverified trigonometric lemma. It is a genuine fully quantified Lean theorem.
+
+**IMPORTANT: these names denote closed-form numerical expressions, not a complete definition/equality of the paper's graph spectra. This is not yet an end-to-end Lean theorem about the original Graffiti 197 inequality.** In particular, the Lean development still lacks:
+
+1. A formally defined real adjacency matrix of each cycle and a certified theorem identifying the **ordered second-smallest eigenvalue**, with multiplicities, with the appropriate cosine candidate.
+2. An end-to-end Lean proof that the actual gravity numerical spectral span is ≤ `gravityParityCap n` (the component reciprocal spectral PSD and analytic row-sum formula are established in the paper, but the full formal linkage to the range has not been kernel-compiled).
+3. Kernel certification of the finite complementary (C_3,dots,C_{14}) no-violation cases from their exact rational interval certificates.
+4. A final theorem combining these exact spectral notions with the strict all-cycle analytic comparison.
+
+**Status: STAGE10_GLOBAL_ANALYTICAL_THEOREM_CERTIFIED / FULL_GRAFFITI_THEOREM_HOLD.**
+Do not claim full formal acceptance or external novelty certification. The initial Graffiti 197 refutation belongs to Roucairol and Cazenave; specialist proof and priority review are still pending.
+
+
+### Stage 10b — actual cycle adjacency matrix entry/symmetry model — KERNEL VERIFIED
+
+- [GitHub Actions run 39146480928](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39146480928): **PASS**, 7,366 compiled jobs; 204 declarations audited using the usual trusted foundational allowlist.
+- Lean module: `NewtonConjectures/AdjacencyDefinition.lean`.
+- `cycleAdjacencyMatrix` explicitly defines the real graph adjacency matrix on `ZMod n`, with an entry 1 precisely when two vertices differ by one cyclic step, zero otherwise.
+- `cycleAdjacencyMatrix_transpose` and `cycleAdjacencyMatrix_entry_symmetric` formally certify symmetry, and entries are proven nonnegative.
+
+**Important:** This constructs the mathematical *object* for the missing spectral proof. It does not prove its spectrum, sort its eigenvalues, or establish their multiplicities. Thus the single end-to-end graph-theoretic theorem is still HOLD, despite all 204 checked declarations.
