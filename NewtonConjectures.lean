@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.ShellHarmonic
 import NewtonConjectures.ShellCardinality
 import NewtonConjectures.ScalarGravityUpper
 import NewtonConjectures.DistanceShellScalarDegree
