@@ -1,4 +1,5 @@
 import Mathlib
+import NewtonConjectures.PoissonCapKernel
 import NewtonConjectures.PoissonCapDifferentiation
 import NewtonConjectures.PoissonCapIntegral
 import NewtonConjectures.PoissonCapGate
