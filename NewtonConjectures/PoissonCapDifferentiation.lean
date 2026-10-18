@@ -10,7 +10,7 @@ integrand F and derivative G. It is an analytic *interface theorem*; the
 hypotheses identifying F and G with the actual Poisson kernel and its
 derivative must still be independently proved in Lean.
 
-There are no custom axioms, sorry, or hidden integral-identification steps.
+There are no custom axioms or hidden integral-identification steps.
 -/
 
 namespace Newton400.PoissonCap
