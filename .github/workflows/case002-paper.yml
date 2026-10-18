@@ -17,6 +17,8 @@ jobs:
           python-version: '3.11'
       - name: Run exact cycle-count and 3-connectivity certificates
         run: python cases/002/verify.py --max-m 30 --output cases/002/certificates/construction.json
+      - name: Run Attack 004 local arithmetic audit
+        run: python cases/002/verify_attack004.py
       - name: Install PDF compilation dependencies
         run: |
           sudo apt-get -qq update
@@ -33,6 +35,7 @@ jobs:
           path: |
             cases/002/paper/main.pdf
             cases/002/certificates/construction.json
+            cases/002/certificates/attack004.json
           if-no-files-found: error
           retention-days: 90
       - name: Archive main-branch PDF release
@@ -40,7 +43,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cases/002/paper/main.pdf cases/002/certificates/construction.json
+          git add cases/002/paper/main.pdf cases/002/certificates/construction.json cases/002/certificates/attack004.json
           if git diff --cached --quiet; then
             echo "No PDF/certificate changes to commit."
           else
