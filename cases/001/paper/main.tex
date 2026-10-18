@@ -158,8 +158,10 @@ Among simple cycle graphs $C_n$ ($n\ge3$), violation of \eqref{eq:graffiti} occu
 
 
 
+\input{formal_progress.tex}
+
 \section{Reproducibility and claim boundaries}
-The paper's proof is self-contained apart from classical elementary facts ($\pi<22/7$, $\cos x\ge1-x^2/2$, and the cycle adjacency spectrum). The accompanying \texttt{verify.py} provides four checks: rational matrix-identity entries for orders $4$ to $40$, rational bounds for all small orders $3$ to $14$, rational evaluation of both boundary inequalities, and an independent floating-point Fourier cross-check through order $160$. The numerical cross-check is deliberately \emph{not} an ingredient of the theorem. A machine-verifiable Lean kernel formalization is not claimed here.
+The paper's proof is self-contained apart from classical elementary facts ($\pi<22/7$, $\cos x\ge1-x^2/2$, and the cycle adjacency spectrum). The accompanying \texttt{verify.py} provides four checks: rational matrix-identity entries for orders $4$ to $40$, rational bounds for all small orders $3$ to $14$, rational evaluation of both boundary inequalities, and an independent floating-point Fourier cross-check through order $160$. The numerical cross-check is deliberately \emph{not} an ingredient of the theorem. Proof-critical component lemmas have now been independently kernel-checked in Lean 4/mathlib as documented in Section~\ref{sec:formal}; the complete graph-theoretic theorem has not been formally certified.
 
 Graffiti 197 itself was already refuted by Roucairol and Cazenave \cite{Roucairol2025}; its resolution is not claimed as a new discovery. The contribution under review is the uniform analytic infinite-family theorem, the extended threshold, and the exact Gram decomposition. The targeted literature audit did not identify an earlier proof of this specific strengthening, but that negative search result is not a priority certificate. Mathematical validity, originality, and suitability for publication remain open to independent assessment.
 
