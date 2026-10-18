@@ -57,6 +57,41 @@ theorem all_dimensions_cap_score (n : ℕ) (hn : 3 ≤ n)
   · exact ht
   · exact ht1
 
+
+/-- A finite, nonempty positive-weight average preserves the strict
+    cap-score inequality. This is a discrete analogue of the spherical
+    integration step, NOT a substitute for an actual integral theorem. -/
+theorem finite_positive_cap_average (n m : ℕ) (hn : 3 ≤ n)
+    (w t : Fin (m + 1) → ℝ)
+    (hw : ∀ i, 0 < w i)
+    (ht : ∀ i, (49 / 50 : ℝ) < t i)
+    (ht1 : ∀ i, t i ≤ 1) :
+    (n : ℝ) * (∑ i : Fin (m + 1), w i) <
+      ∑ i : Fin (m + 1),
+        w i * (-1 + (3 * (n : ℝ) / 4) *
+          ((t i - 1 / 2) / (5 / 4 - t i))) := by
+  have hpoint (i : Fin (m + 1)) :
+      (n : ℝ) * w i <
+        w i * (-1 + (3 * (n : ℝ) / 4) *
+          ((t i - 1 / 2) / (5 / 4 - t i))) := by
+    have hs := all_dimensions_cap_score n hn (t i) (ht i) (ht1 i)
+    have hh := mul_lt_mul_of_pos_left hs (hw i)
+    simpa only [mul_comm] using hh
+  have hsum :
+      (∑ i : Fin (m + 1), (n : ℝ) * w i) <
+        ∑ i : Fin (m + 1),
+          w i * (-1 + (3 * (n : ℝ) / 4) *
+            ((t i - 1 / 2) / (5 / 4 - t i))) := by
+    apply Finset.sum_lt_sum
+    · intro i _
+      exact le_of_lt (hpoint i)
+    · exact ⟨0, Finset.mem_univ _, hpoint 0⟩
+  calc
+    (n : ℝ) * (∑ i : Fin (m + 1), w i) =
+        ∑ i : Fin (m + 1), (n : ℝ) * w i := by
+      rw [Finset.mul_sum]
+    _ < _ := hsum
+
 /-- Strict violation follows from an integrated derivative estimate
     D * dp > N * p with 0 < p < 1, D > 0, N > 0.
 
