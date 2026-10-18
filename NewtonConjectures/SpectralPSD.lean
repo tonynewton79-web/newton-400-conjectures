@@ -23,14 +23,21 @@ theorem cyclic_gram_weight_nonneg (m j : ℕ)
       linarith
     exact le_of_lt (div_pos (by norm_num) (mul_pos hm0 hm1))
   · simp only [cyclicGramWeight, if_neg h]
-    have hpos : (1 : ℚ) < (j : ℚ) := by
-      exact_mod_cast (show 1 < j by omega)
-    positivity
+    have hj0 : (0 : ℚ) < (j : ℚ) := by
+      exact_mod_cast (show 0 < j by omega)
+    have hj1 : (0 : ℚ) < (j : ℚ) - 1 := by
+      have hpos : (1 : ℚ) < (j : ℚ) := by
+        exact_mod_cast (show 1 < j by omega)
+      linarith
+    have hjp : (0 : ℚ) < (j : ℚ) + 1 := by linarith
+    exact le_of_lt (div_pos (by norm_num)
+      (mul_pos (mul_pos hj1 hj0) hjp))
 
 /-- The matrix 1/m · J as a rank-one nonnegative Gram matrix. -/
 theorem constant_cycle_matrix_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
-    ((fun _ _ : ZMod n => (1 : ℚ) / ((n / 2 : ℕ) : ℚ)) :
-      Matrix (ZMod n) (ZMod n) ℚ).PosSemidef := by
+    Matrix.PosSemidef
+      ((fun _ _ : ZMod n => (1 : ℚ) / ((n / 2 : ℕ) : ℚ)) :
+      Matrix (ZMod n) (ZMod n) ℚ) := by
   classical
   let oneVec : ZMod n → ℚ := fun _ => 1
   have hbase : (Matrix.vecMulVec oneVec (star oneVec)).PosSemidef :=
@@ -77,17 +84,24 @@ theorem weighted_cycle_gram_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
         omega
       exact (cyclic_incidence_psd n j).smul
         (cyclic_gram_weight_nonneg (n / 2) j hm hleft hright)
-    generalize Finset.Ico 2 (n / 2 + 1) = s
-    induction s using Finset.induction_on with
-    | empty =>
-        simpa using (Matrix.PosSemidef.zero :
-          (0 : Matrix (ZMod n) (ZMod n) ℚ).PosSemidef)
-    | @insert j s hj ih =>
-        rw [Finset.sum_insert hj]
-        apply (hterm j (by simp)).add
-        apply ih
-        intro k hk
-        exact hterm k (by simp [hk])
+    have hsum_aux :
+        ∀ s : Finset ℕ, s ⊆ Finset.Ico 2 (n / 2 + 1) →
+          (∑ j ∈ s, term j).PosSemidef := by
+      intro s
+      induction s using Finset.induction_on with
+      | empty =>
+          intro _
+          simpa using (Matrix.PosSemidef.zero :
+            (0 : Matrix (ZMod n) (ZMod n) ℚ).PosSemidef)
+      | @insert j s hj ih =>
+          intro hs
+          rw [Finset.sum_insert hj]
+          have hjrange : j ∈ Finset.Ico 2 (n / 2 + 1) := hs (by simp)
+          have hsrange : s ⊆ Finset.Ico 2 (n / 2 + 1) := by
+            intro k hk
+            exact hs (by simp [hk])
+          exact (hterm j hjrange).add (ih hsrange)
+    exact hsum_aux _ (Finset.Subset.rfl)
   have hconst := constant_cycle_matrix_psd n hn
   have hfull := hconst.add hsum
   convert hfull using 1
