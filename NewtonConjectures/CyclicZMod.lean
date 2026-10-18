@@ -19,7 +19,10 @@ theorem zmod_val_sub_natCast (n d : ℕ) [NeZero n]
     have ht : t.val + n - d = n + (t.val - d) := by omega
     rw [ht]
     have hbound : t.val < n := ZMod.val_lt t
-    exact (Nat.mod_eq_of_lt (by omega : t.val - d < n)).symm
+    calc
+      t.val - d = (t.val - d) % n :=
+        (Nat.mod_eq_of_lt (by omega : t.val - d < n)).symm
+      _ = (n + (t.val - d)) % n := by simp [Nat.add_mod]
   · have hdpos : 0 < d := by omega
     have hneg : (-(d : ZMod n)).val = n - d := by
       rw [ZMod.neg_val', hdval]
@@ -60,7 +63,7 @@ theorem canonical_zmod_overlap (n j d : ℕ) [NeZero n]
   rw [hcount]
   exact canonical_cyclic_overlap_eq n j d (NeZero.pos n) hj hd
 
-def cyclicArcOverlap (n j : ℕ) [NeZero n] (u v : ZMod n) : ℕ :=
+noncomputable def cyclicArcOverlap (n j : ℕ) [NeZero n] (u v : ZMod n) : ℕ :=
   (Finset.univ.filter (fun t : ZMod n =>
     (t-u).val < j ∧ (t-v).val < j)).card
 
@@ -93,6 +96,7 @@ theorem cyclic_arc_overlap_oriented (n j : ℕ) [NeZero n]
         simpa [hsub1,hsub2] using ht
       · abel
   rw [hr]
-  exact canonical_zmod_overlap n j (v-u).val hj hd
+  simpa only [ZMod.natCast_zmod_val] using
+    (canonical_zmod_overlap n j (v-u).val hj hd)
 
 end Newton400.Case001
