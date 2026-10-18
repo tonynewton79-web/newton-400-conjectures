@@ -53,12 +53,18 @@ At `r=1/2`, the kernel should satisfy
 `K_n(1/2,t) = (3/4)*(5/4-t)^(-n/2)`, and
 `(3/4)*∂_r K_n(1/2,t) = K_n(1/2,t) * S_n(t)`
 with `S_n(t) = -1+(3*n/4)*(t-1/2)/(5/4-t)`.
-These identities have NOT yet been proven in Lean.
+**These pointwise identities are now certified in Lean:** see `axial_kernel_hasDerivAt`, `axial_kernel_score_identity` and `axial_poisson_strict_derivative` in `PoissonCapKernel.lean`. The true Poisson kernel is explicitly defined along the axial line; the full spherical Poisson extension and its harmonicity are not yet formalized.
 
 To apply `parameter_integral_derivative_cap` to the actual sphere:
 1. Choose `α` to be the cap subtype and `μ` to be restricted normalized spherical measure. Prove it has nonzero total mass.
-2. Set `F(r,ξ)=K_n(r,ξ_n)` and `G(r,ξ)=∂_r K_n(r,ξ_n)`, and prove the explicit derivative identity and measurability.
+2. Set `F(r,ξ)=K_n(r,ξ_n)` and `G(r,ξ)=∂_r K_n(r,ξ_n)`; the axial derivative and score identities are already proved for every cap coordinate in Lean, but their composition with the sphere-coordinate map and measurability must still be discharged.
 3. On `2/5 ≤ r ≤ 3/5`, `-1 ≤ t ≤ 1`, show
-   `1+r^2-2*r*t ≥ (1-r)^2 ≥ 4/25`; obtain an integrable constant derivative majorant. Then discharge the dominated differentiation theorem's hypotheses.
+   `1+r^2-2*r*t ≥ (1-r)^2 ≥ 4/25` (already proved in `axial_denominator_lower_bound`) and `|2r-2t| ≤ 16/5` (already proved); obtain an integrable constant derivative majorant for the actual `rpow` kernel derivative. Then discharge the dominated differentiation theorem's hypotheses.
 4. Supply the full-sphere mass identity `∫ P(x,ξ)dσ(ξ)=1`, cap and complement positive measure, and ordinary Euclidean harmonicity of the Poisson integral.
 5. Only then claim the full quantified harmonic counterexample is kernel-certified.
+
+## Latest certified proof gate (18 October 2026)
+
+GitHub Actions Lean 4/mathlib run [39156003567](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39156003567) passed at commit `6a064451`.
+The **explicit actual axial Poisson kernel** is now defined and its positivity, real-power derivative, exact cap-score identity, and strict derivative comparison for *every* integer `n >= 3` compile in Lean.
+The remaining gap is the **full spherical-measure and n-dimensional harmonicity interface**, plus verifying the dominated differentiation hypotheses with the actual sphere-restricted kernel, not proving the pointwise derivative inequality anew.
