@@ -99,4 +99,55 @@ theorem cycle_shell_neighbor_count_exact
       omega
     simp [h, hab]
 
+/-- For every odd cycle all nonzero distance shells have two vertices.
+This is an exact formula for the ACTUAL shell-count weighted scalar. -/
+theorem odd_cycle_weighted_shell_sum
+    (m : ℕ) [NeZero (2 * m + 1)] (hm : 2 ≤ m) :
+    cycleWeightedShellCount (2 * m + 1) 0 =
+      ∑ d ∈ Finset.Icc 1 m, (2 : ℝ) / (d : ℝ) := by
+  classical
+  have hhalf : (2 * m + 1) / 2 = m := by omega
+  unfold cycleWeightedShellCount
+  rw [hhalf]
+  apply Finset.sum_congr rfl
+  intro d hd
+  have hdlo : 1 ≤ d := (Finset.mem_Icc.mp hd).1
+  have hdhi : d ≤ m := (Finset.mem_Icc.mp hd).2
+  have hcard := cycle_shell_neighbor_count_exact
+    (2 * m + 1) d (by omega) hdlo (by simpa only [hhalf] using hdhi)
+  have hnon : 2 * d ≠ 2 * m + 1 := by omega
+  simp only [hhalf, if_neg hnon] at hcard
+  rw [hcard]
+  push_cast
+  ring
+
+/-- For even cycles, the unique antipodal shell is counted only once.
+All interior nonzero shells still have two vertices. -/
+theorem even_cycle_weighted_shell_sum
+    (m : ℕ) [NeZero (2 * m)] (hm : 2 ≤ m) :
+    cycleWeightedShellCount (2 * m) 0 =
+      ∑ d ∈ Finset.Icc 1 m,
+        if d = m then (1 : ℝ) / (d : ℝ) else 2 / (d : ℝ) := by
+  classical
+  have hhalf : (2 * m) / 2 = m := by omega
+  unfold cycleWeightedShellCount
+  rw [hhalf]
+  apply Finset.sum_congr rfl
+  intro d hd
+  have hdlo : 1 ≤ d := (Finset.mem_Icc.mp hd).1
+  have hdhi : d ≤ m := (Finset.mem_Icc.mp hd).2
+  have hcard := cycle_shell_neighbor_count_exact
+    (2 * m) d (by omega) hdlo (by simpa only [hhalf] using hdhi)
+  by_cases h : d = m
+  · subst d
+    simp only [hhalf, if_pos rfl] at hcard
+    rw [hcard]
+    simp
+  · have hnon : 2 * d ≠ 2 * m := by omega
+    simp only [hhalf, if_neg hnon] at hcard
+    rw [hcard]
+    simp only [if_neg h]
+    push_cast
+    ring
+
 end Newton400.Case001
