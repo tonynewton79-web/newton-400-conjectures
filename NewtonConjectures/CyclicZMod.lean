@@ -18,6 +18,7 @@ theorem zmod_val_sub_natCast (n d : ℕ) [NeZero n]
     rw [hsub]
     have ht : t.val + n - d = n + (t.val - d) := by omega
     rw [ht]
+    have hbound : t.val < n := ZMod.val_lt t
     exact (Nat.mod_eq_of_lt (by omega : t.val - d < n)).symm
   · have hdpos : 0 < d := by omega
     have hneg : (-(d : ZMod n)).val = n - d := by
@@ -59,7 +60,7 @@ theorem canonical_zmod_overlap (n j d : ℕ) [NeZero n]
   rw [hcount]
   exact canonical_cyclic_overlap_eq n j d (NeZero.pos n) hj hd
 
-def cyclicArcOverlap (n j : ℕ) (u v : ZMod n) : ℕ :=
+def cyclicArcOverlap (n j : ℕ) [NeZero n] (u v : ZMod n) : ℕ :=
   (Finset.univ.filter (fun t : ZMod n =>
     (t-u).val < j ∧ (t-v).val < j)).card
 
