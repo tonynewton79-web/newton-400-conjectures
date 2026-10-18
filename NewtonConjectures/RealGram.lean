@@ -19,11 +19,11 @@ noncomputable def realCyclicIncidence (n j : ℕ) [NeZero n] :
 
 noncomputable def realWeightedCycleGram (n : ℕ) [NeZero n] :
     Matrix (ZMod n) (ZMod n) ℝ :=
-  ((fun _ _ : ZMod n => (1 : ℝ) / ((n / 2 : ℕ) : ℝ)) :
+  ( ((fun _ _ : ZMod n => (1 : ℝ) / ((n / 2 : ℕ) : ℝ)) :
       Matrix (ZMod n) (ZMod n) ℝ) +
     ∑ j ∈ Finset.Ico 2 (n / 2 + 1),
       ((cyclicGramWeight (n / 2) j : ℚ) : ℝ) •
-        (realCyclicIncidence n j * Matrix.transpose (realCyclicIncidence n j))
+        (realCyclicIncidence n j * Matrix.transpose (realCyclicIncidence n j)) )
 
 theorem real_cyclic_weight_nonneg (m j : ℕ)
     (hm : 2 ≤ m) (hjlo : 2 ≤ j) (hjhi : j ≤ m) :
