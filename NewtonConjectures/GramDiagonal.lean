@@ -35,6 +35,12 @@ theorem diagonal_normalization (m : ℕ) (hm : 2 ≤ m) :
         exact_mod_cast (show m ≠ 0 by omega)
       have hmp : (m : ℚ) + 1 ≠ 0 := by
         positivity
+      have hinv : (m : ℚ) * (m : ℚ)⁻¹ = 1 := mul_inv_cancel₀ hm0
+      have hinv3 : (m : ℚ) ^ 3 * (m : ℚ)⁻¹ = (m : ℚ) ^ 2 := by
+        calc
+          (m : ℚ) ^ 3 * (m : ℚ)⁻¹ =
+              (m : ℚ) ^ 2 * ((m : ℚ) * (m : ℚ)⁻¹) := by ring
+          _ = (m : ℚ) ^ 2 := by rw [hinv, mul_one]
       calc
         (1 : ℚ) / ((m + 1 : ℕ) : ℚ) + diagonalInteriorSum (m + 1) +
             (1 : ℚ) / (((m + 1 : ℕ) : ℚ) - 1)
@@ -43,6 +49,7 @@ theorem diagonal_normalization (m : ℕ) (hm : 2 ≤ m) :
                   rw [hrec]
                   push_cast
                   field_simp [hm0, hm1, hmp]
+                  rw [hinv, hinv3]
                   ring
         _ = (3 : ℚ) / 2 := ih
 
