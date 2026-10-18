@@ -16,9 +16,12 @@ theorem cyclic_gram_weight_nonneg (m j : ℕ)
   by_cases h : j = m
   · subst j
     simp only [cyclicGramWeight, if_pos rfl]
-    have hpos : (1 : ℚ) < (m : ℚ) := by
-      exact_mod_cast (show 1 < m by omega)
-    positivity
+    have hm0 : (0 : ℚ) < (m : ℚ) := by
+      exact_mod_cast (show 0 < m by omega)
+    have hm1 : (0 : ℚ) < (m : ℚ) - 1 := by
+      have : (1 : ℚ) < m := by exact_mod_cast (show 1 < m by omega)
+      linarith
+    exact le_of_lt (div_pos (by norm_num) (mul_pos hm0 hm1))
   · simp only [cyclicGramWeight, if_neg h]
     have hpos : (1 : ℚ) < (j : ℚ) := by
       exact_mod_cast (show 1 < j by omega)
@@ -26,16 +29,21 @@ theorem cyclic_gram_weight_nonneg (m j : ℕ)
 
 /-- The matrix 1/m · J as a rank-one nonnegative Gram matrix. -/
 theorem constant_cycle_matrix_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
-    (fun _ _ : ZMod n => (1 : ℚ) / ((n / 2 : ℕ) : ℚ)).PosSemidef := by
+    ((fun _ _ : ZMod n => (1 : ℚ) / ((n / 2 : ℕ) : ℚ)) :
+      Matrix (ZMod n) (ZMod n) ℚ).PosSemidef := by
   classical
   let oneVec : ZMod n → ℚ := fun _ => 1
   have hbase : (Matrix.vecMulVec oneVec (star oneVec)).PosSemidef :=
     Matrix.posSemidef_vecMulVec_self_star oneVec
   have hm : (0 : ℚ) ≤ 1 / ((n / 2 : ℕ) : ℚ) := by positivity
   have hs := hbase.smul hm
-  convert hs using 1
-  ext u v
-  simp [oneVec, Matrix.vecMulVec, Matrix.smul_apply, smul_eq_mul]
+  have heq : ((fun _ _ : ZMod n => (1 : ℚ) / ((n / 2 : ℕ) : ℚ)) :
+      Matrix (ZMod n) (ZMod n) ℚ) =
+      (1 / ((n / 2 : ℕ) : ℚ)) • Matrix.vecMulVec oneVec (star oneVec) := by
+    ext u v
+    simp [oneVec, Matrix.vecMulVec, Matrix.smul_apply, smul_eq_mul]
+  rw [heq]
+  exact hs
 
 /-- A cyclic incidence matrix times its transpose is PSD over ℚ. -/
 theorem cyclic_incidence_psd (n j : ℕ) [NeZero n] :
@@ -57,14 +65,29 @@ theorem weighted_cycle_gram_psd (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
         cyclicGramWeight (n / 2) j •
           (cyclicIncidence n j *
             Matrix.transpose (cyclicIncidence n j))).PosSemidef := by
-    apply Matrix.posSemidef_sum
-    intro j hj
-    have hleft : 2 ≤ j := (Finset.mem_Ico.mp hj).1
-    have hright : j ≤ n / 2 := by
-      have h := (Finset.mem_Ico.mp hj).2
-      omega
-    exact (cyclic_incidence_psd n j).smul
-      (cyclic_gram_weight_nonneg (n / 2) j hm hleft hright)
+    let term : ℕ → Matrix (ZMod n) (ZMod n) ℚ :=
+      fun j => cyclicGramWeight (n / 2) j •
+        (cyclicIncidence n j * Matrix.transpose (cyclicIncidence n j))
+    change (∑ j ∈ Finset.Ico 2 (n / 2 + 1), term j).PosSemidef
+    have hterm (j : ℕ) (hj : j ∈ Finset.Ico 2 (n / 2 + 1)) :
+        (term j).PosSemidef := by
+      have hleft : 2 ≤ j := (Finset.mem_Ico.mp hj).1
+      have hright : j ≤ n / 2 := by
+        have h := (Finset.mem_Ico.mp hj).2
+        omega
+      exact (cyclic_incidence_psd n j).smul
+        (cyclic_gram_weight_nonneg (n / 2) j hm hleft hright)
+    generalize Finset.Ico 2 (n / 2 + 1) = s
+    induction s using Finset.induction_on with
+    | empty =>
+        simpa using (Matrix.PosSemidef.zero :
+          (0 : Matrix (ZMod n) (ZMod n) ℚ).PosSemidef)
+    | @insert j s hj ih =>
+        rw [Finset.sum_insert hj]
+        apply (hterm j (by simp)).add
+        apply ih
+        intro k hk
+        exact hterm k (by simp [hk])
   have hconst := constant_cycle_matrix_psd n hn
   have hfull := hconst.add hsum
   convert hfull using 1
