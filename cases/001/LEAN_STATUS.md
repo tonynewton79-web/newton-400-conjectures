@@ -1,37 +1,59 @@
-# Case 001 — Lean 4/mathlib proof ledger
+# Case 001 — Lean 4/mathlib verification ledger
 
-## Verified in actual Lean kernel
+## Stage 3: cyclic Gram entries — KERNEL VERIFIED
 
-**PASS** on GitHub Actions run https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39126628151
+Authoritative successful run: https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39128814226
 
-- Lean 4.24.0, pinned mathlib and committed `lake-manifest.json`.
-- `lake build` succeeded; the axiom audit accepted 31 declarations under the usual foundation allowlist `propext`, `Classical.choice`, `Quot.sound`.
-- No `sorry` or `admit` placeholders in the compiled project.
+- Lean v4.24.0; mathlib pinned with the repository's dependency lockfile.
+- Complete Lean build passed: 7,356 jobs.
+- `axiom-audit`: 74 declarations; all within the standard allowed foundation set `propext`, `Classical.choice`, `Quot.sound`.
+- No proof placeholders (`sorry` or `admit`) permitted by CI.
 
-### Stage 1 (NewtonConjectures.lean)
-- Exact positive rational initial margins for odd C15 and even C16.
-- Reciprocal second-difference algebra; positivity of interior weights.
-- General finite weighted Gram-form nonnegativity.
+The universally quantified matrix result is in
+[`NewtonConjectures/CyclicGram.lean`](../../NewtonConjectures/CyclicGram.lean).
 
-### Stage 2 (NewtonConjectures/CycleKernel.lean)
-- Universal finite second-difference telescoping identity for every `f : ℕ → ℚ` and all `d ≤ k`.
-- Universal terminal-boundary tent decomposition for every `f : ℕ → ℚ` and `d ≤ m`.
-- **Exact reciprocal kernel** for all `1 ≤ d < m`:
-  ```
-  1/d = 1/m
-      + ∑ (j-d)·2/((j-1)j(j+1)), for d+1 ≤ j < m
-      + (m-d)/(m(m-1)).
-  ```
-  This is precisely the off-diagonal coefficient identity underlying the paper's Gram expansion, with a separate terminal coefficient.
+For `n>0`, `2*j≤n`, and *every* `u,v : ZMod n`, with
+`B_j[u,k]=1` iff `(k-u).val < j`, and `d(u,v)` the least of the two
+directed cyclic distances:
 
-## Not yet verified in Lean
+```
+(B_j * B_jᵀ)[u,v] = (max(j - d(u,v), 0) : ℚ).
+```
 
-1. Cyclic-interval intersection counting: `(B_j B_jᵀ)₍uv₎ = max(j - distance(u,v), 0)` for `j ≤ ⌊n/2⌋`.
-2. The full **matrix equality**, including the diagonal row of `R_n + (3/2)I`.
-3. Consequent specific cycle spectral lower bound and cycle adjacency eigenvalue ordering.
-4. Both all-m harmonic inequalities and monotonicity steps in the paper.
-5. Exact formal finite converse for `C₃,…,C₁₄`.
-6. Independent mathematical/novelty and priority review.
+The Lean source states the right-hand side as `((j - cyclicDistance n u v : ℕ) : ℚ)`.
+Natural subtraction is truncated subtraction, so this is exactly
+`max(j - d(u,v), 0)`, without an unproved arithmetic conversion.
 
-**Case 001 remains PARTIAL_FORMAL_CERTIFICATION.**
-A verified proof component is not a Lean-certified full theorem.
+The proof has three intermediate kernels:
+
+1. [`CyclicIntersection.lean`](../../NewtonConjectures/CyclicIntersection.lean):
+   the exact canonical overlap count for any half-cycle-sized arcs,
+   including antipodal boundary, wraparound and disjoint cases.
+2. [`CyclicZMod.lean`](../../NewtonConjectures/CyclicZMod.lean):
+   explicit finite-ring equivalence, translation to arbitrary vertex basepoints,
+   and reflection to undirected distance.
+3. [`CyclicGram.lean`](../../NewtonConjectures/CyclicGram.lean):
+   an actual `Matrix.mul` of a cyclic incidence matrix and its transpose,
+   not merely an informal intersection-count interpretation.
+
+## Earlier verified stages
+
+- Exact rational odd/even base case margins for C15 and C16.
+- Reciprocal rational second-difference identity and positive coefficients.
+- Universal finite-difference telescoping for every `f : ℕ → ℚ`.
+- Explicit all-integer reciprocal-distance tent coefficient identity.
+- Abstract nonnegative Gram quadratic forms.
+
+## Remaining BEFORE a complete Lean theorem
+
+- [ ] Prove the full matrix equality `R_n + 3/2*I = 1/m*J + ∑ w_j B_j B_jᵀ`:
+  assemble these *kernel-verified ingredients*, handle the diagonal sum and
+  the endpoint/antipodal conventions.
+- [ ] Prove a cycle-specific spectral lower bound from this identity.
+- [ ] Formalize ordering/multiplicities of cycle adjacency eigenvalues.
+- [ ] Formalize the monotonicity and harmonic-number comparisons for both parities.
+- [ ] Formalize the finite converse C3..C14.
+- [ ] Independent mathematical literature/priority audit and specialist review.
+
+**Status:** CANDIDATE — PARTIAL_FORMAL_CERTIFICATION.
+This file does **not** claim that the complete Graffiti 197 family theorem has been kernel-certified or externally accepted.
