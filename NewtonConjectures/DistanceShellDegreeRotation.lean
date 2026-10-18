@@ -43,6 +43,10 @@ theorem distance_shell_degree_translate (n d : ℕ) [NeZero n]
     (cycleDistanceShell n d).degree (u + a) =
       (cycleDistanceShell n d).degree u := by
   classical
+  letI : Fintype ((cycleDistanceShell n d).neighborSet (u + a)) :=
+    Fintype.ofFinite _
+  letI : Fintype ((cycleDistanceShell n d).neighborSet u) :=
+    Fintype.ofFinite _
   change ((cycleDistanceShell n d).neighborFinset (u + a)).card =
       ((cycleDistanceShell n d).neighborFinset u).card
   apply Finset.card_bij (fun w _ => w - a)
