@@ -168,3 +168,16 @@ Fully quantified theorems for every cycle size n≥4:
 The spectral statement is kernel-verified; the familiar equivalent bound `λ_min(R_n) ≥ -3/2` follows by an elementary scalar-matrix spectral shift, but its explicit Lean theorem about the *unshifted* eigenvalues has not yet been added.
 
 **Remaining final Lean proof goals:** cycle adjacency eigenvalue ordering and multiplicities, formal odd/even harmonic comparison from n≥15, exact finite converse C3..C14, and end-to-end formulation of the Graffiti violation inequality. The underlying Graffiti 197 conjecture was already refuted by Roucairol and Cazenave. Historical novelty is not independently approved; specialist review pending.
+
+## Stage 9 — full odd/even rational harmonic comparison — KERNEL VERIFIED
+
+- [Successful pinned Lean/mat​hlib run](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39140710038): 7,363 build jobs, 180 audited declarations, only propext / Classical.choice / Quot.sound; proof-placeholder scan passed.
+- New module: `NewtonConjectures/HarmonicComparison.lean`.
+- `oddCycleUpper_step`: q_o(m+1) < q_o(m), for every m≥7.
+- `evenCycleUpper_step`: q_e(m+1) < q_e(m), for every m≥8, via an exact rational bound on the even harmonic increment.
+- `oddCycleUpper_base_exact`: q_o(7)=468/245, and `evenCycleUpper_base_exact`: q_e(8)=1907/1050.
+- `oddCycleUpper_lt_boundary`: q_o(m) < 2-(22/105)^2 for every m≥7.
+- `evenCycleUpper_lt_boundary`: q_e(m) < 2-(11/28)^2 for every m≥8.
+- All above are fully universal exact rational theorems, not finite sample tests.
+
+**Remaining end-to-end Lean work:** formal adjacency matrix cycle eigenvalues and second-smallest order/multiplicity; rigorous cosine lower bound with π interval and monotonicity; direct spectral-span combination; formal exact n=3..14 exclusion. The rational finite verifier and the analytic manuscript are independent evidence but do not replace these formal obligations. Specialist and priority review remain outstanding.
