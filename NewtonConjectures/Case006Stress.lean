@@ -42,7 +42,10 @@ def covarianceTrace : ℚ :=
   covariance 0 0 + covariance 1 1 + covariance 2 2
 
 theorem covariance_trace_exact : covarianceTrace = (679:ℚ)/86 := by
-  norm_num [covarianceTrace, covariance, outer, v1, v2, v3, v4, v5, v6, v7]
+  unfold covarianceTrace
+  rw [sevenRay_covariance_exact 0 0, sevenRay_covariance_exact 1 1,
+      sevenRay_covariance_exact 2 2]
+  norm_num [displayedCovariance]
 
 private def axis (i : Fin 3) : ℚ := ![35, 2, 0] i
 private def delta (i j : Fin 3) : ℚ := if i = j then 1 else 0
@@ -103,7 +106,9 @@ theorem balanced_slot_incompatibility (gamma : ℝ)
 theorem two_color_partition (chi0 chi1 q : ℝ)
     (h : chi0^2 + chi1^2 = 1) :
     chi0^2 * q + chi1^2 * q = q := by
-  nlinarith
+  calc
+    chi0^2 * q + chi1^2 * q = (chi0^2 + chi1^2) * q := by ring
+    _ = q := by rw [h]; ring
 
 theorem cutoff_particular (chi chip r a : ℝ) :
     -(chip*r + chi*(a*r)) - a*(-chi*r) = -(chip*r) := by
