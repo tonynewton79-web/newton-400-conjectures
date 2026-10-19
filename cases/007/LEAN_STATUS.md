@@ -33,3 +33,17 @@ An independent, implementation-distinct [Python edge-bijection checker](verify_e
 
 **Next proof target:** derive the four true `sunGraph.degree` values (hub `d`, short leaf `1`, long intermediate `2`, tip leaf `1`) from the edge bijection, then identify `sunLabelS`/`sunLabelR` with actual graph-index sums. After these, advance to the dominant-degree and defect-comparison lemmas.
 
+
+### Vertex-degree and true-index bridge (19 October 2026)
+
+The new source [`Case007Degrees.lean`](../../NewtonConjectures/Case007Degrees.lean) explicitly targets the actual `sunGraph d k : SimpleGraph _`, rather than a surrogate graph or preassigned degrees. It introduces:
+- `sunHub_adj_iff`, `sunShort_adj_iff`, `sunLong_adj_iff`, and `sunTip_adj_iff`, classifying each neighborhood.
+- `sunGraph_degree_hub`, `sunGraph_degree_short`, `sunGraph_degree_long`, and `sunGraph_degree_tip`, with intended degrees `d,1,2,1`.
+- The degree-defined undirected-edge weight `sunGraphWeight` and its per-label equality with the earlier square-root weight.
+- `sunActualS` and `sunActualR`, which sum over **the real graph's `edgeSet`** rather than assumed labels.
+- `sunActualS_eq_sunLabelS` / `sunActualR_eq_sunLabelR` via the prior bijection.
+- `sunActualS_eq_paper` / `sunActualR_eq_paper`, matching the displayed formulas (3) and (4) of the research article.
+
+This is a complete *proposed Lean proof source* for the specific four-degree and three-edge-sum milestone. It has been imported into `NewtonConjectures.lean`, and both normal and case-specific CI builds have been triggered. **The GitHub jobs remained queued at the last inspection, with no verified Lean kernel pass; no claim of completed formal proof should be made until the specific commit actually builds cleanly.** Axiom/no-placeholder audits have likewise not returned results.
+
+Only after those checks should this milestone be marked kernel-verified. The dominant-degree estimate, strict defect comparison, optimization, and unrestricted theorem are not addressed by this module.
