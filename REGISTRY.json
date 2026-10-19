@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 90,
+      "cumulative_pdf_pages": 92,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -358,7 +358,19 @@
       "actual_two_adjoints_for_frozen_profiles_computed": false,
       "actual_two_source_native_pairing_columns_certified": false,
       "weighted_H8_inverse_proved": false,
-      "appendix_p_lean_status": "finite jet algebra submitted; GitHub Lean CI pending; full analytic compatibility not formalized"
+      "appendix_p_lean_status": "finite jet algebra submitted; GitHub Lean CI pending; full analytic compatibility not formalized",
+      "mixed_profile_appendix": "cases/006/paper/Appendix_Q_Mixed_Profile_Adjoint_Controls.md",
+      "mixed_profile_exact_verifier": "cases/006/attack014/verify_mixed_profile_controls.py",
+      "mixed_profile_lean": "NewtonConjectures/Case006MixedProfileControls.lean",
+      "mixed_profile_pairing_identity": "∫ φ L1[A] = −∫ A M1 (g1−g0) φ' for reference exact viscous adjoint φ",
+      "derivative_wronskian_identity": "W(φ1',φ2') = (γ/δ) W(φ1,φ2), with γ>0, δ>0",
+      "radial_shear_gate": "Original Proposition 9.20 G_R<=−σ<0: separated τ0,τ1 imply g0−g1>=σΔR",
+      "mixed_profile_conditional_result": "One distinct radial shaper with two axially separated amplitudes has invertible 2x2 reference adjoint pairing matrix; finite-rank repair of compact torque source on the interior patch follows",
+      "physical_tau0_tau1_frozen": false,
+      "physical_2x2_matrix_enclosed": false,
+      "source_native_amplitude_cone_margin_verified": false,
+      "slice_torque_bound_249_verified": false,
+      "appendix_q_lean_status": "Algebraic mixed pairing and derivative Wronskian source committed; Lean kernel CI queued, smooth Fredholm proof not formalized."
     }
   ]
 }
