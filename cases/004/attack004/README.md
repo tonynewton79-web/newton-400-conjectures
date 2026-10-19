@@ -2,7 +2,35 @@
 
 **19 October 2026 · Tony Newton · Newton Astro Labs**
 
-**Status: EXACT_PROVED_RESTRICTED_THEOREM_AND_94_CLASS_FINITE_CERTIFICATE; general Caccetta–Häggkvist remains OPEN; priority unverified.**
+**Status: PROVED_WEIGHTED_RESTRICTED_ALL_ORDER_THEOREM_AND_94_CLASS_CERTIFICATE; general Caccetta–Häggkvist remains OPEN; priority unverified.**
+
+## 19 October 2026 — Refined edge-codegree theorem (supersedes the coarse d<=5 bound)
+
+Let H be the simple complement of the underlying graph of a d-outregular orientation D of order 3d, with indegree errors epsilon_v=indegree(v)-d, variance V, and same-side complement defect S. For each H triangle T, define k_e as the number of H triangles containing edge e and K_T=max_{e in T} k_e. Put
+
+    W_star = sum_{H triangles T} max(0,5+K_T+sum_{v in T}epsilon_v)/K_T.
+
+A direct weighted spectator-charge proof establishes S >= W_star, and hence
+
+    c3(D) >= ceil(d + V/4 - t(H) + W_star/2).
+
+For balanced indegrees this reduces to
+
+    c3(D) >= d + (1/2)*sum_T (5/K_T - 1).
+
+Thus c3(D)>=d for EVERY balanced critical-order orientation whose complement has **at most five triangles per edge**, at arbitrary d. In particular **d=1,...,7** are covered without a graph classification. This is a restricted-class theorem, NOT the full conjecture or an improved unrestricted outdegree threshold.
+
+Explicit infinite non-triangle-free family for every d>=5: on Z_(3d) start with the triangle-free (d-1)-regular complement connection differences d+1,...,2d-1. Delete {0,d+1},{d-3,2d-2}, add {0,d-3},{d+1,2d-2}. The only H triangles are {0,d-3,2d-1} and {d+1,2d-2,3d-1}, every edge belongs to <=1 H triangle, and every balanced orientation of its 2d-regular underlying complement satisfies **c3(D)>=d+4**. The Eulerian orientation exists and the construction has a direct proof.
+
+Additional exact replay: 200 balanced orientations d=3..12 (186 with H triangles), and 26 switched graphs d=5..30, all passed the rational weighted bound. The original 94 cubic-complement graphs and 1440 critical orientations remain separately exact-certified.
+
+**Final cumulative six-page manuscript (conversation artifact, not GitHub binary):**
+- PDF SHA256: `2d7ef7f2c49b9e65cd02947d38e134eed385f5a2957fd0e466cb098b84780353`
+- TeX SHA256: `0c7923517ea478575eeae8bdbb3cbe0b570741b4aff064226d4a521d42a19e68`
+- Complete replay ZIP SHA256: `8e60d8add489bc294531bbe59979e259c751b736475373a730fa4467860aad5a`
+- Weighted replay certificate SHA256: `a50aec90f5359d1f5f3b683e3b1aa59ca23729e530a6f7c7df53267efbe9f1bf`
+
+**Remaining difficulty:** complementary edges in more than five H triangles (possible starting at balanced d=8), and irregular indegree sequences not excluded by the weighted gate. Novelty not established; full Caccetta–Häggkvist conjecture remains OPEN.
 
 ## Exact universal balanced incidence theorem
 
@@ -50,12 +78,12 @@ An independent standard-library-only bitset verifier checked all 94 cases; plus 
 The full cumulative **five-page PDF**, its LaTeX source, 85 connected graph6 records, the 94 graph-class JSON with constrained cuts, generation sources, independent exact verifier, machine-readable certificate and SHA-256 manifest are supplied as the conversation artifact **Project004_Attack004_Complete.zip**. This GitHub file is the public mathematical checkpoint; the binary pack has **not** been fully pushed to GitHub.
 
 Manifest SHA-256:
-- PDF: `88bcd020a7e5df08abaee125f45ed9cb9b91de58ef35f4f3fb076337efd88945`.
-- Cumulative TeX: `6ebf8b1b2c04027ed6270598ae29303e7d371843ad3439709d34b853272e42b9`.
+- PDF: `2d7ef7f2c49b9e65cd02947d38e134eed385f5a2957fd0e466cb098b84780353`.
+- Cumulative TeX: `0c7923517ea478575eeae8bdbb3cbe0b570741b4aff064226d4a521d42a19e68`.
 - 85-connected graph6: `8b9ceadb3cc6b4287c41aed4b2e8f5115cb27f9ce1eb59e84ed6aa2e9bbdcfa7`.
 - Full 94-type ledger: `822d503bb014d5fa2f47710d92666fb4b65399a2fda2990c17b3fb5b51163e97`.
 - Independent Attack004 certificate: `f966b3ee08b31330bed73af64b82a2917c5a8419c23ab658e443eb8e71236120`.
 
-No unrestricted (n/3) proof, no improvement over the published 0.3465n outdegree threshold, no verified originality, and no Lean-kernel compilation. Next attack is the d=6 balanced barrier, using refined edge-codegree-graded charging instead of the coarse maximum d-2.
+No unrestricted (n/3) proof, no improvement over the published 0.3465n outdegree threshold, no verified originality, and no Lean-kernel compilation. Next attack is the high-codegree barrier (at least six complementary triangles per edge) and irregular indegrees.
 
 Literature: Meringer, *Fast Generation of Regular Graphs and Construction of Cages*, J. Graph Theory 30 (1999), 137–146; https://www.mathe2.uni-bayreuth.de/markus/reggraphs.html ; Caccetta and Häggkvist (1977); Hladký–Král'–Norin (2017).
