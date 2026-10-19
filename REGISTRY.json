@@ -179,7 +179,7 @@
     {
       "id": "004",
       "target": "Caccetta–Häggkvist conjecture, directed triangle (minimum outdegree n/3)",
-      "status": "ATTACK003 EXACT GENERAL TRIANGLE IDENTITY AND SHARP INDEGREE VARIANCE RESTRICTED THEOREM; CH GENERAL OPEN",
+      "status": "ATTACK004 PROVED RESTRICTED BALANCED TRIANGLE INCIDENCE d<=5, EXACT 94-CUBIC-COMPLEMENT AUDIT; GENERAL CH OPEN",
       "source": "https://doi.org/10.1007/s00493-015-2662-5",
       "prior_art": "Hamidoune proved vertex-transitive and Cayley cases; prime proof not novel",
       "exact_positive_tests": 354291,
@@ -228,6 +228,25 @@
         "github_ci": "cases/004/attack003/verify_gate.py",
         "pdf_sha256": "49c74c57fb2e935be72e59f3c6e4e5065a5ecba3841a6070278d5da38c6a2d66",
         "exact_certificate_sha256": "87b114c885e88e3357d5ccd96ace626fbfa7e55e47d19a24627ecfb3cf1f38a1"
+      },
+      "attack004": {
+        "theorem": "For balanced d-in/d-out oriented graphs of order 3d, d>=3, (d-2)S>=6 t(H), giving c3>=d+(5-d)t(H)/(d-2).",
+        "sharp_finite_degree_consequence": "For each of d=1,2,3,4,5, c3>=d; cyclic Z_3d step graph attains equality. This is not a theorem for all d.",
+        "irregular_degree_gate": "For d-outregular critical graphs, kappa*S>=sum_{H triangles T} max(0,6+sum_{v in T}(indeg(v)-d)); c3>=ceil(d+V/4-t(H)+ceil(W/kappa)/2) when t(H)>0.",
+        "complete_12_vertex_cubic_complement_classes": 94,
+        "connected_cubic_complement_classes": 85,
+        "disconnected_cubic_complement_classes": 9,
+        "complete_12_vertex_lower_bound_min": 4,
+        "independent_critical_orientations_checked": 1440,
+        "independent_irregular_indegree_checked": 1434,
+        "strengthened_certificates": 1176,
+        "exact_sharp_cyclic_checks": 20,
+        "report": "cases/004/attack004/README.md",
+        "pdf_sha256": "88bcd020a7e5df08abaee125f45ed9cb9b91de58ef35f4f3fb076337efd88945",
+        "full94_sha256": "822d503bb014d5fa2f47710d92666fb4b65399a2fda2990c17b3fb5b51163e97",
+        "proof_status": "PROVED_RESTRICTED_CLASS_WITH_COMPUTER_AUDIT_NOT_NOVELTY_VERIFIED",
+        "full_caccetta_haggkvist_solved": false,
+        "unrestricted_threshold_improved": false
       }
     }
   ]
