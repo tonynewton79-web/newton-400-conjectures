@@ -58,11 +58,11 @@ analytic argument is **not** presently Lean formalized.
 
 ## Exact finite regression
 
-Run \`python3 cases/005/verify.py\`. It enumerates every prime
+Run `python3 cases/005/verify.py`. It enumerates every prime
 \(p\equiv1\pmod{24}\) through 500,000 and checks the
 \(d\in\{1,2,3,6\}\) symmetric factor filters, insisting on
 \(dr\le\lfloor\sqrt p\rfloor\) and verifying each unit-fraction identity
-with Python's exact \`Fraction\` arithmetic.
+with Python's exact `Fraction` arithmetic.
 
 * 5,137 primes considered; 5,078 covered; 59 not covered by these four
   filters. The unrestricted search verifies all 59 have square-root-bounded
@@ -110,7 +110,7 @@ below 500,000, the largest minimum product falls from 170
 \(d=2,r=46\), Type C. With ties resolved in ordered search as
 A, B, C, the first-witness types are A: 3112, B: 1864,
 C: 161. All first witnesses and the Type C rational identities
-are checked in \`cases/005/type_c.py\`.
+are checked in `cases/005/type_c.py`.
 
 ## A rigorous obstruction to uniformly bounded López parameters
 
@@ -136,9 +136,9 @@ This is a standard CRT/Dirichlet-type observation in substance, and
 novelty is *not* asserted. It also shows that a universal proof cannot
 use a uniform finite parameter cutoff.
 
-The supplementary \`cases/005/obstruction.py\` replays ten concrete
+The supplementary `cases/005/obstruction.py` replays ten concrete
 prime examples, \(K=1,\ldots,10\). The elementary Type A/B local modular
-step is in \`NewtonConjectures/ErdosStrausObstruction.lean\`;
+step is in `NewtonConjectures/ErdosStrausObstruction.lean`;
 the Type C nonresidue exclusion is a classical external lemma, not yet Lean formalized;
 Dirichlet's theorem is currently a mathematical citation, not a
 claimed formalized theorem in the repository.
@@ -151,18 +151,18 @@ finite-shift obstruction results than the elementary argument here.
 
 ## Remaining proof problem
 
-We would need a *moving-scale* theorem that guarantees a Type A or B
+We would need a *moving-scale* theorem that guarantees a Type A, B or C
 divisor of the indicated form for every hard prime before the
 product exceeds \(\sqrt p\). Neither the fixed-\(d\) density-one sieve
 nor the unboundedness obstruction supplies such a pointwise theorem.
 
 ## Lean and open obligations
 
-\`NewtonConjectures/ErdosStraus.lean\` contains the unconditional
+`NewtonConjectures/ErdosStraus.lean` contains the unconditional
 polynomial factorization, conditional Type A and B rational identities,
 and exact numerical witness statements. A dedicated GitHub Actions
 workflow compiles the file in the existing pinned Lean 4/mathlib
-workspace and independently runs \`verify.py\`.
+workspace and independently runs `verify.py`.
 
 **Not proved:** universal López-parameter existence; the square-root
 bound for all primes \(1\bmod24\); a Lean theorem about prime
