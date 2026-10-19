@@ -1,3 +1,4 @@
+import NewtonConjectures.Case007Sombor
 import NewtonConjectures.Case007EdgeBridge
 import Mathlib
 
@@ -263,5 +264,24 @@ theorem sunActualR_three_types (d k : ℕ) (hk : k ≤ d) :
       (k : ℝ) * (Real.sqrt ((d : ℝ)^2 + 4))⁻¹ +
       (k : ℝ) * (Real.sqrt 5)⁻¹ := by
   rw [sunActualR_eq_sunLabelR d k hk, sunLabelR_three_types]
+
+/-- The actual graph's Sombor index is exactly the paper's formula (3). -/
+theorem sunActualS_eq_paper (d k : ℕ) (hk : k ≤ d) :
+    sunActualS d k =
+      sunS (Real.sqrt 5) (Real.sqrt ((d : ℝ)^2 + 4))
+        (Real.sqrt ((d : ℝ)^2 + 1)) d k := by
+  rw [sunActualS_three_types d k hk, sunS_expansion]
+  rw [Nat.cast_sub hk]
+  ring
+
+/-- The actual graph's modified Sombor index is exactly formula (4). -/
+theorem sunActualR_eq_paper (d k : ℕ) (hk : k ≤ d) :
+    sunActualR d k =
+      sunR (Real.sqrt 5) (Real.sqrt ((d : ℝ)^2 + 4))
+        (Real.sqrt ((d : ℝ)^2 + 1)) d k := by
+  rw [sunActualR_three_types d k hk, sunR_expansion]
+  rw [Nat.cast_sub hk]
+  ring
+
 
 end Newton400.Case007
