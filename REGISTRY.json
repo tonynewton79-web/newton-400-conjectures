@@ -264,16 +264,19 @@
       "id": "006",
       "target": "Carrier-independent structured stress from exact unforced Navier–Stokes terminal core",
       "source": "https://doi.org/10.5281/zenodo.23475142",
-      "status": "EXACT FINITE ALGEBRA IN LEAN CI; H8 COMPACT WEIGHTED ANTI-DIVERGENCE OPEN",
+      "status": "FORMALLY VERIFIED FINITE SEVEN-RAY ALGEBRA; H8 COMPACT PDE GATE OPEN",
       "lean_kernel_verified": false,
-      "lean_kernel_verified_fragment": false,
+      "lean_kernel_verified_fragment": true,
       "lean_full_theorem_verified": false,
       "lean_fragment_source": "NewtonConjectures/Case006Stress.lean",
       "independent_exact_verifier": "cases/006/verify_exact.py",
       "current_formalization": "Exact seven-ray covariance and trace-free rank-one identity; efficiency margin; coefficient floor; conditional H8 budget consequence; auxiliary algebraic identities",
       "unresolved_theorem": "Obtain fixed-profile compact weighted anti-divergence satisfying bound 15971/122900 and complete unforced finite-energy Navier–Stokes chain",
       "independently_accepted_original_result": false,
-      "specialist_review": false
+      "specialist_review": false,
+      "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260218045",
+      "lean_axiom_audit": "PASS: 341 declarations under NewtonConjectures; allowable axioms propext, Classical.choice, Quot.sound; no sorry/admit",
+      "independent_exact_ci_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260223557"
     }
   ]
 }
