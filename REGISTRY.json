@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 80,
+      "cumulative_pdf_pages": 82,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -305,7 +305,15 @@
       "jacobian_conditioning_verifier": "cases/006/attack008/verify_conditioning.py",
       "jacobian_conditioning_theorem": "sharp |det J| <= 4 M eps² when first two rows ≤eps and third ≤M; independent exact sign-matrix audit",
       "jacobian_interval_certificate": "|det J-det B| <= 18L²delta + 18Ldelta² + 6delta³",
-      "appendix_K_formal_scope": "Lean algebraic determinant identities submitted for CI, universal sharp inequality not yet formalized"
+      "appendix_K_formal_scope": "Lean algebraic determinant identities submitted for CI, universal sharp inequality not yet formalized",
+      "tilt_torque_appendix": "cases/006/paper/Appendix_L_Tilted_Torque_Reduction.md",
+      "tilt_torque_lean_fragment": "NewtonConjectures/Case006TiltTorque.lean",
+      "tilt_torque_exact_verifier": "cases/006/attack009/verify_tilt_torque.py",
+      "tilt_torque_transfer_det": "-(9/2)c^2 t^2 (1-3t^2)",
+      "tilt_torque_reduced_moments": "For fully SO(2) axisymmetric complete source, fixed tilted cone, and ct(1-3t^2)!=0: B=0,C=0,(1-3t^2)A=2*(1217/1229)*Z",
+      "actual_full_source_axisymmetry_verified": false,
+      "actual_full_source_slice_torque_neutral_verified": false,
+      "source_native_meridional_jacobian_verified": false
     }
   ]
 }
