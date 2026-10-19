@@ -1,3 +1,14 @@
+## Attack 002 — exact complement-cut triangle certificate (19 October 2026)
+
+- **Exact identity, independently reproved:** for an oriented graph D with underlying graph G and simple complement H,
+  `sum_v indeg(v)*outdeg(v) = triangles(G) + 2*directed_triangles(D) + sum_v e_H(N-(v),N+(v))`.
+- **Orientation-independent necessary gate:** replace each complementary cut count by its maximum over all partitions of `N_G(v)` of prescribed indegree/outdegree sizes. Positive resulting deficit divided by two is a rigorous lower bound on directed triangles.
+- **Complete finite graph-type theorem:** on 6 vertices every 2-in/2-out orientation has at least 2 directed triangles; on 9 vertices every 3-in/3-out orientation has at least 3. Every 2-regular complement type of order 9 has been checked exactly: `9:3`, `6+3:5`, `5+4:5`, `3+3+3:9` lower bounds.
+- **Two independent integer implementations** agree on all five small-graph-class counts. Twelve sharp triangle-free circulant and irregular-indegree controls, including six degree-irregular perturbations, are correctly given a zero lower bound.
+- **Nonexhaustive exploration:** for each of d=4,n=12 and d=5,n=15, 200 fixed-seed random (d-1)-regular complement graphs all have positive deficits. No claim about all complements at either size.
+- [Full theorem statement and reproducibility notes](attack002/README.md) and [lightweight exact GitHub CI checker](attack002/verify_gate.py). Full typeset three-page PDF, LaTeX source, main and independent validators, JSON certificate and optional networkx sampling script are supplied as separate conversation artifacts, **not all checked into GitHub**.
+- **Research posture:** elementary exact inequality, mathematical correctness supported by double counting and independently checked finite arithmetic. Originality/prior art not established. No unrestricted improvement on the 0.3465n bound, no solution of CH, and no large-order exhaustive claim.
+
 # Case 004 — Caccetta–Häggkvist directed-triangle conjecture
 
 **Opened 19 October 2026. Status: EXACT_RESTRICTED_BASELINE_PASS; GENERAL_CH3_OPEN; NO_NOVELTY_CLAIM.**
