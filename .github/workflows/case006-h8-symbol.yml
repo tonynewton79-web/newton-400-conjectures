@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "cases/006/attack002/**"
+      - "cases/006/attack003/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
     paths:
@@ -22,3 +23,5 @@ jobs:
           python-version: '3.11'
       - name: Exact rational SOS and determinant replay
         run: python cases/006/attack002/verify_symbol.py
+      - name: Sharp seven-ray norm and dual-polynomial replay
+        run: python cases/006/attack003/verify_dual.py
