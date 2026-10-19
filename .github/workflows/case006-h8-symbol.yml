@@ -1,0 +1,24 @@
+name: Case 006 H8 symbol certificate
+on:
+  push:
+    paths:
+      - "cases/006/attack002/**"
+      - ".github/workflows/case006-h8-symbol.yml"
+  pull_request:
+    paths:
+      - "cases/006/attack002/**"
+      - "NewtonConjectures/Case006H8Symbol.lean"
+      - ".github/workflows/case006-h8-symbol.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-symbol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational SOS and determinant replay
+        run: python cases/006/attack002/verify_symbol.py
