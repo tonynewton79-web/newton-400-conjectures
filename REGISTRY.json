@@ -283,7 +283,14 @@
       "open_H8_gate": "Fixed source-native profile, compact weighted anti-divergence and pointwise bound 15971/122900, moment constraints and global PDE",
       "additional_necessary_moments": "Three quadratic divergence-free adjoint-null source moments q1,q2,q3; vanishing force and affine moments alone does not imply compact four-field inversion",
       "quadratic_appendix": "cases/006/paper/Appendix_H_Quadratic_Moments.md",
-      "explicit_restricted_counterexample": "s=(0,partial_x^2 eta,0): all first moments vanish but pairing against q1 equals -integral eta"
+      "explicit_restricted_counterexample": "s=(0,partial_x^2 eta,0): all first moments vanish but pairing against q1 equals -integral eta",
+      "finite_type_adj_kernel": "10-dimensional smooth adjoint kernel (3 translations, 3 rotations, 1 anisotropic dilation, 3 quadratic modes); no higher-degree or nonpolynomial smooth solutions",
+      "finite_type_math_proof": "cases/006/paper/Appendix_I_Complete_Adjoint_Kernel.md",
+      "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
+      "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
+      "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
+      "cumulative_pdf_pages": 75,
+      "global_navier_stokes_singularity_proved": false
     }
   ]
 }
