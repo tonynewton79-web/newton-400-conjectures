@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006AngularFlux
 import NewtonConjectures.Case006NormalizedInverse
 import NewtonConjectures.Case006MixedProfileControls
 import NewtonConjectures.Case006ExactViscousActuator
