@@ -44,3 +44,9 @@ The [full, professionally revised LaTeX manuscript](paper/main.tex) is now versi
 The actual finite simple-graph construction and the three edge-label classes are encoded in [Case007SunGraph.lean](../../NewtonConjectures/Case007SunGraph.lean). The module includes vertex and edge-label counts, adjacency witnesses for each of the three classes, and the Sombor and modified-Sombor weighted sums over those classes. The combined Lean and case-specific GitHub workflows have been triggered, but a successful compilation has not yet been confirmed.
 
 The remaining bridge is to prove that the edge-label map is an equivalence onto the actual `SimpleGraph.edgeFinset`, compute every vertex degree with `sunGraph.degree`, and thereby identify the label-defined sums with graph-defined Sombor invariants. Do not cite the graph module as a complete proof of the target theorem. A separate finite graph checker [verify_graph_construction.py](verify_graph_construction.py) tests 3,320 structures through hub degree 80 using exact squared weights and NetworkX tree checks.
+
+## Next formal step — graph edge bijection
+
+The new [edge-bijection Lean module](../../NewtonConjectures/Case007EdgeBridge.lean) proposes a proof that the three families of labeled edges constitute **all and only** the edges of the actual finite `SimpleGraph`. It also proves at source level the resulting count `|E(E_{d,k})|=d+k`. This module is awaiting Lean CI compilation and is **not claimed kernel-verified**.
+
+The independent [edge-bijection test](verify_edge_bijection.py) passes **7,404** finite parameter cases, including large-degree and boundary cases; see [formal ledger](LEAN_STATUS.md). The next essential Lean theorem computes the graph's *actual vertex degrees* and then identifies the degree-defined Sombor and reciprocal sums with the existing three edge-type formulas.
