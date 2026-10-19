@@ -143,11 +143,13 @@ novelty is *not* asserted. It also shows that a universal proof cannot
 use a uniform finite parameter cutoff.
 
 The supplementary `cases/005/obstruction.py` replays ten concrete
-prime examples, \(K=1,\ldots,10\). The elementary Type A/B local modular
-step is in `NewtonConjectures/ErdosStrausObstruction.lean`;
-the Type C nonresidue exclusion is a classical external lemma, not yet Lean formalized;
-Dirichlet's theorem is currently a mathematical citation, not a
-claimed formalized theorem in the repository.
+prime examples, \(K=1,\ldots,10\). The elementary Type A/B local modular theorem is in
+`NewtonConjectures/ErdosStrausObstruction.lean`. The full all-K existence
+of primes beyond any threshold that exclude both Type A and Type B is
+kernel-verified, including the mathlib Dirichlet theorem, in
+`NewtonConjectures/ErdosStrausInfinite.lean`.
+The Type C extension uses a classical quadratic-nonresidue fact and
+is not yet formalized in Lean.
 
 Related contemporary context is Dahan, *Sieve dimension and search
 depth for the Erdős–Straus conjecture*,
@@ -165,14 +167,19 @@ nor the unboundedness obstruction supplies such a pointwise theorem.
 ## Lean and open obligations
 
 `NewtonConjectures/ErdosStraus.lean` contains the unconditional
-polynomial factorization, conditional Type A and B rational identities,
-and exact numerical witness statements. A dedicated GitHub Actions
+polynomial factorization, conditional Type A/B/C rational identities,
+exact numerical witness statements and squared square-root estimates.
+`NewtonConjectures/ErdosStrausObstruction.lean` and
+`NewtonConjectures/ErdosStrausInfinite.lean` certify the all-K Type A/B
+CRT/Dirichlet obstruction. The pinned Lean 4/mathlib CI of
+19 October 2026 passed on GitHub Actions run 39254679999. A dedicated GitHub Actions
 workflow compiles the file in the existing pinned Lean 4/mathlib
 workspace and independently runs `verify.py`.
 
 **Not proved:** universal López-parameter existence; the square-root
 bound for all primes \(1\bmod24\); a Lean theorem about prime
-distribution; a kernel proof of the full minimality searches; and
+distribution; a kernel proof of the full minimality searches; the Type C nonresidue
+obstruction in Lean; and
 originality of the elementary factorization and density corollary.
 
 See also Xu,
