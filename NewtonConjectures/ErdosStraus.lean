@@ -56,6 +56,43 @@ theorem typeA_fraction (p d r u : ℚ)
   field_simp
   nlinarith [h]
 
+
+/-- For d <= 3, a Type B factor q at or below sqrt(4dp+1)
+    gives dr = (q+1)/4 at or below sqrt(p), expressed without radicals. -/
+theorem typeB_small_factor_square_bound (p d q : ℝ)
+    (hp : 4 ≤ p) (hd : d ≤ 3) (hq : 0 ≤ q)
+    (hsmall : q ^ 2 ≤ 4 * d * p + 1) :
+    (q + 1) ^ 2 ≤ 16 * p := by
+  have hp0 : 0 ≤ p := by linarith
+  have hmul : d * p ≤ 3 * p := mul_le_mul_of_nonneg_right hd hp0
+  have hq2 : q ^ 2 ≤ 12 * p + 1 := by nlinarith [hmul]
+  have hquad : 0 ≤ p * (p - 4) := mul_nonneg (by linarith) (by linarith)
+  have hqlinear : q ≤ 2 * p - 1 := by
+    by_contra hn
+    have hstrict : 2 * p - 1 < q := lt_of_not_ge hn
+    have hgap : 0 < (q - (2 * p - 1)) * (q + (2 * p - 1)) :=
+      mul_pos (by linarith) (by linarith)
+    nlinarith [hgap, hquad, hq2]
+  nlinarith [hq2, hqlinear]
+
+/-- For d <= 6 and p >= 7, a Type A small factor similarly guarantees
+    the squared square-root estimate. -/
+theorem typeA_small_factor_square_bound (p d q : ℝ)
+    (hp : 7 ≤ p) (hd : d ≤ 6) (hq : 0 ≤ q)
+    (hsmall : q ^ 2 ≤ p + 4 * d) :
+    (q + 1) ^ 2 ≤ 16 * p := by
+  have hd4 : 4 * d ≤ 24 := by linarith
+  have hq2 : q ^ 2 ≤ p + 24 := by linarith
+  have hquad : 0 ≤ (p - 7) * (p + 4) :=
+    mul_nonneg (by linarith) (by linarith)
+  have hqlinear : q ≤ p - 1 := by
+    by_contra hn
+    have hstrict : p - 1 < q := lt_of_not_ge hn
+    have hgap : 0 < (q - (p - 1)) * (q + (p - 1)) :=
+      mul_pos (by linarith) (by linarith)
+    nlinarith [hgap, hquad, hq2]
+  nlinarith [hq2, hqlinear]
+
 /-- The exact Type B integer witness from the finite search. -/
 theorem witness_68821 :
     (68821 : ℤ) = 4 * 11 * 29 * 54 - 29 - 54 := by
