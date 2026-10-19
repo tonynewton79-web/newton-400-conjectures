@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 86,
+      "cumulative_pdf_pages": 88,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -333,7 +333,20 @@
       "actual_complete_source_C4_verified": false,
       "actual_transport_map_extracted": false,
       "lean_kernel_status": "new FrameTransport finite polynomial fragments submitted, CI confirmation pending",
-      "h8_compact_weighted_inverse_proved": false
+      "h8_compact_weighted_inverse_proved": false,
+      "cylindrical_frame_appendix": "cases/006/paper/Appendix_O_Cylindrical_Frame_and_Torque.md",
+      "cylindrical_frame_verifier": "cases/006/attack012/verify_cylindrical_frame.py",
+      "cylindrical_frame_lean": "NewtonConjectures/Case006CylindricalTorque.lean",
+      "source_frame_interpretation": "Proposition 9.22 defines b* in moving physical cylindrical basis, so local axisymmetric rho(b*b^T-I/3) is already SO2/C4 covariant; fixed Cartesian obstruction does not apply to this representation",
+      "exact_cylindrical_center_br_bz": "-4443/9832",
+      "exact_cylindrical_center_btheta_bz": "(147sqrt182-84sqrt2)/9832 >0",
+      "complete_source_slice_torque": "m_s(z)=m_g(z)-btheta*bz*d/dz∫r²rho dr; exact neutrality requires m_g=btheta*bz R2'(z)",
+      "local_shaper_c4_verified_symbolically": true,
+      "local_cone_c4_verified_symbolically": true,
+      "actual_global_patch_maps_identified": false,
+      "full_source_torque_neutral_verified": false,
+      "compact_weighted_H8_inverse_verified": false,
+      "lean_appendix_o_status": "Algebraic fragment committed; CI kernel result pending"
     }
   ]
 }
