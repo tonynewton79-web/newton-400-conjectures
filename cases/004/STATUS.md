@@ -1,3 +1,12 @@
+## 19 October 2026 — Attack 004 final refinement (supersedes earlier d<=5-only checkpoint)
+
+- **PROVED:** Let K_T be the largest H-edge triangle multiplicity in an H triangle T, and W_star=sum_T max(0,5+K_T+sum_T(indegree-d))/K_T. Every d-outregular oriented D at order 3d satisfies S>=W_star and c3>=ceil(d+V/4-t(H)+W_star/2).
+- **ALL-ORDER RESTRICTED CLASS:** If indegree=outdegree=d and every H edge lies in <=5 complementary triangles, then c3>=d, for any d. In particular the balanced cases **d=1..7** follow unconditionally from this condition.
+- **EXPLICIT INFINITE GRAPH FAMILY, H TRIANGLES PRESENT:** Two-edge switch of triangle-free complement circulant H0 deletes {0,d+1},{d-3,2d-2} and inserts {0,d-3},{d+1,2d-2} on Z_(3d), every d>=5. It leaves exactly two H triangles, max H-edge triangle multiplicity 1, and ensures **c3>=d+4** in any balanced orientation.
+- **Independent rational controls:** 200 balanced graphs d=3..12 and 26 switched family graphs d=5..30 pass. The earlier complete **94** 12-vertex cubic complements and **1440** critical orientations also pass.
+- **Final cumulative 6-page scholarly PDF and full 13-file reproducibility ZIP** are conversation artifacts. [Full exact proof checkpoint, fingerprints and limitations](attack004/README.md).
+- **No universal n/3 result, no unrestricted 0.3465n improvement, originality and specialist review outstanding.** Next attack: edges with >=6 complementary triangles and irregular indegrees.
+
 ## 19 October 2026 — Attack 004: complement-triangle incidence and codegree (proved restricted theorem)
 
 - For every d>=3, every d-in/d-out oriented D of order 3d satisfies **(d-2)S>=6t(H)**, hence **c3(D)>=d+(5-d)t(H)/(d-2)**; exact double-counting/pigeonhole proof.
