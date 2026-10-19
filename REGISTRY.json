@@ -1,7 +1,7 @@
 {
   "project": "Newton Astro Labs — 400+ Conjectures",
   "target_externally_validated_original_results": 401,
-  "cases_documented": 4,
+  "cases_documented": 5,
   "candidate_analytic_proofs": 2,
   "independently_accepted_original_results": 0,
   "cases": [
@@ -259,6 +259,21 @@
         "novelty_or_priority_confirmed": false,
         "specialist_review": false
       }
+    },
+    {
+      "id": "006",
+      "target": "Carrier-independent structured stress from exact unforced Navier–Stokes terminal core",
+      "source": "https://doi.org/10.5281/zenodo.23475142",
+      "status": "EXACT FINITE ALGEBRA IN LEAN CI; H8 COMPACT WEIGHTED ANTI-DIVERGENCE OPEN",
+      "lean_kernel_verified": false,
+      "lean_kernel_verified_fragment": false,
+      "lean_full_theorem_verified": false,
+      "lean_fragment_source": "NewtonConjectures/Case006Stress.lean",
+      "independent_exact_verifier": "cases/006/verify_exact.py",
+      "current_formalization": "Exact seven-ray covariance and trace-free rank-one identity; efficiency margin; coefficient floor; conditional H8 budget consequence; auxiliary algebraic identities",
+      "unresolved_theorem": "Obtain fixed-profile compact weighted anti-divergence satisfying bound 15971/122900 and complete unforced finite-energy Navier–Stokes chain",
+      "independently_accepted_original_result": false,
+      "specialist_review": false
     }
   ]
 }
