@@ -149,3 +149,20 @@ Original shapers (193)–(194) yield generic compact toroidal and poloidal field
 
 **Next H8 target:** freeze true M,N, rho and the complete background torque, compute both exact viscous adjoint modes, find two *admissible source-native* pairing columns, then check Eq. (249), cone positivity (272), compact pressure, graph support, and weighted inverse (273).
 
+
+### Appendix Q — source-native two-control exact-viscous Fredholm repair
+
+[Appendix Q: full two-page mathematical proof](paper/Appendix_Q_Mixed_Profile_Adjoint_Controls.md) is in the cumulative **92-page** author paper, preserving every previous 90 page's extracted text. It returns directly to original source radial moments `M_j=∫R²τ_j dR`, `N_j=∫R²Gτ_j dR` from Eq. (250) and the full viscous operator (251), exploiting original Proposition 9.20's **strict radial shear**.
+
+For two nonnegative supported shapers `τ0,τ1` with separated radial supports, the source's `G_R<=-σ<0` gives `g0-g1 >= σ ΔR>0`, where `gj=Nj/Mj`. Let `φ1,φ2` solve the exact reference adjoint `δ φ''+(Dη+g0)φ'+γφ=0`. The precise cross-profile pairing is
+```text
+∫ φ_i L_1[A] = −∫ A M_1(g_1−g_0) φ_i'
+```
+for any compact axial amplitude. All same-reference-profile source changes `L_0[A]` have **zero** reference adjoint moments, but a different radial (G)-average produces nonzero responses. Because `W(φ1',φ2')=(γ/δ)W(φ1,φ2)≠0`, **one alternative radial shaper with two closely separated compact axial bump amplitudes yields an invertible 2×2 reference-adjoint moment matrix.**
+
+Under the stated smoothness, compact-support and reference `M0>0` hypotheses, every compact normalized torque target f supported in the interval has the exact *local source-form* representation `L0 A0 + α1 L1 A1 + α2 L1 A2=f`, with compact amplitudes. The correction coefficients α are fixed by the nonsingular 2×2 pairing matrix; a useful rigorous bump-width determinant-error estimate is also derived.
+
+This is an **analytic existence result conditional on the actual source's strict-shear region**, NOT a frozen numerical physical profile or a complete H8 theorem. The actual normalization of τ and envelope, coefficient size, possible loss of the slice gate (249), seven-ray floor (272), kinetic covariance, compact pressure, patch coupling and full weighted inverse (273) remain unproved.
+
+[Exact symbolic/high-precision verifier](attack014/verify_mixed_profile_controls.py) checks the mixed-profile identity, derivative Wronskian, exact separated-radial illustrative averages, and smooth two-column diagnostic. [Lean algebraic fragment](../../NewtonConjectures/Case006MixedProfileControls.lean) includes the pointwise adjoint reduction, Wronskian algebra and Cramer's numerators. Both source and verifier are imported into GitHub CI; new compiler PASS and axiom audit remain pending.
+
