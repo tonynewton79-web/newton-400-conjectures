@@ -9,6 +9,7 @@ on:
       - "cases/006/attack006/**"
       - "cases/006/attack007/**"
       - "cases/006/attack008/**"
+      - "cases/006/attack009/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -20,6 +21,7 @@ on:
       - "NewtonConjectures/Case006FiniteType.lean"
       - "NewtonConjectures/Case006SourceJacobian.lean"
       - "NewtonConjectures/Case006JacobianConditioning.lean"
+      - "NewtonConjectures/Case006TiltTorque.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -48,3 +50,5 @@ jobs:
         run: python cases/006/attack007/verify_source_jacobian.py
       - name: Test sharp quadratic determinant conditioning and interval certificate
         run: python cases/006/attack008/verify_conditioning.py
+      - name: Exact tilted-frame angular projection and source torque check
+        run: python cases/006/attack009/verify_tilt_torque.py
