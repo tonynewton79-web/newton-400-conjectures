@@ -135,7 +135,12 @@ theorem sunGraph_degree_hub (d k : ℕ) (hk : k ≤ d) :
     ext w
     simp only [SimpleGraph.mem_neighborFinset, Finset.mem_image,
       Finset.mem_univ, true_and]
-    exact sunHub_adj_iff w
+    constructor
+    · intro hw
+      rcases (sunHub_adj_iff w).mp hw with ⟨q, hq⟩
+      exact ⟨q, hq.symm⟩
+    · rintro ⟨q, hq⟩
+      exact (sunHub_adj_iff w).mpr ⟨q, hq.symm⟩
   rw [SimpleGraph.degree, hs]
   rw [Finset.card_image_of_injective _ hf]
   simp [Fintype.card_sum, Nat.sub_add_cancel hk]
