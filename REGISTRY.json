@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 84,
+      "cumulative_pdf_pages": 86,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -322,7 +322,18 @@
       "c4_source_condition": "Requires verified C4-equivariance of complete prepared compact g and rho in a single physical chart with fixed H8 cone frame; not yet established.",
       "c4_approximate_defect": "3L^2 ||g-P4g||_L1 + 2(1217/1229)L ||rho-P4rho||_L1 on a radius-L ball.",
       "c4_lean_status": "New polynomial projection source committed; end-to-end CI kernel and analytic averaging integrals not verified.",
-      "full_source_C4_equivariance_verified": false
+      "full_source_C4_equivariance_verified": false,
+      "frame_transport_appendix": "cases/006/paper/Appendix_N_C4_Frame_Transport.md",
+      "frame_transport_verifier": "cases/006/attack011/verify_frame_transport.py",
+      "frame_transport_lean": "NewtonConjectures/Case006FrameTransport.lean",
+      "frame_transport_sufficient_condition": "Complete scalar/vector/tensor fields formed as four exact C4 orbit sums; keep cutoff derivatives and nonlinear cross interactions",
+      "fixed_tilt_c4_obstruction": "||S Rstar S^T-Rstar||_F^2=2(1-b_z^4); single fixed Cartesian tilt cannot be C4 invariant",
+      "transported_stress_torque_correction": "For seed b=(a,0,c), B_K=-4ac∫y rho0; complete torque B_s=B_g+B_K",
+      "c4_source_defect_test": "3L^2||g-P4g||_1+6L||K-P4K||_{L1(F)}",
+      "actual_complete_source_C4_verified": false,
+      "actual_transport_map_extracted": false,
+      "lean_kernel_status": "new FrameTransport finite polynomial fragments submitted, CI confirmation pending",
+      "h8_compact_weighted_inverse_proved": false
     }
   ]
 }
