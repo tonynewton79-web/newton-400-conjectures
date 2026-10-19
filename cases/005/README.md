@@ -3,6 +3,7 @@
 **Research target:** For primes \(p\equiv1\pmod{24}\), find López Type A or B
 parameters \(d,r>0\) with \(dr\le\sqrt p\). This strengthened bound remains
 **unproved for all such primes**, as does the Erdős–Straus conjecture itself.
+López's wider Type C is examined separately below.
 
 ## Exact algebra and factor-pair filters
 
@@ -82,6 +83,35 @@ factor orientation, independently for each sampled prime. They are *finite
 computation*, not a proof for arbitrary primes.
 
 
+
+## Type C: the additional López construction
+
+López's Type C, distinct from the two congruences of Conjecture 1,
+allows \(4dr-1\mid p+4d^2\). An exact polynomial identity is
+\[
+r(p+4d^2)-(d+rp)=d(4dr-1).
+\]
+Thus, with \(v=(d+rp)/(4dr-1)\in\mathbf N\),
+\[
+4drv=d+rp+v,\qquad
+\frac4p=\frac1{rvp}+\frac1{dv}+\frac1{drp}.
+\]
+These are genuine, positive three-term decompositions whenever
+the divisor condition holds.
+
+The independently ordered search over *all three* types finds a
+much smaller product on some difficult primes. For
+\(p=1\,135\,844\,089\), Type A/B first appears at \(dr=7138\),
+but Type C first appears at \(d=2,r=7,dr=14\);
+\(v=144\,561\,975\). This is a previously defined construction,
+not a claimed new universal formula. For the 5,137 hard primes
+below 500,000, the largest minimum product falls from 170
+(A/B only) to **92** (A/B/C), attained at \(p=255049\) with
+\(d=2,r=46\), Type C. With ties resolved in ordered search as
+A, B, C, the first-witness types are A: 3112, B: 1864,
+C: 161. All first witnesses and the Type C rational identities
+are checked in \`cases/005/type_c.py\`.
+
 ## A rigorous obstruction to uniformly bounded López parameters
 
 For any \(K\ge1\), put
@@ -94,8 +124,11 @@ Dirichlet's theorem. For any \(d,r\ge1\) with \(dr\le K\), write
 Type B would require \(m\mid r+1\), contradicting \(0<r+1<m\).
 Type A would require \(m\mid4d+1\). If \(r\ge2\), then
 \(0<4d+1<m\); if \(r=1\), then \(4d+1=m+2\), so \(m\mid2\),
-contradicting \(m\ge3\). Hence no López Type A or Type B solution
-has \(dr\le K\) on this infinite prime progression.
+contradicting \(m\ge3\). Type C would require \(m\mid4d^2+1=(2d)^2+1\), which is
+impossible because \(m\equiv3\pmod4\) has a prime factor
+\(\ell\equiv3\pmod4\), and \(-1\) is not a quadratic residue
+modulo such a prime. Hence none of López's three types has
+\(dr\le K\) on this infinite prime progression.
 
 The conclusion is **unboundedness of the least López product across
 hard primes**, not failure of the moving square-root upper bound.
@@ -104,8 +137,9 @@ novelty is *not* asserted. It also shows that a universal proof cannot
 use a uniform finite parameter cutoff.
 
 The supplementary \`cases/005/obstruction.py\` replays ten concrete
-prime examples, \(K=1,\ldots,10\). The elementary local modular
+prime examples, \(K=1,\ldots,10\). The elementary Type A/B local modular
 step is in \`NewtonConjectures/ErdosStrausObstruction.lean\`;
+the Type C nonresidue exclusion is a classical external lemma, not yet Lean formalized;
 Dirichlet's theorem is currently a mathematical citation, not a
 claimed formalized theorem in the repository.
 
