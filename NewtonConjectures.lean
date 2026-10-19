@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006TiltTorque
 import NewtonConjectures.Case006JacobianConditioning
 import NewtonConjectures.Case006SourceJacobian
 import NewtonConjectures.Case006FiniteType
