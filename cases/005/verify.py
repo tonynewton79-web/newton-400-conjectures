@@ -117,11 +117,18 @@ def main():
         assert Fraction(1, a) + Fraction(1, b) + Fraction(1, c) == Fraction(4, p)
         residual.append((p, k, d, r, mode))
     assert max(row[1] for row in residual) == 170
+    # Recompute the minimum product for every prime in the entire sample,
+    # not merely the 59 surviving the special factor sieve.
+    minima = [(p, first_witness(p, isqrt(p))) for p in ps]
+    assert all(w is not None for _, w in minima)
+    pmax, wmax = max(minima, key=lambda row: row[1][0])
+    assert (pmax, wmax) == (83449, (170, 17, 10, 'A'))
     print('p == 1 (mod 24), p <= 500000:', len(ps))
     print('sqrt-bounded factorizations found:', solved)
     print('single-d coverage:', counts)
     print('first exceptions to this restricted filter:', exceptions[:20])
     print('all 59 residual primes solved by unrestricted sqrt search; max minimal dr:', max(row[1] for row in residual))
+    print('overall max minimal dr through 500000:', pmax, wmax)
     print('minimal dr for 68821:', first_witness(68821, 319))
     print('minimal dr for 1135844089:', hard)
     print('PASS (finite arithmetic only)')
