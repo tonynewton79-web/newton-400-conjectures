@@ -30,6 +30,7 @@ jobs:
       - name: Compile explicit Case 005 Lean module
         run: |
           lake env lean NewtonConjectures/ErdosStraus.lean
-          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/ErdosStraus.lean; then
+          lake env lean NewtonConjectures/ErdosStrausObstruction.lean
+          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/ErdosStraus.lean NewtonConjectures/ErdosStrausObstruction.lean; then
             echo "Found proof placeholder"; exit 1
           fi
