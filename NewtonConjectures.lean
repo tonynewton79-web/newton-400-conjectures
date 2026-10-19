@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006C4Quadratic
 import NewtonConjectures.Case006TiltTorque
 import NewtonConjectures.Case006JacobianConditioning
 import NewtonConjectures.Case006SourceJacobian
