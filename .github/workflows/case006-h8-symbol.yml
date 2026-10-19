@@ -14,6 +14,7 @@ on:
       - "cases/006/attack011/**"
       - "cases/006/attack012/**"
       - "cases/006/attack013/**"
+      - "cases/006/attack014/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -30,6 +31,7 @@ on:
       - "NewtonConjectures/Case006FrameTransport.lean"
       - "NewtonConjectures/Case006CylindricalTorque.lean"
       - "NewtonConjectures/Case006ExactViscousActuator.lean"
+      - "NewtonConjectures/Case006MixedProfileControls.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -68,3 +70,5 @@ jobs:
         run: python cases/006/attack012/verify_cylindrical_frame.py
       - name: Exact viscous torque actuator and two dual compatibilities
         run: python cases/006/attack013/verify_exact_torque_viscosity.py
+      - name: Exact source mixed-profile two-control torque rank audit
+        run: python cases/006/attack014/verify_mixed_profile_controls.py
