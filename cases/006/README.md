@@ -63,7 +63,7 @@ The cumulative author-facing PDF now contains **75 pages** (original 65 + Append
 
 ### Appendix J — exact source-native moment Jacobian and symmetry caveat
 
-[Appendix J, source-led derivation and proofs](paper/Appendix_J_Source_Native_Moment_Jacobian.md) has been integrated into the cumulative **79-page** author PDF; all previous 75 pages were preserved. In a fixed cone frame, the seven-ray centre has the exact contraction `Rstar:diag(1,-2,1)=1217/1229`. For a compact solenoidal variation `V_j` of the explicitly specified unprojected Navier–Stokes source model and envelope variation `r_j`, the exact Jacobian is
+[Appendix J, source-led derivation and proofs](paper/Appendix_J_Source_Native_Moment_Jacobian.md) has been integrated into the cumulative **78-page** author PDF; all previous 75 pages were preserved. In a fixed cone frame, the seven-ray centre has the exact contraction `Rstar:diag(1,-2,1)=1217/1229`. For a compact solenoidal variation `V_j` of the explicitly specified unprojected Navier–Stokes source model and envelope variation `r_j`, the exact Jacobian is
 
 ```text
 J_ij = d/dt ∫ V_j · q_i - 2∫ f_i (U_1 V_j1 - 2 U_2 V_j2 + U_3 V_j3)
