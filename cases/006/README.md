@@ -109,3 +109,12 @@ This does NOT establish complete-source C4 equivariance after patch gluing, movi
 
 The cumulative author-facing PDF is now **84 pages**, all previous 82 pages verified text-identical. [New Lean finite polynomial proof candidate](../../NewtonConjectures/Case006C4Quadratic.lean) and [independent 30-dimensional exact projector test](attack010/verify_c4.py) are included in GitHub Actions; kernel compilation and axiom audit must finish successfully before this Lean fragment is called formally verified.
 
+
+### Appendix N — transport of the complete C4 source and its tensor baseline
+
+The 86-page cumulative manuscript (all preceding 84 pages text-identical) now includes [Appendix N](paper/Appendix_N_C4_Frame_Transport.md). It proves an exact sufficient covariance mechanism: rotate **vectors, scalar envelopes and symmetric stresses together** as four full cyclic orbit copies, with every cutoff derivative and nonlinear overlap contribution retained. Their full unprojected source s=g−div K is exactly C4-equivariant. A fixed globally Cartesian tilted rank-one cone centre does not share that covariance: for Rstar=bb^T−I/3, ||S Rstar S^T−Rstar||_F²=2(1−b_z^4), and a C4-invariant compact envelope can yield a nonzero Leray-visible curl defect.
+
+**Corrected transported-baseline source moments.** For invariant E=(xz,yz,−z²), F=(−yz,xz,0), G=(0,0,x²+y²), define A_s=∫s·E, B_s=∫s·F, C_s=∫s·G. Under genuine covariance the Appendix L transfer applies to **(A_s,B_s,C_s)**. A fixed-centre scalar baseline term from Appendix M must not be substituted for a transported centre. For four copies of seed rho0(bb^T−I/3) with b=(a,0,c), the stress adds A_K=4∫rho0[z(a²−2c²)+acx], B_K=−4ac∫y rho0, C_K=8ac∫x rho0. **C4 alone does not imply B_K=0**; the complete torque condition is B_s=B_g+B_K=0.
+
+The tensor-aware defect test is |∫(s−P4s)·q_i^R|≤3L²||g−P4g||_1+6L||K−P4K||_{L¹(F)} for support in the radius-L ball. [Independent exact verifier](attack011/verify_frame_transport.py) passed symbolic transport, curl and seed moment identities; [new Lean algebraic fragment](../../NewtonConjectures/Case006FrameTransport.lean) is included in CI. Real source profile transport, pressure compactness, patch overlap cone margin and H8 weighted inversion remain unresolved; the new Lean compiler/axiom audit must pass before any kernel-certification claim.
+
