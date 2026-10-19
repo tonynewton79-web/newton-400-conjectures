@@ -1,4 +1,4 @@
-name: Case 007 exact certificates and Lean scalar lemmas
+name: Case 007 exact graph and Lean verification
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
       - 'cases/007/**'
       - 'NewtonConjectures/Case007Sombor.lean'
       - 'NewtonConjectures/Case007SunGraph.lean'
+      - 'NewtonConjectures/Case007EdgeBridge.lean'
       - '.github/workflows/case007.yml'
   workflow_dispatch:
 
@@ -25,11 +26,13 @@ jobs:
         run: python cases/007/verify_parameters.py
       - name: Verify actual eclipsed-sun graph structure for 3,320 parameter pairs
         run: python cases/007/verify_graph_construction.py --max-degree 80
+      - name: Independent exhaustive edge-label bijection and degree check
+        run: python cases/007/verify_edge_bijection.py --degree 120
       - name: Free-tree enumeration and exact integer margins
         run: python cases/007/certify_free_trees.py --min 5 --max 16
       - name: Scan formal source for unproved placeholders
         run: |
-          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean NewtonConjectures/Case007SunGraph.lean; then exit 1; fi
+          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean NewtonConjectures/Case007SunGraph.lean NewtonConjectures/Case007EdgeBridge.lean; then exit 1; fi
 
   lean-case007:
     runs-on: ubuntu-latest
