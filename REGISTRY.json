@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 78,
+      "cumulative_pdf_pages": 80,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -299,7 +299,13 @@
       "source_profile_frozen": false,
       "actual_source_native_jacobian_verified": false,
       "appendix_j_typeset_pages": 3,
-      "appendix_j_pdf_bookmarks": true
+      "appendix_j_pdf_bookmarks": true,
+      "jacobian_conditioning_appendix": "cases/006/paper/Appendix_K_Jacobian_Conditioning.md",
+      "jacobian_conditioning_lean": "NewtonConjectures/Case006JacobianConditioning.lean",
+      "jacobian_conditioning_verifier": "cases/006/attack008/verify_conditioning.py",
+      "jacobian_conditioning_theorem": "sharp |det J| <= 4 M eps² when first two rows ≤eps and third ≤M; independent exact sign-matrix audit",
+      "jacobian_interval_certificate": "|det J-det B| <= 18L²delta + 18Ldelta² + 6delta³",
+      "appendix_K_formal_scope": "Lean algebraic determinant identities submitted for CI, universal sharp inequality not yet formalized"
     }
   ]
 }
