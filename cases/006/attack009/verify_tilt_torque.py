@@ -30,8 +30,8 @@ assert s.factor(T.det()+s.Rational(9,2)*c*c*t*t*(1-3*t*t))==0
 assert s.factor(s.det(T.extract([0,2],[0,2]))-s.Rational(3,2)*c*t*(1-3*t*t))==0
 k,Z=s.symbols('k Z')
 assert s.simplify(T*s.Matrix([2*k*Z/(1-3*t*t),0,0])+k*Z*s.Matrix([t,0,-2*c]))==s.zeros(3,1)
-F=s.Matrix([Y[1],Y[0],-2*Y[2]])
-assert [avg(f.subs({x:r*a,y:r*b},simultaneous=True)) for f in F]==[t*z,0,-2*c*z]
+strain=s.Matrix([Y[1],Y[0],-2*Y[2]])
+assert [avg(f.subs({x:r*a,y:r*b},simultaneous=True)) for f in strain]==[t*z,0,-2*c*z]
 print('PASS determinant, meridional minor, and axisymmetric envelope')
 for tt,cc in [(F(3,5),F(4,5)),(F(5,13),F(12,13)),(F(0),F(1)),(F(1),F(0))]:
     assert tt*tt+cc*cc==1
