@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006QuadraticMoments
 import NewtonConjectures.Case006Ungauged
 import NewtonConjectures.Case006H8Symbol
 import NewtonConjectures.Case006Stress
