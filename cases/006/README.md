@@ -166,3 +166,24 @@ This is an **analytic existence result conditional on the actual source's strict
 
 [Exact symbolic/high-precision verifier](attack014/verify_mixed_profile_controls.py) checks the mixed-profile identity, derivative Wronskian, exact separated-radial illustrative averages, and smooth two-column diagnostic. [Lean algebraic fragment](../../NewtonConjectures/Case006MixedProfileControls.lean) includes the pointwise adjoint reduction, Wronskian algebra and Cramer's numerators. Both source and verifier are imported into GitHub CI; new compiler PASS and axiom audit remain pending.
 
+
+### Appendix R — explicit normalized curved-shell shapers and conditional quantitative inverse
+
+The cumulative main manuscript is now **94 pages**, with the original first 92 pages preserved text-identically and the two-page [Appendix R](paper/Appendix_R_Normalized_Radial_Inverse.md) appended.
+
+**Source-specific quantitative correction to Appendix Q:** The admissible strong-Rayleigh radial region is **s=chi(eta)Lambda_c R²/2 in [6,6.1]** (source Eqs. 199, 202, 257); its physical R width decreases like Lambda_c^{-1/2}. Choose smooth nonnegative normalized source shapers `tau_j=(chi Lambda_c/R) beta_{0.01}(s-s_j)` with exact `s0=241/40=6.025`, `s1=243/40=6.075`, where beta is the standard unit-mass smooth flat bump. On the interior source axial patch with cutoff 1, `M_j=∫R²tau_j=1` exactly. Their supports are [1203/200,1207/200] and [1213/200,1217/200] in s, entirely inside [6,6.1]. Strict shear `-G_R >= gstar Lambda_c^{-1/2}` therefore gives `g0-g1 >= kappa_Lambda = gstar * sqrt(2)*(sqrt(1213/200)-sqrt(1207/200))/Lambda_c`, with the exact dimensionless coefficient ≈0.00862440024556. The **guaranteed average shear gap is order Lambda_c^{-1}, not Lambda_c^{-1/2}**. Because `M_j=1` on a shrinking radial shell, the shaper peak has a necessary lower bound of order Lambda_c^{3/2}.
+
+**Quantitative conditional exact two-control bound:** Choose the reference adjoint fundamental solutions with initial data (1,0),(0,1) and two normalized axial bump controls centred at eta0 and eta0+t, width w_a. If `|b|<=B`, `kappa_Lambda<=k<=K`, `|k'|<=T`, `delta=nu eps²>0`, `gamma>0`, `L=max(1+B/delta,gamma/delta)`, `E=exp(L(t+w_a))`, `P=sqrt(2)KE`, `H=sqrt(2)E(T+KL)`, and
+```text
+L exp(Lt) (B*t/2 + gamma*t²/6) <= gamma/2,
+2w_a*H*P + (w_a*H)² <= kappa_Lambda²*gamma*t/(4delta),
+```
+then the source-defined exact viscous matrix obeys
+```text
+|det C| >= kappa_Lambda²*gamma*t/(4delta),
+||C^-1||_infty <= 8delta*K*E/(kappa_Lambda²*gamma*t).
+```
+A bound on the actual correction alpha follows upon bounding the true source forcing's two adjoint pairings. The proof is an explicit ODE Gronwall + point-column determinant + finite bump-width perturbation argument. The illustrative positive parameter-box replay satisfies both tests, but its B,K,T are NOT values calculated from the physical original G,chi.
+
+The **actual gate remains open**: source-specific numerical B,K,T and physical f, derivative amplification from narrow bumps, the total dimensional torque criterion (249), the weighted local seven-ray correction norm (272), and full compact weighted inversion (273). A nominal factor Lambda_c²/gstar² appears in the sufficient inverse formula before optimizing K; it is a bound, not a proven physical blowup in control cost. [Exact verifier](attack015/verify_normalized_inverse.py) and [Lean algebraic source](../../NewtonConjectures/Case006NormalizedInverse.lean) are in GitHub CI; the new Lean build has not yet been confirmed kernel-passing, and the ODE/integral proof is not formalized in Lean.
+
