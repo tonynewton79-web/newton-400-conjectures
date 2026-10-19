@@ -16,6 +16,7 @@ on:
       - "cases/006/attack013/**"
       - "cases/006/attack014/**"
       - "cases/006/attack015/**"
+      - "cases/006/attack016/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -34,6 +35,7 @@ on:
       - "NewtonConjectures/Case006ExactViscousActuator.lean"
       - "NewtonConjectures/Case006MixedProfileControls.lean"
       - "NewtonConjectures/Case006NormalizedInverse.lean"
+      - "NewtonConjectures/Case006AngularFlux.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -76,3 +78,5 @@ jobs:
         run: python cases/006/attack014/verify_mixed_profile_controls.py
       - name: Exact normalized curved-shell profile and conditional inverse replay
         run: python cases/006/attack015/verify_normalized_inverse.py
+      - name: Exact cumulative H8 angular cone-flux and torque-primitive check
+        run: python cases/006/attack016/verify_flux_obstruction.py
