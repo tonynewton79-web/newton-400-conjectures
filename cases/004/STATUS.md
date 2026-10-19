@@ -1,3 +1,14 @@
+## 19 October 2026 — Attack 003: exact critical indegree-variance theorem
+
+- For any oriented graph on n vertices, with complement H, c3 directed triangles, r_v complementary degrees and S=sum_v[e_H(N+(v))+e_H(N-(v))]: 2c3=sum_v d+(v)d-(v)-binom(n,3)+sum_v binom(r_v,2)-2t(H)+S. This is a proved elementary identity.
+- For **n=3d** and **outdegree d everywhere**, let V=sum_v(d-(v)-d)^2. The exact identity specializes to c3=d+V/4-t(H)+S/2. Thus triangle-free critical graphs require t(H)>=d+V/4. A degree-only inequality also follows: c3>=max(0,ceil(d-d(d-1)(d-2)/2+V/12)).
+- Restricted infinite-family theorem: if H is triangle-free then c3>=d, **sharp for every d** via the cyclic orientation on Z/(3d) with outgoing steps 1..d.
+- Complete **n=9, 3-outregular case** follows from the new variance-only inequality for V>0 and the Attack002 9-vertex balanced classification for V=0. This recovers established small-degree prior art; no claim of new priority.
+- **Exact tests:** 8400 generated critical orientations, 5943 irregular-indegree, 3656 complementary triangles, 7985 positive variance certificates, zero identity residual; exhaustive 4096 orientations of K6 minus 3-edge matching -> 38 valid 2-outregular, with distribution c3=2:8,4:12,5:16,8:2; 40 sharp cyclic witnesses d=1..40; 6 out-of-domain triangle-free controls.
+- [Full theorem summary and release manifest](attack003/README.md), [small exact GitHub CI checker](attack003/verify_gate.py). The cumulative 4-page PDF, editable TeX, full dual-algorithm tests, JSON certificates, SHA-256 manifest and ZIP are separate conversation artifacts; not all source files are replicated on GitHub.
+- **Claim bounds:** proof of restricted class, not general Caccetta–Häggkvist; no unrestricted 0.3465n improvement; originality and independent specialist review remain open.
+
+
 ## Attack 002 — exact complement-cut triangle certificate (19 October 2026)
 
 - **Exact identity, independently reproved:** for an oriented graph D with underlying graph G and simple complement H,
