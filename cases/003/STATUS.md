@@ -1,3 +1,13 @@
+## 19 October 2026 — Attack 004: ten real four-pole splices
+
+- **10/10 full ordered-position cut-state orbits** admitted an exact matching-label-aligned junction of two independently sourced cyclic-cut shores, using a freely chosen four-port bijection and relabelling of the six matchings. These are *positive witness composites*, not a theorem that arbitrary fixed junctions are always compatible.
+- **Exact composite graph certificates:** 10 bridgeless cubic graphs on 62, 70 (two cases), or 72 (seven cases) vertices, each equipped with six perfect matchings covering every edge exactly twice.
+- **Important difficult state:** all-four-crossings orbit realized by splicing source graph 1 cut [20,40,43,47] with graph 4 cut [2,3,17,30], yielding 62-vertex certificate.
+- A **separately written standard-library-only verifier** reconstructs original cut shores, the junction and all six matchings; checks connectedness after deleting every edge, cubicity and twice-incidence; and rejects a tampered matching. PASS.
+- **Full ten-witness JSON SHA256** `a2dd3c4d30af8f43726be9db9a4ca7beacce6d526953b51ea8a7c0f27689216e`.
+- **Scope limit:** no claim the composite graphs remain snarks, preserve oddness four, or are pairwise nonisomorphic. No proof of the general Berge–Fulkerson conjecture and no established novelty.
+- [Attack 004 report and reproducibility manifest](attack004/README.md). Full revised four-page PDF, TeX, scripts and exact JSON certificates remain separate downloadable conversation artifacts; the GitHub checkpoint is documentation rather than the full code/certificate release.
+
 ## 19 October 2026 — Attack 003: four-cut ten-orbit theorem and oddness-four pilot
 
 - **Exact elementary theorem:** among the 15^4=50,625 four-boundary pair-label assignments, exactly **1,725** satisfy four-cut matching parity and form **10 distinct S6 orbits**: 6 of type n4=0, 3 of type n4=1 and 1 of type n4=2. An exact four-pole gluing criterion reduces to overlap of extendible labelled boundary-state sets.
