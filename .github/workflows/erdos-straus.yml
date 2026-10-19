@@ -19,7 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Verify finite arithmetic without floating point
-        run: python3 cases/005/verify.py
+        run: |
+          python3 cases/005/verify.py
+          python3 cases/005/obstruction.py
       - uses: leanprover/lean-action@v1
         with:
           build: true
