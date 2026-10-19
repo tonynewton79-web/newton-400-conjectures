@@ -1,0 +1,42 @@
+name: Case 007 publication PDF
+
+on:
+  push:
+    paths:
+      - 'cases/007/paper/main.tex'
+      - '.github/workflows/case007-paper.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install TeX packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-pictures
+      - name: Compile the complete article
+        working-directory: cases/007/paper
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          pdfinfo main.pdf | grep '^Pages:'
+      - name: Check PDF was generated
+        uses: actions/upload-artifact@v4
+        with:
+          name: case007-sombor-paper
+          path: cases/007/paper/main.pdf
+      - name: Commit compiled PDF to repository
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f cases/007/paper/main.pdf
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Build Case 007 revised Sombor paper [skip ci]'
+          git push origin HEAD:main
