@@ -1,0 +1,19 @@
+name: Paper 004 Attack003 exact variance identity
+on:
+  push:
+    paths:
+      - 'cases/004/attack003/**'
+      - '.github/workflows/case004-attack003.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact critical indegree variance gate
+        run: python cases/004/attack003/verify_gate.py
