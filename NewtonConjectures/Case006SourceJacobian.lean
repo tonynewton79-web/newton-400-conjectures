@@ -44,14 +44,42 @@ theorem envelope_affine_difference (rho drho t : ℝ) :
     (rho + t*drho) - rho = t*drho := by
   ring
 
-/-- The three adjoint scalar strains transform with the two
-odd and one even parities under (x,y,z) -> (-x,-y,z). -/
-theorem adjoint_strain_half_turn_parities (x y z : ℝ) :
-    -y = -(y) ∧ -x = -(x) ∧ -2*z = -2*z := by
+/-- Exact half-turn-odd parity of all three q₁ components. -/
+theorem q1_half_turn_odd (x y z : ℝ) :
+    (-((-x)*(-y))) = -(x*y) ∧
+    (-(-(((-x)^2+2*(-y)^2+z^2)/2))) = -(-((x^2+2*y^2+z^2)/2)) ∧
+    ((-y)*z) = -(y*z) := by
   constructor
   · ring
   constructor
   · ring
   · ring
+
+/-- Exact half-turn-odd parity of all three q₂ components. -/
+theorem q2_half_turn_odd (x y z : ℝ) :
+    (-(((-x)^2+2*(-y)^2-z^2)/2)) = -((x^2+2*y^2-z^2)/2) ∧
+    (-(-2*(-x)*(-y))) = -(-2*x*y) ∧
+    ((-x)*z) = -(x*z) := by
+  constructor
+  · ring
+  constructor
+  · ring
+  · ring
+
+/-- Exact half-turn-even parity of all three q₃ components. -/
+theorem q3_half_turn_even (x y z : ℝ) :
+    (-(-2*(-x)*z)) = -2*x*z ∧
+    (-(4*(-y)*z)) = 4*y*z ∧
+    ((-x)^2-2*(-y)^2-z^2) = x^2-2*y^2-z^2 := by
+  constructor
+  · ring
+  constructor
+  · ring
+  · ring
+
+/-- Determinant factor for two odd and one even actuator columns. -/
+theorem c2_block_determinant (a b c d e : ℝ) :
+    (a*d*e - b*c*e) = e*(a*d-b*c) := by
+  ring
 
 end Newton400.Case006Jacobian
