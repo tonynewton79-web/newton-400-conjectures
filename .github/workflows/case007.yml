@@ -7,6 +7,7 @@ on:
       - 'NewtonConjectures/Case007Sombor.lean'
       - 'NewtonConjectures/Case007SunGraph.lean'
       - 'NewtonConjectures/Case007EdgeBridge.lean'
+      - 'NewtonConjectures/Case007Degrees.lean'
       - '.github/workflows/case007.yml'
   workflow_dispatch:
 
@@ -32,7 +33,7 @@ jobs:
         run: python cases/007/certify_free_trees.py --min 5 --max 16
       - name: Scan formal source for unproved placeholders
         run: |
-          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean NewtonConjectures/Case007SunGraph.lean NewtonConjectures/Case007EdgeBridge.lean; then exit 1; fi
+          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean NewtonConjectures/Case007SunGraph.lean NewtonConjectures/Case007EdgeBridge.lean NewtonConjectures/Case007Degrees.lean; then exit 1; fi
 
   lean-case007:
     runs-on: ubuntu-latest
