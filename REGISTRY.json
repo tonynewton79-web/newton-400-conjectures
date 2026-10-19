@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 88,
+      "cumulative_pdf_pages": 90,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -346,7 +346,19 @@
       "actual_global_patch_maps_identified": false,
       "full_source_torque_neutral_verified": false,
       "compact_weighted_H8_inverse_verified": false,
-      "lean_appendix_o_status": "Algebraic fragment committed; CI kernel result pending"
+      "lean_appendix_o_status": "Algebraic fragment committed; CI kernel result pending",
+      "viscous_torque_appendix": "cases/006/paper/Appendix_P_Exact_Viscous_Actuator.md",
+      "viscous_torque_verifier": "cases/006/attack013/verify_exact_torque_viscosity.py",
+      "viscous_torque_lean": "NewtonConjectures/Case006ExactViscousActuator.lean",
+      "exact_viscous_operator": "L_delta[A]=(B A)'-gamma M A-delta(M A)'', B=D eta M+N, gamma=3/2-2h, delta=nu epsilon^2>0",
+      "exact_viscous_adjoint": "delta M phi'' + B phi' +gamma M phi=0, two independent compact compatibility functionals on fixed interior interval where M !=0",
+      "positive_one_sign_actuator_obstruction": "If M>0, gamma>0 and f is derivative-only compact profile with mean zero, nonzero one-sign A cannot be compact",
+      "proxy_modes": "Diagnostic only: h=1/12,gamma=4/3,M=1,B=101/75,delta=1/75, adjoint exp(-eta), exp(-100eta)",
+      "physically_admissible_exact_torque_actuator_constructed": false,
+      "actual_two_adjoints_for_frozen_profiles_computed": false,
+      "actual_two_source_native_pairing_columns_certified": false,
+      "weighted_H8_inverse_proved": false,
+      "appendix_p_lean_status": "finite jet algebra submitted; GitHub Lean CI pending; full analytic compatibility not formalized"
     }
   ]
 }
