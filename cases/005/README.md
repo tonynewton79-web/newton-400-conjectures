@@ -99,6 +99,12 @@ Thus, with \(v=(d+rp)/(4dr-1)\in\mathbf N\),
 These are genuine, positive three-term decompositions whenever
 the divisor condition holds.
 
+The earlier two-type square-root counterexample at \(p=68821\)
+no longer obstructs a *three-type* version: the minimum Type A/B
+product is 319, but Type C has \(d=11,r=19,dr=209\), and
+\(209\le\lfloor\sqrt{68821}\rfloor=262\). This does not
+settle the three-type conjecture for every prime.
+
 The independently ordered search over *all three* types finds a
 much smaller product on some difficult primes. For
 \(p=1\,135\,844\,089\), Type A/B first appears at \(dr=7138\),
