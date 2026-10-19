@@ -9,7 +9,7 @@ An open, reproducible mathematical research programme targeting **401 independen
 | Case | Research target | Status |
 |---|---|---|
 | [001](cases/001/README.md) | Roucairol–Cazenave cycle conjecture associated with Graffiti 197 | Candidate infinite-family strengthening; independent priority review pending |
-| [006](cases/006/README.md) | Carrier-independent Navier–Stokes stress route (Zenodo 23475142) | Rational seven-ray Lean fragment in verification; compact H8 PDE gate open |
+| [006](cases/006/README.md) | Carrier-independent Navier–Stokes stress route (Zenodo 23475142) | Lean kernel-verified seven-ray algebra only; compact H8 PDE gate open |
 
 The original Graffiti 197 assertion was already refuted by Milo Roucairol and Tristan Cazenave. Case 001 does **not** claim the first refutation. It investigates a stronger all-cycles classification.
 
