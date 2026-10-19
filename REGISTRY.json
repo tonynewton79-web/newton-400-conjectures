@@ -276,7 +276,11 @@
       "specialist_review": false,
       "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260218045",
       "lean_axiom_audit": "PASS: 341 declarations under NewtonConjectures; allowable axioms propext, Classical.choice, Quot.sound; no sorry/admit",
-      "independent_exact_ci_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260223557"
+      "independent_exact_ci_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260223557",
+      "research_continuation": "Exact sharp 1/5 augmented-symbol SOS; ungauged characteristic y-axis; explicit periodic noncompact right inverse; 3-inequality coefficient norm and sharp dual virtual-work test",
+      "paper_addendum": "cases/006/paper/Appendix_G_H8_Symbol_and_Dual.md",
+      "current_formalization_status": "New H8 symbol and ungauged Lean source submitted to CI; kernel confirmation pending",
+      "open_H8_gate": "Fixed source-native profile, compact weighted anti-divergence and pointwise bound 15971/122900, moment constraints and global PDE"
     }
   ]
 }
