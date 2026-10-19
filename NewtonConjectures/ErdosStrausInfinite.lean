@@ -27,7 +27,7 @@ theorem exists_prime_no_bounded_AB (K N : ℕ) :
   have hQne : Q ≠ 0 := by omega
   have hc : (1 : ℕ).Coprime Q := by simp
   obtain ⟨p, hpgt, hprime, hcong⟩ :=
-    Nat.forall_exists_prime_gt_and_modEq N (q := Q) (a := 1) hQne hc
+    Nat.forall_exists_prime_gt_and_modEq N (q := Q) (a := 1) (by simp)
   have h24div : 24 ∣ Q := by
     unfold Q
     exact dvd_mul_right 24 _
