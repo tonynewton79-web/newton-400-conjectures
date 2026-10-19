@@ -23,6 +23,8 @@ Each case has a source statement, mathematical proof, exact reproducibility code
 
 Tony Newton — Newton Astro Labs, independent computational research, UK.
 
+For scientific and mathematical research services, see [Newton Astro Labs consultancy packages](CONSULTANCY.md), including advanced research investigations at £500 for up to eight hours.
+
 See [CLAIM_POLICY.md](CLAIM_POLICY.md), [REGISTRY.json](REGISTRY.json), and the individual case directories.
 
 ## Case 001 — full research release
