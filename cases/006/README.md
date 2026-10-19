@@ -87,3 +87,14 @@ If a future genuine source calculation encloses all entries within `delta` of a 
 
 [New Lean algebraic source](../../NewtonConjectures/Case006JacobianConditioning.lean) proves exact two-scale determinant factorizations, the parity block identity, a nonzero implication, and a sharp sign witness; the **universal real inequality and PDE claims are not Lean-formalized**. The independent [exact audit](attack008/verify_conditioning.py) passed all 512 sign vertices and 8,192 seeded rational tests. New GitHub Lean kernel build is queued. The physical source-native Jacobian entries and H8 weighted compact inverse remain open.
 
+
+### Appendix L — tilted-frame torque and exact two-moment reduction
+
+[Appendix L: exact tilted SO(2) projection and source-moment theorem](paper/Appendix_L_Tilted_Torque_Reduction.md) is part of the cumulative **82-page** author manuscript (original 80 pages unchanged). In a common, fixed H8 cone frame rotated about the physical x-axis by c=cos(theta), t=sin(theta), the three rotated quadratic adjoint fields project onto exactly three divergence-free axisymmetric quadratic fields E=(xz,yz,-z²), F=(-yz,xz,0), G=(0,0,r²). The 3×3 transfer has determinant `-(9/2)c²t²(1-3t²)`, with nondegenerate meridional minor `(3/2)ct(1-3t²)` at generic tilt.
+
+For a compact axisymmetric unprojected source `g`, `B=∫g·F=2π∫z m(z)dz` with `m(z)=∫r²g_theta(r,z)dr`; hence its q2 quadratic moment equals `-6πct∫z m(z)dz`. For `s=g-div(rho Rstar^R)` with axisymmetric rho and fixed tilted cone centre, put `A=∫g·E`, `C=∫g·G`, `Z=∫z rho`, `kappa=1217/1229`. Provided `ct(1-3t²)≠0`, **all three quadratic moments vanish if and only if** `B=C=0` and `(1-3t²)A=2 kappa Z`. If the *complete* source's slice torque is exactly neutral, `B=0` automatically and a **two-dimensional meridional Jacobian** is the appropriate restricted controllability question. This is stronger than a full 3×3 determinant test under precisely these assumptions.
+
+**Boundary:** The actual H8 source is not known to be fully SO(2) axisymmetric in one chart; it uses tilted, transported cones and potentially only C4 patch symmetry. The selected torque-neutral *toroidal shaper* does not prove exact neutrality of the complete source. The source-native 2×2 Jacobian and compact weighted H8 inversion remain unproved.
+
+[New Lean polynomial fragment](../../NewtonConjectures/Case006TiltTorque.lean) encodes the transfer determinant and baseline cancellation, and the [independent exact SO(2) angular projection checker](attack009/verify_tilt_torque.py) passes. The full rotational integral identities and H8 analytic step are not end-to-end Lean formalized; new GitHub Actions kernel CI is pending.
+
