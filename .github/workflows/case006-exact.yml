@@ -1,0 +1,24 @@
+name: Case 006 exact stress arithmetic
+on:
+  push:
+    paths:
+      - "cases/006/**"
+      - ".github/workflows/case006-exact.yml"
+  pull_request:
+    paths:
+      - "cases/006/**"
+      - "NewtonConjectures/Case006Stress.lean"
+      - ".github/workflows/case006-exact.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-rational:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reproduce rational seven-ray and coefficient-bound certificates
+        run: python cases/006/verify_exact.py
