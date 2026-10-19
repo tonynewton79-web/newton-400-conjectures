@@ -33,6 +33,7 @@ jobs:
         run: |
           lake env lean NewtonConjectures/ErdosStraus.lean
           lake env lean NewtonConjectures/ErdosStrausObstruction.lean
-          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/ErdosStraus.lean NewtonConjectures/ErdosStrausObstruction.lean; then
+          lake env lean NewtonConjectures/ErdosStrausInfinite.lean
+          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/ErdosStraus.lean NewtonConjectures/ErdosStrausObstruction.lean NewtonConjectures/ErdosStrausInfinite.lean; then
             echo "Found proof placeholder"; exit 1
           fi
