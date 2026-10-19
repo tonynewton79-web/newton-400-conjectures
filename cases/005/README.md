@@ -6,7 +6,7 @@ parameters \(d,r>0\) with \(dr\le\sqrt p\). This strengthened bound remains
 
 ## Exact algebra and factor-pair filters
 
-López's 2024 paper [arXiv:2404.01508](https://arxiv.org/abs/2404.01508)
+For positive parameters, López's 2024 paper [arXiv:2404.01508](https://arxiv.org/abs/2404.01508)
 defines the Type A and Type B congruences. The basic Type B identity is
 
 \[
@@ -64,7 +64,10 @@ Run \`python3 cases/005/verify.py\`. It enumerates every prime
 with Python's exact \`Fraction\` arithmetic.
 
 * 5,137 primes considered; 5,078 covered; 59 not covered by these four
-  filters. These 59 are **not** Erdős–Straus counterexamples.
+  filters. The unrestricted search verifies all 59 have square-root-bounded
+  witnesses; thus **all 5,137 sample primes are covered**.
+* The largest true minimal product across all 5,137 primes is
+  \(dr=170\), at \(p=83{,}449\), Type A \((d,r)=(17,10)\).
 * Separate \(d\)-counts (overlapping): \(d=1\): 3,902;
   \(d=2\): 4,299; \(d=3\): 2,623; \(d=6\): 1,471.
 * For \(p=68{,}821\equiv13\pmod{24}\), the least product is
@@ -75,8 +78,8 @@ with Python's exact \`Fraction\` arithmetic.
   \(p+4d=(4dr-1)\cdot39783\).
 
 The minimality tests exhaust every smaller integer product and every
-factor orientation. They are *finite computation*, not a proof for
-arbitrary primes.
+factor orientation, independently for each sampled prime. They are *finite
+computation*, not a proof for arbitrary primes.
 
 ## Lean and open obligations
 
