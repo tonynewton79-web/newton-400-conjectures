@@ -1,3 +1,12 @@
+## 19 October 2026 — Attack 004: complement-triangle incidence and codegree (proved restricted theorem)
+
+- For every d>=3, every d-in/d-out oriented D of order 3d satisfies **(d-2)S>=6t(H)**, hence **c3(D)>=d+(5-d)t(H)/(d-2)**; exact double-counting/pigeonhole proof.
+- Thus c3>=d for the **five balanced degrees d=1,2,3,4,5**, with sharp cyclic witnesses. This is a restricted five-degree conclusion, **not** a general/infinite-degree CH solution.
+- Degree-irregular codegree gate: for eps=indegree-d, V=sum eps^2, W=sum_T max(0,6+sum_T eps) and kappa=max complement edge codegree, **kappa S>=W** and c3>=ceil(d+V/4-t(H)+ceil(W/kappa)/2), if H contains triangles.
+- Independent exhaustive 12-vertex **balanced** complement audit: all **85 connected + 9 disconnected = 94** cubic graph isomorphism types certified; cut lower bounds have minimum 4, sharp. Independent bitset verifier plus 1,440 exact orientation controls (1,434 irregular; 1,176 strictly stronger certificate outputs).
+- [Full exact mathematical checkpoint and SHA256 references](attack004/README.md). Five-page paper, LaTeX and source/certificate ZIP are conversation artifacts; text-source/binary GitHub release is partial.
+- General Caccetta–Häggkvist open; no established novelty or general 0.3465n improvement. Next attack: sharpen d=6 coefficient barrier and classify surviving complement triangles.
+
 ## 19 October 2026 — Attack 003: exact critical indegree-variance theorem
 
 - For any oriented graph on n vertices, with complement H, c3 directed triangles, r_v complementary degrees and S=sum_v[e_H(N+(v))+e_H(N-(v))]: 2c3=sum_v d+(v)d-(v)-binom(n,3)+sum_v binom(r_v,2)-2t(H)+S. This is a proved elementary identity.
