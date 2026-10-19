@@ -81,6 +81,47 @@ The minimality tests exhaust every smaller integer product and every
 factor orientation, independently for each sampled prime. They are *finite
 computation*, not a proof for arbitrary primes.
 
+
+## A rigorous obstruction to uniformly bounded López parameters
+
+For any \(K\ge1\), put
+\[
+L_K=\operatorname{lcm}_{1\le k\le K}(4k-1).
+\]
+There are infinitely many primes \(p\equiv1\pmod{24L_K}\), by
+Dirichlet's theorem. For any \(d,r\ge1\) with \(dr\le K\), write
+\(m=4dr-1\). Since \(m\mid L_K\), we have \(p\equiv1\pmod m\).
+Type B would require \(m\mid r+1\), contradicting \(0<r+1<m\).
+Type A would require \(m\mid4d+1\). If \(r\ge2\), then
+\(0<4d+1<m\); if \(r=1\), then \(4d+1=m+2\), so \(m\mid2\),
+contradicting \(m\ge3\). Hence no López Type A or Type B solution
+has \(dr\le K\) on this infinite prime progression.
+
+The conclusion is **unboundedness of the least López product across
+hard primes**, not failure of the moving square-root upper bound.
+This is a standard CRT/Dirichlet-type observation in substance, and
+novelty is *not* asserted. It also shows that a universal proof cannot
+use a uniform finite parameter cutoff.
+
+The supplementary \`cases/005/obstruction.py\` replays ten concrete
+prime examples, \(K=1,\ldots,10\). The elementary local modular
+step is in \`NewtonConjectures/ErdosStrausObstruction.lean\`;
+Dirichlet's theorem is currently a mathematical citation, not a
+claimed formalized theorem in the repository.
+
+Related contemporary context is Dahan, *Sieve dimension and search
+depth for the Erdős–Straus conjecture*,
+[arXiv:2608.24035](https://arxiv.org/abs/2608.24035)
+(2026). His analysis supplies much deeper search-depth and
+finite-shift obstruction results than the elementary argument here.
+
+## Remaining proof problem
+
+We would need a *moving-scale* theorem that guarantees a Type A or B
+divisor of the indicated form for every hard prime before the
+product exceeds \(\sqrt p\). Neither the fixed-\(d\) density-one sieve
+nor the unboundedness obstruction supplies such a pointwise theorem.
+
 ## Lean and open obligations
 
 \`NewtonConjectures/ErdosStraus.lean\` contains the unconditional
