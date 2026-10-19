@@ -1,3 +1,4 @@
+import NewtonConjectures.Case007Degrees
 import NewtonConjectures.Case007EdgeBridge
 import NewtonConjectures.Case007SunGraph
 import NewtonConjectures.Case007Sombor
