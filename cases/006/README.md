@@ -98,3 +98,14 @@ For a compact axisymmetric unprojected source `g`, `B=∫g·F=2π∫z m(z)dz` wi
 
 [New Lean polynomial fragment](../../NewtonConjectures/Case006TiltTorque.lean) encodes the transfer determinant and baseline cancellation, and the [independent exact SO(2) angular projection checker](attack009/verify_tilt_torque.py) passes. The full rotational integral identities and H8 analytic step are not end-to-end Lean formalized; new GitHub Actions kernel CI is pending.
 
+
+### Appendix M — C4 symmetry closes the quadratic moment-averaging gap
+
+[Appendix M, complete 84-page manuscript continuation source](paper/Appendix_M_C4_Quadratic_Moment_Closure.md) supersedes Appendix L's continuous-symmetry requirement **for quadratic moments only**. For every vector polynomial of degree at most 2, the fourfold-equivariant axial average equals the continuous SO(2) equivariant average exactly. The 30-coefficient projector has rank **8**, equal to the dimension of the SO(2)-invariant space; a separate C3-invariant quadratic provides a sharp order-of-symmetry counterexample.
+
+Consequently, the same tilted-frame transfer and reduced moment equations proved in Appendix L remain **exact** for a complete compact source `g` and envelope `rho` which are C4-equivariant about one physical axis in a fixed common stress frame. The q2 moment is still `-6 pi c t integral z m0(z)`, where `m0` is now the **angularly averaged** slice-torque density. At generic tilt, exact cancellation still reads `B=C=0`, `(1-3t²)A=2*(1217/1229)*Z`.
+
+This does NOT establish complete-source C4 equivariance after patch gluing, moving-frame transport or Leray-pressure correction; nor does it prove exact slice-torque neutrality or the compact weighted H8 bound. An explicit perturbative error for finite-ball support is `3L²||g-P4g||_1 + 2*(1217/1229)*L||rho-P4rho||_1` for each quadratic moment.
+
+The cumulative author-facing PDF is now **84 pages**, all previous 82 pages verified text-identical. [New Lean finite polynomial proof candidate](../../NewtonConjectures/Case006C4Quadratic.lean) and [independent 30-dimensional exact projector test](attack010/verify_c4.py) are included in GitHub Actions; kernel compilation and axiom audit must finish successfully before this Lean fragment is called formally verified.
+
