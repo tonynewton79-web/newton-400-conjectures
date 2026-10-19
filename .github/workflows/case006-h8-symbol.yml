@@ -10,6 +10,7 @@ on:
       - "cases/006/attack007/**"
       - "cases/006/attack008/**"
       - "cases/006/attack009/**"
+      - "cases/006/attack010/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -22,6 +23,7 @@ on:
       - "NewtonConjectures/Case006SourceJacobian.lean"
       - "NewtonConjectures/Case006JacobianConditioning.lean"
       - "NewtonConjectures/Case006TiltTorque.lean"
+      - "NewtonConjectures/Case006C4Quadratic.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -52,3 +54,5 @@ jobs:
         run: python cases/006/attack008/verify_conditioning.py
       - name: Exact tilted-frame angular projection and source torque check
         run: python cases/006/attack009/verify_tilt_torque.py
+      - name: Exact C4 versus SO2 quadratic moment projector
+        run: python cases/006/attack010/verify_c4.py
