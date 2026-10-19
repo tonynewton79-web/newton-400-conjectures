@@ -1,7 +1,7 @@
 """Finite witnesses for an elementary CRT obstruction to bounded López parameters.
 
 For K >= 1, put L_K = lcm(4k-1, 1 <= k <= K).
-If p = 1 (mod 24 L_K), neither Type A nor Type B can have dr <= K.
+If p = 1 (mod 24 L_K), none of López Types A, B or C can have dr <= K.
 Dirichlet's theorem provides infinitely many such primes for each K.
 The examples verified here are not a computational proof of Dirichlet.
 """
@@ -61,11 +61,13 @@ def main():
                 r = product // d
                 assert (p + 4 * d) % m != 0
                 assert (p + r) % m != 0
+                # Type C: m cannot divide (2d)^2+1 when m=3 mod 4.
+                assert (p + 4 * d * d) % m != 0
         assert first_parameter(p, K) is None
         witness = first_parameter(p, minimum)
         assert witness is not None and witness[0] == minimum
         print("K", K, "prime", p, "first product", minimum, "witness", witness)
-    print("PASS: all 10 CRT examples satisfy certified finite inequalities.")
+    print("PASS: all 10 CRT examples exclude Types A, B and C.")
 
 
 if __name__ == "__main__":
