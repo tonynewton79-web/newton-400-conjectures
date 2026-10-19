@@ -50,3 +50,9 @@ The remaining bridge is to prove that the edge-label map is an equivalence onto 
 The new [edge-bijection Lean module](../../NewtonConjectures/Case007EdgeBridge.lean) proposes a proof that the three families of labeled edges constitute **all and only** the edges of the actual finite `SimpleGraph`. It also proves at source level the resulting count `|E(E_{d,k})|=d+k`. This module is awaiting Lean CI compilation and is **not claimed kernel-verified**.
 
 The independent [edge-bijection test](verify_edge_bijection.py) passes **7,404** finite parameter cases, including large-degree and boundary cases; see [formal ledger](LEAN_STATUS.md). The next essential Lean theorem computes the graph's *actual vertex degrees* and then identifies the degree-defined Sombor and reciprocal sums with the existing three edge-type formulas.
+
+## Degree-defined indices: next Lean milestone
+
+[Case007Degrees.lean](../../NewtonConjectures/Case007Degrees.lean) now states the four true degree identities for the constructed simple graph and derives the Sombor and modified Sombor indices as sums over its actual undirected edge set. It then identifies those sums with the paper's formulas (3)–(4). See the exact declarations and boundaries in [LEAN_STATUS.md](LEAN_STATUS.md).
+
+**Pending:** real Lean 4/mathlib kernel compilation, axiom audit and any necessary compiler-driven corrections. The module is an unverified proof attempt until its GitHub Actions job succeeds. The paper's full maximum theorem remains separate and unformalized. [Current Lean workflow](https://github.com/tonynewton79-web/newton-400-conjectures/actions).
