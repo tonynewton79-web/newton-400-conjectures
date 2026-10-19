@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 92,
+      "cumulative_pdf_pages": 94,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -370,7 +370,21 @@
       "physical_2x2_matrix_enclosed": false,
       "source_native_amplitude_cone_margin_verified": false,
       "slice_torque_bound_249_verified": false,
-      "appendix_q_lean_status": "Algebraic mixed pairing and derivative Wronskian source committed; Lean kernel CI queued, smooth Fredholm proof not formalized."
+      "appendix_q_lean_status": "Algebraic mixed pairing and derivative Wronskian source committed; Lean kernel CI queued, smooth Fredholm proof not formalized.",
+      "normalized_inverse_appendix": "cases/006/paper/Appendix_R_Normalized_Radial_Inverse.md",
+      "normalized_inverse_verifier": "cases/006/attack015/verify_normalized_inverse.py",
+      "normalized_inverse_lean": "NewtonConjectures/Case006NormalizedInverse.lean",
+      "normalized_radial_shapers": "tau_j=(chi Lambda_c /R)*beta_{1/100}(chi Lambda_c R²/2 -s_j), (s0,s1)=(241/40,243/40), M0=M1=1 on interior axial patch",
+      "curved_radial_shell_gap": "g0-g1 >= gstar*sqrt(2)*(sqrt(1213/200)-sqrt(1207/200))/Lambda_c ~0.0086244 gstar/Lambda_c",
+      "radial_shape_peak_cost": "||tau_j||_infty >= 3(chi Lambda_c/2)^(3/2) / ((sj+0.01)^(3/2)-(sj-0.01)^(3/2))",
+      "conditional_inverse_theorem": "With explicit L,E,P,H,t,w tests in Appendix R: |det C|>=kappa² gamma t/(4delta), ||C^-1||infty <= 8delta K E/(kappa² gamma t)",
+      "physical_BKT_bounds_calculated": false,
+      "exact_physical_adjoint_interval_matrix_calculated": false,
+      "physical_alpha_amplitudes_certified": false,
+      "slice_bound_249_pass": false,
+      "cone_bound_272_pass": false,
+      "compact_weighted_H8_inverse_proved": false,
+      "appendix_r_lean_status": "Algebraic source submitted, GitHub Actions Lean kernel still pending; smooth ODE inverse bound proved on paper, not Lean formalized."
     }
   ]
 }
