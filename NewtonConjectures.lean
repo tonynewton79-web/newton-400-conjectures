@@ -1,3 +1,4 @@
+import NewtonConjectures.Case007Sombor
 import NewtonConjectures.Case006Stress
 import Mathlib
 import NewtonConjectures.ShellHarmonic
