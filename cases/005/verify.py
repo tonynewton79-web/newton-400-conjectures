@@ -96,10 +96,31 @@ def main():
             exceptions.append(p)
     assert (len(ps), solved, len(exceptions)) == (5137, 5078, 59)
     assert counts == {1: 3902, 2: 4299, 3: 2623, 6: 1471}
+    # Independently solve the 59 cases missed by the four fixed-d filters,
+    # using an exhaustive all-divisor scan with product <= floor(sqrt(p)).
+    residual = []
+    for p in exceptions:
+        w = first_witness(p, isqrt(p))
+        assert w is not None, f'Unexpected unresolved prime {p}'
+        k, d, r, mode = w
+        m = 4 * k - 1
+        if mode == 'A':
+            t = (p + 4 * d) // m
+            u = r * t - 1
+            assert 1 + u + r * p == 4 * d * r * u
+            a, b, c = d * u, d * r * p, d * u * r * p
+        else:
+            v = (p + r) // m
+            assert p + r + v == 4 * d * r * v
+            a, b, c = d * r * v, d * r * p, d * v * p
+        assert min(a, b, c) > 0
+        assert Fraction(1, a) + Fraction(1, b) + Fraction(1, c) == Fraction(4, p)
+        residual.append((p, k, d, r, mode))
+    assert max(row[1] for row in residual) == 170
     print('p == 1 (mod 24), p <= 500000:', len(ps))
     print('sqrt-bounded factorizations found:', solved)
     print('single-d coverage:', counts)
-    print('first exceptions to this restricted filter:', exceptions[:20])
+    print('first exceptions to this restricted filter:', exceptions[:20])\n    print('all 59 residual primes solved by unrestricted sqrt search; max minimal dr:', max(row[1] for row in residual))
     print('minimal dr for 68821:', first_witness(68821, 319))
     print('minimal dr for 1135844089:', hard)
     print('PASS (finite arithmetic only)')
