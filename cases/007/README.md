@@ -15,7 +15,7 @@ The candidate manuscript contains:
 4. Exact rational interval checks for 2,220 degree pairs and 18 residual increments;
 5. Independent exact interval comparison on the 32,503 nonisomorphic free trees of orders 5 through 16.
 
-The accompanying professionally revised PDF and full LaTeX source were produced in this work session. This case directory initially records the formal program; **the full proof has not been compiled or proved in Lean**. The analytic paper is a proposed resolution pending line-by-line external review and novelty confirmation.
+The [full, professionally revised LaTeX manuscript](paper/main.tex) is now version-controlled in this case. The [GitHub PDF build workflow](../../.github/workflows/case007-paper.yml) compiles its two original TikZ figures and produces a PDF artifact; publication of the compiled PDF in the repository remains dependent on completion of that workflow. This case directory also records the formal program; **the full proof has not been compiled or proved in Lean**. The analytic paper is a proposed resolution pending line-by-line external review and novelty confirmation.
 
 ## Verification targets
 
@@ -29,3 +29,12 @@ The accompanying professionally revised PDF and full LaTeX source were produced 
 **Caution:** numerical, rational and C++/Python certificates are different from Lean kernel verification. A successful simple algebra check is not evidence the full graph extremal theorem has been formalized.
 
 [Original 2023 paper](https://pisrt.org/psrpress/j/odam/2023/2/On-the-product-of-Sombor-and-modified-Sombor-indices.pdf) · [Lean source](../../NewtonConjectures/Case007Sombor.lean) · [Lean status](LEAN_STATUS.md) · [case-specific CI](../../.github/workflows/case007.yml).
+
+## Source and reproducibility
+
+- [Full revised LaTeX paper](paper/main.tex)
+- [Exact rational degree and finite-difference verifier](verify_parameters.py)
+- [Exact integer free-tree enumeration](certify_free_trees.py)
+- [Paper build workflow](../../.github/workflows/case007-paper.yml)
+- [Case-specific verification workflow](../../.github/workflows/case007.yml)
+- [Remaining Lean gates, Issue #27](https://github.com/tonynewton79-web/newton-400-conjectures/issues/27)
