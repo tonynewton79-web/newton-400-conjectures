@@ -64,3 +64,23 @@ This is a genuine counterexample to the **sufficiency of zeroth and first moment
 For a proposed frozen profile, form the *unprojected compact source after baseline subtraction*, and before attempting the weighted right inverse check the three new quadratic pairings, the previous lower-order moments, and the sharp dual inequality of Appendix G. A failure of any required quadratic moment is an exact no-go for that particular compact restricted ansatz (subject to the stated chart/pressure conditions). A pass leaves the compact weighted construction still open.
 
 The original paper's H8 estimate `C(H) <= (15971/122900)rho` is not established by this result; the analytic, fixed-profile inverse and full Navier–Stokes implication remain unproved.
+
+## H.5. An exact finite-rank repair of the quadratic moments
+
+The new quadratic obstruction has a constructive counterpart at the level of source adjustment. Let eta be a smooth compact bump with nonzero integral I. Define three compact source fields,
+
+```text
+t1=(0,∂x² eta,0), t2=(0,∂x∂y eta,0), t3=(0,∂y∂z eta,0).
+```
+
+**Proposition.** The exact moment matrix `M_ij=∫ ti·qj` is `I diag(-1,-2,4)`. For any compact source s with moments `mj=∫s·qj`, the source
+
+```text
+s_corr = s + (m1/I)t1 + (m2/(2I))t2 - (m3/(4I))t3
+```
+
+has zero pairing against each quadratic qj. The adjustment has zero total force and all first component moments, so it preserves all preexisting force, torque and affine cancellations.
+
+**Proof.** Integrating by parts twice reduces the matrix to the constant Hessians `∂x² qj,2`, `∂x∂y qj,2`, and `∂y∂z qj,2`. They are the diagonal triples `(-1,0,0)`, `(0,-2,0)`, and `(0,0,4)`. Thus the moment map is exactly invertible and the displayed coefficients cancel any initial quadratic moments. The same integrations by parts show all first moments of each derivative source vanish.
+
+This is **not a solution of H8**. The correction changes the prescribed source s; for a Navier–Stokes construction it is usable only if the original local shell/profile actuator family can physically realize those second-derivative perturbations without violating the original equations, support, production and weighted cone bounds. The next decisive task is to derive the 3×3 moment Jacobian for *actual admissible source-native* variations, not arbitrary prescribed forcing.
