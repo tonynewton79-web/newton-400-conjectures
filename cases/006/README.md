@@ -118,3 +118,19 @@ The 86-page cumulative manuscript (all preceding 84 pages text-identical) now in
 
 The tensor-aware defect test is |∫(s−P4s)·q_i^R|≤3L²||g−P4g||_1+6L||K−P4K||_{L¹(F)} for support in the radius-L ball. [Independent exact verifier](attack011/verify_frame_transport.py) passed symbolic transport, curl and seed moment identities; [new Lean algebraic fragment](../../NewtonConjectures/Case006FrameTransport.lean) is included in CI. Real source profile transport, pressure compactness, patch overlap cone margin and H8 weighted inversion remain unresolved; the new Lean compiler/axiom audit must pass before any kernel-certification claim.
 
+
+### Appendix O — the actual moving cylindrical cone and torque balance
+
+The cumulative manuscript is now **88 pages**, with the previous 86 pages unchanged and a two-page [Appendix O](paper/Appendix_O_Cylindrical_Frame_and_Torque.md). The original paper's equations (258)–(265) place the seven-ray centre in a *moving cylindrical (r,theta,z) frame*. That centre is **already continuously rotationally covariant** on an axisymmetric shell: the Appendix N obstruction applies to a fixed Cartesian centre, not to this actual cylindrical representation.
+
+The exact source-native centre has `b_r*b_z = -4443/9832` and `b_theta*b_z = (147*sqrt(182)-84*sqrt(2))/9832 > 0`. For compact axisymmetric rho, define `R2(z)=int_0^infty r² rho(r,z)dr`. The full connection-aware divergence is
+```text
+(div K)_theta = b_r b_theta (rho_r+2rho/r) + b_theta b_z rho_z
+m_{g-divK}(z) = m_g(z) - b_theta b_z R2'(z).
+```
+Thus if the *complete* source is to be exactly slice-torque-neutral, its prepared torque must be **active**: `m_g(z)=b_theta*b_z*R2'(z)`. A torque-neutral shaper alone does not achieve this for a nontrivial compact nonnegative rho; the scale-smallness gate (249) is separately testable. The exact baseline meridional moments are `A_K=∫rho[z(1-3bz²)+r br bz]`, `B_K=b_theta*b_z∫r rho`, `C_K=2br*bz∫r rho` and must be included in complete-source moments.
+
+Original shapers (193)–(194) yield generic compact toroidal and poloidal fields which are solenoidal and SO2/C4 covariant on the stated axisymmetric shell. Their complete quadratic cross interactions are also covariant and need not vanish. This **settles local shaper-class and local cone-centre covariance**, not the final global patched H8 source, compact pressure or weighted anti-divergence.
+
+[Exact symbolic verifier](attack012/verify_cylindrical_frame.py) and [Lean algebraic source](../../NewtonConjectures/Case006CylindricalTorque.lean) are committed, with a new GitHub Actions test. The local exact replay passed, while the new Lean compiler/axiom result remains pending.
+
