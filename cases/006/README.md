@@ -60,3 +60,19 @@ The cumulative [Appendix H](paper/Appendix_H_Quadratic_Moments.md) establishes t
 [Exact polynomial/rank audit](attack006/verify_finite_type.py) verifies all 10 generators, a 6×6 compatibility determinant −8, and degree-0–5 polynomial nullities 3,4,3,0,0,0 (30×30 degree-3 matrix of full rank). [Lean algebraic fragment](../../NewtonConjectures/Case006FiniteType.lean) addresses the six-variable elimination, but the full differentiable finite-type classification remains **not end-to-end Lean-formalized**.
 
 The cumulative author-facing PDF now contains **75 pages** (original 65 + Appendices G 4, H 3, I 3); the original 72 cumulative pages have been preserved unchanged. This is a complete *adjoint-null moment classification*, not a compact H8 existence theorem or a Navier–Stokes resolution. The actual source-native residual and admissible moment Jacobian still require a fixed profile.
+
+### Appendix J — exact source-native moment Jacobian and symmetry caveat
+
+[Appendix J, source-led derivation and proofs](paper/Appendix_J_Source_Native_Moment_Jacobian.md) has been integrated into the cumulative **79-page** author PDF; all previous 75 pages were preserved. In a fixed cone frame, the seven-ray centre has the exact contraction `Rstar:diag(1,-2,1)=1217/1229`. For a compact solenoidal variation `V_j` of the explicitly specified unprojected Navier–Stokes source model and envelope variation `r_j`, the exact Jacobian is
+
+```text
+J_ij = d/dt ∫ V_j · q_i - 2∫ f_i (U_1 V_j1 - 2 U_2 V_j2 + U_3 V_j3)
+       + (1217/1229)∫ f_i r_j,      (f_1,f_2,f_3)=(y,x,-2z).
+```
+
+The viscosity term cancels by compact solenoidal zero mean and constant Laplacians of the quadratic adjoint test fields. If the H8 source `g` contains additional source-native terms, the correct derivative is `∫(∂_α g)·q_i + (1217/1229) ∫ f_i (∂_α rho)`, and all additional terms must be computed from the actual shell construction.
+
+**Conditional no-go:** For a fully *fixed-frame* equivariant source family under the half-turn `diag(-1,-1,1)`, the first two quadratic moments vanish, so the 3×3 Jacobian has rank at most one. Two independent half-turn-odd actuator directions and one even direction would be required for an invertible parity-block Jacobian in that symmetry model. The physical H8 frame is tilted and rotated between patches; no rank obstruction for the *actual* global axisymmetric shell source is claimed.
+
+[Independent exact checker](attack007/verify_source_jacobian.py) verifies all polynomial/strain/parity first-variation identities and 4,096 exact rational polarizations. [New Lean candidate](../../NewtonConjectures/Case006SourceJacobian.lean) proves the coefficient and polynomial polarization only; its kernel build and the full PDE moment formula have not been certified end-to-end. The actual numerical source-native moment Jacobian and its determinant remain **open**, because the paper intentionally leaves shaper profiles `Phi_theta, Phi, Xi` unfrozen (Proposition 9.12). See H8 [Issue #25](https://github.com/tonynewton79-web/newton-400-conjectures/issues/25).
+
