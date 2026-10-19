@@ -179,7 +179,7 @@
     {
       "id": "004",
       "target": "Caccetta–Häggkvist conjecture, directed triangle (minimum outdegree n/3)",
-      "status": "ATTACK004 PROVED RESTRICTED BALANCED TRIANGLE INCIDENCE d<=5, EXACT 94-CUBIC-COMPLEMENT AUDIT; GENERAL CH OPEN",
+      "status": "ATTACK004 REFINED ALL-ORDER RESTRICTED EDGE-CODEGREE<=5 THEOREM; EXPLICIT INFINITE 2-TRIANGLE FAMILY; GENERAL CH OPEN",
       "source": "https://doi.org/10.1007/s00493-015-2662-5",
       "prior_art": "Hamidoune proved vertex-transitive and Cayley cases; prime proof not novel",
       "exact_positive_tests": 354291,
@@ -230,23 +230,34 @@
         "exact_certificate_sha256": "87b114c885e88e3357d5ccd96ace626fbfa7e55e47d19a24627ecfb3cf1f38a1"
       },
       "attack004": {
-        "theorem": "For balanced d-in/d-out oriented graphs of order 3d, d>=3, (d-2)S>=6 t(H), giving c3>=d+(5-d)t(H)/(d-2).",
-        "sharp_finite_degree_consequence": "For each of d=1,2,3,4,5, c3>=d; cyclic Z_3d step graph attains equality. This is not a theorem for all d.",
-        "irregular_degree_gate": "For d-outregular critical graphs, kappa*S>=sum_{H triangles T} max(0,6+sum_{v in T}(indeg(v)-d)); c3>=ceil(d+V/4-t(H)+ceil(W/kappa)/2) when t(H)>0.",
-        "complete_12_vertex_cubic_complement_classes": 94,
-        "connected_cubic_complement_classes": 85,
-        "disconnected_cubic_complement_classes": 9,
-        "complete_12_vertex_lower_bound_min": 4,
-        "independent_critical_orientations_checked": 1440,
-        "independent_irregular_indegree_checked": 1434,
-        "strengthened_certificates": 1176,
-        "exact_sharp_cyclic_checks": 20,
+        "date": "2026-10-19",
+        "proved_balanced_all_order_restriction": "Every d-in/d-out oriented graph of order 3d whose underlying complement has each edge in at most 5 complement triangles has at least d directed triangles.",
+        "automatically_covered_balanced_degrees": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "theorem": "S>=sum_{T complement triangle} max(0,5+K_T+sum_{v in T}(indeg(v)-d))/K_T, where K_T=max edge triangle multiplicity over T.",
+        "general_integer_certificate": "c3>=ceil(d+V/4-t(H)+W_star/2), all d-outregular oriented D at n=3d.",
+        "explicit_infinite_family": "For d>=5, degree-preserving two-edge switch of complement circulant on Z_3d creates precisely 2 complement triangles, max edge-triangle multiplicity=1, forcing c3>=d+4 in all balanced orientations.",
+        "exact_all_cubic_n12_complement_classes": 94,
+        "exact_critical_orientations": 1440,
+        "irregular_critical_orientations": 1434,
+        "weighted_new_random_balanced_tests": 200,
+        "switched_family_tests": 26,
+        "paper_page_count": 6,
         "report": "cases/004/attack004/README.md",
-        "pdf_sha256": "88bcd020a7e5df08abaee125f45ed9cb9b91de58ef35f4f3fb076337efd88945",
-        "full94_sha256": "822d503bb014d5fa2f47710d92666fb4b65399a2fda2990c17b3fb5b51163e97",
-        "proof_status": "PROVED_RESTRICTED_CLASS_WITH_COMPUTER_AUDIT_NOT_NOVELTY_VERIFIED",
+        "pdf_sha256": "2d7ef7f2c49b9e65cd02947d38e134eed385f5a2957fd0e466cb098b84780353",
+        "tex_sha256": "0c7923517ea478575eeae8bdbb3cbe0b570741b4aff064226d4a521d42a19e68",
+        "replay_package_sha256": "8e60d8add489bc294531bbe59979e259c751b736475373a730fa4467860aad5a",
         "full_caccetta_haggkvist_solved": false,
-        "unrestricted_threshold_improved": false
+        "unrestricted_threshold_improved": false,
+        "novelty_or_priority_confirmed": false,
+        "specialist_review": false
       }
     }
   ]
