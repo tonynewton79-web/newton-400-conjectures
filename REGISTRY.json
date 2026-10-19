@@ -179,7 +179,7 @@
     {
       "id": "004",
       "target": "Caccetta–Häggkvist conjecture, directed triangle (minimum outdegree n/3)",
-      "status": "EXACT RESTRICTED CIRCULANT BASELINE — 354291 ENUMERATIONS; GENERAL OPEN",
+      "status": "ATTACK002 EXACT COMPLEMENT CUT 2-PATH IDENTITY PASS; COMPLETE BALANCED 9-VERTEX CENSUS; GENERAL CH OPEN",
       "source": "https://doi.org/10.1007/s00493-015-2662-5",
       "prior_art": "Hamidoune proved vertex-transitive and Cayley cases; prime proof not novel",
       "exact_positive_tests": 354291,
@@ -187,7 +187,30 @@
       "independently_accepted_original_result": false,
       "compound_period_negative_control": "Z12 S={1,5}, 2S={2,6,10} periodic by +4",
       "research_note": "cases/004/STATUS.md",
-      "audited_certificate_sha256": "ecd575cb74d44f7b6941c884013a9a1451b2a3a4a15846841427566a12e9fb3a"
+      "audited_certificate_sha256": "ecd575cb74d44f7b6941c884013a9a1451b2a3a4a15846841427566a12e9fb3a",
+      "attack002": {
+        "theorem": "two-path complement-cut exact identity, prescribed degree maxcut lower bound on directed triangles",
+        "small_balanced_graph_gate": "Every 2-in/2-out 6-vertex orientation has >=2 directed triangles; every 3-in/3-out 9-vertex orientation has >=3",
+        "order9_complement_types": [
+          "9",
+          "6+3",
+          "5+4",
+          "3+3+3"
+        ],
+        "order9_lower_bounds": [
+          3,
+          5,
+          5,
+          9
+        ],
+        "independent_arithmetic_validators": 2,
+        "triangle_free_negative_controls": 12,
+        "random_unexhaustive_regular_complements": 400,
+        "originality_reviewed": false,
+        "unrestricted_improvement": false,
+        "report": "cases/004/attack002/README.md",
+        "exact_ci_source": "cases/004/attack002/verify_gate.py"
+      }
     }
   ]
 }
