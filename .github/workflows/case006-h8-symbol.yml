@@ -5,6 +5,7 @@ on:
       - "cases/006/attack002/**"
       - "cases/006/attack003/**"
       - "cases/006/attack004/**"
+      - "cases/006/attack005/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -12,6 +13,7 @@ on:
       - "cases/006/attack002/**"
       - "NewtonConjectures/Case006H8Symbol.lean"
       - "NewtonConjectures/Case006Ungauged.lean"
+      - "NewtonConjectures/Case006QuadraticMoments.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -30,3 +32,7 @@ jobs:
         run: python cases/006/attack003/verify_dual.py
       - name: Verify ungauged characteristic axis and periodic Fourier right inverse
         run: python cases/006/attack004/verify_operator.py
+      - name: Install exact symbolic algebra for quadratic-adjoint checks
+        run: python -m pip install 'sympy==1.14.0'
+      - name: Three exact quadratic adjoint-moment polynomial checks
+        run: python cases/006/attack005/verify_quadratic.py
