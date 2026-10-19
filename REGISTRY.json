@@ -179,7 +179,7 @@
     {
       "id": "004",
       "target": "Caccetta–Häggkvist conjecture, directed triangle (minimum outdegree n/3)",
-      "status": "ATTACK002 EXACT COMPLEMENT CUT 2-PATH IDENTITY PASS; COMPLETE BALANCED 9-VERTEX CENSUS; GENERAL CH OPEN",
+      "status": "ATTACK003 EXACT GENERAL TRIANGLE IDENTITY AND SHARP INDEGREE VARIANCE RESTRICTED THEOREM; CH GENERAL OPEN",
       "source": "https://doi.org/10.1007/s00493-015-2662-5",
       "prior_art": "Hamidoune proved vertex-transitive and Cayley cases; prime proof not novel",
       "exact_positive_tests": 354291,
@@ -210,6 +210,24 @@
         "unrestricted_improvement": false,
         "report": "cases/004/attack002/README.md",
         "exact_ci_source": "cases/004/attack002/verify_gate.py"
+      },
+      "attack003": {
+        "date": "2026-10-19",
+        "statement": "For n=3d d-outregular oriented D, c3(D)=d+V/4-t(H)+S/2 with V=sum(indeg-d)^2 and S=sum_v[e_H(N+(v))+e_H(N-(v))]",
+        "exact_general_formula": "2 c3=sum_v outdeg*indeg-C(n,3)+sum_v C(deg_H,2)-2 t(H)+S",
+        "restricted_infinite_theorem": "If complement H is triangle-free, c3>=d, with equality for cyclic arcs steps 1..d in Z/(3d)",
+        "small_case_proved_by_combined_methods": "Every 3-outregular oriented graph on nine vertices has a directed triangle (known prior art)",
+        "independent_integer_cases": 8400,
+        "irregular_indegree_cases": 5943,
+        "critical_positive_variance_gates": 7985,
+        "exhaustive_n6_orientations": 4096,
+        "exhaustive_n6_outregular": 38,
+        "sharp_cyclic_tests": 40,
+        "result_status": "MATHEMATICALLY_PROVED_RESTRICTED_EXACT_IDENTITY; GENERAL_CH_OPEN; PRIORITY_UNVERIFIED",
+        "report": "cases/004/attack003/README.md",
+        "github_ci": "cases/004/attack003/verify_gate.py",
+        "pdf_sha256": "49c74c57fb2e935be72e59f3c6e4e5065a5ecba3841a6070278d5da38c6a2d66",
+        "exact_certificate_sha256": "87b114c885e88e3357d5ccd96ace626fbfa7e55e47d19a24627ecfb3cf1f38a1"
       }
     }
   ]
