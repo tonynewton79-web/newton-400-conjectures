@@ -23,6 +23,7 @@ jobs:
           python3 cases/005/verify.py
           python3 cases/005/obstruction.py
           python3 cases/005/verify_density.py
+          python3 cases/005/type_c.py
       - uses: leanprover/lean-action@v1
         with:
           build: true
