@@ -134,3 +134,18 @@ Original shapers (193)–(194) yield generic compact toroidal and poloidal field
 
 [Exact symbolic verifier](attack012/verify_cylindrical_frame.py) and [Lean algebraic source](../../NewtonConjectures/Case006CylindricalTorque.lean) are committed, with a new GitHub Actions test. The local exact replay passed, while the new Lean compiler/axiom result remains pending.
 
+
+### Appendix P — exact second-order viscous torque actuator and dual compatibility
+
+[Appendix P](paper/Appendix_P_Exact_Viscous_Actuator.md) is now incorporated into the **90-page** cumulative paper (previous 88 pages text-identical). It returns to the **exact source Eq. (251)**, rather than the reduced first-order Eq. (253): for B=D eta M+N, gamma=3/2-2h>0 and delta=nu eps²>0, L_delta[A]=(BA)'−gamma M A−delta(MA)''.
+
+**Exact compact range theorem:** on an interior interval where M remains nonzero and smooth, compact solvability of the second-order equation L_delta[A]=f requires **two** independent adjoint pairings ∫phi_j f=0, where delta M phi''+B phi'+gamma M phi=0. These two conditions are also sufficient for compact smooth A under the stated regularity hypotheses. They are distinct from the **single** compatibility of the delta=0 approximation (254). The exact Green identity and the IVP terminal pairing prove the result; the paper does not assume the viscous term is negligible for exact compactness.
+
+**Source-native sign obstruction:** if gamma>0, M>0 and the required target is only a compact envelope derivative f=kappa R'(eta), the identity ∫f=−gamma∫MA rules out every nonzero one-sign compact actuator A. This is conditional: the physical full source includes other, unfrozen m_base contributions, and a sign-changing A may work.
+
+**Exact illustrative proxy (NOT a frozen physical H8 profile):** h=1/12, gamma=4/3, M=1, B=101/75, delta=1/75 gives independent adjoint modes exp(-eta), exp(-100eta). A nontrivial positive compact envelope derivative has positive pairing against both. A compact test A generates a forcing that satisfies both conditions, establishing sharpness of the source range mechanism. The available unrestricted two-bump source rank is not a source-native admissibility certificate.
+
+[Independent exact checker](attack013/verify_exact_torque_viscosity.py) passes operator/adjoint algebra, both characteristic modes, positivity of the derivative-only obstruction, and the compact test amplitude moments. [Lean algebraic fragment](../../NewtonConjectures/Case006ExactViscousActuator.lean) proves finite jet and polynomial identities only, imported into the root; kernel CI pending. The full ODE/functional-analytic argument has not been end-to-end formalized in Lean.
+
+**Next H8 target:** freeze true M,N, rho and the complete background torque, compute both exact viscous adjoint modes, find two *admissible source-native* pairing columns, then check Eq. (249), cone positivity (272), compact pressure, graph support, and weighted inverse (273).
+
