@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 79,
+      "cumulative_pdf_pages": 78,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -297,7 +297,9 @@
       "source_jacobian_coefficient": "1217/1229 = Rstar:diag(1,-2,1)",
       "source_jacobian_result": "Exact compact-variation derivative formula and conditional fixed-frame half-turn rank<=1 theorem; genuine source-native determinant uncomputed",
       "source_profile_frozen": false,
-      "actual_source_native_jacobian_verified": false
+      "actual_source_native_jacobian_verified": false,
+      "appendix_j_typeset_pages": 3,
+      "appendix_j_pdf_bookmarks": true
     }
   ]
 }
