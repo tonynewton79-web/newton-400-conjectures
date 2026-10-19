@@ -93,6 +93,36 @@ theorem typeA_small_factor_square_bound (p d q : ℝ)
     nlinarith [hgap, hquad, hq2]
   nlinarith [hq2, hqlinear]
 
+
+/-- Transfer between the shifted Type C divisor and its fraction numerator. -/
+theorem typeC_shift_identity (p d r : ℤ) :
+    r * (p + 4 * d * d) - (d + r * p) =
+      d * (4 * d * r - 1) := by
+  ring
+
+/-- Exact rational identity for López's additional Type C construction. -/
+theorem typeC_fraction (p d r v : ℚ)
+    (hp : p ≠ 0) (hd : d ≠ 0) (hr : r ≠ 0) (hv : v ≠ 0)
+    (h : (4 * d * r - 1) * v = d + r * p) :
+    4 / p = 1 / (r * v * p) + 1 / (d * v) +
+      1 / (d * r * p) := by
+  field_simp
+  nlinarith [h]
+
+/-- A Type C witness substantially shorter than the known Type A/B
+    minimum for the selected difficult prime. -/
+theorem typeC_hard_witness :
+    (4 * 2 * 7 - 1 : ℤ) * 144561975 =
+      2 + 7 * 1135844089 := by
+  norm_num
+
+theorem typeC_hard_fraction :
+    (4 : ℚ) / 1135844089 =
+      1 / 1149399053585410425 +
+      1 / 289123950 +
+      1 / 15901817246 := by
+  norm_num
+
 /-- The exact Type B integer witness from the finite search. -/
 theorem witness_68821 :
     (68821 : ℤ) = 4 * 11 * 29 * 54 - 29 - 54 := by
