@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006MixedProfileControls
 import NewtonConjectures.Case006ExactViscousActuator
 import NewtonConjectures.Case006CylindricalTorque
 import NewtonConjectures.Case006FrameTransport
