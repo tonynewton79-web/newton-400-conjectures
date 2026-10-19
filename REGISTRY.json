@@ -280,7 +280,7 @@
       "research_continuation": "Exact sharp 1/5 augmented-symbol SOS; ungauged characteristic y-axis; explicit periodic noncompact right inverse; 3-inequality coefficient norm and sharp dual virtual-work test",
       "paper_addendum": "cases/006/paper/Appendix_G_H8_Symbol_and_Dual.md",
       "current_formalization_status": "New H8 symbol and ungauged Lean source submitted to CI; kernel confirmation pending",
-      "open_H8_gate": "Fixed source-native profile, compact weighted anti-divergence and pointwise bound 15971/122900, moment constraints and global PDE",
+      "open_H8_gate": "Freeze admissible source-native profiles (including tilt/rotation), compute quadratic Jacobian and moments, construct compact weighted inversion with pointwise constant 15971/122900",
       "additional_necessary_moments": "Three quadratic divergence-free adjoint-null source moments q1,q2,q3; vanishing force and affine moments alone does not imply compact four-field inversion",
       "quadratic_appendix": "cases/006/paper/Appendix_H_Quadratic_Moments.md",
       "explicit_restricted_counterexample": "s=(0,partial_x^2 eta,0): all first moments vanish but pairing against q1 equals -integral eta",
@@ -289,8 +289,15 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 75,
-      "global_navier_stokes_singularity_proved": false
+      "cumulative_pdf_pages": 79,
+      "global_navier_stokes_singularity_proved": false,
+      "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
+      "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
+      "source_jacobian_exact_verifier": "cases/006/attack007/verify_source_jacobian.py",
+      "source_jacobian_coefficient": "1217/1229 = Rstar:diag(1,-2,1)",
+      "source_jacobian_result": "Exact compact-variation derivative formula and conditional fixed-frame half-turn rank<=1 theorem; genuine source-native determinant uncomputed",
+      "source_profile_frozen": false,
+      "actual_source_native_jacobian_verified": false
     }
   ]
 }
