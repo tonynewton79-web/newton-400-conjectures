@@ -10,6 +10,7 @@ Newton Astro Labs offers scoped, independent technical investigations for mathem
 | --- | ---: | ---: |
 | Research & Verification | **£100** | Up to 4 hours |
 | Advanced Research Investigation | **£500** | Up to 8 hours |
+| Bespoke Research Projects | **Individually quoted** | More than 8 hours; staged projects |
 
 ### Research & Verification — £100
 
@@ -26,9 +27,13 @@ A deeper investigation of a conjecture, proposed theorem, algorithm, or theoreti
 
 The advanced package covers **up to eight hours** of agreed research time. It does not guarantee a new theorem, successful formal proof, or particular finding.
 
+### Bespoke Research Projects — Custom quote
+
+For mathematical, computational or theoretical investigations requiring more than eight hours, bespoke engagements are individually scoped and priced. Depending on the agreed objectives, these may include multi-stage investigations, tailored Python software, mathematical analysis, simulations, reproducible validation workflows, and milestone-based technical reporting. **Scope, costs, deliverables and deadlines are confirmed in writing before work begins.** Commissioning research does not guarantee the discovery of a new theorem or a particular scientific result.
+
 ## Delivery and payment
 
-**Delivery target:** Within 48 hours after the project scope is accepted and the required materials are received, subject to capacity and feasibility. **Payment:** PayPal invoice after the agreed report/materials are delivered, under agreed terms. Clients should not send confidential or unpublished material before any necessary confidentiality and tool-use permissions are in place.
+**Delivery target:** Within 48 hours for accepted, appropriately scoped **fixed-price** projects after the required materials are received, subject to capacity and feasibility. **Bespoke** projects have individually agreed deadlines and milestones. **Payment:** Fixed-price reports/materials are delivered before invoicing through PayPal; bespoke milestone and payment terms are agreed in writing before work begins. Clients should not send confidential or unpublished material before any necessary confidentiality and tool-use permissions are in place.
 
 ## Enquiries
 
