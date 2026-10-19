@@ -23,11 +23,13 @@ jobs:
       - run: python -m pip install networkx==3.6.1
       - name: Exact parameter and finite-difference checks
         run: python cases/007/verify_parameters.py
+      - name: Verify actual eclipsed-sun graph structure for 3,320 parameter pairs
+        run: python cases/007/verify_graph_construction.py --max-degree 80
       - name: Free-tree enumeration and exact integer margins
         run: python cases/007/certify_free_trees.py --min 5 --max 16
       - name: Scan formal source for unproved placeholders
         run: |
-          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean; then exit 1; fi
+          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case007Sombor.lean NewtonConjectures/Case007SunGraph.lean; then exit 1; fi
 
   lean-case007:
     runs-on: ubuntu-latest
