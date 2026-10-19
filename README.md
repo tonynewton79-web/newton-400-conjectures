@@ -10,6 +10,7 @@ An open, reproducible mathematical research programme targeting **401 independen
 |---|---|---|
 | [001](cases/001/README.md) | Roucairol–Cazenave cycle conjecture associated with Graffiti 197 | Candidate infinite-family strengthening; independent priority review pending |
 | [006](cases/006/README.md) | Carrier-independent Navier–Stokes stress route (Zenodo 23475142) | Lean kernel-verified seven-ray algebra only; compact H8 PDE gate open |
+| [007](cases/007/README.md) | Sombor product of a tree — Gutman–Redžepović–Furtula 2023 Conjectures 12–13 | Candidate complete analytical proof; exact finite certificates independently reproduced; full Lean formalization pending |
 
 The original Graffiti 197 assertion was already refuted by Milo Roucairol and Tristan Cazenave. Case 001 does **not** claim the first refutation. It investigates a stronger all-cycles classification.
 
@@ -86,3 +87,10 @@ Paper 002 stays a separate ongoing project, not affected by the Stage 12 update.
 **New formally certified result:** The actual cyclic distance-shell degree matrix is exactly scalar for **every n≥4**: `D_n = s_n I`, with `s_n` the inverse-distance-weighted shell count at the zero vertex. Thus the previous weighted shell-Laplacian result yields the all-cycle graph matrix bound `s_n I − R_n ⪰ 0`. [Stage 13 Lean run](https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39157366365) completed 7,373 jobs with 268 project declarations passing the permitted-axiom audit. Independent exact CI checks now verify 685,875 shell cardinalities and 12,874 vertex row sums for n=4..160.
 
 **Current mathematical release boundary:** The harmonic evaluation of `s_n` for every n, conversion into the actual real gravity spectrum span in Lean, cycle adjacency eigenvalue ordering/multiplicity, and the finite C3..C14 converse **remain pending**. The candidate sharp classification is not yet an end-to-end Lean theorem or an externally accepted original result. The original Graffiti 197 conjecture was already refuted by Roucairol and Cazenave. Paper 002 is unchanged.
+
+
+### Case 007 — Sombor product on trees
+
+[Project 007](cases/007/README.md) · [Lean scalar formalization](NewtonConjectures/Case007Sombor.lean) · [formal status](cases/007/LEAN_STATUS.md) · [exact rational parameter checker](cases/007/verify_parameters.py) · [free-tree integer interval enumerator](cases/007/certify_free_trees.py) · [CI](.github/workflows/case007.yml).
+
+Target: Gutman, Redžepović and Furtula's Conjectures 12–13 (2023), predicting that the unique maximizer of the product of Sombor and modified Sombor indices for every n-vertex tree, n≥5, is the eclipsed sun ES(n,⌊(n−2)/3⌋). A candidate all-n analytic manuscript has been prepared. The new standalone exact Python verifiers reproduce all 2,220 upper-degree rational comparisons and all 18 finite differences; exact integer-interval free-tree enumeration checks 32,503 unlabeled trees through order 16. These are not full Lean or independent specialist proof acceptance. Full theorem Lean and originality review are pending.
