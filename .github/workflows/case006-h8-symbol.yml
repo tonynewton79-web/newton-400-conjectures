@@ -1,0 +1,54 @@
+name: Case 006 H8 symbol certificate
+on:
+  push:
+    paths:
+      - "cases/006/attack002/**"
+      - "cases/006/attack003/**"
+      - "cases/006/attack004/**"
+      - "cases/006/attack005/**"
+      - "cases/006/attack006/**"
+      - "cases/006/attack007/**"
+      - "cases/006/attack008/**"
+      - "cases/006/attack009/**"
+      - "cases/006/paper/**"
+      - ".github/workflows/case006-h8-symbol.yml"
+  pull_request:
+    paths:
+      - "cases/006/attack002/**"
+      - "NewtonConjectures/Case006H8Symbol.lean"
+      - "NewtonConjectures/Case006Ungauged.lean"
+      - "NewtonConjectures/Case006QuadraticMoments.lean"
+      - "NewtonConjectures/Case006FiniteType.lean"
+      - "NewtonConjectures/Case006SourceJacobian.lean"
+      - "NewtonConjectures/Case006JacobianConditioning.lean"
+      - "NewtonConjectures/Case006TiltTorque.lean"
+      - ".github/workflows/case006-h8-symbol.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-symbol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Exact rational SOS and determinant replay
+        run: python cases/006/attack002/verify_symbol.py
+      - name: Sharp seven-ray norm and dual-polynomial replay
+        run: python cases/006/attack003/verify_dual.py
+      - name: Verify ungauged characteristic axis and periodic Fourier right inverse
+        run: python cases/006/attack004/verify_operator.py
+      - name: Install exact symbolic algebra for quadratic-adjoint checks
+        run: python -m pip install 'sympy==1.14.0'
+      - name: Three exact quadratic adjoint-moment polynomial checks
+        run: python cases/006/attack005/verify_quadratic.py
+      - name: Verify complete 10-dimensional adjoint kernel and finite type
+        run: python cases/006/attack006/verify_finite_type.py
+      - name: Test exact source-native Jacobian algebra and fixed-frame half-turn rank screen
+        run: python cases/006/attack007/verify_source_jacobian.py
+      - name: Test sharp quadratic determinant conditioning and interval certificate
+        run: python cases/006/attack008/verify_conditioning.py
+      - name: Exact tilted-frame angular projection and source torque check
+        run: python cases/006/attack009/verify_tilt_torque.py

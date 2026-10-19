@@ -1,3 +1,10 @@
+import NewtonConjectures.Case006TiltTorque
+import NewtonConjectures.Case006JacobianConditioning
+import NewtonConjectures.Case006SourceJacobian
+import NewtonConjectures.Case006FiniteType
+import NewtonConjectures.Case006QuadraticMoments
+import NewtonConjectures.Case006Ungauged
+import NewtonConjectures.Case006H8Symbol
 import NewtonConjectures.Case006Stress
 import Mathlib
 import NewtonConjectures.ShellHarmonic
