@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006CylindricalTorque
 import NewtonConjectures.Case006FrameTransport
 import NewtonConjectures.Case006C4Quadratic
 import NewtonConjectures.Case006TiltTorque
