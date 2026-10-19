@@ -1,8 +1,8 @@
 {
   "project": "Newton Astro Labs — 400+ Conjectures",
   "target_externally_validated_original_results": 401,
-  "cases_documented": 5,
-  "candidate_analytic_proofs": 2,
+  "cases_documented": 6,
+  "candidate_analytic_proofs": 3,
   "independently_accepted_original_results": 0,
   "cases": [
     {
@@ -277,6 +277,25 @@
       "lean_verified_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260218045",
       "lean_axiom_audit": "PASS: 341 declarations under NewtonConjectures; allowable axioms propext, Classical.choice, Quot.sound; no sorry/admit",
       "independent_exact_ci_run": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/runs/39260223557"
+    },
+    {
+      "id": "007",
+      "target": "Gutman–Redžepović–Furtula Sombor product-tree Conjectures 12 and 13 (2023)",
+      "status": "CANDIDATE COMPLETE ANALYTIC PROOF; EXACT FINITE CHECKS REPRODUCED; LEAN FULL THEOREM PENDING",
+      "claim": "For every n>=5, the eclipsed sun ES(n,floor((n-2)/3)) uniquely maximizes SO(T)*mSO(T) over all n-vertex trees",
+      "prior_art_audit": "original 2023 conjecture verified, later exact-resolution priority not exhaustively certified",
+      "specialist_review": false,
+      "lean_kernel_verified": false,
+      "lean_kernel_verified_fragment": false,
+      "lean_full_theorem_verified": false,
+      "lean_fragment_source": "NewtonConjectures/Case007Sombor.lean",
+      "finite_certificates": {
+        "rational_degree_pairs": 2220,
+        "finite_differences": 18,
+        "nonisomorphic_trees_5_to_16": 32503
+      },
+      "project_readme": "cases/007/README.md",
+      "independently_accepted_original_result": false
     }
   ]
 }
