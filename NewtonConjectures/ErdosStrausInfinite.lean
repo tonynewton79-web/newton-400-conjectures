@@ -44,8 +44,9 @@ theorem exists_prime_no_bounded_AB (K N : ℕ) :
   have hmpos : 0 < m := by dsimp [m]; omega
   have hmK : m ≤ 4 * K + 4 := by
     dsimp [m]
-    have h := Nat.mul_le_mul_left 4 hbound
-    nlinarith
+    have h : 4 * d * r ≤ 4 * K := by
+      simpa only [mul_assoc] using Nat.mul_le_mul_left 4 hbound
+    omega
   have hfactdiv : m ∣ Nat.factorial (4 * K + 4) :=
     Nat.dvd_factorial hmpos hmK
   have hmdiv : m ∣ Q := by
