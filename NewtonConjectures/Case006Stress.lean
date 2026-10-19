@@ -45,7 +45,7 @@ theorem covariance_trace_exact : covarianceTrace = (679:ℚ)/86 := by
   unfold covarianceTrace
   rw [sevenRay_covariance_exact 0 0, sevenRay_covariance_exact 1 1,
       sevenRay_covariance_exact 2 2]
-  norm_num [displayedCovariance]
+  decide
 
 private def axis (i : Fin 3) : ℚ := ![35, 2, 0] i
 private def delta (i j : Fin 3) : ℚ := if i = j then 1 else 0
