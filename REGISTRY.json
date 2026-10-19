@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 82,
+      "cumulative_pdf_pages": 84,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -313,7 +313,16 @@
       "tilt_torque_reduced_moments": "For fully SO(2) axisymmetric complete source, fixed tilted cone, and ct(1-3t^2)!=0: B=0,C=0,(1-3t^2)A=2*(1217/1229)*Z",
       "actual_full_source_axisymmetry_verified": false,
       "actual_full_source_slice_torque_neutral_verified": false,
-      "source_native_meridional_jacobian_verified": false
+      "source_native_meridional_jacobian_verified": false,
+      "c4_projection_appendix": "cases/006/paper/Appendix_M_C4_Quadratic_Moment_Closure.md",
+      "c4_projection_lean": "NewtonConjectures/Case006C4Quadratic.lean",
+      "c4_projection_exact_verifier": "cases/006/attack010/verify_c4.py",
+      "c4_projection_theorem": "For all degree<=2 polynomial vector fields, C4-equivariant axial projection equals SO2 equivariant projection exactly; invariant dimension 8 in a 30-dimensional polynomial space.",
+      "c4_c3_sharpness": "C3 invariance alone fails for degree-2 vector fields; explicit (x^2-y^2,-2xy,0).",
+      "c4_source_condition": "Requires verified C4-equivariance of complete prepared compact g and rho in a single physical chart with fixed H8 cone frame; not yet established.",
+      "c4_approximate_defect": "3L^2 ||g-P4g||_L1 + 2(1217/1229)L ||rho-P4rho||_L1 on a radius-L ball.",
+      "c4_lean_status": "New polynomial projection source committed; end-to-end CI kernel and analytic averaging integrals not verified.",
+      "full_source_C4_equivariance_verified": false
     }
   ]
 }
