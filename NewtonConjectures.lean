@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006SourceJacobian
 import NewtonConjectures.Case006FiniteType
 import NewtonConjectures.Case006QuadraticMoments
 import NewtonConjectures.Case006Ungauged
