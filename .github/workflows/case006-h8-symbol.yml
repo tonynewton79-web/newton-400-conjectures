@@ -4,11 +4,14 @@ on:
     paths:
       - "cases/006/attack002/**"
       - "cases/006/attack003/**"
+      - "cases/006/attack004/**"
+      - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
     paths:
       - "cases/006/attack002/**"
       - "NewtonConjectures/Case006H8Symbol.lean"
+      - "NewtonConjectures/Case006Ungauged.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -25,3 +28,5 @@ jobs:
         run: python cases/006/attack002/verify_symbol.py
       - name: Sharp seven-ray norm and dual-polynomial replay
         run: python cases/006/attack003/verify_dual.py
+      - name: Verify ungauged characteristic axis and periodic Fourier right inverse
+        run: python cases/006/attack004/verify_operator.py
