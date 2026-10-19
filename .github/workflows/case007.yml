@@ -5,6 +5,7 @@ on:
     paths:
       - 'cases/007/**'
       - 'NewtonConjectures/Case007Sombor.lean'
+      - 'NewtonConjectures/Case007SunGraph.lean'
       - '.github/workflows/case007.yml'
   workflow_dispatch:
 
