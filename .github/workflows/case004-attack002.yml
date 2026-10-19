@@ -1,0 +1,19 @@
+name: Paper 004 Attack002 exact complement cuts
+on:
+  push:
+    paths:
+      - 'cases/004/attack002/**'
+      - '.github/workflows/case004-attack002.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Replay exact small complement gates and all sharp negative controls
+        run: python cases/004/attack002/verify_gate.py
