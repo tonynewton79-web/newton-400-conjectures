@@ -76,3 +76,14 @@ The viscosity term cancels by compact solenoidal zero mean and constant Laplacia
 
 [Independent exact checker](attack007/verify_source_jacobian.py) verifies all polynomial/strain/parity first-variation identities and 4,096 exact rational polarizations. [New Lean candidate](../../NewtonConjectures/Case006SourceJacobian.lean) proves the coefficient and polynomial polarization only; its kernel build and the full PDE moment formula have not been certified end-to-end. The actual numerical source-native moment Jacobian and its determinant remain **open**, because the paper intentionally leaves shaper profiles `Phi_theta, Phi, Xi` unfrozen (Proposition 9.12). See H8 [Issue #25](https://github.com/tonynewton79-web/newton-400-conjectures/issues/25).
 
+
+### Appendix K — sharp conditioning near half-turn symmetry
+
+[Appendix K, complete sharp determinant and interval proofs](paper/Appendix_K_Jacobian_Conditioning.md) was added to the cumulative **80-page** PDF. The previous 78-page manuscript is preserved unchanged.
+
+If the first two source-moment Jacobian rows are entrywise bounded by `eps` and the third by `M`, then `|det J|<=4 M eps^2`; the constant **4 is sharp** (proved by multilinearity and a 512-vertex sign-matrix argument). For an invertible Jacobian with first row bounded by `eps>0`, `||J^{-1}||_2>=1/(sqrt(3)eps)`. This quantifies near-symmetry conditioning, rather than assuming the actual tilted-frame source has a particular Jacobian.
+
+If a future genuine source calculation encloses all entries within `delta` of a reference matrix `B` with `|B_ij|<=L`, then `|det J-det B|<=18L^2delta+18Ldelta^2+6delta^3`; a strict determinant margin certifies nonsingularity. The rational example B=[[3,1,0],[1,2,0],[0,0,1]], delta=1/100 is **illustrative only**, not an H8 calculation.
+
+[New Lean algebraic source](../../NewtonConjectures/Case006JacobianConditioning.lean) proves exact two-scale determinant factorizations, the parity block identity, a nonzero implication, and a sharp sign witness; the **universal real inequality and PDE claims are not Lean-formalized**. The independent [exact audit](attack008/verify_conditioning.py) passed all 512 sign vertices and 8,192 seeded rational tests. New GitHub Lean kernel build is queued. The physical source-native Jacobian entries and H8 weighted compact inverse remain open.
+
