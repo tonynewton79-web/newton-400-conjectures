@@ -1,4 +1,7 @@
 import Mathlib
+import NewtonConjectures.ErdosStraus
+import NewtonConjectures.ErdosStrausObstruction
+import NewtonConjectures.ErdosStrausInfinite
 import NewtonConjectures.ShellHarmonic
 import NewtonConjectures.ShellCardinality
 import NewtonConjectures.ScalarGravityUpper
