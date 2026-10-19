@@ -1,0 +1,34 @@
+# Case 006 — Carrier-independent structured stress from an unforced Navier–Stokes core
+
+**Source:** Tony Newton, [Carrier-Independent Structured Stress Route from an Exact Unforced Navier–Stokes Core](https://doi.org/10.5281/zenodo.23475142), Zenodo record 23475142, 19 October 2026.
+
+This is **Case 006**, deliberately isolated from other Navier–Stokes work and from Cases 001–004. It is a research/formal-verification case, **not a conjecture solved or a Millennium-problem claim**.
+
+## What the machine-checkable certificate says
+
+[Lean source](../../NewtonConjectures/Case006Stress.lean) proves finite exact statements from Proposition 9.22 and equations (262)–(272):
+
+1. At aperture t=1/4, seven explicitly defined rank-one rational rays with weights (1,1,59/43,1,1,1,1) yield every entry of the 3×3 covariance Q0 in equation (263).
+2. The trace is 679/86 and its normalized trace-free part is exactly u⊗u/1229 − I/3 for u=(35,2,0), the rational form of (265).
+3. The axial-efficiency margin is exactly 4443/9832−9/20=93/49160 > 0.
+4. The normalized seven-ray weights have a coefficient floor of at least 172/1229.
+5. The coefficient budget is exactly 172/1229−1/100=15971/122900.
+6. **Conditional theorem:** if all four-field coefficient perturbations satisfy the *assumed* H8 bound, the resulting coefficients remain at least rho/100.
+7. Separate elementary balanced-slot, two-color partition and cutoff identities.
+
+[Independent standard-library Fraction arithmetic audit](verify_exact.py) checks the finite certificates independently of Lean.
+
+## Nonformalized / open mathematical gates
+
+- Theorem 2.2's normally convergent exact local unforced singular-core construction.
+- The PDE/function-space localization, transverse anti-divergence, full moving-frame and time-assembly estimates.
+- Crucially, **H8**, the compact support and weighted anti-divergence estimate (273) with coefficient bound 15971/122900, for a *fully specified* profile family.
+- The global finite-energy singular Navier–Stokes solution and logical relationship to the Clay problem.
+
+**A successful Lean CI run is a real kernel check of the listed finite theorems only.** It is not a kernel check of the 65-page paper, nor a solution of the unforced Navier–Stokes problem.
+
+## Reproducibility
+
+The repository pins Lean v4.24.0 and mathlib v4.24.0. The existing [Lean workflow](../../.github/workflows/lean.yml) builds the combined project, executes an axiom audit, and rejects proof placeholders. Case 006 is imported into the library entry point. Run `lake exe cache get && lake build` or inspect the associated GitHub Actions results.
+
+The document’s Appendix F describes a wider companion algebraic kernel; this case begins with an independently written, narrower set of algebraic proofs and makes no claim to have imported or verified the original unpublished companion file.
