@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 116,
+      "cumulative_pdf_pages": 118,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -501,7 +501,20 @@
       "actual_physical_stress_flux_ratio_evaluated": false,
       "projected_source_boundary_gauge_certified": false,
       "actual_physical_cone_pass": false,
-      "appendix_AC_lean_status": "Finite exact rational and cone algebra committed; CI pending; physical cylindrical PDE and angular integration not Lean formalized"
+      "appendix_AC_lean_status": "Finite exact rational and cone algebra committed; CI pending; physical cylindrical PDE and angular integration not Lean formalized",
+      "separable_poloidal_shear_appendix": "cases/006/paper/Appendix_AD_Separable_Poloidal_Shear.md",
+      "separable_poloidal_shear_verifier": "cases/006/attack027/verify_separable_shear.py",
+      "separable_poloidal_shear_lean": "NewtonConjectures/Case006SeparableShear.lean",
+      "shaper_single_self_shear": "For compact Psi=K Phi(r/ell)Xi(z/c), ∫P_r P_z dz=0 identically for each r; toroidal direct rz stress zero",
+      "shaper_two_profile_shear": "∫(P1+P2)_r(P1+P2)_z dz = -K1K2/(r²ell)*(Phi1 Phi2'-Phi2 Phi1')*(∫Xi1'Xi2)",
+      "shaper_flat_diag_all_radii_ratio": "For explicit normalized b, Phi2=(1+x/2)b, Xi2=(1-zeta/2)b and rho_diag=(1229/4443)K1K2/(c ell)*r^-2*b(x)^2*b(zeta)^2, Tkin/Rdiag=-4443/9832 for all interior r",
+      "shaper_flat_diag_is_physical_original_NS_source": false,
+      "original_core_background_interactions_computed": false,
+      "actual_transition_support_and_virial_normalization_certified": false,
+      "actual_glued_four_C4_patch_overlaps_constructed": false,
+      "physical_complete_Rstr_profile_frozen": false,
+      "original_physical_source_stress_flux_certified": false,
+      "appendix_AD_lean_status": "Finite Wronskian/ratio algebra committed; GitHub CI pending; analytic integrals and NS PDE not formalized."
     }
   ]
 }
