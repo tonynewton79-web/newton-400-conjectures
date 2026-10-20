@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 108,
+      "cumulative_pdf_pages": 110,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -455,7 +455,20 @@
       "genuine_physical_meridional_dual_verified": false,
       "smooth_meridional_flat_boundary_lift_proved": false,
       "nonaxisymmetric_modes_solved": false,
-      "appendix_y_lean_status": "Finite shift, polar-endpoint, strict reserve algebra committed; CI pending; weak duality and PDE not Lean formalized"
+      "appendix_y_lean_status": "Finite shift, polar-endpoint, strict reserve algebra committed; CI pending; weak duality and PDE not Lean formalized",
+      "meridional_flat_double_primitive_appendix": "cases/006/paper/Appendix_Z_Flat_Meridional_Double_Primitive.md",
+      "meridional_flat_double_primitive_exact_verifier": "cases/006/attack023/verify_meridional_flat_lift.py",
+      "meridional_flat_double_primitive_lean": "NewtonConjectures/Case006FlatMeridionalDoublePrimitive.lean",
+      "meridional_curl_operator": "LE(E)=Err−Ezz+Er/r−E/r², LD(D)=2Drz+Dz/r, g=∂r fz−∂z fr−4LE(B), E=A−4B",
+      "meridional_double_balance_condition": "g=r^(-1/2)p0(r)q0(z)F, |F|≤L, ∫p0Fdr=0 each z, ∫q0Fdz=0 each r for positive unimodal flat p0,q0",
+      "meridional_flat_double_primitive_formula": "D=1/(2√r)∫_(r−)^r∫_(z−)^z√s*g(s,t)dtds; E=0",
+      "meridional_flat_weighted_bound": "|D|≤LLrLz r+^(3/2)rho/8; if LLrLz r+^(3/2)≤tau κ, and angular slack tau, whole cone cost ≤(1−tau/2)κrho",
+      "meridional_compact_pressure_model": "Example pressure p=−D, source fr=−2Dr−D/r,fz=0 for B=C=0; smooth compact",
+      "actual_NS_meridional_double_slice_balances_verified": false,
+      "general_smooth_weighted_meridional_inverse_proved": false,
+      "general_compact_pressure_for_actual_NS_source_proved": false,
+      "nonaxisymmetric_meridional_modes_solved": false,
+      "appendix_z_lean_status": "Finite cone/pressure/curl jet algebra committed; GitHub CI pending; analytic double-integral and PDE theorem not formalized."
     }
   ]
 }
