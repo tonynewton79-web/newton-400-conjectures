@@ -342,3 +342,29 @@ If the angular B,C have reserve 8|B|,2|C|≤(1−tau)κrho with κ=15971/122900 
 
 **Still open:** source-native full g,rho,G,chi and balance hypotheses not frozen; general f_m, nonaxisymmetric modes, global gluing, slice bound (249), full weighted H8 inversion (273), and unforced NS blowup remain open. The next real target is to calculate the two weighted balance defects of the actual residual curl and determine whether an E-correction, while retaining cone reserve, can cancel them.
 
+
+### Appendix AA — exact two-global-moment compact meridional curl reconstruction (112-page paper)
+
+The cumulative main manuscript now has **112 pages**, with [Appendix AA](paper/Appendix_AA_Compact_Meridional_Curl_Reconstruction.md) on pages 111–112 and **all 110 earlier pages preserved text-identically**.
+
+**New exact theorem beyond Appendix Z:** Let g∈C_c∞((a,b)×(c,d)) with 0<a<b. For the actual cylindrical operators
+```text
+LE E = E_rr−E_zz+E_r/r−E/r²,
+LD D = 2D_rz+D_z/r,
+```
+there exist E,D∈C_c∞ with LE E+LD D=g **if and only if**
+```text
+∫g drdz=0 and ∫r²g drdz=0.
+```
+This is an exact **unweighted** compact range characterization, not an estimate in rho. After e=√r E,v=√r D,h=√r g, the radial adjoint kernel of ∂rr−3/(4r²) is span{r^-1/2,r^3/2}. The explicit compact ODE Green solution H for T(r)=∫h dz uses the two moments, and a separable first correction e0=H(r)θ(z) removes the axial-column defect. A second **finite-rank** correction e1=−4/3 ξ(r)a0(z) with ∫ξ dr=0,∫ξ/r² dr=1 removes the radial-row defect while preserving axial balance. The remaining h1 has two zero slice integrals and the compact double primitive v=(1/2)∫r∫z h1 solves it. Hence the two **pointwise** slice-balance restrictions of Appendix Z can be eliminated once E=A−4B is permitted.
+
+**Source-specific simplification:** For compact meridional source f_m=(f_r,f_z) and compact already-chosen angular B, the source curl is g=∂r f_z−∂z f_r−4LE B. Exact integration by parts gives ∫g=0 automatically and
+```text
+∫r²g dr dz=−2 ∫r f_z dr dz.
+```
+Thus the sole global obstruction for this **unweighted axisymmetric compact meridional curl and compact pressure** is the physical net axial-force moment ∫r f_z=0 (2π angular factor suppressed). A compact pressure gradient has zero such moment. This condition has NOT been evaluated for the original unfrozen prepared source.
+
+**Exact nontrivial replay:** On 1<r<2, ξ=−21000 r²(r−1)^4(2−r)^4(r−153/100) has exact ∫ξ=0 and ∫ξ/r²=1. A nonzero polynomial source built from e=Hθ+ξθ' and an independent D double primitive is reconstructed exactly; a positive compact g has nonzero global moments and is rejected. [Exact source/checker](attack024/verify_meridional_balance_repair.py) passes. [Lean finite algebra](../../NewtonConjectures/Case006MeridionalMomentRepair.lean) added to root/CI; its kernel compiler verdict remains pending and the integral theorem is not Lean formalized.
+
+**Critical missing H8 estimate:** The compact E and D produced by this method may have large amplitude or extend into locations where the actual rho is infinitely flat. **No bound** |A−4B|+2|D|≤κrho/2 or full cone positivity (272), compact weighted inverse (273), physical source axial-force cancellation, nonaxisymmetric mode or unforced Navier–Stokes singularity has been proved. Relevant compact underdetermined elliptic PDE prior art by Erwann Delay (2012) is cited; no claim of general novelty.
+
