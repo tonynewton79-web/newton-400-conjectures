@@ -28,6 +28,7 @@ on:
       - "cases/006/attack025/**"
       - "cases/006/attack026/**"
       - "cases/006/attack027/**"
+      - "cases/006/attack028/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -58,6 +59,7 @@ on:
       - "NewtonConjectures/Case006RadialConeDual.lean"
       - "NewtonConjectures/Case006SourceNativeAxialFlux.lean"
       - "NewtonConjectures/Case006SeparableShear.lean"
+      - "NewtonConjectures/Case006LeadingCoreShear.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -124,3 +126,5 @@ jobs:
         run: python cases/006/attack026/verify_source_native_axial_flux.py
       - name: Case006 two-profile poloidal shear and diagnostic source gate
         run: python cases/006/attack027/verify_separable_shear.py
+      - name: Leading exact-core comparison cross shear and flat-edge obstruction
+        run: python cases/006/attack028/verify_exact_core_cross_shear.py
