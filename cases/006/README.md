@@ -485,3 +485,28 @@ This is an explicit error functional to calculate from the original exact-core c
 
 **Open physical gate:** The original full exact-core off-axis series, background error Rc, actual normalized rho, Rstr/p0, original transition support, all four localized C4 cutoff/overlap tensors and nonaxisymmetric modes remain unfrozen. No physical T/R numerical pass/fail, H8 (249),(272),(273) closure or unforced finite-energy blowup has been proved.
 
+
+### Appendix AF — exact off-axis full-core radial pairing and a conditional positive-shaper flat-edge obstruction (122-page paper)
+
+The cumulative author paper is now **122 pages**, with a typeset two-page [Appendix AF](paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md) and all original **120 preceding pages preserved text-identically**.
+
+**Exact full-core radial pairing:** Original source (199),(208)–(209) takes `uz=q^-A G(Y,eta)`, `Y=Lambda_c r²/(2q)`, `eta=z/c`, `A+D=1,c=q^D`. For any regular-axis solenoidal core, `ur=−(1/(qr))∫_0^r s G_eta(Y(s),eta)ds` EXACTLY. A compact axial shaper Xi then has
+```text
+I_Xi(r)=∫ur Xi(z/c)dz
+       =−c/(q r)∫_0^r s∫Xi(eta)G_eta(Y(s),eta)deta ds.
+```
+The source's first off-axis profile `G=4eta+j0−Y M(eta)/(2Lambda_c)+E`, `M=Zstar/L` yields
+```text
+I_Xi=−2 c r mXi/q + (c r³/(16q²))∫M' Xi + RI,
+|RI|≤(cr/(2q))*(C2/Lambda_c²)*||Xi||1
+```
+under the ADDITIONAL uniform derivative bound |E_eta|≤C2/Lambda_c² across the whole interior cylinder 0≤Y≤Yplus. For Xi≥0,mXi>0, |M'|≤M1 and `4−Yplus M1/(2Lambda_c)−C2/Lambda_c²>0`, the exact physical core pairing is strictly NEGATIVE at all radial points. **The original source has NOT frozen C2 or M1.** Indeed Eq (255) implies `M'=(L Zstar'−L'Zstar)/L²` and requires the *second axial pressure jet* Pi0''; an axis-only affine comparison cannot furnish the missing pressure data.
+
+**Core/shear derivative and conditional no-go:** For the FULL core and one original (194) poloidal shaper, `T_{u,P}=(K/r)[I_Xi Phi'/ell−Phi(I_Xi'+I_Xi/r)]=K I_Xi² d_r[Phi/(r I_Xi)]`. For two POSITIVE shaper amplitudes with nonnegative axial Xi and radial profiles `Phi_j=a_j(r)b(r)` (a_j positive near a common finite flat edge, b→0 there), if the core pairings I_j stay negative and bounded away from 0, then `T_cross=C(r)b'(r)+D0(r)b(r)` with C<0 bounded away from 0. If a trial positive radial envelope satisfies `R≤M b²` and **all other prepared shear terms are only O(R)**, the COMPLETE source-only H8 scalar cone `|T_str−alpha R|≤kappa R` is IMPOSSIBLE all the way to the flat edge. Otherwise `|b'|≤C1 b+C2 b²` would bound |(log b)'| near its finite vanishing endpoint. This is **conditional on absence of other first-derivative-order terms**: the actual cutoff/pressure/four-patch overlaps may cancel the core cross derivative, and the true virial-normalized rho might not obey R≤Mb².
+
+**Important correction to the previous two-profile diagnostic:** Appendix AD's positive pair `Phi1=b, Phi2=(1+x/2)b, Xi1=b(eta),Xi2=(1−eta/2)b(eta)` has quadratic shear O(b²), since its Wronskian removes the shared b' term. It cannot BY ITSELF cancel the first-order core cross shear. In normalized illustrative strong-Rayleigh Y∈(6,6.1) with Lambda_c=1000 and polynomial surrogate M=2eta (NOT source-native pressure data), 70-digit direct integration of `ur Pz + uz Pr + Pr Pz` matches the independent cross+quadratic formulas at seven radii. The source-only shear ratio fails the cone interval on **both sides**, with sign change. This is a MANUFACTURED diagnostic; not an actual H8 prepared-source failure.
+
+[Exact independent 70-digit checker](attack029/verify_core_pairing_cancellation.py) PASS including off-axis radial correction, incompressibility, derivative identity, normalized two-shaper stress and explicit rational conditional core-derivative positivity. [Finite Lean algebra](../../NewtonConjectures/Case006OffAxisPairing.lean) committed/root-imported and added to CI but kernel status unverified; analytic integral/PDE gate is NOT Lean-formalized.
+
+**Next actual physical target:** determine source Zstar/L and pressure jets Pi0,Pi0',Pi0'', prove a uniform eta-derivative remainder from the source's analytic hierarchy on 0≤Y≤Yplus, then compute EVERY first-derivative-order term of the fully glued Rstr (core/shaper/cutoff/overlap/pressure) against the physical rho before any claim of scalar cone pass/fail. (249),(272),(273), nonaxisymmetric modes and finite-energy unforced NS singularity remain OPEN.
+
