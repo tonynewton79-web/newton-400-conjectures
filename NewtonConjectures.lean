@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006RadialConeDual
 import NewtonConjectures.Case006MeridionalMomentRepair
 import NewtonConjectures.Case006FlatMeridionalDoublePrimitive
 import NewtonConjectures.Case006MeridionalCoupling
