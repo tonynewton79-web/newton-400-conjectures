@@ -26,6 +26,7 @@ on:
       - "cases/006/attack023/**"
       - "cases/006/attack024/**"
       - "cases/006/attack025/**"
+      - "cases/006/attack026/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -54,6 +55,7 @@ on:
       - "NewtonConjectures/Case006FlatMeridionalDoublePrimitive.lean"
       - "NewtonConjectures/Case006MeridionalMomentRepair.lean"
       - "NewtonConjectures/Case006RadialConeDual.lean"
+      - "NewtonConjectures/Case006SourceNativeAxialFlux.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -116,3 +118,5 @@ jobs:
         run: python cases/006/attack024/verify_meridional_balance_repair.py
       - name: Appendix AB sharp radial and logarithmic weighted cone dual checks
         run: python cases/006/attack025/verify_log_weighted_dual.py
+      - name: Case006 source-native axial stress flux and boundary gauge exact replay
+        run: python cases/006/attack026/verify_source_native_axial_flux.py
