@@ -32,5 +32,6 @@ theorem reserved_meridional_box
     2*|c|+4*|d|≤k ∧ 2*|e|+4*|d|≤k := by
   have htk : tau*k≤k := by
     nlinarith [mul_nonneg (sub_nonneg.mpr ht1) hk]
+  have htpos : 0 ≤ tau*k := mul_nonneg ht0 hk
   constructor <;> nlinarith
 end Newton400.Case006MeridionalCoupling
