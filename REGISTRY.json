@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 112,
+      "cumulative_pdf_pages": 114,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -478,7 +478,18 @@
       "source_physical_axial_force_verified": false,
       "weighted_E_D_cone_bound_verified": false,
       "smooth_meridional_unweighted_compatibility_proved": true,
-      "appendix_AA_lean_status": "Finite polynomial/jet and reserve algebra submitted, CI queued; integral compact-range theorem is not end-to-end Lean formalized"
+      "appendix_AA_lean_status": "Finite polynomial/jet and reserve algebra submitted, CI queued; integral compact-range theorem is not end-to-end Lean formalized",
+      "radial_logarithmic_dual_appendix": "cases/006/paper/Appendix_AB_Radial_Logarithmic_Cone_Dual.md",
+      "radial_logarithmic_dual_verifier": "cases/006/attack025/verify_log_weighted_dual.py",
+      "radial_logarithmic_dual_lean": "NewtonConjectures/Case006RadialConeDual.lean",
+      "weighted_radial_dual_sharp": "For all r: |r^-1∫_a^r sFz(s)ds−4Bbar(r)|≤(κ/2) R(r), Fz=∫f_z dz, Bbar=∫B dz, R=∫rho dz, κ=15971/122900; necessary in the axisymmetric compact physical cylindrical cone.",
+      "weighted_global_log_dual": "If ∫r f_z=0, |∫r log(r/r0)f_z+4∫B|≤(κ/2)∫rho; r0 independence; saturation forces E=±κρ/2 and D=0.",
+      "radial_stronger_than_log_counterexample": "Smooth flat symmetric rho and E=2κ(r−3/2)rho, f=(∂zE,∂rE+E/r) has zero force, two unweighted global moments, and zero global log integral, but radial gate fails at r=15/8 with |Ebar|/R=3κ/4>κ/2.",
+      "weighted_cone_pass_for_real_H8_source": false,
+      "physical_axial_source_profile_frozen": false,
+      "source_radial_cumulative_force_certified": false,
+      "source_angular_correction_B_frozen": false,
+      "appendix_AB_lean_status": "Finite scalar/jet/rational algebra committed; new GitHub Lean run pending; differential, integral and compact weighted PDE theorem not formalized."
     }
   ]
 }
