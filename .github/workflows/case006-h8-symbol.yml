@@ -22,6 +22,7 @@ on:
       - "cases/006/attack019/**"
       - "cases/006/attack020/**"
       - "cases/006/attack021/**"
+      - "cases/006/attack022/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -46,6 +47,7 @@ on:
       - "NewtonConjectures/Case006InteriorSmoothLifting.lean"
       - "NewtonConjectures/Case006FlatBoundaryAdaptive.lean"
       - "NewtonConjectures/Case006PiolaFlatLifting.lean"
+      - "NewtonConjectures/Case006MeridionalCoupling.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -100,3 +102,5 @@ jobs:
         run: python cases/006/attack020/verify_flat_boundary.py
       - name: Exact Piola flat-boundary divergence-preserving and rational reserve replay
         run: python cases/006/attack021/verify_piola_flat_lifting.py
+      - name: Exact coupled meridional H8 polar and cone-margin verifier
+        run: python cases/006/attack022/verify_coupled_meridional.py
