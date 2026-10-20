@@ -541,7 +541,7 @@
       "actual_pressure_Pi0_second_jet_frozen": false,
       "actual_first_order_glued_C4_cancellation_certified": false,
       "physical_Rstr_scalar_cone_verified": false,
-      "appendix_AF_lean_status": "Finite exact pairing and shear algebra committed/imported; GitHub CI pending; full analytical cancellation theorem not Lean formalized.",
+      "appendix_AF_lean_status": "Lean algebra module committed/root-imported, CI status must be checked; analytic full PDE not formalized",
       "off_axis_pairing_appendix": "cases/006/paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md",
       "off_axis_pairing_checker": "cases/006/attack029/verify_core_pairing_cancellation.py",
       "off_axis_pressure_jet_checker": "cases/006/attack029/verify_pressure_jet.py",
@@ -568,7 +568,18 @@
       "diagnostic_offaxis_shear_fullsource_certified": false,
       "actual_pressure_second_jet_frozen": false,
       "actual_core_uniform_C1_remainder_bound_certified": false,
-      "full_prepared_stress_first_derivative_cancellation_certified": false
+      "full_prepared_stress_first_derivative_cancellation_certified": false,
+      "offaxis_pairing_appendix": "cases/006/paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md",
+      "offaxis_pairing_verifier": "cases/006/attack029/verify_core_pairing_cancellation.py",
+      "offaxis_pairing_lean": "NewtonConjectures/Case006OffAxisPairing.lean",
+      "fullcore_radial_pairing": "I_Xi=−c/(qr)∫_0^r s∫Xi G_eta(Y(s),eta)deta ds; first off-axis correction cr³/(16q²)∫M'Xi",
+      "core_pairing_positivity_gate": "Conditional gamma=4−Yplus*M1/(2Lambda_c)−C2/Lambda_c²>0 given actual uniform M1,C2 and Xi≥0",
+      "positive_two_shaper_derivative_obstruction": "With Ij negative and nonzero, Kj,aj>0, common flat cutoff b, R≤Mb², and all other terms O(R), core cross derivative C(r)b' cannot be absorbed by H8 source-only cone. Not original full-source failure.",
+      "pressure_second_jet_sensitivity": "Eq255 ∂Mprime/∂Pi0_second=−(1−eta²)/(1−2h eta²)",
+      "physical_Pi0_second_jet_frozen": false,
+      "physical_uniform_core_remainder_bound_certified": false,
+      "full_physical_four_patch_first_derivative_cancellation_certified": false,
+      "original_H8_source_cone_pass_or_fail_certified": false
     }
   ]
 }
