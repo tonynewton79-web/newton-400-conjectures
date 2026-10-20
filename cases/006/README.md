@@ -311,3 +311,34 @@ The [exact SymPy/Fraction replay](attack022/verify_coupled_meridional.py) passes
 
 The genuine complete g,rho, nonaxisymmetric modes, smooth flat-boundary E,D lifting, compact pressure, slice (249), physical cone (272), weighted H8 inverse (273) and any unforced Navier–Stokes singularity remain OPEN.
 
+
+### Appendix Z — smooth flat-boundary meridional lift for doubly balanced curl sources (110-page paper)
+
+The cumulative author manuscript is **110 pages**: the two-page [Appendix Z](paper/Appendix_Z_Flat_Meridional_Double_Primitive.md) is appended to the previous **108 pages, whose extracted text is SHA256-identical**.
+
+**Exact meridional pressure-curl reduction:** For the original axisymmetric cylindrical four-field H(A,B,C,D) with E=A−4B, the two meridional equations modulo pressure are equivalent on a simply connected annular rectangle to
+```text
+L_E(E)+L_D(D) = g,
+L_E(E)=E_rr−E_zz+E_r/r−E/r²,
+L_D(D)=2D_rz+D_z/r,
+g=∂r f_z−∂z f_r−4L_E(B).
+```
+The half-density conjugation E=r^(−1/2)e,D=r^(−1/2)d yields a scalar underdetermined elliptic row with principal symbol norm |ξ|²; its existence does not imply a compact inverse.
+
+**New constructive global-flat-boundary theorem for a restricted class.** Let w=r²rho=p0(r)q0(z), where p0,q0 are smooth symmetric unimodal positive interior factors, infinitely flat at the edges. If the prescribed *pressure-free meridional curl* equals g=r^(−1/2)w F, |F|≤L, and BOTH weighted slice balances ∫p0(r)F(r,z)dr=0 (all z) and ∫q0(z)F(r,z)dz=0 (all r) hold, then
+```text
+E=0, A=4B,
+D(r,z)=(1/(2√r))∫_(r−)^r∫_(z−)^z√s*g(s,t)dt ds
+```
+is **smooth compact and solves the pressure-free meridional equation exactly**. The missing pressure is an actual **smooth compact** potential, not just distributional. Two successive unimodal weighted-primitive estimates give
+```text
+|D|≤ L Lr Lz*r+^(3/2)*rho/8.
+```
+If the angular B,C have reserve 8|B|,2|C|≤(1−tau)κrho with κ=15971/122900 and the class bound L Lr Lz r+^(3/2)≤tau κ holds, then the **full original cone** remains below (1−tau/2)κrho through the completely flat boundary. This is a genuine restricted meridional smooth lifting result, *not* a general H8 inverse.
+
+**Fully explicit model:** On r∈(1,2), z∈(0,1) with symmetric flat p0(r)=p(r−1),q0(z)=p(z), the nonzero F=λ(r−3/2)(z−1/2) obeys both weighted balances. For the resulting D and B=C=0, f_m=(−2D_r−D/r,0) with **compact pressure −D** satisfies the original meridional equations. It fits the cone for λ2√2≤tau κ. With smooth angular B,C added and A=4B one gets a manufactured coupled three-component source, not an original NS source.
+
+[Independent SymPy/Fraction/70-digit checker](attack023/verify_meridional_flat_lift.py) PASSES the full curl and streamfunction identities, half-density factorization, double-primitive, nontrivial manufactured compact pressure and strictly positive cone reserve. [Lean finite algebra](../../NewtonConjectures/Case006FlatMeridionalDoublePrimitive.lean) is imported and in CI, but integration, flat decay and PDE are not Lean-formalized; compiler verdict pending.
+
+**Still open:** source-native full g,rho,G,chi and balance hypotheses not frozen; general f_m, nonaxisymmetric modes, global gluing, slice bound (249), full weighted H8 inversion (273), and unforced NS blowup remain open. The next real target is to calculate the two weighted balance defects of the actual residual curl and determine whether an E-correction, while retaining cone reserve, can cancel them.
+
