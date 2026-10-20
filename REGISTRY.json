@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 98,
+      "cumulative_pdf_pages": 100,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -408,7 +408,20 @@
       "actual_physical_flux_ratio_evaluated": false,
       "physical_radial_dual_pass": false,
       "full_stress_components_solved": false,
-      "appendix_t_lean_status": "Finite algebra submitted to GitHub CI; cylindrical integration and full H8 not Lean formalized"
+      "appendix_t_lean_status": "Finite algebra submitted to GitHub CI; cylindrical integration and full H8 not Lean formalized",
+      "angular_weak_duality_appendix": "cases/006/paper/Appendix_U_Weighted_Angular_Duality.md",
+      "angular_weak_duality_verifier": "cases/006/attack018/verify_angular_weak_duality.py",
+      "angular_weak_duality_lean": "NewtonConjectures/Case006AngularWeakDuality.lean",
+      "angular_weak_iff": "For axisymmetric f=r² h_theta and w=r² rho≥0 compact on an annular rectangle, all smooth-test inequalities |∫fψ|≤∫w[(κ/2)|ψ_r|+(κ/8)|ψ_z|] iff bounded measurable compact angular C,B with div_{r,z}(r²C,r²B)=f and max(2|C|,8|B|)≤κρ; standard L1-L∞ Hahn-Banach",
+      "angular_weak_saturation_rigidity": "At manufactured α=κ/2, C=κρ/2 almost everywhere on {ρ>0}, and full seven-ray constraints force D=0 there",
+      "angular_finite_grid_obstruction": "2×2 exact grid radial source ±κ has axial slice sums zero but singleton cut violated by 3κ/8; ±κ/4 has explicit feasible radial-edge flow",
+      "actual_source_g_and_envelope_rho_frozen": false,
+      "actual_physical_flux_and_dual_tests_passed": false,
+      "weak_angular_inverse_solved_conditionally": true,
+      "smooth_weighted_angular_inverse_proved": false,
+      "meridional_compact_weighted_inverse_proved": false,
+      "full_H8_inverse_proved": false,
+      "appendix_u_lean_status": "Finite rational cone/cut/saturation algebra committed; GitHub Lean CI pending. Hahn–Banach and PDE weak equivalence NOT formalized in Lean."
     }
   ]
 }
