@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006LeadingCoreShear
 import NewtonConjectures.Case006SeparableShear
 import NewtonConjectures.Case006SourceNativeAxialFlux
 import NewtonConjectures.Case006RadialConeDual
