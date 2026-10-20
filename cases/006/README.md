@@ -290,3 +290,24 @@ then there is **globally smooth compact angular flux** with the **exact original
 
 **Unchanged physical gate:** The actual complete NS prepared source and envelope are still unfrozen; strict all-test dual feasibility and finite Fstar,m for that source have not been certified. The three meridional tensor equations, compact pressure, slice (249), complete physical cone (272), weighted inverse (273) and unforced NS singularity remain open.
 
+
+### Appendix Y — exact coupling of the smooth angular and weak meridional H8 cone (108 pages)
+
+The 108-page cumulative author PDF adds the two-page [Appendix Y](paper/Appendix_Y_Coupled_Meridional_Dual.md), preserving all earlier 106 pages text-identically. Its mathematical result uses the exact original seven-ray norm and is scoped to the axisymmetric physical cylindrical H8 chart.
+
+**Exact residual cone after fixing angular B=H_theta,z and C=H_r,theta.** Let k=(15971/122900)rho and E=A−4B. The remaining fields (E,D) must satisfy |E|+2|D|≤k/2, |D|≤(k−2|C|)/4. The exact sharp support function for meridional gradients (P,S) is
+```text
+h_C(P,S)=max{k|P|/2, |C||P|+(k−2|C|)|S|/4}.
+```
+With angular reserve 2|C|≤(1−tau)k and 8|B|≤k, the guaranteed **independent meridional box** |E|≤k/4, |D|≤tau*k/8 stays inside the original full seven-ray cone. For the Appendix X angular margin tau=sigma/2, this means |A−4B|≤k/4 and |D|≤sigma*k/16. This is available margin, not a right inverse.
+
+**Exact conditional weak meridional iff modulo pressure:** For any axisymmetric source f_m on an annular rectangle and every compact smooth meridional test psi satisfying (r psi_r)_r+(r psi_z)_z=0, define Ppsi=(psi_r)_z+(psi_z)_r and Spsi=(psi_z)_z−(psi_r)_r. A bounded measurable compact (E,D) in the above cone and a distributional pressure satisfy the meridional divergence equations **if and only if**
+```text
+|∫ r [f_m·psi+4 B Ppsi] dr dz| ≤ ∫ r h_C(Ppsi,Spsi) dr dz
+```
+for ALL such psi. Necessity is the cylindrical weighted integration by parts; sufficiency is standard Hahn–Banach convex polar duality followed by the distributional de Rham lemma. This resolves a **conditional axisymmetric weak** problem only; it does not solve smooth compact meridional lifting, pressure support or nonzero angular Fourier modes.
+
+The [exact SymPy/Fraction replay](attack022/verify_coupled_meridional.py) passes all three cylindrical divergence components, the exact sharp polytope polar on hundreds of rational samples, a uniform strict-margin box, and a manufactured **three-component** source with full cone cost 3k/8. The manufactured source is not the original Navier–Stokes prepared source. [Finite Lean algebra](../../NewtonConjectures/Case006MeridionalCoupling.lean) is committed and imported in the CI build; the functional-analytic theorem is **not** Lean formalized and kernel CI completion remains pending.
+
+The genuine complete g,rho, nonaxisymmetric modes, smooth flat-boundary E,D lifting, compact pressure, slice (249), physical cone (272), weighted H8 inverse (273) and any unforced Navier–Stokes singularity remain OPEN.
+
