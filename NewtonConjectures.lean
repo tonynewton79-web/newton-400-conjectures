@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006FlatBoundaryAdaptive
 import NewtonConjectures.Case006InteriorSmoothLifting
 import NewtonConjectures.Case006AngularWeakDuality
 import NewtonConjectures.Case006RadialAngularDual
