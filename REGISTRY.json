@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 94,
+      "cumulative_pdf_pages": 96,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -384,7 +384,20 @@
       "slice_bound_249_pass": false,
       "cone_bound_272_pass": false,
       "compact_weighted_H8_inverse_proved": false,
-      "appendix_r_lean_status": "Algebraic source submitted, GitHub Actions Lean kernel still pending; smooth ODE inverse bound proved on paper, not Lean formalized."
+      "appendix_r_lean_status": "Algebraic source submitted, GitHub Actions Lean kernel still pending; smooth ODE inverse bound proved on paper, not Lean formalized.",
+      "angular_flux_appendix": "cases/006/paper/Appendix_S_Angular_Flux_Cone_Obstruction.md",
+      "angular_flux_verifier": "cases/006/attack016/verify_flux_obstruction.py",
+      "angular_flux_lean": "NewtonConjectures/Case006AngularFlux.lean",
+      "cone_azimuthal_beta": "(147sqrt182-84sqrt2)/9832 approximately 0.189620065353516",
+      "cone_azimuthal_reserve": "15971/983200 approximately 0.016243897477624",
+      "angular_flux_necessary_theorem": "|M_g(z)-beta R2(z)| <= (15971/983200) R2(z) for every z, angular mean over a full cylindrical chart with compact support and periodic pressure",
+      "minimum_prepared_cumulative_flux_share": "1-mu/beta approximately 91.43345012177907%",
+      "pure_torque_neutral_g_excluded_for_nonzero_envelope": true,
+      "source_native_actuator_primitive": "M_g=M_bg+q^(D-h)[BA-delta(MA)'-gamma int MA] for compact exact Eq251 actuator",
+      "angular_flux_test_diagnostic_envelope": "rho_ex=q^-3/2*(chi*Lambda/R)*beta_0.01(s-241/40)*F(eta), R2=F(eta); not physically normalized",
+      "angular_flux_full_H8_inverse_proved": false,
+      "angular_flux_full_physical_g_frozen": false,
+      "angular_flux_lean_status": "Finite algebra source committed; GitHub Actions Lean kernel pending; PDE not formalized."
     }
   ]
 }
