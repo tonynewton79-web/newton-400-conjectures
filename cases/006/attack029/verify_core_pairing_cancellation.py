@@ -52,4 +52,13 @@ for x0 in ['-.95','-.8','-.5','0','.5','.8','.95']:
     ratios.append(direct/R)
 assert ratios[0]<alpha-kap and ratios[-1]>alpha+kap
 print('PASS 70-digit original product integrals (7 radii), both sides violate scalar H8 interval')
+# Eq (255) needs the upstream second axial pressure jet to bound (Zstar/L)'.
+eta,h,j0=s.symbols('eta h j0',real=True)
+AA=s.Rational(1,2)+h; DD=s.Rational(1,2)-h
+U=4*eta+j0; d=1-eta**2; H=DD*eta+d*U
+Pi=s.Function('Pi')(eta)
+Z=-AA*(1-2*eta*U)*U-4*H-d*s.diff(Pi,eta)+4*AA*eta*Pi
+LL=1-2*h*eta**2
+assert s.simplify(s.diff(s.diff(Z/LL,eta),s.diff(Pi,eta,2))+d/LL)==0
+print('PASS first off-axis coefficient derivative requires Pi0 second axial pressure jet')
 print('OPEN actual Zstar/L and C1 coefficient, true virial rho, stress gauge, C4 patch overlaps')
