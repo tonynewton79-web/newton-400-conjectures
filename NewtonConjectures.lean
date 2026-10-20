@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006AngularWeakDuality
 import NewtonConjectures.Case006RadialAngularDual
 import NewtonConjectures.Case006AngularFlux
 import NewtonConjectures.Case006NormalizedInverse
