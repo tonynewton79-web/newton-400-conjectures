@@ -25,6 +25,7 @@ on:
       - "cases/006/attack022/**"
       - "cases/006/attack023/**"
       - "cases/006/attack024/**"
+      - "cases/006/attack025/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -52,6 +53,7 @@ on:
       - "NewtonConjectures/Case006MeridionalCoupling.lean"
       - "NewtonConjectures/Case006FlatMeridionalDoublePrimitive.lean"
       - "NewtonConjectures/Case006MeridionalMomentRepair.lean"
+      - "NewtonConjectures/Case006RadialConeDual.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -112,3 +114,5 @@ jobs:
         run: python cases/006/attack023/verify_meridional_flat_lift.py
       - name: Appendix AA exact meridional global moments and E-D repair
         run: python cases/006/attack024/verify_meridional_balance_repair.py
+      - name: Appendix AB sharp radial and logarithmic weighted cone dual checks
+        run: python cases/006/attack025/verify_log_weighted_dual.py
