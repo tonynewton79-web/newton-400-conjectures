@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 110,
+      "cumulative_pdf_pages": 112,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -468,7 +468,17 @@
       "general_smooth_weighted_meridional_inverse_proved": false,
       "general_compact_pressure_for_actual_NS_source_proved": false,
       "nonaxisymmetric_meridional_modes_solved": false,
-      "appendix_z_lean_status": "Finite cone/pressure/curl jet algebra committed; GitHub CI pending; analytic double-integral and PDE theorem not formalized."
+      "appendix_z_lean_status": "Finite cone/pressure/curl jet algebra committed; GitHub CI pending; analytic double-integral and PDE theorem not formalized.",
+      "compact_meridional_curl_appendix": "cases/006/paper/Appendix_AA_Compact_Meridional_Curl_Reconstruction.md",
+      "compact_meridional_curl_verifier": "cases/006/attack024/verify_meridional_balance_repair.py",
+      "compact_meridional_curl_lean": "NewtonConjectures/Case006MeridionalMomentRepair.lean",
+      "meridional_compact_range": "LE E+LD D=g with E,D smooth compact iff ∫g=0 and ∫r²g=0 on physical annular axisymmetric rectangle; unweighted only",
+      "axial_force_source_identity": "For g=∂r f_z−∂z f_r−4LE B, ∫g=0 automatically and ∫r²g=−2∫r f_z; source axial-force moment is the only global unweighted compact curl obstruction",
+      "meridional_exact_E_repair": "e0=H(r)theta(z), e1=−4/3 xi(r)a0(z), ∫xi=0,∫xi/r²=1, v=(1/2)∫r∫z h1; all compact under the two moments",
+      "source_physical_axial_force_verified": false,
+      "weighted_E_D_cone_bound_verified": false,
+      "smooth_meridional_unweighted_compatibility_proved": true,
+      "appendix_AA_lean_status": "Finite polynomial/jet and reserve algebra submitted, CI queued; integral compact-range theorem is not end-to-end Lean formalized"
     }
   ]
 }
