@@ -1,3 +1,4 @@
+import NewtonConjectures.Case006MeridionalCoupling
 import NewtonConjectures.Case006PiolaFlatLifting
 import NewtonConjectures.Case006FlatBoundaryAdaptive
 import NewtonConjectures.Case006InteriorSmoothLifting
