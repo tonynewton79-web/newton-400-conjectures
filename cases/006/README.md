@@ -424,3 +424,37 @@ The interval is about [−0.5818429618,−0.3219406021]. This is a SHARP NECESSA
 
 [Independent exact checker](attack026/verify_source_native_axial_flux.py) PASSES the signed physical-frame shear, rational interval, full C4 angular average, nonzero axial pressure/gauge boundary example, compact full-product cutoff derivative and net-force cancellation, and exact source-only cone saturation. [Lean finite-algebra fragment](../../NewtonConjectures/Case006SourceNativeAxialFlux.lean) is committed/root-imported and CI triggered; analytic angular integration and projected PDE are not formalized. The full weighted compact inverse (273), actual cone (272), physical slice (249), nonaxisymmetric source and Navier–Stokes singularity remain open.
 
+
+### Appendix AD — exact separable poloidal shear and fully frozen source diagnostic (118-page paper)
+
+The cumulative Case 006 manuscript is **118 pages**, with the two-page [Appendix AD](paper/Appendix_AD_Separable_Poloidal_Shear.md), and **all 116 earlier pages preserved exactly**. This attack returns to the *actual original shaper equation (194)*, while honestly distinguishing its own manufactured quadratic stress from the unfrozen full prepared (R_{\rm str}).
+
+**New source-ansatz theorem:** For a separable poloidal streamfunction `Psi=K Phi(r/ell)Xi(z/c)`, the original velocity components are `Pr=−K Phi Xi'/(rc), Pz=K Phi' Xi/(r ell)`, and compactness gives `∫Pr Pz dz=0 at EVERY radius`. The direct toroidal shaper adds no rz component. For two profiles, the complete direct quadratic shear is EXACTLY
+```text
+Tkin(r)=−K1K2/(r² ell)*(Phi1 Phi2'−Phi2 Phi1')*
+        ∫Xi1'(zeta) Xi2(zeta)dzeta .
+```
+Thus nonzero poloidal self/cross shear requires BOTH nonproportional radial profiles and nonproportional axial profiles. Crucially the complete prepared target stress can still have nonzero rz through background interactions, nonlinear overlaps, gauge and stress inversion; **no actual physical no-go has been proved**.
+
+**Fully frozen flat diagnostic (not final H8 source):** Define normalized smooth flat `b(s)=Z^-1 exp[-1/(1-s²)]` on |s|<1, x=r/ell−2 and zeta=z/c. Use Phi1=b(x), Phi2=(1+x/2)b(x), Xi1=b(zeta), Xi2=(1−zeta/2)b(zeta), with K1,K2>0. Their radial Wronskian is b(x)²/2, axial overlap is (1/4)∫b², hence
+```text
+Tkin(r)=−K1K2 b(x)²∫b²/(8r² ell).
+rho_diag= rho0*r^-2*b(x)²*b(zeta)²,
+rho0=(1229/4443)*(K1K2)/(c ell).
+Rdiag(r)=∫rho_diag dz.
+Tkin(r)/Rdiag(r)=−4443/9832 exactly, at EVERY r with Rdiag>0.
+```
+The compact raw diagnostic tensor `Tdiag=P⊗P`, chosen gauge p0=0, and rho_diag have zero axial/radial boundary traces and global axisymmetric C4-equivariance under four physical quarter-turn maps. The Appendix AC **source-only necessary** cone ratio therefore PASSES WITH MAXIMUM SCALAR RESERVE for this manufactured stress; a single separable poloidal quadratic tensor with Tkin=0 fails the same necessary test for positive rho, since |alpha|>kappa. This demonstrates the strong dependence of the stress ratio on unfrozen profile choices.
+
+**Background interaction formula** for one profile and compact axisymmetric solenoidal u:
+```text
+I(r)=∫u_r(r,z)Xi(z/c) dz,
+∫(u_r Pz+u_z Pr)dz =
+ K/r*[Phi'/ell*I−Phi*(I'+I/r)].
+```
+This explicitly identifies missing source-native core quantities; the original Eq. (194) and source Remark 9.23 alone do NOT specify a full prepared Rstr, final strong-Rayleigh transition support, actual four C4 cutoff/gluing tensors, normalized virial rho or complete source pressure/gauge. A diagnostic all-radii PASS is **not a quantitative physical H8 PASS**.
+
+[Independent exact algebra and 70-digit original velocity-product replay](attack027/verify_separable_shear.py) PASS, including direct integration at five radii, flat profile normalization, rational all-radii ratio and physical C4 rotation checks. [Lean finite algebra](../../NewtonConjectures/Case006SeparableShear.lean) committed/imported and CI triggered; analytic integral identities and NS/PDE are not Lean-formalized. Full physical (249),(272),(273), nonaxisymmetric patch modes and unforced NS singularity remain OPEN.
+
+**Next decisive source-native requirement:** Freeze an actual admissible complete core velocity background, global prepared stress and pressure, radial/axial shapers whose support lies in the curved strong-Rayleigh region, four localized patch maps with cutoff overlaps, and the normalized positive envelope. Only then interval-certify the real T/R and sharpen to the fixed-angular cone gate.
+
