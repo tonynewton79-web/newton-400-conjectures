@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 96,
+      "cumulative_pdf_pages": 98,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -397,7 +397,18 @@
       "angular_flux_test_diagnostic_envelope": "rho_ex=q^-3/2*(chi*Lambda/R)*beta_0.01(s-241/40)*F(eta), R2=F(eta); not physically normalized",
       "angular_flux_full_H8_inverse_proved": false,
       "angular_flux_full_physical_g_frozen": false,
-      "angular_flux_lean_status": "Finite algebra source committed; GitHub Actions Lean kernel pending; PDE not formalized."
+      "angular_flux_lean_status": "Finite algebra source committed; GitHub Actions Lean kernel pending; PDE not formalized.",
+      "radial_dual_appendix": "cases/006/paper/Appendix_T_Radial_Angular_Dual.md",
+      "radial_dual_verifier": "cases/006/attack017/verify_angular_dual.py",
+      "radial_dual_lean": "NewtonConjectures/Case006RadialAngularDual.lean",
+      "radial_dual_theorem": "Every compact H8 correction in a full annular cylindrical chart obeys |∬ψ r²<g-divK>θ|≤∬r²<ρ>[(κ/2)|ψ_r|+(κ/8)|ψ_z|], κ=15971/122900.",
+      "flux_ratio_insufficient_exact_example": "Manufactured axisymmetric compact divergence-free gθ=(divK)θ+α(ρ_r+2ρ/r) has Mg=βR2 identically, but cone requires |α|≤κ/2=15971/245800; sharp for angular sector.",
+      "manufactured_example_physical_NS_source": false,
+      "actual_physical_complete_g_frozen": false,
+      "actual_physical_flux_ratio_evaluated": false,
+      "physical_radial_dual_pass": false,
+      "full_stress_components_solved": false,
+      "appendix_t_lean_status": "Finite algebra submitted to GitHub CI; cylindrical integration and full H8 not Lean formalized"
     }
   ]
 }
