@@ -368,3 +368,32 @@ Thus the sole global obstruction for this **unweighted axisymmetric compact meri
 
 **Critical missing H8 estimate:** The compact E and D produced by this method may have large amplitude or extend into locations where the actual rho is infinitely flat. **No bound** |A−4B|+2|D|≤κrho/2 or full cone positivity (272), compact weighted inverse (273), physical source axial-force cancellation, nonaxisymmetric mode or unforced Navier–Stokes singularity has been proved. Relevant compact underdetermined elliptic PDE prior art by Erwann Delay (2012) is cited; no claim of general novelty.
 
+
+### Appendix AB — logarithmic and radial-by-radial cone obstructions (114-page cumulative paper)
+
+A two-page [Appendix AB](paper/Appendix_AB_Radial_Logarithmic_Cone_Dual.md) is added to the cumulative main manuscript (**114 pages**), preserving all prior 112 PDF pages text-identically. It extracts a sharp **weighted** necessary condition that does NOT follow from Appendix AA's two unweighted global compact curl moments.
+
+For original physical meridional f_m=(f_r,f_z), angular B, envelope rho, define kappa=15971/122900, E=A−4B, and `g=∂r f_z−∂z f_r−4LE B` with LE=∂rr−∂zz+r^-1∂r−r^-2, LD=2∂rz+r^-1∂z. The cone requires `|E|+2|D|≤kappa rho/2`.
+
+**Sharp logarithmic source dual:** With phi(r)=r²log(r/r0)/2, exact formal adjoints satisfy `LE*phi=1, LD*phi=0`. Therefore every compact cone-bounded E,D obeys
+```text
+|∫phi g| <= (kappa/2)∫rho.
+```
+Because `∫phi g=−∫r(log(r/r0)+1/2)f_z−4∫B`, the zero-net-axial-force compact source condition `∫r f_z=0` reduces this to
+```text
+|∫r log(r/r0) f_z +4∫B| <= (15971/245800)∫rho.
+```
+The inequality is independent of r0 under the axial-force condition. Saturation forces |E|=kappa rho/2 with a single sign and D=0 on rho>0.
+
+**Strictly stronger radial source gate:** Put Fz(r)=∫f_z(r,z)dz, Bbar(r)=∫B(r,z)dz, R(r)=∫rho(r,z)dz. Integrating the AXIAL meridional equation in z yields the exact source-side identity `Ebar(r)=r^-1∫_a^r sFz(s)ds−4 Bbar(r)`. Hence at EVERY radius
+```text
+|r^-1∫_a^r sFz(s)ds−4Bbar(r)| <= (15971/245800)*R(r).
+```
+This is the new release-critical radial weighted cone screening inequality. It is invariant under compact pressure-gauge changes and is particularly strong near an infinitely flat envelope edge. Integration over r recovers the logarithmic dual.
+
+**Two exact manufactured failures (not the physical H8 source):** Let E0=lambda rho, B=C=D=0 and prescribe f=(lambda rho_z, lambda(rho_r+rho/r)), smooth/compact. All Appendix AA global curl moments and net axial force vanish; nevertheless the weighted cone forces |lambda|≤kappa/2. At lambda=kappa it fails by a factor 2; lambda=kappa/4 explicitly fits the cone using half its reserve. For a symmetric flat envelope rho=p(r−1)q(z), 1<r<2, choose `lambda(r)=2 kappa(r−3/2)` and E0=lambda(r)rho, f=(∂zE0,∂rE0+E0/r). Then the *global logarithmic test is exactly zero*, as are both unweighted curl moments, BUT at r=15/8, |lambda|=3kappa/4>kappa/2 and the radial inequality FAILS for every compact alternative E,D and pressure.
+
+[Exact SymPy/Fraction/65-digit replay](attack025/verify_log_weighted_dual.py) PASSES formal adjoints, both Green identities, source axial-force reduction, strict/sharp/fail rational thresholds, zero-global-radial-fail example, and genuine C∞ flat radial quadrature. [Lean finite algebra](../../NewtonConjectures/Case006RadialConeDual.lean) committed/imported and CI-triggered; integrated PDE proofs and flat-weight cone bound are NOT Lean-formalized.
+
+**Unchanged actual-source limitation:** The source's final f_m, angular B, transported moving cone chart, chi,G, and rho have not been frozen; neither source-side dual has been computed for the real H8 construction. Full smooth compact weighted inverse (273), scale-sharp slice (249), actual cone (272), pressure/patch support, nonaxisymmetric modes and unforced Navier–Stokes singularity remain OPEN. Next freeze source data and interval-certify the radial gate at all radii.
+
