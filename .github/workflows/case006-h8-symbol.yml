@@ -20,6 +20,7 @@ on:
       - "cases/006/attack017/**"
       - "cases/006/attack018/**"
       - "cases/006/attack019/**"
+      - "cases/006/attack020/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -42,6 +43,7 @@ on:
       - "NewtonConjectures/Case006RadialAngularDual.lean"
       - "NewtonConjectures/Case006AngularWeakDuality.lean"
       - "NewtonConjectures/Case006InteriorSmoothLifting.lean"
+      - "NewtonConjectures/Case006FlatBoundaryAdaptive.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -92,3 +94,5 @@ jobs:
         run: python cases/006/attack018/verify_angular_weak_duality.py
       - name: Exact interior smooth lifting reserve and flat-envelope obstruction
         run: python cases/006/attack019/verify_interior_lifting.py
+      - name: Flat-boundary Hardy lift and adaptive commutator exact replay
+        run: python cases/006/attack020/verify_flat_boundary.py
