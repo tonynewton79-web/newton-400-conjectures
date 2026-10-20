@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 100,
+      "cumulative_pdf_pages": 102,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -421,7 +421,11 @@
       "smooth_weighted_angular_inverse_proved": false,
       "meridional_compact_weighted_inverse_proved": false,
       "full_H8_inverse_proved": false,
-      "appendix_u_lean_status": "Finite rational cone/cut/saturation algebra committed; GitHub Lean CI pending. Hahn–Banach and PDE weak equivalence NOT formalized in Lean."
+      "appendix_u_lean_status": "Finite rational cone/cut/saturation algebra committed; GitHub Lean CI pending. Hahn–Banach and PDE weak equivalence NOT formalized in Lean.",
+      "interior_smooth_lifting_appendix": "cases/006/paper/Appendix_V_Interior_Smooth_Weighted_Lifting.md",
+      "interior_smooth_lifting_verifier": "cases/006/attack019/verify_interior_lifting.py",
+      "interior_smooth_lifting_lean": "NewtonConjectures/Case006InteriorSmoothLifting.lean",
+      "interior_smooth_lifting_status": "Proved conditionally for a weak angular flux compactly supported inside a positive-envelope rectangle with strict reserve; flat boundary remains open."
     }
   ]
 }
