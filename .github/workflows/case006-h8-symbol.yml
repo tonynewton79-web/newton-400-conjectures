@@ -17,6 +17,7 @@ on:
       - "cases/006/attack014/**"
       - "cases/006/attack015/**"
       - "cases/006/attack016/**"
+      - "cases/006/attack017/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -36,6 +37,7 @@ on:
       - "NewtonConjectures/Case006MixedProfileControls.lean"
       - "NewtonConjectures/Case006NormalizedInverse.lean"
       - "NewtonConjectures/Case006AngularFlux.lean"
+      - "NewtonConjectures/Case006RadialAngularDual.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -80,3 +82,5 @@ jobs:
         run: python cases/006/attack015/verify_normalized_inverse.py
       - name: Exact cumulative H8 angular cone-flux and torque-primitive check
         run: python cases/006/attack016/verify_flux_obstruction.py
+      - name: Exact radial angular cone dual and perfect-flux counterexample
+        run: python cases/006/attack017/verify_angular_dual.py
