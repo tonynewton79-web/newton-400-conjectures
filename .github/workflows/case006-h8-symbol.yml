@@ -30,6 +30,7 @@ on:
       - "cases/006/attack027/**"
       - "cases/006/attack028/**"
       - "cases/006/attack029/**"
+      - "cases/006/attack029/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -61,6 +62,7 @@ on:
       - "NewtonConjectures/Case006SourceNativeAxialFlux.lean"
       - "NewtonConjectures/Case006SeparableShear.lean"
       - "NewtonConjectures/Case006LeadingCoreShear.lean"
+      - "NewtonConjectures/Case006OffAxisPairing.lean"
       - "NewtonConjectures/Case006OffAxisPairing.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
@@ -130,5 +132,7 @@ jobs:
         run: python cases/006/attack027/verify_separable_shear.py
       - name: Leading exact-core comparison cross shear and flat-edge obstruction
         run: python cases/006/attack028/verify_exact_core_cross_shear.py
+      - name: Off-axis full-core G_eta pairing and two-shaper first-derivative gate
+        run: python cases/006/attack029/verify_core_pairing_cancellation.py
       - name: Full-core G eta pairing and two-shaper cancellation gate
         run: python cases/006/attack029/verify_core_pairing_cancellation.py
