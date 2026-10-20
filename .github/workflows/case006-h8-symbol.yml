@@ -136,7 +136,3 @@ jobs:
         run: python cases/006/attack029/verify_core_pairing_cancellation.py
       - name: Case006 Eq255 first offaxis pressure-second-jet dependency
         run: python cases/006/attack029/verify_pressure_jet.py
-      - name: Off-axis Eq255 second-pressure-jet symbolic gate
-        run: python cases/006/attack029/verify_pressure_jet.py
-      - name: Full-core G eta pairing and two-shaper cancellation gate
-        run: python cases/006/attack029/verify_core_pairing_cancellation.py
