@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 118,
+      "cumulative_pdf_pages": 120,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -514,7 +514,20 @@
       "actual_glued_four_C4_patch_overlaps_constructed": false,
       "physical_complete_Rstr_profile_frozen": false,
       "original_physical_source_stress_flux_certified": false,
-      "appendix_AD_lean_status": "Finite Wronskian/ratio algebra committed; GitHub CI pending; analytic integrals and NS PDE not formalized."
+      "appendix_AD_lean_status": "Finite Wronskian/ratio algebra committed; GitHub CI pending; analytic integrals and NS PDE not formalized.",
+      "leading_core_shear_appendix": "cases/006/paper/Appendix_AE_Exact_Core_Cross_Shear_Flat_Edge.md",
+      "leading_core_shear_verifier": "cases/006/attack028/verify_exact_core_cross_shear.py",
+      "leading_core_shear_lean": "NewtonConjectures/Case006LeadingCoreShear.lean",
+      "leading_axis_affine_NS_model": "q=1-t,A=1/2+h,D=1/2-h; ur0=-2r/q, uz0=4z/q+j0q^-A from Ustar=4eta+j0; exact affine unforced NS comparison of infinite energy, not the full off-axis exact core",
+      "leading_axis_cross_shear": "T0=−2KcmXi/q*(Phi'/ell−2Phi/r)=−2KcmXi/q*r²*(Phi/r²)'",
+      "core_deviation_shear_exact": "Rc=(K/r)[(Phi'/ell)deltaI−(Phi/c)deltaJ], deltaI=∫delta ur Xi, deltaJ=∫delta uz Xi', deltaJ/c=deltaI'+deltaI/r",
+      "single_nonnegative_shaper_sign_change_proved": true,
+      "quadratic_envelope_flat_edge_gate": "If 0<R(r)≤M Phi(r/ell)^2 and K*mXi≠0, no uniform |T0|≤C R; if Trest is O(R), source-only cone fails near flat edge; conditional MODEL obstruction, not a proof of physical failure",
+      "source_native_support_window": "chiMax/chiMin<61/60 gives common 6/chiMin<Lambda_c*r²/(2q)<6.1/chiMax on axial support",
+      "actual_exact_core_offaxis_deviation_certified": false,
+      "actual_normalized_H8_envelope_kinetic_support_certified": false,
+      "full_source_glued_stress_shear_certified": false,
+      "appendix_AE_lean_status": "Finite rational and derivative algebra committed; GitHub Lean Actions pending; analytic NS/integral no-go not formalized in Lean."
     }
   ]
 }
