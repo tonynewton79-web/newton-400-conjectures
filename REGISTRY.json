@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 102,
+      "cumulative_pdf_pages": 104,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -425,7 +425,14 @@
       "interior_smooth_lifting_appendix": "cases/006/paper/Appendix_V_Interior_Smooth_Weighted_Lifting.md",
       "interior_smooth_lifting_verifier": "cases/006/attack019/verify_interior_lifting.py",
       "interior_smooth_lifting_lean": "NewtonConjectures/Case006InteriorSmoothLifting.lean",
-      "interior_smooth_lifting_status": "Proved conditionally for a weak angular flux compactly supported inside a positive-envelope rectangle with strict reserve; flat boundary remains open."
+      "interior_smooth_lifting_status": "Proved conditionally for a weak angular flux compactly supported inside a positive-envelope rectangle with strict reserve; flat boundary remains open.",
+      "flat_boundary_appendix": "cases/006/paper/Appendix_W_Flat_Boundary_Weighted_Lifting.md",
+      "flat_boundary_exact_verifier": "cases/006/attack020/verify_flat_boundary.py",
+      "flat_boundary_lean": "NewtonConjectures/Case006FlatBoundaryAdaptive.lean",
+      "flat_boundary_restricted_lift": "For separable flat p(r)q(z) with log-concave radial p, slice-balanced f=wF, |F|≤L, smooth compact angular flux Vr=∫f dr, Vz=0 has exact divergence and cone cost≤L Lr rho across flat boundary.",
+      "adaptive_flat_regularization": "Cubic-distance variable radius preserves model flat-envelope cone reserve with factor exp(16c); exact divergence fails by explicitly computed commutator.",
+      "general_flat_boundary_lift_proved": false,
+      "appendix_w_lean_status": "Finite algebra committed/CI pending; full analytic theorem and PDE not formalized."
     }
   ]
 }
