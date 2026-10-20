@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 120,
+      "cumulative_pdf_pages": 122,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -527,7 +527,21 @@
       "actual_exact_core_offaxis_deviation_certified": false,
       "actual_normalized_H8_envelope_kinetic_support_certified": false,
       "full_source_glued_stress_shear_certified": false,
-      "appendix_AE_lean_status": "Finite rational and derivative algebra committed; GitHub Lean Actions pending; analytic NS/integral no-go not formalized in Lean."
+      "appendix_AE_lean_status": "Finite rational and derivative algebra committed; GitHub Lean Actions pending; analytic NS/integral no-go not formalized in Lean.",
+      "offaxis_core_pairing_appendix": "cases/006/paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md",
+      "offaxis_core_pairing_verifier": "cases/006/attack029/verify_core_pairing_cancellation.py",
+      "offaxis_core_pairing_lean": "NewtonConjectures/Case006OffAxisPairing.lean",
+      "core_exact_radial_pairing": "I_Xi=−c/(q r)∫_0^r s∫Xi G_eta(Y(s),eta)deta ds; valid for full regular-axis axisymmetric solenoidal core with uz=q^-A G.",
+      "core_first_offaxis_pairing": "I_Xi=−2crmXi/q+(cr³/(16q²))∫(Zstar/L)'Xi+RI, |RI|≤crC2||Xi||1/(2q Lambda_c²) conditional on uniform eta derivative remainder.",
+      "core_pairing_nonzero_condition": "Xi≥0, mXi>0, |(Zstar/L)'|≤M1 and 4−Yplus*M1/(2Lambda_c)−C2/Lambda_c²>0 imply I_Xi<0 throughout cylinder.",
+      "source_first_coefficient_pressure_gate": "Original Eq255 makes M'=(LZstar'−L'Zstar)/L² depend on Pi0''; upstream pressure jet not numerically frozen.",
+      "positive_two_shaper_flat_gate": "If common b(r) flat, positive profile multipliers/amplitudes, I_j<0 at edge, rho radial mass R≤M b², and all other shear only O(R), the total source-only scalar cone bound fails (core cross derivative C b' cannot be O(R)).",
+      "illustrative_two_profile_full_core_diagnostic": "On normalized Y=6..6.1, Lambda=1000 and surrogate M=2eta, direct 70-digit stress at 7 radii gives T/Rdiag large negative to large positive and scalar cone FAIL; not original full NS source.",
+      "physical_core_uniform_C1_remainder_certified": false,
+      "actual_pressure_Pi0_second_jet_frozen": false,
+      "actual_first_order_glued_C4_cancellation_certified": false,
+      "physical_Rstr_scalar_cone_verified": false,
+      "appendix_AF_lean_status": "Finite algebra committed/imported/CI queued; complete core integration, cancellation theorem and H8 PDE not end-to-end Lean formalized."
     }
   ]
 }
