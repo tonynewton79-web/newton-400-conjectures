@@ -243,3 +243,22 @@ Appendix S captures only a subset (axial-only) of this virtual-work family.
 
 **Next decisive mathematical step:** either freeze an admissible complete g,rho and rigorously certify the ALL-test dual bound (not merely selected axial/radial tests), or prove a quantitative smooth weighted lifting theorem with margin through the flat envelope boundary. Only then is a full four-field H8 inverse plausible.
 
+
+### Appendix V — a quantitative interior smooth lift, and why the flat boundary still blocks closure
+
+The cumulative author paper is **102 pages**, with two-page [Appendix V](paper/Appendix_V_Interior_Smooth_Weighted_Lifting.md) added. The previous **100 pages were checked text-identical**, all LaTeX cross-references resolve, and the research release ZIP contains the updated paper, editable LaTeX, checker, finite Lean algebra, exact replay, SHA256 checksums and preceding cumulative 100-page research ZIP.
+
+**Constructive compact divergence correction:** For smooth compact zero-mean h on an interior rectangle U, define H(z)=∫h(r,z)dr, choose a nonnegative smooth radial bump θ of mass one, and put Qr=∫_{r-}^r(h−θH), Qz=θ(r)∫_{z-}^zH. Then Q is *smooth compact* and divQ=h exactly, with ||Qr||∞≤2Lr||h||∞ and ||Qz||∞≤LrLz||θ||∞||h||∞.
+
+**Quantitative interior lifting theorem:** Write w=r²ρ, a=κ/2,b=κ/8 and κ=15971/122900. Suppose the weak bounded angular flux V has support in a **compact K strictly inside a rectangle U with w≥w*>0**, has divV=f with smooth f, and satisfies strict pointwise slack |Vr|≤(1−σ)aw, |Vz|≤(1−σ)bw, 0<σ<1. Set F=||∇f||∞,W=||∇w||∞, J=||θ||∞. For a mollifier of radius ε with K+B2ε⊂U, if
+```text
+(1−σ)εW ≤ σw*/4,
+2Lr εF ≤ σ a w*/4,
+Lr Lz J εF ≤ σ b w*/4,
+```
+then mollify V and repair the exact divergence using the explicit compact Q on h=f−fε. The resulting **smooth compact angular stress** has the same source divergence and retains an explicit strict joint seven-ray reserve: max(2|C|,8|B|)≤(1−σ/2)κρ. This is a genuine theorem *inside* the positive-envelope region, but the initial support and strict reserve **do not follow** from Appendix U's Hahn–Banach weak existence theorem.
+
+**Sharp warning near a flat envelope:** If ρ(x)=exp(−1/x²) for x>0 and 0 for x≤0, then for any fixed positive-radius standard mollifier, (ηε*ρ)(0)>0 while ρ(x)→0 as x↓0. Hence the relative convolution ratio diverges, and ordinary fixed-scale smoothing can destroy even a strong cone reserve. This refutes that *regularization method*, not every possible smooth weighted lifting.
+
+[Independent exact verifier](attack019/verify_interior_lifting.py) PASS for a nontrivial symbolic polynomial compact-corrector example, rational reserve checks (illustrative only), and high-precision positive-convolution lower bounds. [Lean finite algebra](../../NewtonConjectures/Case006InteriorSmoothLifting.lean) submitted to the combined build; GitHub Actions kernel status still pending and no integral/PDE theorem is formalized end-to-end. The source-native g,ρ are not frozen. The global flat-boundary extension, meridional tensors, weighted inverse (273), slice (249) and complete cone (272) remain OPEN.
+
