@@ -271,3 +271,22 @@ A cubic-distance variable-radius mollifier `epsilon_c=c[x(1−x)y(1−y)]³` pre
 
 [Independent exact verifier](attack020/verify_flat_boundary.py) PASS for flat log-concavity, both source and cone examples, adaptive distortion, commutator and flat extension. [Lean finite algebra](../../NewtonConjectures/Case006FlatBoundaryAdaptive.lean) is committed/imported, but **does not formalize the analytic lifting theorem**; kernel CI confirmation pending. This exact restricted angular subclass is **not** the unfrozen complete physical H8 source, nor the general weak-to-smooth H8 theorem. Full meridional stresses, pressure, slice (249), cone (272) for physical g, compact inverse (273) and unforced Navier–Stokes singularity are still open.
 
+
+### Appendix X — exact divergence-preserving smooth lifting at the model flat boundary (106 pages)
+
+The cumulative Case 006 paper is **106 pages**, with two-page [Appendix X](paper/Appendix_X_Divergence_Preserving_Piola_Lift.md) added and its preceding 104 pages verified text-identical.
+
+**New exact Piola–homotopy operator:** For a bounded weak angular flux `div V=f`, a spatial step `eps>0`, and `F_{t,u}(X)=X+t eps(X)u`, set `J_{t,u}=1+t u·grad eps`, `P_u=J_{1,u}(DF_{1,u})^-1=(1+u·grad eps)I-u⊗grad eps`. The new smoother `S_eps V=∫eta(u)P_u V(F_{1,u})du - ∫eta(u)∫_0^1 eps u f(F_{t,u})dtdu` satisfies **div(S_eps V)=f EXACTLY**, without a separate commutator inversion. This follows from the classical Piola identity and the exact source-homotopy formula `d_t[J_{t,u}f(F_{t,u})]=div_X[eps u f(F_{t,u})]`. Both are symbolically checked using nonconstant polynomial Jacobians and fluxes.
+
+**Quantitative strict flat boundary theorem:** For the Appendix W flat product weight `w=p(x)p(y)`, `p(x)=exp(-x^-2-(1-x)^-2)` on 0<x<1, let `d=min{x,1-x,y,1-y}`, `phi=x(1-x)y(1-y)`, `eps_c=c phi^(m+3)`. Suppose smooth compact f has bounded relative polynomial growth `|f|≤Fstar*w*d^-m`, some finite integer m≥0; and the complete angular dual inequality holds with **strict relative cone reserve sigma>0**. For `c≤1/8`, if
+```text
+exp(16c)*[(1-sigma)(1+5(m+3)c)
+ + Fstar*c/(8b(1-c/4)^m)] ≤ 1-sigma/2,
+a=kappa/2, b=kappa/8, kappa=15971/122900,
+```
+then there is **globally smooth compact angular flux** with the **exact original divergence f** and joint cone cost ≤(1−sigma/2)kappa rho. Existence follows by taking c sufficiently small. This resolves the adaptive commutator problem for the explicitly defined polynomial-relative-source class, not for arbitrary smooth sources without that growth bound.
+
+**Exact tests:** [SymPy/Fraction checker](attack021/verify_piola_flat_lifting.py) passes both Piola and homotopy polynomial identities and a purely rational positive-cone certificate `12469/16128<7/8` at sigma=1/4, c=1/1024, m=0, Fstar=kappa/16, plus checks for m=1..4. [Lean finite algebra](../../NewtonConjectures/Case006PiolaFlatLifting.lean) committed/imported/CI-triggered, but distributional Piola calculus, flat smoothing and H8 remain outside Lean; pending kernel result cannot be called a PASS.
+
+**Unchanged physical gate:** The actual complete NS prepared source and envelope are still unfrozen; strict all-test dual feasibility and finite Fstar,m for that source have not been certified. The three meridional tensor equations, compact pressure, slice (249), complete physical cone (272), weighted inverse (273) and unforced NS singularity remain open.
+
