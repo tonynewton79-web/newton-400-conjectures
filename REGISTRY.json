@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 106,
+      "cumulative_pdf_pages": 108,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -443,7 +443,19 @@
       "actual_H8_source_relative_polynomial_bound_certified": false,
       "model_flat_angular_smooth_inverse_conditional": true,
       "full_meridional_inverse_proved": false,
-      "appendix_x_lean_status": "Finite Piola matrix/transport jet and rational gate committed, GitHub kernel CI pending. PDE/integrals not formalized."
+      "appendix_x_lean_status": "Finite Piola matrix/transport jet and rational gate committed, GitHub kernel CI pending. PDE/integrals not formalized.",
+      "meridional_coupling_appendix": "cases/006/paper/Appendix_Y_Coupled_Meridional_Dual.md",
+      "meridional_coupling_verifier": "cases/006/attack022/verify_coupled_meridional.py",
+      "meridional_coupling_lean": "NewtonConjectures/Case006MeridionalCoupling.lean",
+      "meridional_residual_cone": "E=A−4B; |E|+2|D|≤k/2; |D|≤(k−2|C|)/4; k=15971 rho/122900",
+      "meridional_sharp_polar": "h_C(P,S)=max(k|P|/2, |C||P|+(k−2|C|)|S|/4)",
+      "meridional_dual_iff": "Conditional axisymmetric bounded-weak meridional correction modulo distributional pressure iff |∫r(fm·ψ+4B Pψ)|≤∫r h_C(Pψ,Sψ) for all compact physical divergence-free meridional ψ",
+      "angular_to_meridional_reserve": "If 2|C|≤(1−τ)k and 8|B|≤k, independent |A−4B|≤k/4 and |D|≤τ k/8 stay inside cone",
+      "mathematical_manufactured_coupled_source": "B=k/64,C=k/16,D=k/32,E=k/8,A=4B+E gives cone norm=3k/8; not source-native NS",
+      "genuine_physical_meridional_dual_verified": false,
+      "smooth_meridional_flat_boundary_lift_proved": false,
+      "nonaxisymmetric_modes_solved": false,
+      "appendix_y_lean_status": "Finite shift, polar-endpoint, strict reserve algebra committed; CI pending; weak duality and PDE not Lean formalized"
     }
   ]
 }
