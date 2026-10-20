@@ -210,3 +210,21 @@ which must lie within the above pointwise beta±mu band simultaneously with the 
 
 [Exact independent verifier](attack016/verify_flux_obstruction.py) passes source constants, cylindrical torque identity, flat-envelope normalization, axial-viscous primitive and strict reserve at 75 digits. [Lean finite algebra](../../NewtonConjectures/Case006AngularFlux.lean) is in the build root/CI; it proves only rational reserve and scalar band implications, not the cylindrical PDE integration. **Full (249), (272), (273) still OPEN.** GitHub Lean kernel status must be checked before calling this new file formally verified.
 
+
+### Appendix T — a radial cone dual obstruction even with perfectly matched cumulative torque
+
+The cumulative author paper is **98 pages**, including [Appendix T](paper/Appendix_T_Radial_Angular_Dual.md), with all previous 96 page texts verified identical. The actual complete prepared source g and normalized rho are **not frozen** by the original source paper (Remark 9.23), hence **M_g/R2 has not been evaluated for the physical H8 candidate**; reporting a physical interval pass would invent input.
+
+**New exact necessary two-dimensional angular dual:** Eq. (270) has coefficient changes ±2C−4D and ±8B, so any H8 correction obeys |H_rtheta|≤κρ/2 and |H_thetaz|≤κρ/8 with κ=15971/122900. The cylindrical angular divergence and periodic-pressure cancellation then imply for every smooth compact radial–axial test ψ
+```text
+|∬ ψ r²<g−divK>_theta dr dz|
+ <= ∬ r²<rho>[(κ/2)|∂rψ|+(κ/8)|∂zψ|]dr dz.
+```
+Appendix S captures only a subset (axial-only) of this virtual-work family.
+
+**Sharp insufficiency counterexample to cumulative flux alone:** For any nonzero smooth nonnegative compact axisymmetric annular rho, define the manufactured divergence-free azimuthal source `g_theta=(divK)_theta+alpha*(rho_r+2rho/r)`. Then `m_g=β R2'` and `M_g/R2=β` **identically**, with β=(147sqrt182−84sqrt2)/9832 the exact midpoint of Appendix S's band, for every alpha. Nevertheless the radial dual inequality forces `|alpha|≤κ/2=15971/245800`. This is sharp for the angular equation: with A=B=D=0 and C=alpha*rho, the complete seven-ray coefficient norm is `C(H)=2|alpha|rho`. Thus alpha=κ fails by factor two even though the ratio passes exactly; alpha=κ/4 has a valid compact angular correction using half the reserve. **The source is manufactured, not the actual Navier–Stokes prepared source**, and the meridional projected tensor equations remain open.
+
+[Exact SymPy/rational replay](attack017/verify_angular_dual.py) passes the source divergence, ratio, coefficient cost and PASS/SHARP/FAIL diagnostics; [Lean algebraic fragment](../../NewtonConjectures/Case006RadialAngularDual.lean) is imported and CI triggered, but no end-to-end PDE integration or H8 Lean theorem is claimed. The full global compact weighted inverse (273), slice (249), cone (272) for actual g, and Navier–Stokes singularity remain unproved.
+
+**Next physical requirement:** Freeze a legitimate complete prepared g and rho, compute both the cumulative flux and spatial source residual; enclose the two-dimensional virtual-work functional (or solve for actual radial and axial angular stress) before pursuing meridional component inversion. Without final source functions, only the mathematical diagnostic and conditional tests can be verified.
+
