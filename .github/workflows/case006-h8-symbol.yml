@@ -134,5 +134,7 @@ jobs:
         run: python cases/006/attack028/verify_exact_core_cross_shear.py
       - name: Off-axis full-core G_eta pairing and two-shaper first-derivative gate
         run: python cases/006/attack029/verify_core_pairing_cancellation.py
+      - name: Off-axis Eq255 second-pressure-jet symbolic gate
+        run: python cases/006/attack029/verify_pressure_jet.py
       - name: Full-core G eta pairing and two-shaper cancellation gate
         run: python cases/006/attack029/verify_core_pairing_cancellation.py
