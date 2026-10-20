@@ -24,6 +24,7 @@ on:
       - "cases/006/attack021/**"
       - "cases/006/attack022/**"
       - "cases/006/attack023/**"
+      - "cases/006/attack024/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -50,6 +51,7 @@ on:
       - "NewtonConjectures/Case006PiolaFlatLifting.lean"
       - "NewtonConjectures/Case006MeridionalCoupling.lean"
       - "NewtonConjectures/Case006FlatMeridionalDoublePrimitive.lean"
+      - "NewtonConjectures/Case006MeridionalMomentRepair.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -108,3 +110,5 @@ jobs:
         run: python cases/006/attack022/verify_coupled_meridional.py
       - name: Exact flat meridional double-primitive and compact pressure replay
         run: python cases/006/attack023/verify_meridional_flat_lift.py
+      - name: Appendix AA exact meridional global moments and E-D repair
+        run: python cases/006/attack024/verify_meridional_balance_repair.py
