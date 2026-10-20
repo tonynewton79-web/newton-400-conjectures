@@ -228,3 +228,18 @@ Appendix S captures only a subset (axial-only) of this virtual-work family.
 
 **Next physical requirement:** Freeze a legitimate complete prepared g and rho, compute both the cumulative flux and spatial source residual; enclose the two-dimensional virtual-work functional (or solve for actual radial and axial angular stress) before pursuing meridional component inversion. Without final source functions, only the mathematical diagnostic and conditional tests can be verified.
 
+
+### Appendix U — complete dual characterization of weak angular H8 corrections (100-page paper)
+
+[Appendix U: exact iff weak angular cone solvability](paper/Appendix_U_Weighted_Angular_Duality.md) extends the cumulative main paper to **100 pages**, preserving the previous 98 pages text-identically. The original source STILL does not freeze a final source-native complete g and envelope rho; no numerical pass of the physical Mg/R2 or radial–axial virtual-work tests is therefore supported.
+
+**New exact bounded-weak angular equivalence:** On a compact full cylindrical annular chart, for smooth axisymmetric angular residual `f=r²(g−divK)_theta` and nonnegative `w=r²rho`, write `kappa=15971/122900, a=kappa/2,b=kappa/8`. The condition `|∬ f psi|≤∬w(a|psi_r|+b|psi_z|)` for ALL compact smooth psi is NECESSARY and SUFFICIENT for existence of bounded measurable compactly supported angular stress `(C,B)=(H_rtheta,H_thetaz)` solving `∂r(r²C)+∂z(r²B)=f` distributionally with `|C|≤a rho,|B|≤b rho`. Choosing `A=D=0` realizes the *joint exact seven-ray coefficient cost* `mathcal C(H)=max(2|C|,8|B|)≤kappa rho`, so there is no further hidden restriction in this weak angular-only setting. The converse uses STANDARD Hahn–Banach and L1–L∞ duality (not asserted to be generally novel). For nonaxisymmetric sources, only the angular MEAN is covered.
+
+**Extra strict boundary:** When a manufactured source `f=alpha ∂r(r²rho)` saturates the bound at `alpha=kappa/2`, every cone-admissible angular correction has `C=(kappa/2)rho` a.e. on `{rho>0}`. The original inequalities `|2C−4D|,|-2C−4D|≤kappa rho` then force **D=0** there, removing a meridional degree of freedom.
+
+**Rational finite cut diagnostic:** A four-node 2×2 grid with radial capacity a, axial b, source +kappa/−kappa at radially adjacent vertices passes ALL axial slice sums but fails the positive-node cut by an EXACT `3kappa/8`. Reducing the source to `kappa/4` gives an explicit feasible radial-edge flow. This is a discrete analogy, NOT a convergent discretization of the original PDE.
+
+[Independent exact 2×2 subset/capacity verifier](attack018/verify_angular_weak_duality.py) PASS, including 15 finite cuts, exact sharp radial sector values, and mixed B/C coefficient norm. [Lean finite rational and saturation algebra](../../NewtonConjectures/Case006AngularWeakDuality.lean) has been committed and imported in the project root/CI; do not claim kernel PASS until workflow completion. The infinite-dimensional theorem, weak-to-smooth upgrade, actual prepared source, compact pressure, three meridional tensor components, slice (249), physical cone (272), weighted H8 inversion (273) and unforced NS singularity remain UNPROVED.
+
+**Next decisive mathematical step:** either freeze an admissible complete g,rho and rigorously certify the ALL-test dual bound (not merely selected axial/radial tests), or prove a quantitative smooth weighted lifting theorem with margin through the flat envelope boundary. Only then is a full four-field H8 inverse plausible.
+
