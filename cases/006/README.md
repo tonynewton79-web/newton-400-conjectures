@@ -531,3 +531,34 @@ only if the displayed **uniform** bound `|E_eta|≤C2/Lambda_c²` holds on the w
 
 [Finite Lean algebra](../../NewtonConjectures/Case006OffAxisPairing.lean) and both new Python exact tests are root-imported/CI-triggered; GitHub Lean compiler verdict pending and no analytic integral, full core, physical virial/cone or NS theorem is end-to-end formalized. The actual pressure jet, complete G off-axis hierarchy, first-derivative-order C4 cutoff/transport overlaps, full Rstr, pressure gauge and flat-envelope boundary order remain OPEN. Full (249),(272),(273) and any finite-energy NS blowup still unproved. The next research target is to freeze Eq(255) Pi0,Pi0',Pi0'' and E_eta bounds and calculate the first-order prepared-stress cancellation budget before deciding actual physical H8 compatibility.
 
+
+### Appendix AF — exact off-axis core pairing, pressure-jet dependency and flat-edge cancellation gate (122-page paper)
+
+The cumulative Case 006 manuscript is **122 pages**, with two-page [Appendix AF](paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md) added to the previous 120-page release, and **all first 120 pages verified text-identical**.
+
+**Exact whole-core kinematic pairing (conditional upon original axisymmetric G):** For q=1−t, A+D=1, eta=z/q^D, Y=Lambda_c r²/(2q), an axisymmetric solenoidal core with u_z=q^(-A)G(Y,eta) and regular axis satisfies
+```text
+u_r(r,z)=−1/(q r) ∫_0^r s G_eta(Lambda_c*s²/(2q),z/q^D) ds.
+I_Xi(r)=∫u_r(r,z)Xi(z/q^D) dz.
+```
+If source (209) G=4eta+j0−Y M(eta)/(2 Lambda_c)+E, M=Zstar/L, then
+```text
+I_Xi=−2 c r mXi/q +(c r³/(16 q²))∫ M'(eta)Xi(eta)deta + R_I,
+|R_I|≤(c r/(2q)) (C2/Lambda_c²) ||Xi||_1
+```
+*if* a uniform |E_eta|≤C2/Lambda_c² is established on the full radial integration cylinder. If Xi≥0, mXi>0, |M'|≤M1, and gamma=4−Yplus*M1/(2Lambda_c)−C2/Lambda_c²>0, then I_Xi≤−c r mXi gamma/(2q)<0. **The final physical M', C2 and pressure jet are not frozen or certified.**
+
+**Rigorous conditional no-go for a narrow model class:** For a compact poloidal shaper Phi=a_j(r)b(r), with each a_j positive at a shared flat radial endpoint, K_j>0 and both I_j<0, core/shaper shear contains a **strictly nonzero** coefficient C(r)b'(r) plus bounded D0(r)b(r). If the radial envelope mass satisfies R≤M b² and *every other complete stress term* is O(R), this first-derivative contribution cannot fit the negative source-only H8 shear interval throughout the radial support: |Tstr−alpha R|≤kappa R, alpha=−4443/9832,kappa=15971/122900. The proof uses logarithmic derivative blowup of b at finite flat support edge. This is a CONDITIONAL theorem about source decomposition and remainder order, **not** a proof that the original full physical preparation fails. A genuine first-derivative-order cutoff/transport/pressure stress could cancel it.
+
+**Direct model replay:** An explicitly fixed surrogate with q=c=ell=1, Lambda_c=1000, M(eta)=2eta, chi=1, and two normalized flat poloidal profiles in Y∈(6,6.1) fails the Appendix AC necessary shear band on both sides of its support. Independent 70-digit integration of the *original* core and poloidal velocity products at seven radial points matches exact cross-shear and the correctly width-normalized quadratic self-shear. This is **illustrative, not the original Zstar/L or virial rho**.
+
+**New exact source Equation (255) pressure-jet dependency:** Zstar depends on Pi0'(eta); after differentiating M=Zstar/L, the precise pressure-jet sensitivity is
+```text
+∂M'(eta)/∂Pi0''(eta)=−(1−eta²)/(1−2h eta²).
+```
+Thus original leading axial Ustar alone cannot determine M' or core shear. [Independent source-pressure symbolic checker](attack029/verify_pressure_jet.py) PASSES pressure Pi0, Pi0', Pi0'' sensitivity identities; the actual Pi0'' is unfrozen.
+
+[Exact seven-radius checker](attack029/verify_core_pairing_cancellation.py) PASS and [pressure-jet checker](attack029/verify_pressure_jet.py) PASS. [Lean finite algebra](../../NewtonConjectures/Case006OffAxisPairing.lean) and both checkers committed to the Case 006 GitHub branch and imported into root/CI; the full analytic theorem and Navier–Stokes PDE are NOT Lean formalized, and the GitHub compiler run is pending. The **10-item validated cumulative ZIP** includes the new 122-page paper and previous full 120-page packet with exact replay and SHA256 manifest.
+
+**Next H8 physical gate:** Freeze Pi0, Pi0' and Pi0'', hence M'= (Zstar/L)', and rigorously bound full |E_eta| on 0≤Y≤Yplus; then assemble the complete first-derivative-order flat-edge shear from core, shapers, global prepared stress, nonlinear cutoffs, pressure gauge and four localized C4 patch overlaps. Only if their leading terms cancel and the remaining O(rho) weighted bound holds is full source cone screening viable. Original (249),(272),(273), nonaxisymmetric modes and unforced NS singularity remain OPEN.
+
