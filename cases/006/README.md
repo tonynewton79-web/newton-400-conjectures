@@ -458,3 +458,30 @@ This explicitly identifies missing source-native core quantities; the original E
 
 **Next decisive source-native requirement:** Freeze an actual admissible complete core velocity background, global prepared stress and pressure, radial/axial shapers whose support lies in the curved strong-Rayleigh region, four localized patch maps with cutoff overlaps, and the normalized positive envelope. Only then interval-certify the real T/R and sharpen to the fixed-angular cone gate.
 
+
+### Appendix AE — actual leading-axis exact-core shear reveals a flat-envelope compatibility gate (120 pages)
+
+The cumulative author research manuscript is now **120 pages**. [Appendix AE](paper/Appendix_AE_Exact_Core_Cross_Shear_Flat_Edge.md) occupies the new two-page addition, preserving all prior **118 pages text-identically**. Source audit: original (199)–(200) gives `Ustar(eta)=4eta+j0` with q=1−t, A=1/2+h, D=1/2−h; the regular-axis affine incompressible comparison is `ur0=−2r/q, uz0=4z/q+j0 q^(−A)`. This field itself solves *unforced* NS with an explicit polynomial pressure, but it has **infinite energy and is not the complete off-axis exact core**: original (209) and the unfrozen coefficient hierarchy have radial corrections.
+
+**Exact source-leading interaction:** For one source Eq. (194) compact poloidal shaper `Psi=K Phi(r/ell)Xi(z/c)`, `mXi=∫Xi`, the cross-velocity shear is
+```text
+T0(r)=∫(ur0 Pz+uz0 Pr)dz
+    =−2 K c mXi/q*[Phi'/ell−2Phi/r]
+    =−2 K c mXi/q*r²*d_r(Phi/r²).
+```
+Thus for any nonzero **nonnegative compact** Phi and nonzero K*mXi, T0 has **both signs** on its support. The actual full core u_c yields `T_uc,P=T0+Rc` EXACTLY with
+```text
+Rc=K/r*(Phi'/ell * deltaI − Phi/c * deltaJ),
+deltaI=∫(uc_r−ur0) Xi dz, deltaJ=∫(uc_z−uz0) Xi' dz,
+deltaJ/c=deltaI'+deltaI/r.
+```
+This is an explicit error functional to calculate from the original exact-core coefficients. Shell scaling exponents do **not** supply the required bound automatically.
+
+**Rigorous quadratic-envelope FLAT-EDGE obstruction, conditional:** If the radial envelope mass is positive in the full compact shaper interval and obeys `R(r)≤M Phi(r/ell)^2`, no finite C can bound `|T0|≤C R` throughout. Indeed v=Phi/r² vanishes at a finite endpoint; such a bound would give |v'|≤C'v² and hence bounded derivative of 1/v, contradicting blowup of 1/v at the edge. If the other full structured shear terms satisfy |Trest|≤C0 R, then Tstr=T0+Trest **cannot** satisfy source-only Appendix AC's cone |Tstr−alpha R|≤kappa R. This is NOT a no-go for the actual physical source: nonlinear cutoff/pressure/core correction shear terms might cancel at the same first-order size, and the true rho may have different edge decay.
+
+**A source-native SUPPORT lemma:** For axial support with chiMin>0, chiMax/chiMin<61/60, the interval `6/chiMin < Lambda_c*r²/(2q) < (61/10)/chiMax` is nonempty and lies in original (206) `6≤chi(eta)*Lambda_c*r²/(2q)≤6.1` for EVERY axial point. By Proposition 9.20 and continuity this can be arranged on a sufficiently short positive-chi axial subpatch. This places a compact leading-comparison shaper inside the strict source-native Rayleigh window, not necessarily inside the final physical transition collar.
+
+[Exact SymPy and independent 75-digit direct original velocity-product test](attack028/verify_exact_core_cross_shear.py) PASS for the affine NS comparison, shear, explicit remainder, exact support placement and sign-changing quadratic-edge numerical sample. [Lean finite algebra](../../NewtonConjectures/Case006LeadingCoreShear.lean) committed/imported; kernel CI pending and PDE/integral theorem NOT Lean-formalized. The 9-item author packet contains the 120-page PDF, full Appendix AE PDF/TeX, verifier, Lean source, replay, SHA256 manifest and earlier complete 118-page archive (CRC/byte verification PASS).
+
+**Open physical gate:** The original full exact-core off-axis series, background error Rc, actual normalized rho, Rstr/p0, original transition support, all four localized C4 cutoff/overlap tensors and nonaxisymmetric modes remain unfrozen. No physical T/R numerical pass/fail, H8 (249),(272),(273) closure or unforced finite-energy blowup has been proved.
+
