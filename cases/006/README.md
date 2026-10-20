@@ -397,3 +397,30 @@ This is the new release-critical radial weighted cone screening inequality. It i
 
 **Unchanged actual-source limitation:** The source's final f_m, angular B, transported moving cone chart, chi,G, and rho have not been frozen; neither source-side dual has been computed for the real H8 construction. Full smooth compact weighted inverse (273), scale-sharp slice (249), actual cone (272), pressure/patch support, nonaxisymmetric modes and unforced Navier–Stokes singularity remain OPEN. Next freeze source data and interval-certify the radial gate at all radii.
 
+
+### Appendix AC — source-native axial stress-flux identity and sharp source-only cone screen (116 pages)
+
+The author cumulative manuscript is **116 pages** with the new two-page [Appendix AC](paper/Appendix_AC_Source_Native_Axial_Stress_Flux.md), preserving all earlier 114 pages exactly. This is the first source-native reduction of Appendix AB's radius-by-radius axial forcing test to the full prepared structured stress's **rz** flux. It does **NOT** freeze or numerically evaluate the actual source.
+
+**Signed original physical cone-centre shear:** From source equations (258),(265),(266), alpha=(Rstar)_rz=−4443/9832 (the source gives only |alpha|=4443/9832). The original seven-ray correction coefficient reserve is kappa=15971/122900.
+
+**Exact full projected-source representative, including boundary/gauge:** For a selected smooth symmetric prepared structured stress Tmath and envelope rho, put S=Tmath−rho Rstar and select any raw source representative f=div S+grad p0. On a full periodic physical cylindrical annular chart let `T(r)=∫<Tmath_rz> dz`, `R(r)=∫<rho>dz`, `Fz(r)=∫<f_z>dz`, and `q(r)=[<S_zz+p0>]_(z=c)^(z=d)`. Then
+```text
+Fz=(1/r) d_r[r(T−alpha R)]+q,
+J(r)=r^-1∫_a^r sFz(s)ds
+    =T(r)−alpha R(r)−(a/r)(T(a)−alpha R(a))
+      +r^-1∫_a^r s q(s)ds.
+```
+The identity includes all cutoff, nonlinear, transport and C4 angular derivative contributions **once the complete representative is correctly assembled**. Angular derivatives average to zero on the full 2pi period; one must NOT drop nonzero axial pressure/boundary traces or apply a local patch cone chart without transporting coefficients.
+
+**Compact representative special case:** If the complete raw stress and selected pressure gauge have vanishing relevant traces and T(a)=R(a)=0, then q=0, J=T−alpha R and the full force integral cancels automatically if corresponding outer traces vanish. The exact seven-ray norm implies |A|=|4B+(A−4B)|≤kappa rho; the compact correction's axial equation then gives
+```text
+|T(r)+(4443/9832)R(r)|≤(15971/122900)R(r), ALL r,
+−143017/245800≤T(r)/R(r)≤−79133/245800 where R>0.
+```
+The interval is about [−0.5818429618,−0.3219406021]. This is a SHARP NECESSARY single-component source-only screening window; any smooth compact zero-rz target stress and nonzero rho fails. If angular B is frozen, the sharper fixed-B radial gate is `|J−4Bbar|≤(kappa/2)R`. Passing is NOT sufficient for full H8.
+
+**Critical physical source boundary:** Original Eq. (242) gives equality only of Leray-projected divergences and source Remark 9.23 leaves the final normalized profiles Phi_theta/Phi/Xi and transported patch shapes arbitrary. The original Rstr inverse may be noncompact or periodic; therefore **no actual numeric physical J, T/R, Bbar or verified cone margin can be reported** without selecting a complete representative with boundary/gauge data. The theorem is a more direct physical-source test formula, not a fabricated full-source pass.
+
+[Independent exact checker](attack026/verify_source_native_axial_flux.py) PASSES the signed physical-frame shear, rational interval, full C4 angular average, nonzero axial pressure/gauge boundary example, compact full-product cutoff derivative and net-force cancellation, and exact source-only cone saturation. [Lean finite-algebra fragment](../../NewtonConjectures/Case006SourceNativeAxialFlux.lean) is committed/root-imported and CI triggered; analytic angular integration and projected PDE are not formalized. The full weighted compact inverse (273), actual cone (272), physical slice (249), nonaxisymmetric source and Navier–Stokes singularity remain open.
+
