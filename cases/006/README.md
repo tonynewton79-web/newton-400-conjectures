@@ -510,3 +510,24 @@ under the ADDITIONAL uniform derivative bound |E_eta|≤C2/Lambda_c² across the
 
 **Next actual physical target:** determine source Zstar/L and pressure jets Pi0,Pi0',Pi0'', prove a uniform eta-derivative remainder from the source's analytic hierarchy on 0≤Y≤Yplus, then compute EVERY first-derivative-order term of the fully glued Rstr (core/shaper/cutoff/overlap/pressure) against the physical rho before any claim of scalar cone pass/fail. (249),(272),(273), nonaxisymmetric modes and finite-energy unforced NS singularity remain OPEN.
 
+
+### Appendix AF — first off-axis core pairing, quadratic flat-edge cancellation obstruction, pressure second-jet (122 pages)
+
+The **122-page cumulative author manuscript** contains the two-page [Appendix AF](paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md), with **all 120 earlier pages text-identical**. The source-original equations (199), (208), (209) and (255) give the following exact/core-conditional structure:
+
+**Full incompressible core pairing:** If `u_z=q^{-A}G(Y,eta)`, (Y=Lambda_c r²/(2q)), `eta=z/c`, (A+D=1), and the axisymmetric core is regular at r=0, then `u_r=-(1/(qr))∫_0^r s G_eta(Y(s),eta)ds`. This identity includes every real off-axis coefficient. For `M=Zstar/L`, source Eq(209) gives `G=4eta+j0−Y M/(2Lambda_c)+E` and hence
+```text
+I_Xi(r)=∫u_r(r,z)Xi(z/c)dz
+      =−2cr*mXi/q + cr³/(16q²)∫Xi(eta)M'(eta)deta + R_I,
+|R_I|≤cr/(2q) * (C2/Lambda_c²) ||Xi||1
+```
+only if the displayed **uniform** bound `|E_eta|≤C2/Lambda_c²` holds on the whole core radial cylinder `0≤Y≤Yplus`. If `Xi≥0,mXi>0,|M'|≤M1` and `gamma=4−Yplus*M1/(2Lambda_c)−C2/Lambda_c²>0`, then `I_Xi≤−cr*mXi*gamma/(2q)<0`. Original source does NOT supply numerically frozen M1,C2 for final physical H8.
+
+**Exact derivative-only cancellation gate:** For each poloidal shaper `Tcross=(K/r)[I_Xi Phi'/ell−Phi(I_Xi'+I_Xi/r)]=K I_Xi² d_r[Phi/(r I_Xi)]`. For two positive radial factors `Phi_j=a_j(r)b(r)`, positive amplitudes, negative and nonzero core pairings, the sum has `Tcross=C(r)b'(r)+D0(r)b(r)` with C bounded strictly negative near a flat compact radial endpoint. If `0<R≤M b²` and **every other complete stress term is O(R)**, no full shear `Tstr=Tcross+Trest` can satisfy the original scalar cone condition `|Tstr−alpha R|≤kappa R` everywhere. Proof: the putative bound implies a bounded derivative of log b, impossible for a positive b vanishing at a finite endpoint. This is a strict CONDITIONAL result, NOT evidence that original uncomputed cutoff/gauge/patch shears are O(R) or that actual NS H8 fails.
+
+**Original pressure-jet dependency checked:** Eq(255) `Zstar=−A(1−2eta Ustar)Ustar−Hstar Ustar'−d Pi0'+4Aeta Pi0`, with `d=1−eta², L=1−2h eta²`. The exact dependence is `partial [(Zstar/L)']/partial Pi0''=−(1−eta²)/(1−2h eta²)`. [Independent exact pressure-jet checker](attack029/verify_pressure_jet.py) passes sensitivities to Pi0, Pi0', Pi0''; the original Pi0'' is not numerically frozen.
+
+**Explicit source-shaped diagnostic, NOT actual full core:** Choose q=c=ell=1, Lambda_c=1000, surrogate M(eta)=2eta, chi=1, two positive flat shapers centered in Y∈(6,6.1) and an independently chosen quadratic flat envelope. [Independent exact SymPy/70-digit direct velocity-product checker](attack029/verify_core_pairing_cancellation.py) PASS at seven radial locations; the diagnostic T/R fails the negative H8 scalar interval at both sides, even after the quadratic self/cross shear from Appendix AD. A missing radial-width factor was detected and corrected in the direct integral replay before release.
+
+[Finite Lean algebra](../../NewtonConjectures/Case006OffAxisPairing.lean) and both new Python exact tests are root-imported/CI-triggered; GitHub Lean compiler verdict pending and no analytic integral, full core, physical virial/cone or NS theorem is end-to-end formalized. The actual pressure jet, complete G off-axis hierarchy, first-derivative-order C4 cutoff/transport overlaps, full Rstr, pressure gauge and flat-envelope boundary order remain OPEN. Full (249),(272),(273) and any finite-energy NS blowup still unproved. The next research target is to freeze Eq(255) Pi0,Pi0',Pi0'' and E_eta bounds and calculate the first-order prepared-stress cancellation budget before deciding actual physical H8 compatibility.
+
