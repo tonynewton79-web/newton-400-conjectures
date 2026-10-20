@@ -541,7 +541,21 @@
       "actual_pressure_Pi0_second_jet_frozen": false,
       "actual_first_order_glued_C4_cancellation_certified": false,
       "physical_Rstr_scalar_cone_verified": false,
-      "appendix_AF_lean_status": "Finite algebra committed/imported/CI queued; complete core integration, cancellation theorem and H8 PDE not end-to-end Lean formalized."
+      "appendix_AF_lean_status": "Finite G_eta/radial Wronskian rational algebra committed/imported; GitHub Lean compiler pending; PDE/integrals/actual source not formalized.",
+      "off_axis_pairing_appendix": "cases/006/paper/Appendix_AF_Off_Axis_Core_Pairing_And_Cancellation_Gate.md",
+      "off_axis_pairing_checker": "cases/006/attack029/verify_core_pairing_cancellation.py",
+      "off_axis_pressure_jet_checker": "cases/006/attack029/verify_pressure_jet.py",
+      "off_axis_pairing_lean": "NewtonConjectures/Case006OffAxisPairing.lean",
+      "full_core_radial_pairing": "I_Xi=−c/(qr)∫_0^r s ∫Xi(eta)G_eta(Y(s),eta)deta ds; exact for regular-axis incompressible axisymmetric full core",
+      "first_off_axis_pairing_conditional": "I_Xi=−2crmXi/q+cr³/(16q²)∫M'Xi+R_I with |R_I|≤crC2/(2q Lambda_c²)||Xi||_1 if source C1 remainder bound holds on entire interior radial cylinder",
+      "source_eq255_pressure_second_jet": "partial[(Zstar/L)']/partial Pi0''=−(1−eta²)/(1−2h eta²); physical Pi0'' not frozen",
+      "two_positive_shaper_conditional_flat_edge_obstruction": "If I_j uniformly negative on one common flat edge, K_j,a_j>0, 0<R≤M b² and all other shear is O(R), noncancelled C b' cannot meet |Tstr−alpha R|≤kappa R; does not apply without all assumptions",
+      "diagnostic_two_shaper_full_shear_gate": "Surrogate M=2eta with chi=1 and diagnostic quadratic envelope violates scalar cone on both radial sides; 70-digit product integrals confirm at seven radii",
+      "original_exact_core_Mprime_certified": false,
+      "source_pressure_Pi0_double_prime_interval_certified": false,
+      "source_remainder_C2_certified": false,
+      "actual_four_local_C4_cutoff_first_derivative_stress_computed": false,
+      "physical_core_shaper_shear_cone_pass": false
     }
   ]
 }
