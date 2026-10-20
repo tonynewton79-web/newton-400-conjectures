@@ -19,6 +19,7 @@ on:
       - "cases/006/attack016/**"
       - "cases/006/attack017/**"
       - "cases/006/attack018/**"
+      - "cases/006/attack019/**"
       - "cases/006/paper/**"
       - ".github/workflows/case006-h8-symbol.yml"
   pull_request:
@@ -40,6 +41,7 @@ on:
       - "NewtonConjectures/Case006AngularFlux.lean"
       - "NewtonConjectures/Case006RadialAngularDual.lean"
       - "NewtonConjectures/Case006AngularWeakDuality.lean"
+      - "NewtonConjectures/Case006InteriorSmoothLifting.lean"
       - ".github/workflows/case006-h8-symbol.yml"
   workflow_dispatch:
 permissions:
@@ -88,3 +90,5 @@ jobs:
         run: python cases/006/attack017/verify_angular_dual.py
       - name: Exact angular weak duality finite-grid cut and cone saturation tests
         run: python cases/006/attack018/verify_angular_weak_duality.py
+      - name: Exact interior smooth lifting reserve and flat-envelope obstruction
+        run: python cases/006/attack019/verify_interior_lifting.py
