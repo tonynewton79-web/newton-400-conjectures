@@ -187,3 +187,26 @@ A bound on the actual correction alpha follows upon bounding the true source for
 
 The **actual gate remains open**: source-specific numerical B,K,T and physical f, derivative amplification from narrow bumps, the total dimensional torque criterion (249), the weighted local seven-ray correction norm (272), and full compact weighted inversion (273). A nominal factor Lambda_c²/gstar² appears in the sufficient inverse formula before optimizing K; it is a bound, not a proven physical blowup in control cost. [Exact verifier](attack015/verify_normalized_inverse.py) and [Lean algebraic source](../../NewtonConjectures/Case006NormalizedInverse.lean) are in GitHub CI; the new Lean build has not yet been confirmed kernel-passing, and the ODE/integral proof is not formalized in Lean.
 
+
+### Appendix S — exact angular-mean torque-flux obstruction and 96-page cumulative paper
+
+[Appendix S](paper/Appendix_S_Angular_Flux_Cone_Obstruction.md) is a new two-page addition to the **96-page** manuscript; the original 94 page texts were verified unchanged. It establishes a source-led **necessary**, not sufficient, consequence of the exact H8 coefficient inequality (272).
+
+From the cylindrical cone centre of (265), `beta=b_theta*b_z=(147sqrt182-84sqrt2)/9832 = 0.189620065353516...`. The seven-ray budget is `kappa=15971/122900`, and because (270) includes `delta c6=8B` with physical `H_theta_z=B`, the cone forces `|H_theta_z|<=mu rho`, where `mu=kappa/8=15971/983200=0.016243897477624...`.
+
+For a full cylindrical chart with compact stress and source, complete angular periodicity, and a single-valued periodic pressure, angularly average `R2(z)=∫r²<rho>dr`, `m_g(z)=∫r²<g_theta>dr`, and `M_g(z)=∫_{z_-}^z m_g`. The cylindrical angular divergence equation and compact radial support give the **exact weighted necessary condition**
+```text
+|M_g(z)−beta R2(z)| <= mu R2(z) for every z.
+For R2(z)>0: 0.173376167875892 <= M_g(z)/R2(z)
+                                <= 0.205863962831140.
+```
+Thus a nontrivial nonnegative rho and a completely torque-neutral prepared g cannot coexist with (272) under these stated hypotheses. At least `1−mu/beta=91.43345012%` of the baseline's **cumulative angular flux** must be matched by the prepared source. This scalar angular-sector constant is sharp among the seven coefficient bounds, but does NOT prove existence of the remaining tensor stress or weighted compact H8 inverse.
+
+An explicit smooth compact **diagnostic** envelope `rho_ex=q^-3/2*(chi Lambda_c/R)*beta_0.01(s-241/40)*F(eta)` has `R2_ex=F(eta)` exactly, but the actual original virial constraints and full physical profile are not frozen. The exact viscous source actuator (251) gives the prepared torque primitive
+```text
+M_g(z)=M_bg(z)+q^(D−h)[BA−delta(MA)'−gamma∫_{eta_-}^eta MA],
+```
+which must lie within the above pointwise beta±mu band simultaneously with the separate derivative slice estimate (249). A smooth compact axial dual test version is also proved in Appendix S.
+
+[Exact independent verifier](attack016/verify_flux_obstruction.py) passes source constants, cylindrical torque identity, flat-envelope normalization, axial-viscous primitive and strict reserve at 75 digits. [Lean finite algebra](../../NewtonConjectures/Case006AngularFlux.lean) is in the build root/CI; it proves only rational reserve and scalar band implications, not the cylindrical PDE integration. **Full (249), (272), (273) still OPEN.** GitHub Lean kernel status must be checked before calling this new file formally verified.
+
