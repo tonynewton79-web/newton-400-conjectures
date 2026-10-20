@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 104,
+      "cumulative_pdf_pages": 106,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -432,7 +432,18 @@
       "flat_boundary_restricted_lift": "For separable flat p(r)q(z) with log-concave radial p, slice-balanced f=wF, |F|≤L, smooth compact angular flux Vr=∫f dr, Vz=0 has exact divergence and cone cost≤L Lr rho across flat boundary.",
       "adaptive_flat_regularization": "Cubic-distance variable radius preserves model flat-envelope cone reserve with factor exp(16c); exact divergence fails by explicitly computed commutator.",
       "general_flat_boundary_lift_proved": false,
-      "appendix_w_lean_status": "Finite algebra committed/CI pending; full analytic theorem and PDE not formalized."
+      "appendix_w_lean_status": "Finite algebra committed/CI pending; full analytic theorem and PDE not formalized.",
+      "piola_flat_appendix": "cases/006/paper/Appendix_X_Divergence_Preserving_Piola_Lift.md",
+      "piola_flat_verifier": "cases/006/attack021/verify_piola_flat_lifting.py",
+      "piola_flat_lean": "NewtonConjectures/Case006PiolaFlatLifting.lean",
+      "piola_flat_source_preservation": "Exact Piola-homotopy smoother S_epsilon of bounded weak V with div V=f satisfies div(S_epsilon V)=f pointwise after smoothing; no residual commutator.",
+      "piola_flat_weighted_theorem": "Under strict full weighted angular dual reserve sigma and |f|<=Fstar*w*d^-m for finite m, eps_c=c*[x(1-x)y(1-y)]^(m+3) preserves full divergence and smooth compact flat-boundary angular cone reserve sigma/2 when displayed test holds.",
+      "piola_flat_exact_rational_gate": "At sigma=1/4,c=1/1024,m=0,Fstar=kappa/16, rational upper 12469/16128<7/8, exact PASS.",
+      "actual_H8_dual_strict_reserve_certified": false,
+      "actual_H8_source_relative_polynomial_bound_certified": false,
+      "model_flat_angular_smooth_inverse_conditional": true,
+      "full_meridional_inverse_proved": false,
+      "appendix_x_lean_status": "Finite Piola matrix/transport jet and rational gate committed, GitHub kernel CI pending. PDE/integrals not formalized."
     }
   ]
 }
