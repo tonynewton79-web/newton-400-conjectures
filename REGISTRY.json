@@ -289,7 +289,7 @@
       "finite_type_exact_verifier": "cases/006/attack006/verify_finite_type.py",
       "finite_type_lean_fragment": "NewtonConjectures/Case006FiniteType.lean",
       "finite_type_lean_status": "new Lean algebraic subtheorem pushed; kernel compilation pending, smooth analytic theorem not Lean formalized",
-      "cumulative_pdf_pages": 114,
+      "cumulative_pdf_pages": 116,
       "global_navier_stokes_singularity_proved": false,
       "source_jacobian_appendix": "cases/006/paper/Appendix_J_Source_Native_Moment_Jacobian.md",
       "source_jacobian_lean": "NewtonConjectures/Case006SourceJacobian.lean",
@@ -489,7 +489,19 @@
       "physical_axial_source_profile_frozen": false,
       "source_radial_cumulative_force_certified": false,
       "source_angular_correction_B_frozen": false,
-      "appendix_AB_lean_status": "Finite scalar/jet/rational algebra committed; new GitHub Lean run pending; differential, integral and compact weighted PDE theorem not formalized."
+      "appendix_AB_lean_status": "Finite scalar/jet/rational algebra committed; new GitHub Lean run pending; differential, integral and compact weighted PDE theorem not formalized.",
+      "source_native_axial_flux_appendix": "cases/006/paper/Appendix_AC_Source_Native_Axial_Stress_Flux.md",
+      "source_native_axial_flux_verifier": "cases/006/attack026/verify_source_native_axial_flux.py",
+      "source_native_axial_flux_lean": "NewtonConjectures/Case006SourceNativeAxialFlux.lean",
+      "source_centre_physical_rz": "alpha=(Rstar)_rz=−4443/9832 from original equations 258,265; physical signed shear",
+      "source_native_exact_boundary_identity": "Fz=(1/r)d_r[r(T−alpha R)]+q, J=T−alpha R−(a/r)(T(a)−alpha R(a))+(1/r)∫_a^r s q(s) ds, q=[<Szz+p0>]_c^d",
+      "source_native_compact_rz_interval": "Under vanishing raw source/gauge traces: −143017/245800≤T(r)/R(r)≤−79133/245800 (where R>0), T=∫<Rstr_rz>dz, R=∫<rho>dz",
+      "compact_source_integrated_axial_force_automatic": "Yes for a genuinely compact raw divergence representative with zero radial/axial boundary traces; NOT from projected equivalence alone",
+      "physical_prepared_global_stress_representative_frozen": false,
+      "actual_physical_stress_flux_ratio_evaluated": false,
+      "projected_source_boundary_gauge_certified": false,
+      "actual_physical_cone_pass": false,
+      "appendix_AC_lean_status": "Finite exact rational and cone algebra committed; CI pending; physical cylindrical PDE and angular integration not Lean formalized"
     }
   ]
 }
