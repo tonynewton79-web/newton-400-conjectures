@@ -7,6 +7,7 @@
 - Nonnegativity of a monomial and of a finite sparse polynomial with nonnegative coefficients on the nonnegative rational orthant.
 - The 2-by-2 strict Sylvester-minor criterion implies a nonnegative quadratic form.
 - Three **actual**, small-order, componentwise positive integer Collatz–Wielandt witness inequalities: order-6 unicyclic winner, order-6 unicyclic outsider, and order-20 balanced diamond winner, including exact matrix-vector multiplication.
+- A concrete four-vertex integer diamond-envelope numerator inequality for \(n=41\) and allocation \((18,18,1,0)\), evaluated from its defining factors in Lean, rather than accepting a copied decimal margin.
 
 Source: [NewtonConjectures/Case010Spectral.lean](../../NewtonConjectures/Case010Spectral.lean). The [Case 010 workflow](../../.github/workflows/case010-lean.yml) compiles it on pull requests and records kernel checks.
 
