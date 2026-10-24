@@ -1,0 +1,41 @@
+name: Case 010 — Lean spectral certificates
+on:
+  push:
+    branches:
+      - "formal/010-spectral-certificate-audit"
+    paths:
+      - "NewtonConjectures/Case010Spectral.lean"
+      - "NewtonConjectures.lean"
+      - ".github/workflows/case010-lean.yml"
+  pull_request:
+    paths:
+      - "NewtonConjectures/Case010Spectral.lean"
+      - "NewtonConjectures.lean"
+      - ".github/workflows/case010-lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lean-case010:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+          use-mathlib-cache: true
+          axiom-audit: true
+      - name: Kernel compile Case 010 independently
+        shell: bash
+        run: |
+          lake env lean NewtonConjectures/Case010Spectral.lean
+      - name: Exclude placeholders
+        shell: bash
+        run: |
+          if grep -En '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/Case010Spectral.lean; then
+            echo "Unexpected proof placeholder"
+            exit 1
+          fi
