@@ -125,4 +125,37 @@ theorem unicyclic6_outsider_witness :
   · decide
   · decide
 
+/-- Order 20 diamond winner: eight pendant leaves at each degree-three hub. -/
+private def bicyclic20WinnerMatrix : Matrix (Fin 6) (Fin 6) ℤ :=
+  !![(0 : ℤ), 121, 22, 22, 88, 0;
+     121, 0, 22, 22, 0, 88;
+     22, 22, 0, 0, 0, 0;
+     22, 22, 0, 0, 0, 0;
+     11, 0, 0, 0, 0, 0;
+     0, 11, 0, 0, 0, 0]
+
+private def bicyclic20WinnerVector : Fin 6 → ℤ :=
+  ![38708575717443721, 38708575717443721,
+    12034882968443721, 12034882968443721,
+    3008720955443721, 3008720955443721]
+
+private def bicyclic20WinnerImage : Fin 6 → ℤ :=
+  ![5478039956501261413, 5478039956501261413,
+    1703177331567523724, 1703177331567523724,
+    425794332891880931, 425794332891880931]
+
+theorem bicyclic20_winner_witness :
+    (∀ i : Fin 6, 0 < bicyclic20WinnerVector i) ∧
+    (∀ i : Fin 6,
+       (∑ j : Fin 6, bicyclic20WinnerMatrix i j * bicyclic20WinnerVector j) =
+         bicyclic20WinnerImage i) ∧
+    (∀ i : Fin 6,
+       141196050630 * bicyclic20WinnerVector i <
+         1000000000 * bicyclic20WinnerImage i) := by
+  constructor
+  · decide
+  constructor
+  · decide
+  · decide
+
 end Newton400.Case010
