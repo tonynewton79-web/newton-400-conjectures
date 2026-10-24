@@ -158,4 +158,27 @@ theorem bicyclic20_winner_witness :
   · decide
   · decide
 
+
+/-- The exact rank-one diamond envelope factor, without rational division. -/
+def diamondEnvelopeFactor (T a d : ℤ) : ℤ :=
+  T * T + 4 * (T - 4 * a) * d ^ 2
+
+/-- A cross-multiplied four-vertex diamond separator numerator.
+    Positivity is the arithmetic condition used by the external audit. -/
+def diamondEnvelopeNumerator (T : ℤ) (a coreDegree : Fin 4 → ℤ) : ℤ :=
+  let E : Fin 4 → ℤ :=
+    fun i => diamondEnvelopeFactor T (a i) (a i + coreDegree i)
+  (∏ i : Fin 4, E i) -
+    4 * T * (∑ i : Fin 4,
+      (a i + coreDegree i) ^ 2 *
+        (∏ j ∈ (Finset.univ.erase i), E j))
+
+/-- Genuine 4-core-vertex integer separator: n=41 diamond, pendant
+    allocation (18,18,1,0). This checks the DEFINE-and-evaluate step,
+    not the entire all-n coefficient-expansion identity. -/
+theorem diamond_n41_one_stray_positive :
+    0 < diamondEnvelopeNumerator 1946
+       ![(18 : ℤ), 18, 1, 0] ![(3 : ℤ), 3, 2, 2] := by
+  decide
+
 end Newton400.Case010
