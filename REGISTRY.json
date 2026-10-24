@@ -1,7 +1,7 @@
 {
   "project": "Newton Astro Labs — 400+ Conjectures",
   "target_externally_validated_original_results": 401,
-  "cases_documented": 6,
+  "cases_documented": 7,
   "candidate_analytic_proofs": 3,
   "independently_accepted_original_results": 0,
   "cases": [
@@ -296,6 +296,27 @@
       },
       "project_readme": "cases/007/README.md",
       "independently_accepted_original_result": false
+    },
+    {
+      "id": "010",
+      "target": "Lean formalization of the degree-product weighted spectral-extremizer certificate audit (trees, unicyclic and bicyclic graphs)",
+      "source": "Degree_Weighted_Spectral_Extremizers_Independently_Audited.pdf",
+      "status": "CANDIDATE FORMAL FRAGMENT — LEAN CI COMPILATION PENDING; FULL GRAPH-THEOREM FORMALIZATION OPEN",
+      "claim": "Formal verification of polynomial coefficient positivity, exact integer spectral witnesses, and ultimately the quadratic-weight and pure-product graph-extremal theorems.",
+      "lean_kernel_verified": false,
+      "lean_kernel_verified_fragment": false,
+      "lean_full_theorem_verified": false,
+      "lean_fragment_source": "NewtonConjectures/Case010Spectral.lean",
+      "lean_ci": "https://github.com/tonynewton79-web/newton-400-conjectures/actions/workflows/case010-lean.yml",
+      "pull_request": "https://github.com/tonynewton79-web/newton-400-conjectures/pull/28",
+      "proof_gaps": [
+        "Formal certification of 25 diamond coefficient expansions and exact identities",
+        "Lean verification of all 20,203 diamond remainder cases and K2,3 polynomial tests",
+        "Formal full-matrix Sylvester/positive-definiteness and Collatz-Wielandt-to-spectral-radius bridges",
+        "Lean certification of full finite-order comparison and global graph-theoretic structural reductions"
+      ],
+      "independently_accepted_original_result": false,
+      "specialist_review": false
     }
   ]
 }
