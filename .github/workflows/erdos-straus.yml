@@ -1,0 +1,39 @@
+name: Erdős–Straus Case 005 Lean and exact checks
+on:
+  push:
+    paths:
+      - "NewtonConjectures/ErdosStraus.lean"
+      - "cases/005/**"
+      - ".github/workflows/erdos-straus.yml"
+      - "lean-toolchain"
+      - "lakefile.toml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  erdos-straus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify finite arithmetic without floating point
+        run: |
+          python3 cases/005/verify.py
+          python3 cases/005/obstruction.py
+          python3 cases/005/verify_density.py
+          python3 cases/005/type_c.py
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+          use-mathlib-cache: true
+          axiom-audit: true
+      - name: Compile explicit Case 005 Lean module
+        run: |
+          lake env lean NewtonConjectures/ErdosStraus.lean
+          lake env lean NewtonConjectures/ErdosStrausObstruction.lean
+          lake env lean NewtonConjectures/ErdosStrausInfinite.lean
+          if grep -REn '(^|[^[:alnum:]_])(sorry|admit)([^[:alnum:]_]|$)' NewtonConjectures/ErdosStraus.lean NewtonConjectures/ErdosStrausObstruction.lean NewtonConjectures/ErdosStrausInfinite.lean; then
+            echo "Found proof placeholder"; exit 1
+          fi

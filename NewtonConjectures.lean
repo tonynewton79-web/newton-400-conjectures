@@ -4,6 +4,9 @@ import NewtonConjectures.Case007SunGraph
 import NewtonConjectures.Case007Sombor
 import NewtonConjectures.Case006Stress
 import Mathlib
+import NewtonConjectures.ErdosStraus
+import NewtonConjectures.ErdosStrausObstruction
+import NewtonConjectures.ErdosStrausInfinite
 import NewtonConjectures.ShellHarmonic
 import NewtonConjectures.ShellCardinality
 import NewtonConjectures.ScalarGravityUpper
