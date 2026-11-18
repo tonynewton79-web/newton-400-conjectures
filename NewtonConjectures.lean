@@ -1,3 +1,4 @@
+import NewtonConjectures.TwoModeAdjacency
 import NewtonConjectures.GravitySpectralSpan
 import Mathlib
 import NewtonConjectures.ShellHarmonic
