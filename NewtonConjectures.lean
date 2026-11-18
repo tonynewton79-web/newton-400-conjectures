@@ -1,3 +1,4 @@
+import NewtonConjectures.GravitySpectralSpan
 import Mathlib
 import NewtonConjectures.ShellHarmonic
 import NewtonConjectures.ShellCardinality
