@@ -75,7 +75,6 @@ theorem actual_gravity_span_bound (n : ℕ) [NeZero n] (hn : 4 ≤ n) :
   rw [smul_add, smul_smul, ← actual_gravity_is_scaled_reciprocal n] at hlo
   have hhi := actual_gravity_scalar_upper_psd n hn
   rw [smul_smul] at hhi
-  simp only [smul_eq_mul] at hlo hhi
   have h := spectral_span_of_two_sided_psd
     (actualCycleGravity n) (actual_cycle_gravity_isHermitian n)
     ((4 / ((n - 1 : ℕ) : ℝ)) * (3 / 2))
