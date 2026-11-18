@@ -1,3 +1,4 @@
+import NewtonConjectures.TwoModeMultiplicity
 import NewtonConjectures.TwoModeAdjacency
 import NewtonConjectures.GravitySpectralSpan
 import Mathlib
